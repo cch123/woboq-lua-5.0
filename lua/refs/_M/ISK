@@ -1,0 +1,12 @@
+<dec f='lua/src/lopcodes.h' l='137'/>
+<use f='lua/src/luac.c' l='310' u='c'/>
+<use f='lua/src/luac.c' l='311' u='c'/>
+<use f='lua/src/luac.c' l='336' u='c'/>
+<use f='lua/src/luac.c' l='340' u='c'/>
+<use f='lua/src/luac.c' l='341' u='c'/>
+<use f='lua/src/luac.c' l='345' u='c'/>
+<use f='lua/src/luac.c' l='362' u='c'/>
+<use f='lua/src/luac.c' l='362' u='c'/>
+<use f='lua/src/luac.c' l='365' u='c'/>
+<use f='lua/src/luac.c' l='367' u='c'/>
+<doc f='lua/src/lopcodes.h' l='136'>/* test whether value is a constant */</doc>

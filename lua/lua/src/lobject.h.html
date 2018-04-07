@@ -1,0 +1,568 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>lobject.h source code [lua/src/lobject.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="CClosure,Closure,GCObject,LClosure,LocVar,Node,Proto,TKey,TString,Table,UTString,UUdata,Udata,Upvaldesc,Value,lua_TValue "/>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'lua/src/lobject.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>lua</a>/<a href='./'>src</a>/<a href='lobject.h.html'>lobject.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*</i></td></tr>
+<tr><th id="2">2</th><td><i>** $Id: lobject.h,v 2.117 2016/08/01 19:51:24 roberto Exp $</i></td></tr>
+<tr><th id="3">3</th><td><i>** Type definitions for Lua objects</i></td></tr>
+<tr><th id="4">4</th><td><i>** See Copyright Notice in lua.h</i></td></tr>
+<tr><th id="5">5</th><td><i>*/</i></td></tr>
+<tr><th id="6">6</th><td></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><u>#<span data-ppcond="8">ifndef</span> <span class="macro" data-ref="_M/lobject_h">lobject_h</span></u></td></tr>
+<tr><th id="9">9</th><td><u>#define <dfn class="macro" id="_M/lobject_h" data-ref="_M/lobject_h">lobject_h</dfn></u></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td></td></tr>
+<tr><th id="12">12</th><td><u>#include &lt;stdarg.h&gt;</u></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><u>#include <a href="llimits.h.html">"llimits.h"</a></u></td></tr>
+<tr><th id="16">16</th><td><u>#include <a href="lua.h.html">"lua.h"</a></u></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td></td></tr>
+<tr><th id="19">19</th><td><i>/*</i></td></tr>
+<tr><th id="20">20</th><td><i>** Extra tags for non-values</i></td></tr>
+<tr><th id="21">21</th><td><i>*/</i></td></tr>
+<tr><th id="22">22</th><td><u>#define <dfn class="macro" id="_M/LUA_TPROTO" data-ref="_M/LUA_TPROTO">LUA_TPROTO</dfn>	LUA_NUMTAGS		/* function prototypes */</u></td></tr>
+<tr><th id="23">23</th><td><u>#define <dfn class="macro" id="_M/LUA_TDEADKEY" data-ref="_M/LUA_TDEADKEY">LUA_TDEADKEY</dfn>	(LUA_NUMTAGS+1)		/* removed keys in tables */</u></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><i>/*</i></td></tr>
+<tr><th id="26">26</th><td><i>** number of all possible tags (including LUA_TNONE but excluding DEADKEY)</i></td></tr>
+<tr><th id="27">27</th><td><i>*/</i></td></tr>
+<tr><th id="28">28</th><td><u>#define <dfn class="macro" id="_M/LUA_TOTALTAGS" data-ref="_M/LUA_TOTALTAGS">LUA_TOTALTAGS</dfn>	(LUA_TPROTO + 2)</u></td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><i>/*</i></td></tr>
+<tr><th id="32">32</th><td><i>** tags for Tagged Values have the following use of bits:</i></td></tr>
+<tr><th id="33">33</th><td><i>** bits 0-3: actual tag (a LUA_T* value)</i></td></tr>
+<tr><th id="34">34</th><td><i>** bits 4-5: variant bits</i></td></tr>
+<tr><th id="35">35</th><td><i>** bit 6: whether value is collectable</i></td></tr>
+<tr><th id="36">36</th><td><i>*/</i></td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><i>/*</i></td></tr>
+<tr><th id="40">40</th><td><i>** LUA_TFUNCTION variants:</i></td></tr>
+<tr><th id="41">41</th><td><i>** 0 - Lua function</i></td></tr>
+<tr><th id="42">42</th><td><i>** 1 - light C function</i></td></tr>
+<tr><th id="43">43</th><td><i>** 2 - regular C function (closure)</i></td></tr>
+<tr><th id="44">44</th><td><i>*/</i></td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><i>/* Variant tags for functions */</i></td></tr>
+<tr><th id="47">47</th><td><u>#define <dfn class="macro" id="_M/LUA_TLCL" data-ref="_M/LUA_TLCL">LUA_TLCL</dfn>	(LUA_TFUNCTION | (0 &lt;&lt; 4))  /* Lua closure */</u></td></tr>
+<tr><th id="48">48</th><td><u>#define <dfn class="macro" id="_M/LUA_TLCF" data-ref="_M/LUA_TLCF">LUA_TLCF</dfn>	(LUA_TFUNCTION | (1 &lt;&lt; 4))  /* light C function */</u></td></tr>
+<tr><th id="49">49</th><td><u>#define <dfn class="macro" id="_M/LUA_TCCL" data-ref="_M/LUA_TCCL">LUA_TCCL</dfn>	(LUA_TFUNCTION | (2 &lt;&lt; 4))  /* C closure */</u></td></tr>
+<tr><th id="50">50</th><td></td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td><i>/* Variant tags for strings */</i></td></tr>
+<tr><th id="53">53</th><td><u>#define <dfn class="macro" id="_M/LUA_TSHRSTR" data-ref="_M/LUA_TSHRSTR">LUA_TSHRSTR</dfn>	(LUA_TSTRING | (0 &lt;&lt; 4))  /* short strings */</u></td></tr>
+<tr><th id="54">54</th><td><u>#define <dfn class="macro" id="_M/LUA_TLNGSTR" data-ref="_M/LUA_TLNGSTR">LUA_TLNGSTR</dfn>	(LUA_TSTRING | (1 &lt;&lt; 4))  /* long strings */</u></td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td><i>/* Variant tags for numbers */</i></td></tr>
+<tr><th id="58">58</th><td><u>#define <dfn class="macro" id="_M/LUA_TNUMFLT" data-ref="_M/LUA_TNUMFLT">LUA_TNUMFLT</dfn>	(LUA_TNUMBER | (0 &lt;&lt; 4))  /* float numbers */</u></td></tr>
+<tr><th id="59">59</th><td><u>#define <dfn class="macro" id="_M/LUA_TNUMINT" data-ref="_M/LUA_TNUMINT">LUA_TNUMINT</dfn>	(LUA_TNUMBER | (1 &lt;&lt; 4))  /* integer numbers */</u></td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td><i>/* Bit mark for collectable types */</i></td></tr>
+<tr><th id="63">63</th><td><u>#define <dfn class="macro" id="_M/BIT_ISCOLLECTABLE" data-ref="_M/BIT_ISCOLLECTABLE">BIT_ISCOLLECTABLE</dfn>	(1 &lt;&lt; 6)</u></td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td><i>/* mark a tag as collectable */</i></td></tr>
+<tr><th id="66">66</th><td><u>#define <dfn class="macro" id="_M/ctb" data-ref="_M/ctb">ctb</dfn>(t)			((t) | BIT_ISCOLLECTABLE)</u></td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td></td></tr>
+<tr><th id="69">69</th><td><i>/*</i></td></tr>
+<tr><th id="70">70</th><td><i>** Common type for all collectable objects</i></td></tr>
+<tr><th id="71">71</th><td><i>*/</i></td></tr>
+<tr><th id="72">72</th><td><b>typedef</b> <b>struct</b> <a class="type" href="#GCObject" title='GCObject' data-ref="GCObject">GCObject</a> <dfn class="typedef" id="GCObject" title='GCObject' data-type='struct GCObject' data-ref="GCObject">GCObject</dfn>;</td></tr>
+<tr><th id="73">73</th><td></td></tr>
+<tr><th id="74">74</th><td></td></tr>
+<tr><th id="75">75</th><td><i>/*</i></td></tr>
+<tr><th id="76">76</th><td><i>** Common Header for all collectable objects (in macro form, to be</i></td></tr>
+<tr><th id="77">77</th><td><i>** included in other objects)</i></td></tr>
+<tr><th id="78">78</th><td><i>*/</i></td></tr>
+<tr><th id="79">79</th><td><u>#define <dfn class="macro" id="_M/CommonHeader" data-ref="_M/CommonHeader">CommonHeader</dfn>	<a class="typedef" href="#GCObject" title='GCObject' data-type='struct GCObject' data-ref="GCObject">GCObject</a> *<dfn class="decl field" id="GCObject::next" title='GCObject::next' data-ref="GCObject::next"><dfn class="decl field" id="TString::next" title='TString::next' data-ref="TString::next"><dfn class="decl field" id="Udata::next" title='Udata::next' data-ref="Udata::next"><dfn class="decl field" id="Proto::next" title='Proto::next' data-ref="Proto::next"><dfn class="decl field" id="CClosure::next" title='CClosure::next' data-ref="CClosure::next"><dfn class="decl field" id="LClosure::next" title='LClosure::next' data-ref="LClosure::next"><dfn class="decl field" id="Table::next" title='Table::next' data-ref="Table::next">next</dfn></dfn></dfn></dfn></dfn></dfn></dfn>; <a class="typedef" href="llimits.h.html#lu_byte" title='lu_byte' data-type='unsigned char' data-ref="lu_byte">lu_byte</a> <dfn class="decl field" id="GCObject::tt" title='GCObject::tt' data-ref="GCObject::tt"><dfn class="decl field" id="TString::tt" title='TString::tt' data-ref="TString::tt"><dfn class="decl field" id="Udata::tt" title='Udata::tt' data-ref="Udata::tt"><dfn class="decl field" id="Proto::tt" title='Proto::tt' data-ref="Proto::tt"><dfn class="decl field" id="CClosure::tt" title='CClosure::tt' data-ref="CClosure::tt"><dfn class="decl field" id="LClosure::tt" title='LClosure::tt' data-ref="LClosure::tt"><dfn class="decl field" id="Table::tt" title='Table::tt' data-ref="Table::tt">tt</dfn></dfn></dfn></dfn></dfn></dfn></dfn>; <a class="typedef" href="llimits.h.html#lu_byte" title='lu_byte' data-type='unsigned char' data-ref="lu_byte">lu_byte</a> <dfn class="decl field" id="GCObject::marked" title='GCObject::marked' data-ref="GCObject::marked"><dfn class="decl field" id="TString::marked" title='TString::marked' data-ref="TString::marked"><dfn class="decl field" id="Udata::marked" title='Udata::marked' data-ref="Udata::marked"><dfn class="decl field" id="Proto::marked" title='Proto::marked' data-ref="Proto::marked"><dfn class="decl field" id="CClosure::marked" title='CClosure::marked' data-ref="CClosure::marked"><dfn class="decl field" id="LClosure::marked" title='LClosure::marked' data-ref="LClosure::marked"><dfn class="decl field" id="Table::marked" title='Table::marked' data-ref="Table::marked">marked</dfn></dfn></dfn></dfn></dfn></dfn></dfn></u></td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td><i>/*</i></td></tr>
+<tr><th id="83">83</th><td><i>** Common type has only the common header</i></td></tr>
+<tr><th id="84">84</th><td><i>*/</i></td></tr>
+<tr><th id="85">85</th><td><b>struct</b> <dfn class="type def" id="GCObject" title='GCObject' data-ref="GCObject">GCObject</dfn> {</td></tr>
+<tr><th id="86">86</th><td>  <a class="macro" href="#79" title="GCObject *next; lu_byte tt; lu_byte marked" data-ref="_M/CommonHeader">CommonHeader</a>;</td></tr>
+<tr><th id="87">87</th><td>};</td></tr>
+<tr><th id="88">88</th><td></td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td></td></tr>
+<tr><th id="91">91</th><td></td></tr>
+<tr><th id="92">92</th><td><i>/*</i></td></tr>
+<tr><th id="93">93</th><td><i>** Tagged Values. This is the basic representation of values in Lua,</i></td></tr>
+<tr><th id="94">94</th><td><i>** an actual value plus a tag with its type.</i></td></tr>
+<tr><th id="95">95</th><td><i>*/</i></td></tr>
+<tr><th id="96">96</th><td></td></tr>
+<tr><th id="97">97</th><td><i>/*</i></td></tr>
+<tr><th id="98">98</th><td><i>** Union of all Lua values</i></td></tr>
+<tr><th id="99">99</th><td><i>*/</i></td></tr>
+<tr><th id="100">100</th><td><b>typedef</b> <b>union</b> <dfn class="type def" id="Value" title='Value' data-ref="Value"><a class="type" href="#Value" title='Value' data-ref="Value">Value</a></dfn> {</td></tr>
+<tr><th id="101">101</th><td>  <a class="typedef" href="#GCObject" title='GCObject' data-type='struct GCObject' data-ref="GCObject">GCObject</a> *<dfn class="decl field" id="Value::gc" title='Value::gc' data-ref="Value::gc">gc</dfn>;    <i>/* collectable objects */</i></td></tr>
+<tr><th id="102">102</th><td>  <em>void</em> *<dfn class="decl field" id="Value::p" title='Value::p' data-ref="Value::p">p</dfn>;         <i>/* light userdata */</i></td></tr>
+<tr><th id="103">103</th><td>  <em>int</em> <dfn class="decl field" id="Value::b" title='Value::b' data-ref="Value::b">b</dfn>;           <i>/* booleans */</i></td></tr>
+<tr><th id="104">104</th><td>  <a class="typedef" href="lua.h.html#lua_CFunction" title='lua_CFunction' data-type='int (*)(lua_State *)' data-ref="lua_CFunction">lua_CFunction</a> <dfn class="decl field" id="Value::f" title='Value::f' data-ref="Value::f">f</dfn>; <i>/* light C functions */</i></td></tr>
+<tr><th id="105">105</th><td>  <a class="typedef" href="lua.h.html#lua_Integer" title='lua_Integer' data-type='long long' data-ref="lua_Integer">lua_Integer</a> <dfn class="decl field" id="Value::i" title='Value::i' data-ref="Value::i">i</dfn>;   <i>/* integer numbers */</i></td></tr>
+<tr><th id="106">106</th><td>  <a class="typedef" href="lua.h.html#lua_Number" title='lua_Number' data-type='double' data-ref="lua_Number">lua_Number</a> <dfn class="decl field" id="Value::n" title='Value::n' data-ref="Value::n">n</dfn>;    <i>/* float numbers */</i></td></tr>
+<tr><th id="107">107</th><td>} <dfn class="typedef" id="Value" title='Value' data-type='union Value' data-ref="Value">Value</dfn>;</td></tr>
+<tr><th id="108">108</th><td></td></tr>
+<tr><th id="109">109</th><td></td></tr>
+<tr><th id="110">110</th><td><u>#define <dfn class="macro" id="_M/TValuefields" data-ref="_M/TValuefields">TValuefields</dfn>	<a class="typedef" href="#Value" title='Value' data-type='union Value' data-ref="Value">Value</a> <dfn class="decl field" id="lua_TValue::value_" title='lua_TValue::value_' data-ref="lua_TValue::value_"><dfn class="decl field" id="TKey::(anonymous)::value_" title='TKey::(anonymous struct)::value_' data-ref="TKey::(anonymous)::value_">value_</dfn></dfn>; int <dfn class="decl field" id="lua_TValue::tt_" title='lua_TValue::tt_' data-ref="lua_TValue::tt_"><dfn class="decl field" id="TKey::(anonymous)::tt_" title='TKey::(anonymous struct)::tt_' data-ref="TKey::(anonymous)::tt_">tt_</dfn></dfn></u></td></tr>
+<tr><th id="111">111</th><td></td></tr>
+<tr><th id="112">112</th><td></td></tr>
+<tr><th id="113">113</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="lua_TValue" title='lua_TValue' data-ref="lua_TValue"><a class="type" href="#lua_TValue" title='lua_TValue' data-ref="lua_TValue">lua_TValue</a></dfn> {</td></tr>
+<tr><th id="114">114</th><td>  <a class="macro" href="#110" title="Value value_; int tt_" data-ref="_M/TValuefields">TValuefields</a>;</td></tr>
+<tr><th id="115">115</th><td>} <dfn class="typedef" id="TValue" title='TValue' data-type='struct lua_TValue' data-ref="TValue">TValue</dfn>;</td></tr>
+<tr><th id="116">116</th><td></td></tr>
+<tr><th id="117">117</th><td></td></tr>
+<tr><th id="118">118</th><td></td></tr>
+<tr><th id="119">119</th><td><i>/* macro defining a nil value */</i></td></tr>
+<tr><th id="120">120</th><td><u>#define <dfn class="macro" id="_M/NILCONSTANT" data-ref="_M/NILCONSTANT">NILCONSTANT</dfn>	{NULL}, LUA_TNIL</u></td></tr>
+<tr><th id="121">121</th><td></td></tr>
+<tr><th id="122">122</th><td></td></tr>
+<tr><th id="123">123</th><td><u>#define <dfn class="macro" id="_M/val_" data-ref="_M/val_">val_</dfn>(o)		((o)-&gt;value_)</u></td></tr>
+<tr><th id="124">124</th><td></td></tr>
+<tr><th id="125">125</th><td></td></tr>
+<tr><th id="126">126</th><td><i>/* raw type tag of a TValue */</i></td></tr>
+<tr><th id="127">127</th><td><u>#define <dfn class="macro" id="_M/rttype" data-ref="_M/rttype">rttype</dfn>(o)	((o)-&gt;tt_)</u></td></tr>
+<tr><th id="128">128</th><td></td></tr>
+<tr><th id="129">129</th><td><i>/* tag with no variants (bits 0-3) */</i></td></tr>
+<tr><th id="130">130</th><td><u>#define <dfn class="macro" id="_M/novariant" data-ref="_M/novariant">novariant</dfn>(x)	((x) &amp; 0x0F)</u></td></tr>
+<tr><th id="131">131</th><td></td></tr>
+<tr><th id="132">132</th><td><i>/* type tag of a TValue (bits 0-3 for tags + variant bits 4-5) */</i></td></tr>
+<tr><th id="133">133</th><td><u>#define <dfn class="macro" id="_M/ttype" data-ref="_M/ttype">ttype</dfn>(o)	(rttype(o) &amp; 0x3F)</u></td></tr>
+<tr><th id="134">134</th><td></td></tr>
+<tr><th id="135">135</th><td><i>/* type tag of a TValue with no variants (bits 0-3) */</i></td></tr>
+<tr><th id="136">136</th><td><u>#define <dfn class="macro" id="_M/ttnov" data-ref="_M/ttnov">ttnov</dfn>(o)	(novariant(rttype(o)))</u></td></tr>
+<tr><th id="137">137</th><td></td></tr>
+<tr><th id="138">138</th><td></td></tr>
+<tr><th id="139">139</th><td><i>/* Macros to test type */</i></td></tr>
+<tr><th id="140">140</th><td><u>#define <dfn class="macro" id="_M/checktag" data-ref="_M/checktag">checktag</dfn>(o,t)		(rttype(o) == (t))</u></td></tr>
+<tr><th id="141">141</th><td><u>#define <dfn class="macro" id="_M/checktype" data-ref="_M/checktype">checktype</dfn>(o,t)		(ttnov(o) == (t))</u></td></tr>
+<tr><th id="142">142</th><td><u>#define <dfn class="macro" id="_M/ttisnumber" data-ref="_M/ttisnumber">ttisnumber</dfn>(o)		checktype((o), LUA_TNUMBER)</u></td></tr>
+<tr><th id="143">143</th><td><u>#define <dfn class="macro" id="_M/ttisfloat" data-ref="_M/ttisfloat">ttisfloat</dfn>(o)		checktag((o), LUA_TNUMFLT)</u></td></tr>
+<tr><th id="144">144</th><td><u>#define <dfn class="macro" id="_M/ttisinteger" data-ref="_M/ttisinteger">ttisinteger</dfn>(o)		checktag((o), LUA_TNUMINT)</u></td></tr>
+<tr><th id="145">145</th><td><u>#define <dfn class="macro" id="_M/ttisnil" data-ref="_M/ttisnil">ttisnil</dfn>(o)		checktag((o), LUA_TNIL)</u></td></tr>
+<tr><th id="146">146</th><td><u>#define <dfn class="macro" id="_M/ttisboolean" data-ref="_M/ttisboolean">ttisboolean</dfn>(o)		checktag((o), LUA_TBOOLEAN)</u></td></tr>
+<tr><th id="147">147</th><td><u>#define <dfn class="macro" id="_M/ttislightuserdata" data-ref="_M/ttislightuserdata">ttislightuserdata</dfn>(o)	checktag((o), LUA_TLIGHTUSERDATA)</u></td></tr>
+<tr><th id="148">148</th><td><u>#define <dfn class="macro" id="_M/ttisstring" data-ref="_M/ttisstring">ttisstring</dfn>(o)		checktype((o), LUA_TSTRING)</u></td></tr>
+<tr><th id="149">149</th><td><u>#define <dfn class="macro" id="_M/ttisshrstring" data-ref="_M/ttisshrstring">ttisshrstring</dfn>(o)	checktag((o), ctb(LUA_TSHRSTR))</u></td></tr>
+<tr><th id="150">150</th><td><u>#define <dfn class="macro" id="_M/ttislngstring" data-ref="_M/ttislngstring">ttislngstring</dfn>(o)	checktag((o), ctb(LUA_TLNGSTR))</u></td></tr>
+<tr><th id="151">151</th><td><u>#define <dfn class="macro" id="_M/ttistable" data-ref="_M/ttistable">ttistable</dfn>(o)		checktag((o), ctb(LUA_TTABLE))</u></td></tr>
+<tr><th id="152">152</th><td><u>#define <dfn class="macro" id="_M/ttisfunction" data-ref="_M/ttisfunction">ttisfunction</dfn>(o)		checktype(o, LUA_TFUNCTION)</u></td></tr>
+<tr><th id="153">153</th><td><u>#define <dfn class="macro" id="_M/ttisclosure" data-ref="_M/ttisclosure">ttisclosure</dfn>(o)		((rttype(o) &amp; 0x1F) == LUA_TFUNCTION)</u></td></tr>
+<tr><th id="154">154</th><td><u>#define <dfn class="macro" id="_M/ttisCclosure" data-ref="_M/ttisCclosure">ttisCclosure</dfn>(o)		checktag((o), ctb(LUA_TCCL))</u></td></tr>
+<tr><th id="155">155</th><td><u>#define <dfn class="macro" id="_M/ttisLclosure" data-ref="_M/ttisLclosure">ttisLclosure</dfn>(o)		checktag((o), ctb(LUA_TLCL))</u></td></tr>
+<tr><th id="156">156</th><td><u>#define <dfn class="macro" id="_M/ttislcf" data-ref="_M/ttislcf">ttislcf</dfn>(o)		checktag((o), LUA_TLCF)</u></td></tr>
+<tr><th id="157">157</th><td><u>#define <dfn class="macro" id="_M/ttisfulluserdata" data-ref="_M/ttisfulluserdata">ttisfulluserdata</dfn>(o)	checktag((o), ctb(LUA_TUSERDATA))</u></td></tr>
+<tr><th id="158">158</th><td><u>#define <dfn class="macro" id="_M/ttisthread" data-ref="_M/ttisthread">ttisthread</dfn>(o)		checktag((o), ctb(LUA_TTHREAD))</u></td></tr>
+<tr><th id="159">159</th><td><u>#define <dfn class="macro" id="_M/ttisdeadkey" data-ref="_M/ttisdeadkey">ttisdeadkey</dfn>(o)		checktag((o), LUA_TDEADKEY)</u></td></tr>
+<tr><th id="160">160</th><td></td></tr>
+<tr><th id="161">161</th><td></td></tr>
+<tr><th id="162">162</th><td><i>/* Macros to access values */</i></td></tr>
+<tr><th id="163">163</th><td><u>#define <dfn class="macro" id="_M/ivalue" data-ref="_M/ivalue">ivalue</dfn>(o)	check_exp(ttisinteger(o), val_(o).i)</u></td></tr>
+<tr><th id="164">164</th><td><u>#define <dfn class="macro" id="_M/fltvalue" data-ref="_M/fltvalue">fltvalue</dfn>(o)	check_exp(ttisfloat(o), val_(o).n)</u></td></tr>
+<tr><th id="165">165</th><td><u>#define <dfn class="macro" id="_M/nvalue" data-ref="_M/nvalue">nvalue</dfn>(o)	check_exp(ttisnumber(o), \</u></td></tr>
+<tr><th id="166">166</th><td><u>	(ttisinteger(o) ? cast_num(ivalue(o)) : fltvalue(o)))</u></td></tr>
+<tr><th id="167">167</th><td><u>#define <dfn class="macro" id="_M/gcvalue" data-ref="_M/gcvalue">gcvalue</dfn>(o)	check_exp(iscollectable(o), val_(o).gc)</u></td></tr>
+<tr><th id="168">168</th><td><u>#define <dfn class="macro" id="_M/pvalue" data-ref="_M/pvalue">pvalue</dfn>(o)	check_exp(ttislightuserdata(o), val_(o).p)</u></td></tr>
+<tr><th id="169">169</th><td><u>#define <dfn class="macro" id="_M/tsvalue" data-ref="_M/tsvalue">tsvalue</dfn>(o)	check_exp(ttisstring(o), gco2ts(val_(o).gc))</u></td></tr>
+<tr><th id="170">170</th><td><u>#define <dfn class="macro" id="_M/uvalue" data-ref="_M/uvalue">uvalue</dfn>(o)	check_exp(ttisfulluserdata(o), gco2u(val_(o).gc))</u></td></tr>
+<tr><th id="171">171</th><td><u>#define <dfn class="macro" id="_M/clvalue" data-ref="_M/clvalue">clvalue</dfn>(o)	check_exp(ttisclosure(o), gco2cl(val_(o).gc))</u></td></tr>
+<tr><th id="172">172</th><td><u>#define <dfn class="macro" id="_M/clLvalue" data-ref="_M/clLvalue">clLvalue</dfn>(o)	check_exp(ttisLclosure(o), gco2lcl(val_(o).gc))</u></td></tr>
+<tr><th id="173">173</th><td><u>#define <dfn class="macro" id="_M/clCvalue" data-ref="_M/clCvalue">clCvalue</dfn>(o)	check_exp(ttisCclosure(o), gco2ccl(val_(o).gc))</u></td></tr>
+<tr><th id="174">174</th><td><u>#define <dfn class="macro" id="_M/fvalue" data-ref="_M/fvalue">fvalue</dfn>(o)	check_exp(ttislcf(o), val_(o).f)</u></td></tr>
+<tr><th id="175">175</th><td><u>#define <dfn class="macro" id="_M/hvalue" data-ref="_M/hvalue">hvalue</dfn>(o)	check_exp(ttistable(o), gco2t(val_(o).gc))</u></td></tr>
+<tr><th id="176">176</th><td><u>#define <dfn class="macro" id="_M/bvalue" data-ref="_M/bvalue">bvalue</dfn>(o)	check_exp(ttisboolean(o), val_(o).b)</u></td></tr>
+<tr><th id="177">177</th><td><u>#define <dfn class="macro" id="_M/thvalue" data-ref="_M/thvalue">thvalue</dfn>(o)	check_exp(ttisthread(o), gco2th(val_(o).gc))</u></td></tr>
+<tr><th id="178">178</th><td><i>/* a dead value may get the 'gc' field, but cannot access its contents */</i></td></tr>
+<tr><th id="179">179</th><td><u>#define <dfn class="macro" id="_M/deadvalue" data-ref="_M/deadvalue">deadvalue</dfn>(o)	check_exp(ttisdeadkey(o), cast(void *, val_(o).gc))</u></td></tr>
+<tr><th id="180">180</th><td></td></tr>
+<tr><th id="181">181</th><td><u>#define <dfn class="macro" id="_M/l_isfalse" data-ref="_M/l_isfalse">l_isfalse</dfn>(o)	(ttisnil(o) || (ttisboolean(o) &amp;&amp; bvalue(o) == 0))</u></td></tr>
+<tr><th id="182">182</th><td></td></tr>
+<tr><th id="183">183</th><td></td></tr>
+<tr><th id="184">184</th><td><u>#define <dfn class="macro" id="_M/iscollectable" data-ref="_M/iscollectable">iscollectable</dfn>(o)	(rttype(o) &amp; BIT_ISCOLLECTABLE)</u></td></tr>
+<tr><th id="185">185</th><td></td></tr>
+<tr><th id="186">186</th><td></td></tr>
+<tr><th id="187">187</th><td><i>/* Macros for internal tests */</i></td></tr>
+<tr><th id="188">188</th><td><u>#define <dfn class="macro" id="_M/righttt" data-ref="_M/righttt">righttt</dfn>(obj)		(ttype(obj) == gcvalue(obj)-&gt;tt)</u></td></tr>
+<tr><th id="189">189</th><td></td></tr>
+<tr><th id="190">190</th><td><u>#define <dfn class="macro" id="_M/checkliveness" data-ref="_M/checkliveness">checkliveness</dfn>(L,obj) \</u></td></tr>
+<tr><th id="191">191</th><td><u>	lua_longassert(!iscollectable(obj) || \</u></td></tr>
+<tr><th id="192">192</th><td><u>		(righttt(obj) &amp;&amp; (L == NULL || !isdead(G(L),gcvalue(obj)))))</u></td></tr>
+<tr><th id="193">193</th><td></td></tr>
+<tr><th id="194">194</th><td></td></tr>
+<tr><th id="195">195</th><td><i>/* Macros to set values */</i></td></tr>
+<tr><th id="196">196</th><td><u>#define <dfn class="macro" id="_M/settt_" data-ref="_M/settt_">settt_</dfn>(o,t)	((o)-&gt;tt_=(t))</u></td></tr>
+<tr><th id="197">197</th><td></td></tr>
+<tr><th id="198">198</th><td><u>#define <dfn class="macro" id="_M/setfltvalue" data-ref="_M/setfltvalue">setfltvalue</dfn>(obj,x) \</u></td></tr>
+<tr><th id="199">199</th><td><u>  { TValue *io=(obj); val_(io).n=(x); settt_(io, LUA_TNUMFLT); }</u></td></tr>
+<tr><th id="200">200</th><td></td></tr>
+<tr><th id="201">201</th><td><u>#define <dfn class="macro" id="_M/chgfltvalue" data-ref="_M/chgfltvalue">chgfltvalue</dfn>(obj,x) \</u></td></tr>
+<tr><th id="202">202</th><td><u>  { TValue *io=(obj); lua_assert(ttisfloat(io)); val_(io).n=(x); }</u></td></tr>
+<tr><th id="203">203</th><td></td></tr>
+<tr><th id="204">204</th><td><u>#define <dfn class="macro" id="_M/setivalue" data-ref="_M/setivalue">setivalue</dfn>(obj,x) \</u></td></tr>
+<tr><th id="205">205</th><td><u>  { TValue *io=(obj); val_(io).i=(x); settt_(io, LUA_TNUMINT); }</u></td></tr>
+<tr><th id="206">206</th><td></td></tr>
+<tr><th id="207">207</th><td><u>#define <dfn class="macro" id="_M/chgivalue" data-ref="_M/chgivalue">chgivalue</dfn>(obj,x) \</u></td></tr>
+<tr><th id="208">208</th><td><u>  { TValue *io=(obj); lua_assert(ttisinteger(io)); val_(io).i=(x); }</u></td></tr>
+<tr><th id="209">209</th><td></td></tr>
+<tr><th id="210">210</th><td><u>#define <dfn class="macro" id="_M/setnilvalue" data-ref="_M/setnilvalue">setnilvalue</dfn>(obj) settt_(obj, LUA_TNIL)</u></td></tr>
+<tr><th id="211">211</th><td></td></tr>
+<tr><th id="212">212</th><td><u>#define <dfn class="macro" id="_M/setfvalue" data-ref="_M/setfvalue">setfvalue</dfn>(obj,x) \</u></td></tr>
+<tr><th id="213">213</th><td><u>  { TValue *io=(obj); val_(io).f=(x); settt_(io, LUA_TLCF); }</u></td></tr>
+<tr><th id="214">214</th><td></td></tr>
+<tr><th id="215">215</th><td><u>#define <dfn class="macro" id="_M/setpvalue" data-ref="_M/setpvalue">setpvalue</dfn>(obj,x) \</u></td></tr>
+<tr><th id="216">216</th><td><u>  { TValue *io=(obj); val_(io).p=(x); settt_(io, LUA_TLIGHTUSERDATA); }</u></td></tr>
+<tr><th id="217">217</th><td></td></tr>
+<tr><th id="218">218</th><td><u>#define <dfn class="macro" id="_M/setbvalue" data-ref="_M/setbvalue">setbvalue</dfn>(obj,x) \</u></td></tr>
+<tr><th id="219">219</th><td><u>  { TValue *io=(obj); val_(io).b=(x); settt_(io, LUA_TBOOLEAN); }</u></td></tr>
+<tr><th id="220">220</th><td></td></tr>
+<tr><th id="221">221</th><td><u>#define <dfn class="macro" id="_M/setgcovalue" data-ref="_M/setgcovalue">setgcovalue</dfn>(L,obj,x) \</u></td></tr>
+<tr><th id="222">222</th><td><u>  { TValue *io = (obj); GCObject *i_g=(x); \</u></td></tr>
+<tr><th id="223">223</th><td><u>    val_(io).gc = i_g; settt_(io, ctb(i_g-&gt;tt)); }</u></td></tr>
+<tr><th id="224">224</th><td></td></tr>
+<tr><th id="225">225</th><td><u>#define <dfn class="macro" id="_M/setsvalue" data-ref="_M/setsvalue">setsvalue</dfn>(L,obj,x) \</u></td></tr>
+<tr><th id="226">226</th><td><u>  { TValue *io = (obj); TString *x_ = (x); \</u></td></tr>
+<tr><th id="227">227</th><td><u>    val_(io).gc = obj2gco(x_); settt_(io, ctb(x_-&gt;tt)); \</u></td></tr>
+<tr><th id="228">228</th><td><u>    checkliveness(L,io); }</u></td></tr>
+<tr><th id="229">229</th><td></td></tr>
+<tr><th id="230">230</th><td><u>#define <dfn class="macro" id="_M/setuvalue" data-ref="_M/setuvalue">setuvalue</dfn>(L,obj,x) \</u></td></tr>
+<tr><th id="231">231</th><td><u>  { TValue *io = (obj); Udata *x_ = (x); \</u></td></tr>
+<tr><th id="232">232</th><td><u>    val_(io).gc = obj2gco(x_); settt_(io, ctb(LUA_TUSERDATA)); \</u></td></tr>
+<tr><th id="233">233</th><td><u>    checkliveness(L,io); }</u></td></tr>
+<tr><th id="234">234</th><td></td></tr>
+<tr><th id="235">235</th><td><u>#define <dfn class="macro" id="_M/setthvalue" data-ref="_M/setthvalue">setthvalue</dfn>(L,obj,x) \</u></td></tr>
+<tr><th id="236">236</th><td><u>  { TValue *io = (obj); lua_State *x_ = (x); \</u></td></tr>
+<tr><th id="237">237</th><td><u>    val_(io).gc = obj2gco(x_); settt_(io, ctb(LUA_TTHREAD)); \</u></td></tr>
+<tr><th id="238">238</th><td><u>    checkliveness(L,io); }</u></td></tr>
+<tr><th id="239">239</th><td></td></tr>
+<tr><th id="240">240</th><td><u>#define <dfn class="macro" id="_M/setclLvalue" data-ref="_M/setclLvalue">setclLvalue</dfn>(L,obj,x) \</u></td></tr>
+<tr><th id="241">241</th><td><u>  { TValue *io = (obj); LClosure *x_ = (x); \</u></td></tr>
+<tr><th id="242">242</th><td><u>    val_(io).gc = obj2gco(x_); settt_(io, ctb(LUA_TLCL)); \</u></td></tr>
+<tr><th id="243">243</th><td><u>    checkliveness(L,io); }</u></td></tr>
+<tr><th id="244">244</th><td></td></tr>
+<tr><th id="245">245</th><td><u>#define <dfn class="macro" id="_M/setclCvalue" data-ref="_M/setclCvalue">setclCvalue</dfn>(L,obj,x) \</u></td></tr>
+<tr><th id="246">246</th><td><u>  { TValue *io = (obj); CClosure *x_ = (x); \</u></td></tr>
+<tr><th id="247">247</th><td><u>    val_(io).gc = obj2gco(x_); settt_(io, ctb(LUA_TCCL)); \</u></td></tr>
+<tr><th id="248">248</th><td><u>    checkliveness(L,io); }</u></td></tr>
+<tr><th id="249">249</th><td></td></tr>
+<tr><th id="250">250</th><td><u>#define <dfn class="macro" id="_M/sethvalue" data-ref="_M/sethvalue">sethvalue</dfn>(L,obj,x) \</u></td></tr>
+<tr><th id="251">251</th><td><u>  { TValue *io = (obj); Table *x_ = (x); \</u></td></tr>
+<tr><th id="252">252</th><td><u>    val_(io).gc = obj2gco(x_); settt_(io, ctb(LUA_TTABLE)); \</u></td></tr>
+<tr><th id="253">253</th><td><u>    checkliveness(L,io); }</u></td></tr>
+<tr><th id="254">254</th><td></td></tr>
+<tr><th id="255">255</th><td><u>#define <dfn class="macro" id="_M/setdeadvalue" data-ref="_M/setdeadvalue">setdeadvalue</dfn>(obj)	settt_(obj, LUA_TDEADKEY)</u></td></tr>
+<tr><th id="256">256</th><td></td></tr>
+<tr><th id="257">257</th><td></td></tr>
+<tr><th id="258">258</th><td></td></tr>
+<tr><th id="259">259</th><td><u>#define <dfn class="macro" id="_M/setobj" data-ref="_M/setobj">setobj</dfn>(L,obj1,obj2) \</u></td></tr>
+<tr><th id="260">260</th><td><u>	{ TValue *io1=(obj1); *io1 = *(obj2); \</u></td></tr>
+<tr><th id="261">261</th><td><u>	  (void)L; checkliveness(L,io1); }</u></td></tr>
+<tr><th id="262">262</th><td></td></tr>
+<tr><th id="263">263</th><td></td></tr>
+<tr><th id="264">264</th><td><i>/*</i></td></tr>
+<tr><th id="265">265</th><td><i>** different types of assignments, according to destination</i></td></tr>
+<tr><th id="266">266</th><td><i>*/</i></td></tr>
+<tr><th id="267">267</th><td></td></tr>
+<tr><th id="268">268</th><td><i>/* from stack to (same) stack */</i></td></tr>
+<tr><th id="269">269</th><td><u>#define <dfn class="macro" id="_M/setobjs2s" data-ref="_M/setobjs2s">setobjs2s</dfn>	setobj</u></td></tr>
+<tr><th id="270">270</th><td><i>/* to stack (not from same stack) */</i></td></tr>
+<tr><th id="271">271</th><td><u>#define <dfn class="macro" id="_M/setobj2s" data-ref="_M/setobj2s">setobj2s</dfn>	setobj</u></td></tr>
+<tr><th id="272">272</th><td><u>#define <dfn class="macro" id="_M/setsvalue2s" data-ref="_M/setsvalue2s">setsvalue2s</dfn>	setsvalue</u></td></tr>
+<tr><th id="273">273</th><td><u>#define <dfn class="macro" id="_M/sethvalue2s" data-ref="_M/sethvalue2s">sethvalue2s</dfn>	sethvalue</u></td></tr>
+<tr><th id="274">274</th><td><u>#define <dfn class="macro" id="_M/setptvalue2s" data-ref="_M/setptvalue2s">setptvalue2s</dfn>	setptvalue</u></td></tr>
+<tr><th id="275">275</th><td><i>/* from table to same table */</i></td></tr>
+<tr><th id="276">276</th><td><u>#define <dfn class="macro" id="_M/setobjt2t" data-ref="_M/setobjt2t">setobjt2t</dfn>	setobj</u></td></tr>
+<tr><th id="277">277</th><td><i>/* to new object */</i></td></tr>
+<tr><th id="278">278</th><td><u>#define <dfn class="macro" id="_M/setobj2n" data-ref="_M/setobj2n">setobj2n</dfn>	setobj</u></td></tr>
+<tr><th id="279">279</th><td><u>#define <dfn class="macro" id="_M/setsvalue2n" data-ref="_M/setsvalue2n">setsvalue2n</dfn>	setsvalue</u></td></tr>
+<tr><th id="280">280</th><td></td></tr>
+<tr><th id="281">281</th><td><i>/* to table (define it as an expression to be used in macros) */</i></td></tr>
+<tr><th id="282">282</th><td><u>#define <dfn class="macro" id="_M/setobj2t" data-ref="_M/setobj2t">setobj2t</dfn>(L,o1,o2)  ((void)L, *(o1)=*(o2), checkliveness(L,(o1)))</u></td></tr>
+<tr><th id="283">283</th><td></td></tr>
+<tr><th id="284">284</th><td></td></tr>
+<tr><th id="285">285</th><td></td></tr>
+<tr><th id="286">286</th><td></td></tr>
+<tr><th id="287">287</th><td><i>/*</i></td></tr>
+<tr><th id="288">288</th><td><i>** {======================================================</i></td></tr>
+<tr><th id="289">289</th><td><i>** types and prototypes</i></td></tr>
+<tr><th id="290">290</th><td><i>** =======================================================</i></td></tr>
+<tr><th id="291">291</th><td><i>*/</i></td></tr>
+<tr><th id="292">292</th><td></td></tr>
+<tr><th id="293">293</th><td></td></tr>
+<tr><th id="294">294</th><td><b>typedef</b> <a class="typedef" href="#TValue" title='TValue' data-type='struct lua_TValue' data-ref="TValue">TValue</a> *<dfn class="typedef" id="StkId" title='StkId' data-type='TValue *' data-ref="StkId">StkId</dfn>;  <i>/* index to stack elements */</i></td></tr>
+<tr><th id="295">295</th><td></td></tr>
+<tr><th id="296">296</th><td></td></tr>
+<tr><th id="297">297</th><td></td></tr>
+<tr><th id="298">298</th><td></td></tr>
+<tr><th id="299">299</th><td><i>/*</i></td></tr>
+<tr><th id="300">300</th><td><i>** Header for string value; string bytes follow the end of this structure</i></td></tr>
+<tr><th id="301">301</th><td><i>** (aligned according to 'UTString'; see next).</i></td></tr>
+<tr><th id="302">302</th><td><i>*/</i></td></tr>
+<tr><th id="303">303</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="TString" title='TString' data-ref="TString"><a class="type" href="#TString" title='TString' data-ref="TString">TString</a></dfn> {</td></tr>
+<tr><th id="304">304</th><td>  <a class="macro" href="#79" title="GCObject *next; lu_byte tt; lu_byte marked" data-ref="_M/CommonHeader">CommonHeader</a>;</td></tr>
+<tr><th id="305">305</th><td>  <a class="typedef" href="llimits.h.html#lu_byte" title='lu_byte' data-type='unsigned char' data-ref="lu_byte">lu_byte</a> <dfn class="decl field" id="TString::extra" title='TString::extra' data-ref="TString::extra">extra</dfn>;  <i>/* reserved words for short strings; "has hash" for longs */</i></td></tr>
+<tr><th id="306">306</th><td>  <a class="typedef" href="llimits.h.html#lu_byte" title='lu_byte' data-type='unsigned char' data-ref="lu_byte">lu_byte</a> <dfn class="decl field" id="TString::shrlen" title='TString::shrlen' data-ref="TString::shrlen">shrlen</dfn>;  <i>/* length for short strings */</i></td></tr>
+<tr><th id="307">307</th><td>  <em>unsigned</em> <em>int</em> <dfn class="decl field" id="TString::hash" title='TString::hash' data-ref="TString::hash">hash</dfn>;</td></tr>
+<tr><th id="308">308</th><td>  <b>union</b> {</td></tr>
+<tr><th id="309">309</th><td>    <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl field" id="TString::(anonymous)::lnglen" title='TString::(anonymous union)::lnglen' data-ref="TString::(anonymous)::lnglen">lnglen</dfn>;  <i>/* length for long strings */</i></td></tr>
+<tr><th id="310">310</th><td>    <b>struct</b> <a class="type" href="#TString" title='TString' data-ref="TString">TString</a> *<dfn class="decl field" id="TString::(anonymous)::hnext" title='TString::(anonymous union)::hnext' data-ref="TString::(anonymous)::hnext">hnext</dfn>;  <i>/* linked list for hash table */</i></td></tr>
+<tr><th id="311">311</th><td>  } <dfn class="decl field" id="TString::u" title='TString::u' data-ref="TString::u">u</dfn>;</td></tr>
+<tr><th id="312">312</th><td>} <dfn class="typedef" id="TString" title='TString' data-type='struct TString' data-ref="TString">TString</dfn>;</td></tr>
+<tr><th id="313">313</th><td></td></tr>
+<tr><th id="314">314</th><td></td></tr>
+<tr><th id="315">315</th><td><i>/*</i></td></tr>
+<tr><th id="316">316</th><td><i>** Ensures that address after this type is always fully aligned.</i></td></tr>
+<tr><th id="317">317</th><td><i>*/</i></td></tr>
+<tr><th id="318">318</th><td><b>typedef</b> <b>union</b> <dfn class="type def" id="UTString" title='UTString' data-ref="UTString"><a class="type" href="#UTString" title='UTString' data-ref="UTString">UTString</a></dfn> {</td></tr>
+<tr><th id="319">319</th><td>  <a class="typedef" href="llimits.h.html#L_Umaxalign" title='L_Umaxalign' data-type='union L_Umaxalign' data-ref="L_Umaxalign">L_Umaxalign</a> <dfn class="decl field" id="UTString::dummy" title='UTString::dummy' data-ref="UTString::dummy">dummy</dfn>;  <i>/* ensures maximum alignment for strings */</i></td></tr>
+<tr><th id="320">320</th><td>  <a class="typedef" href="#TString" title='TString' data-type='struct TString' data-ref="TString">TString</a> <dfn class="decl field" id="UTString::tsv" title='UTString::tsv' data-ref="UTString::tsv">tsv</dfn>;</td></tr>
+<tr><th id="321">321</th><td>} <dfn class="typedef" id="UTString" title='UTString' data-type='union UTString' data-ref="UTString">UTString</dfn>;</td></tr>
+<tr><th id="322">322</th><td></td></tr>
+<tr><th id="323">323</th><td></td></tr>
+<tr><th id="324">324</th><td><i>/*</i></td></tr>
+<tr><th id="325">325</th><td><i>** Get the actual string (array of bytes) from a 'TString'.</i></td></tr>
+<tr><th id="326">326</th><td><i>** (Access to 'extra' ensures that value is really a 'TString'.)</i></td></tr>
+<tr><th id="327">327</th><td><i>*/</i></td></tr>
+<tr><th id="328">328</th><td><u>#define <dfn class="macro" id="_M/getstr" data-ref="_M/getstr">getstr</dfn>(ts)  \</u></td></tr>
+<tr><th id="329">329</th><td><u>  check_exp(sizeof((ts)-&gt;extra), cast(char *, (ts)) + sizeof(UTString))</u></td></tr>
+<tr><th id="330">330</th><td></td></tr>
+<tr><th id="331">331</th><td></td></tr>
+<tr><th id="332">332</th><td><i>/* get the actual string (array of bytes) from a Lua value */</i></td></tr>
+<tr><th id="333">333</th><td><u>#define <dfn class="macro" id="_M/svalue" data-ref="_M/svalue">svalue</dfn>(o)       getstr(tsvalue(o))</u></td></tr>
+<tr><th id="334">334</th><td></td></tr>
+<tr><th id="335">335</th><td><i>/* get string length from 'TString *s' */</i></td></tr>
+<tr><th id="336">336</th><td><u>#define <dfn class="macro" id="_M/tsslen" data-ref="_M/tsslen">tsslen</dfn>(s)	((s)-&gt;tt == LUA_TSHRSTR ? (s)-&gt;shrlen : (s)-&gt;u.lnglen)</u></td></tr>
+<tr><th id="337">337</th><td></td></tr>
+<tr><th id="338">338</th><td><i>/* get string length from 'TValue *o' */</i></td></tr>
+<tr><th id="339">339</th><td><u>#define <dfn class="macro" id="_M/vslen" data-ref="_M/vslen">vslen</dfn>(o)	tsslen(tsvalue(o))</u></td></tr>
+<tr><th id="340">340</th><td></td></tr>
+<tr><th id="341">341</th><td></td></tr>
+<tr><th id="342">342</th><td><i>/*</i></td></tr>
+<tr><th id="343">343</th><td><i>** Header for userdata; memory area follows the end of this structure</i></td></tr>
+<tr><th id="344">344</th><td><i>** (aligned according to 'UUdata'; see next).</i></td></tr>
+<tr><th id="345">345</th><td><i>*/</i></td></tr>
+<tr><th id="346">346</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="Udata" title='Udata' data-ref="Udata"><a class="type" href="#Udata" title='Udata' data-ref="Udata">Udata</a></dfn> {</td></tr>
+<tr><th id="347">347</th><td>  <a class="macro" href="#79" title="GCObject *next; lu_byte tt; lu_byte marked" data-ref="_M/CommonHeader">CommonHeader</a>;</td></tr>
+<tr><th id="348">348</th><td>  <a class="typedef" href="llimits.h.html#lu_byte" title='lu_byte' data-type='unsigned char' data-ref="lu_byte">lu_byte</a> <dfn class="decl field" id="Udata::ttuv_" title='Udata::ttuv_' data-ref="Udata::ttuv_">ttuv_</dfn>;  <i>/* user value's tag */</i></td></tr>
+<tr><th id="349">349</th><td>  <b>struct</b> <a class="type" href="#Table" title='Table' data-ref="Table">Table</a> *<dfn class="decl field" id="Udata::metatable" title='Udata::metatable' data-ref="Udata::metatable">metatable</dfn>;</td></tr>
+<tr><th id="350">350</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl field" id="Udata::len" title='Udata::len' data-ref="Udata::len">len</dfn>;  <i>/* number of bytes */</i></td></tr>
+<tr><th id="351">351</th><td>  <b>union</b> <a class="type" href="#Value" title='Value' data-ref="Value">Value</a> <dfn class="decl field" id="Udata::user_" title='Udata::user_' data-ref="Udata::user_">user_</dfn>;  <i>/* user value */</i></td></tr>
+<tr><th id="352">352</th><td>} <dfn class="typedef" id="Udata" title='Udata' data-type='struct Udata' data-ref="Udata">Udata</dfn>;</td></tr>
+<tr><th id="353">353</th><td></td></tr>
+<tr><th id="354">354</th><td></td></tr>
+<tr><th id="355">355</th><td><i>/*</i></td></tr>
+<tr><th id="356">356</th><td><i>** Ensures that address after this type is always fully aligned.</i></td></tr>
+<tr><th id="357">357</th><td><i>*/</i></td></tr>
+<tr><th id="358">358</th><td><b>typedef</b> <b>union</b> <dfn class="type def" id="UUdata" title='UUdata' data-ref="UUdata"><a class="type" href="#UUdata" title='UUdata' data-ref="UUdata">UUdata</a></dfn> {</td></tr>
+<tr><th id="359">359</th><td>  <a class="typedef" href="llimits.h.html#L_Umaxalign" title='L_Umaxalign' data-type='union L_Umaxalign' data-ref="L_Umaxalign">L_Umaxalign</a> <dfn class="decl field" id="UUdata::dummy" title='UUdata::dummy' data-ref="UUdata::dummy">dummy</dfn>;  <i>/* ensures maximum alignment for 'local' udata */</i></td></tr>
+<tr><th id="360">360</th><td>  <a class="typedef" href="#Udata" title='Udata' data-type='struct Udata' data-ref="Udata">Udata</a> <dfn class="decl field" id="UUdata::uv" title='UUdata::uv' data-ref="UUdata::uv">uv</dfn>;</td></tr>
+<tr><th id="361">361</th><td>} <dfn class="typedef" id="UUdata" title='UUdata' data-type='union UUdata' data-ref="UUdata">UUdata</dfn>;</td></tr>
+<tr><th id="362">362</th><td></td></tr>
+<tr><th id="363">363</th><td></td></tr>
+<tr><th id="364">364</th><td><i>/*</i></td></tr>
+<tr><th id="365">365</th><td><i>**  Get the address of memory block inside 'Udata'.</i></td></tr>
+<tr><th id="366">366</th><td><i>** (Access to 'ttuv_' ensures that value is really a 'Udata'.)</i></td></tr>
+<tr><th id="367">367</th><td><i>*/</i></td></tr>
+<tr><th id="368">368</th><td><u>#define <dfn class="macro" id="_M/getudatamem" data-ref="_M/getudatamem">getudatamem</dfn>(u)  \</u></td></tr>
+<tr><th id="369">369</th><td><u>  check_exp(sizeof((u)-&gt;ttuv_), (cast(char*, (u)) + sizeof(UUdata)))</u></td></tr>
+<tr><th id="370">370</th><td></td></tr>
+<tr><th id="371">371</th><td><u>#define <dfn class="macro" id="_M/setuservalue" data-ref="_M/setuservalue">setuservalue</dfn>(L,u,o) \</u></td></tr>
+<tr><th id="372">372</th><td><u>	{ const TValue *io=(o); Udata *iu = (u); \</u></td></tr>
+<tr><th id="373">373</th><td><u>	  iu-&gt;user_ = io-&gt;value_; iu-&gt;ttuv_ = rttype(io); \</u></td></tr>
+<tr><th id="374">374</th><td><u>	  checkliveness(L,io); }</u></td></tr>
+<tr><th id="375">375</th><td></td></tr>
+<tr><th id="376">376</th><td></td></tr>
+<tr><th id="377">377</th><td><u>#define <dfn class="macro" id="_M/getuservalue" data-ref="_M/getuservalue">getuservalue</dfn>(L,u,o) \</u></td></tr>
+<tr><th id="378">378</th><td><u>	{ TValue *io=(o); const Udata *iu = (u); \</u></td></tr>
+<tr><th id="379">379</th><td><u>	  io-&gt;value_ = iu-&gt;user_; settt_(io, iu-&gt;ttuv_); \</u></td></tr>
+<tr><th id="380">380</th><td><u>	  checkliveness(L,io); }</u></td></tr>
+<tr><th id="381">381</th><td></td></tr>
+<tr><th id="382">382</th><td></td></tr>
+<tr><th id="383">383</th><td><i>/*</i></td></tr>
+<tr><th id="384">384</th><td><i>** Description of an upvalue for function prototypes</i></td></tr>
+<tr><th id="385">385</th><td><i>*/</i></td></tr>
+<tr><th id="386">386</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="Upvaldesc" title='Upvaldesc' data-ref="Upvaldesc"><a class="type" href="#Upvaldesc" title='Upvaldesc' data-ref="Upvaldesc">Upvaldesc</a></dfn> {</td></tr>
+<tr><th id="387">387</th><td>  <a class="typedef" href="#TString" title='TString' data-type='struct TString' data-ref="TString">TString</a> *<dfn class="decl field" id="Upvaldesc::name" title='Upvaldesc::name' data-ref="Upvaldesc::name">name</dfn>;  <i>/* upvalue name (for debug information) */</i></td></tr>
+<tr><th id="388">388</th><td>  <a class="typedef" href="llimits.h.html#lu_byte" title='lu_byte' data-type='unsigned char' data-ref="lu_byte">lu_byte</a> <dfn class="decl field" id="Upvaldesc::instack" title='Upvaldesc::instack' data-ref="Upvaldesc::instack">instack</dfn>;  <i>/* whether it is in stack (register) */</i></td></tr>
+<tr><th id="389">389</th><td>  <a class="typedef" href="llimits.h.html#lu_byte" title='lu_byte' data-type='unsigned char' data-ref="lu_byte">lu_byte</a> <dfn class="decl field" id="Upvaldesc::idx" title='Upvaldesc::idx' data-ref="Upvaldesc::idx">idx</dfn>;  <i>/* index of upvalue (in stack or in outer function's list) */</i></td></tr>
+<tr><th id="390">390</th><td>} <dfn class="typedef" id="Upvaldesc" title='Upvaldesc' data-type='struct Upvaldesc' data-ref="Upvaldesc">Upvaldesc</dfn>;</td></tr>
+<tr><th id="391">391</th><td></td></tr>
+<tr><th id="392">392</th><td></td></tr>
+<tr><th id="393">393</th><td><i>/*</i></td></tr>
+<tr><th id="394">394</th><td><i>** Description of a local variable for function prototypes</i></td></tr>
+<tr><th id="395">395</th><td><i>** (used for debug information)</i></td></tr>
+<tr><th id="396">396</th><td><i>*/</i></td></tr>
+<tr><th id="397">397</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="LocVar" title='LocVar' data-ref="LocVar"><a class="type" href="#LocVar" title='LocVar' data-ref="LocVar">LocVar</a></dfn> {</td></tr>
+<tr><th id="398">398</th><td>  <a class="typedef" href="#TString" title='TString' data-type='struct TString' data-ref="TString">TString</a> *<dfn class="decl field" id="LocVar::varname" title='LocVar::varname' data-ref="LocVar::varname">varname</dfn>;</td></tr>
+<tr><th id="399">399</th><td>  <em>int</em> <dfn class="decl field" id="LocVar::startpc" title='LocVar::startpc' data-ref="LocVar::startpc">startpc</dfn>;  <i>/* first point where variable is active */</i></td></tr>
+<tr><th id="400">400</th><td>  <em>int</em> <dfn class="decl field" id="LocVar::endpc" title='LocVar::endpc' data-ref="LocVar::endpc">endpc</dfn>;    <i>/* first point where variable is dead */</i></td></tr>
+<tr><th id="401">401</th><td>} <dfn class="typedef" id="LocVar" title='LocVar' data-type='struct LocVar' data-ref="LocVar">LocVar</dfn>;</td></tr>
+<tr><th id="402">402</th><td></td></tr>
+<tr><th id="403">403</th><td></td></tr>
+<tr><th id="404">404</th><td><i>/*</i></td></tr>
+<tr><th id="405">405</th><td><i>** Function Prototypes</i></td></tr>
+<tr><th id="406">406</th><td><i>*/</i></td></tr>
+<tr><th id="407">407</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="Proto" title='Proto' data-ref="Proto"><a class="type" href="#Proto" title='Proto' data-ref="Proto">Proto</a></dfn> {</td></tr>
+<tr><th id="408">408</th><td>  <a class="macro" href="#79" title="GCObject *next; lu_byte tt; lu_byte marked" data-ref="_M/CommonHeader">CommonHeader</a>;</td></tr>
+<tr><th id="409">409</th><td>  <a class="typedef" href="llimits.h.html#lu_byte" title='lu_byte' data-type='unsigned char' data-ref="lu_byte">lu_byte</a> <dfn class="decl field" id="Proto::numparams" title='Proto::numparams' data-ref="Proto::numparams">numparams</dfn>;  <i>/* number of fixed parameters */</i></td></tr>
+<tr><th id="410">410</th><td>  <a class="typedef" href="llimits.h.html#lu_byte" title='lu_byte' data-type='unsigned char' data-ref="lu_byte">lu_byte</a> <dfn class="decl field" id="Proto::is_vararg" title='Proto::is_vararg' data-ref="Proto::is_vararg">is_vararg</dfn>;</td></tr>
+<tr><th id="411">411</th><td>  <a class="typedef" href="llimits.h.html#lu_byte" title='lu_byte' data-type='unsigned char' data-ref="lu_byte">lu_byte</a> <dfn class="decl field" id="Proto::maxstacksize" title='Proto::maxstacksize' data-ref="Proto::maxstacksize">maxstacksize</dfn>;  <i>/* number of registers needed by this function */</i></td></tr>
+<tr><th id="412">412</th><td>  <em>int</em> <dfn class="decl field" id="Proto::sizeupvalues" title='Proto::sizeupvalues' data-ref="Proto::sizeupvalues">sizeupvalues</dfn>;  <i>/* size of 'upvalues' */</i></td></tr>
+<tr><th id="413">413</th><td>  <em>int</em> <dfn class="decl field" id="Proto::sizek" title='Proto::sizek' data-ref="Proto::sizek">sizek</dfn>;  <i>/* size of 'k' */</i></td></tr>
+<tr><th id="414">414</th><td>  <em>int</em> <dfn class="decl field" id="Proto::sizecode" title='Proto::sizecode' data-ref="Proto::sizecode">sizecode</dfn>;</td></tr>
+<tr><th id="415">415</th><td>  <em>int</em> <dfn class="decl field" id="Proto::sizelineinfo" title='Proto::sizelineinfo' data-ref="Proto::sizelineinfo">sizelineinfo</dfn>;</td></tr>
+<tr><th id="416">416</th><td>  <em>int</em> <dfn class="decl field" id="Proto::sizep" title='Proto::sizep' data-ref="Proto::sizep">sizep</dfn>;  <i>/* size of 'p' */</i></td></tr>
+<tr><th id="417">417</th><td>  <em>int</em> <dfn class="decl field" id="Proto::sizelocvars" title='Proto::sizelocvars' data-ref="Proto::sizelocvars">sizelocvars</dfn>;</td></tr>
+<tr><th id="418">418</th><td>  <em>int</em> <dfn class="decl field" id="Proto::linedefined" title='Proto::linedefined' data-ref="Proto::linedefined">linedefined</dfn>;  <i>/* debug information  */</i></td></tr>
+<tr><th id="419">419</th><td>  <em>int</em> <dfn class="decl field" id="Proto::lastlinedefined" title='Proto::lastlinedefined' data-ref="Proto::lastlinedefined">lastlinedefined</dfn>;  <i>/* debug information  */</i></td></tr>
+<tr><th id="420">420</th><td>  <a class="typedef" href="#TValue" title='TValue' data-type='struct lua_TValue' data-ref="TValue">TValue</a> *<dfn class="decl field" id="Proto::k" title='Proto::k' data-ref="Proto::k">k</dfn>;  <i>/* constants used by the function */</i></td></tr>
+<tr><th id="421">421</th><td>  <a class="typedef" href="llimits.h.html#Instruction" title='Instruction' data-type='unsigned int' data-ref="Instruction">Instruction</a> *<dfn class="decl field" id="Proto::code" title='Proto::code' data-ref="Proto::code">code</dfn>;  <i>/* opcodes */</i></td></tr>
+<tr><th id="422">422</th><td>  <b>struct</b> <a class="type" href="#Proto" title='Proto' data-ref="Proto">Proto</a> **<dfn class="decl field" id="Proto::p" title='Proto::p' data-ref="Proto::p">p</dfn>;  <i>/* functions defined inside the function */</i></td></tr>
+<tr><th id="423">423</th><td>  <em>int</em> *<dfn class="decl field" id="Proto::lineinfo" title='Proto::lineinfo' data-ref="Proto::lineinfo">lineinfo</dfn>;  <i>/* map from opcodes to source lines (debug information) */</i></td></tr>
+<tr><th id="424">424</th><td>  <a class="typedef" href="#LocVar" title='LocVar' data-type='struct LocVar' data-ref="LocVar">LocVar</a> *<dfn class="decl field" id="Proto::locvars" title='Proto::locvars' data-ref="Proto::locvars">locvars</dfn>;  <i>/* information about local variables (debug information) */</i></td></tr>
+<tr><th id="425">425</th><td>  <a class="typedef" href="#Upvaldesc" title='Upvaldesc' data-type='struct Upvaldesc' data-ref="Upvaldesc">Upvaldesc</a> *<dfn class="decl field" id="Proto::upvalues" title='Proto::upvalues' data-ref="Proto::upvalues">upvalues</dfn>;  <i>/* upvalue information */</i></td></tr>
+<tr><th id="426">426</th><td>  <b>struct</b> <a class="type" href="#LClosure" title='LClosure' data-ref="LClosure">LClosure</a> *<dfn class="decl field" id="Proto::cache" title='Proto::cache' data-ref="Proto::cache">cache</dfn>;  <i>/* last-created closure with this prototype */</i></td></tr>
+<tr><th id="427">427</th><td>  <a class="typedef" href="#TString" title='TString' data-type='struct TString' data-ref="TString">TString</a>  *<dfn class="decl field" id="Proto::source" title='Proto::source' data-ref="Proto::source">source</dfn>;  <i>/* used for debug information */</i></td></tr>
+<tr><th id="428">428</th><td>  <a class="typedef" href="#GCObject" title='GCObject' data-type='struct GCObject' data-ref="GCObject">GCObject</a> *<dfn class="decl field" id="Proto::gclist" title='Proto::gclist' data-ref="Proto::gclist">gclist</dfn>;</td></tr>
+<tr><th id="429">429</th><td>} <dfn class="typedef" id="Proto" title='Proto' data-type='struct Proto' data-ref="Proto">Proto</dfn>;</td></tr>
+<tr><th id="430">430</th><td></td></tr>
+<tr><th id="431">431</th><td></td></tr>
+<tr><th id="432">432</th><td></td></tr>
+<tr><th id="433">433</th><td><i>/*</i></td></tr>
+<tr><th id="434">434</th><td><i>** Lua Upvalues</i></td></tr>
+<tr><th id="435">435</th><td><i>*/</i></td></tr>
+<tr><th id="436">436</th><td><b>typedef</b> <b>struct</b> <dfn class="type" id="UpVal" title='UpVal' data-ref="UpVal"><a class="type" href="#UpVal" title='UpVal' data-ref="UpVal">UpVal</a></dfn> <dfn class="typedef" id="UpVal" title='UpVal' data-type='struct UpVal' data-ref="UpVal">UpVal</dfn>;</td></tr>
+<tr><th id="437">437</th><td></td></tr>
+<tr><th id="438">438</th><td></td></tr>
+<tr><th id="439">439</th><td><i>/*</i></td></tr>
+<tr><th id="440">440</th><td><i>** Closures</i></td></tr>
+<tr><th id="441">441</th><td><i>*/</i></td></tr>
+<tr><th id="442">442</th><td></td></tr>
+<tr><th id="443">443</th><td><u>#define <dfn class="macro" id="_M/ClosureHeader" data-ref="_M/ClosureHeader">ClosureHeader</dfn> \</u></td></tr>
+<tr><th id="444">444</th><td><u>	CommonHeader; <a class="typedef" href="llimits.h.html#lu_byte" title='lu_byte' data-type='unsigned char' data-ref="lu_byte">lu_byte</a> <dfn class="decl field" id="CClosure::nupvalues" title='CClosure::nupvalues' data-ref="CClosure::nupvalues"><dfn class="decl field" id="LClosure::nupvalues" title='LClosure::nupvalues' data-ref="LClosure::nupvalues">nupvalues</dfn></dfn>; <a class="typedef" href="#GCObject" title='GCObject' data-type='struct GCObject' data-ref="GCObject">GCObject</a> *<dfn class="decl field" id="CClosure::gclist" title='CClosure::gclist' data-ref="CClosure::gclist"><dfn class="decl field" id="LClosure::gclist" title='LClosure::gclist' data-ref="LClosure::gclist">gclist</dfn></dfn></u></td></tr>
+<tr><th id="445">445</th><td></td></tr>
+<tr><th id="446">446</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="CClosure" title='CClosure' data-ref="CClosure"><a class="type" href="#CClosure" title='CClosure' data-ref="CClosure">CClosure</a></dfn> {</td></tr>
+<tr><th id="447">447</th><td>  <a class="macro" href="#443" title="GCObject *next; lu_byte tt; lu_byte marked; lu_byte nupvalues; GCObject *gclist" data-ref="_M/ClosureHeader">ClosureHeader</a>;</td></tr>
+<tr><th id="448">448</th><td>  <a class="typedef" href="lua.h.html#lua_CFunction" title='lua_CFunction' data-type='int (*)(lua_State *)' data-ref="lua_CFunction">lua_CFunction</a> <dfn class="decl field" id="CClosure::f" title='CClosure::f' data-ref="CClosure::f">f</dfn>;</td></tr>
+<tr><th id="449">449</th><td>  <a class="typedef" href="#TValue" title='TValue' data-type='struct lua_TValue' data-ref="TValue">TValue</a> <dfn class="decl field" id="CClosure::upvalue" title='CClosure::upvalue' data-ref="CClosure::upvalue">upvalue</dfn>[<var>1</var>];  <i>/* list of upvalues */</i></td></tr>
+<tr><th id="450">450</th><td>} <dfn class="typedef" id="CClosure" title='CClosure' data-type='struct CClosure' data-ref="CClosure">CClosure</dfn>;</td></tr>
+<tr><th id="451">451</th><td></td></tr>
+<tr><th id="452">452</th><td></td></tr>
+<tr><th id="453">453</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="LClosure" title='LClosure' data-ref="LClosure"><a class="type" href="#LClosure" title='LClosure' data-ref="LClosure">LClosure</a></dfn> {</td></tr>
+<tr><th id="454">454</th><td>  <a class="macro" href="#443" title="GCObject *next; lu_byte tt; lu_byte marked; lu_byte nupvalues; GCObject *gclist" data-ref="_M/ClosureHeader">ClosureHeader</a>;</td></tr>
+<tr><th id="455">455</th><td>  <b>struct</b> <a class="type" href="#Proto" title='Proto' data-ref="Proto">Proto</a> *<dfn class="decl field" id="LClosure::p" title='LClosure::p' data-ref="LClosure::p">p</dfn>;</td></tr>
+<tr><th id="456">456</th><td>  <a class="typedef" href="#UpVal" title='UpVal' data-type='struct UpVal' data-ref="UpVal">UpVal</a> *<dfn class="decl field" id="LClosure::upvals" title='LClosure::upvals' data-ref="LClosure::upvals">upvals</dfn>[<var>1</var>];  <i>/* list of upvalues */</i></td></tr>
+<tr><th id="457">457</th><td>} <dfn class="typedef" id="LClosure" title='LClosure' data-type='struct LClosure' data-ref="LClosure">LClosure</dfn>;</td></tr>
+<tr><th id="458">458</th><td></td></tr>
+<tr><th id="459">459</th><td></td></tr>
+<tr><th id="460">460</th><td><b>typedef</b> <b>union</b> <dfn class="type def" id="Closure" title='Closure' data-ref="Closure"><a class="type" href="#Closure" title='Closure' data-ref="Closure">Closure</a></dfn> {</td></tr>
+<tr><th id="461">461</th><td>  <a class="typedef" href="#CClosure" title='CClosure' data-type='struct CClosure' data-ref="CClosure">CClosure</a> <dfn class="decl field" id="Closure::c" title='Closure::c' data-ref="Closure::c">c</dfn>;</td></tr>
+<tr><th id="462">462</th><td>  <a class="typedef" href="#LClosure" title='LClosure' data-type='struct LClosure' data-ref="LClosure">LClosure</a> <dfn class="decl field" id="Closure::l" title='Closure::l' data-ref="Closure::l">l</dfn>;</td></tr>
+<tr><th id="463">463</th><td>} <dfn class="typedef" id="Closure" title='Closure' data-type='union Closure' data-ref="Closure">Closure</dfn>;</td></tr>
+<tr><th id="464">464</th><td></td></tr>
+<tr><th id="465">465</th><td></td></tr>
+<tr><th id="466">466</th><td><u>#define <dfn class="macro" id="_M/isLfunction" data-ref="_M/isLfunction">isLfunction</dfn>(o)	ttisLclosure(o)</u></td></tr>
+<tr><th id="467">467</th><td></td></tr>
+<tr><th id="468">468</th><td><u>#define <dfn class="macro" id="_M/getproto" data-ref="_M/getproto">getproto</dfn>(o)	(clLvalue(o)-&gt;p)</u></td></tr>
+<tr><th id="469">469</th><td></td></tr>
+<tr><th id="470">470</th><td></td></tr>
+<tr><th id="471">471</th><td><i>/*</i></td></tr>
+<tr><th id="472">472</th><td><i>** Tables</i></td></tr>
+<tr><th id="473">473</th><td><i>*/</i></td></tr>
+<tr><th id="474">474</th><td></td></tr>
+<tr><th id="475">475</th><td><b>typedef</b> <b>union</b> <dfn class="type def" id="TKey" title='TKey' data-ref="TKey"><a class="type" href="#TKey" title='TKey' data-ref="TKey">TKey</a></dfn> {</td></tr>
+<tr><th id="476">476</th><td>  <b>struct</b> {</td></tr>
+<tr><th id="477">477</th><td>    <a class="macro" href="#110" title="Value value_; int tt_" data-ref="_M/TValuefields">TValuefields</a>;</td></tr>
+<tr><th id="478">478</th><td>    <em>int</em> <dfn class="decl field" id="TKey::(anonymous)::next" title='TKey::(anonymous struct)::next' data-ref="TKey::(anonymous)::next">next</dfn>;  <i>/* for chaining (offset for next node) */</i></td></tr>
+<tr><th id="479">479</th><td>  } <dfn class="decl field" id="TKey::nk" title='TKey::nk' data-ref="TKey::nk">nk</dfn>;</td></tr>
+<tr><th id="480">480</th><td>  <a class="typedef" href="#TValue" title='TValue' data-type='struct lua_TValue' data-ref="TValue">TValue</a> <dfn class="decl field" id="TKey::tvk" title='TKey::tvk' data-ref="TKey::tvk">tvk</dfn>;</td></tr>
+<tr><th id="481">481</th><td>} <dfn class="typedef" id="TKey" title='TKey' data-type='union TKey' data-ref="TKey">TKey</dfn>;</td></tr>
+<tr><th id="482">482</th><td></td></tr>
+<tr><th id="483">483</th><td></td></tr>
+<tr><th id="484">484</th><td><i>/* copy a value into a key without messing up field 'next' */</i></td></tr>
+<tr><th id="485">485</th><td><u>#define <dfn class="macro" id="_M/setnodekey" data-ref="_M/setnodekey">setnodekey</dfn>(L,key,obj) \</u></td></tr>
+<tr><th id="486">486</th><td><u>	{ TKey *k_=(key); const TValue *io_=(obj); \</u></td></tr>
+<tr><th id="487">487</th><td><u>	  k_-&gt;nk.value_ = io_-&gt;value_; k_-&gt;nk.tt_ = io_-&gt;tt_; \</u></td></tr>
+<tr><th id="488">488</th><td><u>	  (void)L; checkliveness(L,io_); }</u></td></tr>
+<tr><th id="489">489</th><td></td></tr>
+<tr><th id="490">490</th><td></td></tr>
+<tr><th id="491">491</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="Node" title='Node' data-ref="Node"><a class="type" href="#Node" title='Node' data-ref="Node">Node</a></dfn> {</td></tr>
+<tr><th id="492">492</th><td>  <a class="typedef" href="#TValue" title='TValue' data-type='struct lua_TValue' data-ref="TValue">TValue</a> <dfn class="decl field" id="Node::i_val" title='Node::i_val' data-ref="Node::i_val">i_val</dfn>;</td></tr>
+<tr><th id="493">493</th><td>  <a class="typedef" href="#TKey" title='TKey' data-type='union TKey' data-ref="TKey">TKey</a> <dfn class="decl field" id="Node::i_key" title='Node::i_key' data-ref="Node::i_key">i_key</dfn>;</td></tr>
+<tr><th id="494">494</th><td>} <dfn class="typedef" id="Node" title='Node' data-type='struct Node' data-ref="Node">Node</dfn>;</td></tr>
+<tr><th id="495">495</th><td></td></tr>
+<tr><th id="496">496</th><td></td></tr>
+<tr><th id="497">497</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="Table" title='Table' data-ref="Table"><a class="type" href="#Table" title='Table' data-ref="Table">Table</a></dfn> {</td></tr>
+<tr><th id="498">498</th><td>  <a class="macro" href="#79" title="GCObject *next; lu_byte tt; lu_byte marked" data-ref="_M/CommonHeader">CommonHeader</a>;</td></tr>
+<tr><th id="499">499</th><td>  <a class="typedef" href="llimits.h.html#lu_byte" title='lu_byte' data-type='unsigned char' data-ref="lu_byte">lu_byte</a> <dfn class="decl field" id="Table::flags" title='Table::flags' data-ref="Table::flags">flags</dfn>;  <i>/* 1&lt;&lt;p means tagmethod(p) is not present */</i></td></tr>
+<tr><th id="500">500</th><td>  <a class="typedef" href="llimits.h.html#lu_byte" title='lu_byte' data-type='unsigned char' data-ref="lu_byte">lu_byte</a> <dfn class="decl field" id="Table::lsizenode" title='Table::lsizenode' data-ref="Table::lsizenode">lsizenode</dfn>;  <i>/* log2 of size of 'node' array */</i></td></tr>
+<tr><th id="501">501</th><td>  <em>unsigned</em> <em>int</em> <dfn class="decl field" id="Table::sizearray" title='Table::sizearray' data-ref="Table::sizearray">sizearray</dfn>;  <i>/* size of 'array' array */</i></td></tr>
+<tr><th id="502">502</th><td>  <a class="typedef" href="#TValue" title='TValue' data-type='struct lua_TValue' data-ref="TValue">TValue</a> *<dfn class="decl field" id="Table::array" title='Table::array' data-ref="Table::array">array</dfn>;  <i>/* array part */</i></td></tr>
+<tr><th id="503">503</th><td>  <a class="typedef" href="#Node" title='Node' data-type='struct Node' data-ref="Node">Node</a> *<dfn class="decl field" id="Table::node" title='Table::node' data-ref="Table::node">node</dfn>;</td></tr>
+<tr><th id="504">504</th><td>  <a class="typedef" href="#Node" title='Node' data-type='struct Node' data-ref="Node">Node</a> *<dfn class="decl field" id="Table::lastfree" title='Table::lastfree' data-ref="Table::lastfree">lastfree</dfn>;  <i>/* any free position is before this position */</i></td></tr>
+<tr><th id="505">505</th><td>  <b>struct</b> <a class="type" href="#Table" title='Table' data-ref="Table">Table</a> *<dfn class="decl field" id="Table::metatable" title='Table::metatable' data-ref="Table::metatable">metatable</dfn>;</td></tr>
+<tr><th id="506">506</th><td>  <a class="typedef" href="#GCObject" title='GCObject' data-type='struct GCObject' data-ref="GCObject">GCObject</a> *<dfn class="decl field" id="Table::gclist" title='Table::gclist' data-ref="Table::gclist">gclist</dfn>;</td></tr>
+<tr><th id="507">507</th><td>} <dfn class="typedef" id="Table" title='Table' data-type='struct Table' data-ref="Table">Table</dfn>;</td></tr>
+<tr><th id="508">508</th><td></td></tr>
+<tr><th id="509">509</th><td></td></tr>
+<tr><th id="510">510</th><td></td></tr>
+<tr><th id="511">511</th><td><i>/*</i></td></tr>
+<tr><th id="512">512</th><td><i>** 'module' operation for hashing (size is always a power of 2)</i></td></tr>
+<tr><th id="513">513</th><td><i>*/</i></td></tr>
+<tr><th id="514">514</th><td><u>#define <dfn class="macro" id="_M/lmod" data-ref="_M/lmod">lmod</dfn>(s,size) \</u></td></tr>
+<tr><th id="515">515</th><td><u>	(check_exp((size&amp;(size-1))==0, (cast(int, (s) &amp; ((size)-1)))))</u></td></tr>
+<tr><th id="516">516</th><td></td></tr>
+<tr><th id="517">517</th><td></td></tr>
+<tr><th id="518">518</th><td><u>#define <dfn class="macro" id="_M/twoto" data-ref="_M/twoto">twoto</dfn>(x)	(1&lt;&lt;(x))</u></td></tr>
+<tr><th id="519">519</th><td><u>#define <dfn class="macro" id="_M/sizenode" data-ref="_M/sizenode">sizenode</dfn>(t)	(twoto((t)-&gt;lsizenode))</u></td></tr>
+<tr><th id="520">520</th><td></td></tr>
+<tr><th id="521">521</th><td></td></tr>
+<tr><th id="522">522</th><td><i>/*</i></td></tr>
+<tr><th id="523">523</th><td><i>** (address of) a fixed nil value</i></td></tr>
+<tr><th id="524">524</th><td><i>*/</i></td></tr>
+<tr><th id="525">525</th><td><u>#define <dfn class="macro" id="_M/luaO_nilobject" data-ref="_M/luaO_nilobject">luaO_nilobject</dfn>		(&amp;luaO_nilobject_)</u></td></tr>
+<tr><th id="526">526</th><td></td></tr>
+<tr><th id="527">527</th><td></td></tr>
+<tr><th id="528">528</th><td><a class="macro" href="luaconf.h.html#285" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_DDEC">LUAI_DDEC</a> <em>const</em> <a class="typedef" href="#TValue" title='TValue' data-type='struct lua_TValue' data-ref="TValue">TValue</a> <dfn class="decl" id="luaO_nilobject_" title='luaO_nilobject_' data-ref="luaO_nilobject_">luaO_nilobject_</dfn>;</td></tr>
+<tr><th id="529">529</th><td></td></tr>
+<tr><th id="530">530</th><td><i>/* size of buffer for 'luaO_utf8esc' function */</i></td></tr>
+<tr><th id="531">531</th><td><u>#define <dfn class="macro" id="_M/UTF8BUFFSZ" data-ref="_M/UTF8BUFFSZ">UTF8BUFFSZ</dfn>	8</u></td></tr>
+<tr><th id="532">532</th><td></td></tr>
+<tr><th id="533">533</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <em>int</em> <dfn class="decl fn" id="luaO_int2fb" title='luaO_int2fb' data-ref="luaO_int2fb">luaO_int2fb</dfn> (<em>unsigned</em> <em>int</em> <dfn class="local col1 decl" id="1x" title='x' data-type='unsigned int' data-ref="1x">x</dfn>);</td></tr>
+<tr><th id="534">534</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <em>int</em> <dfn class="decl fn" id="luaO_fb2int" title='luaO_fb2int' data-ref="luaO_fb2int">luaO_fb2int</dfn> (<em>int</em> <dfn class="local col2 decl" id="2x" title='x' data-type='int' data-ref="2x">x</dfn>);</td></tr>
+<tr><th id="535">535</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <em>int</em> <dfn class="decl fn" id="luaO_utf8esc" title='luaO_utf8esc' data-ref="luaO_utf8esc">luaO_utf8esc</dfn> (<em>char</em> *<dfn class="local col3 decl" id="3buff" title='buff' data-type='char *' data-ref="3buff">buff</dfn>, <em>unsigned</em> <em>long</em> <dfn class="local col4 decl" id="4x" title='x' data-type='unsigned long' data-ref="4x">x</dfn>);</td></tr>
+<tr><th id="536">536</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <em>int</em> <dfn class="decl fn" id="luaO_ceillog2" title='luaO_ceillog2' data-ref="luaO_ceillog2">luaO_ceillog2</dfn> (<em>unsigned</em> <em>int</em> <dfn class="local col5 decl" id="5x" title='x' data-type='unsigned int' data-ref="5x">x</dfn>);</td></tr>
+<tr><th id="537">537</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <em>void</em> <dfn class="decl fn" id="luaO_arith" title='luaO_arith' data-ref="luaO_arith">luaO_arith</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col6 decl" id="6L" title='L' data-type='lua_State *' data-ref="6L">L</dfn>, <em>int</em> <dfn class="local col7 decl" id="7op" title='op' data-type='int' data-ref="7op">op</dfn>, <em>const</em> <a class="typedef" href="#TValue" title='TValue' data-type='struct lua_TValue' data-ref="TValue">TValue</a> *<dfn class="local col8 decl" id="8p1" title='p1' data-type='const TValue *' data-ref="8p1">p1</dfn>,</td></tr>
+<tr><th id="538">538</th><td>                           <em>const</em> <a class="typedef" href="#TValue" title='TValue' data-type='struct lua_TValue' data-ref="TValue">TValue</a> *<dfn class="local col9 decl" id="9p2" title='p2' data-type='const TValue *' data-ref="9p2">p2</dfn>, <a class="typedef" href="#TValue" title='TValue' data-type='struct lua_TValue' data-ref="TValue">TValue</a> *<dfn class="local col0 decl" id="10res" title='res' data-type='TValue *' data-ref="10res">res</dfn>);</td></tr>
+<tr><th id="539">539</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="decl fn" id="luaO_str2num" title='luaO_str2num' data-ref="luaO_str2num">luaO_str2num</dfn> (<em>const</em> <em>char</em> *<dfn class="local col1 decl" id="11s" title='s' data-type='const char *' data-ref="11s">s</dfn>, <a class="typedef" href="#TValue" title='TValue' data-type='struct lua_TValue' data-ref="TValue">TValue</a> *<dfn class="local col2 decl" id="12o" title='o' data-type='TValue *' data-ref="12o">o</dfn>);</td></tr>
+<tr><th id="540">540</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <em>int</em> <dfn class="decl fn" id="luaO_hexavalue" title='luaO_hexavalue' data-ref="luaO_hexavalue">luaO_hexavalue</dfn> (<em>int</em> <dfn class="local col3 decl" id="13c" title='c' data-type='int' data-ref="13c">c</dfn>);</td></tr>
+<tr><th id="541">541</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <em>void</em> <dfn class="decl fn" id="luaO_tostring" title='luaO_tostring' data-ref="luaO_tostring">luaO_tostring</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col4 decl" id="14L" title='L' data-type='lua_State *' data-ref="14L">L</dfn>, <a class="typedef" href="#StkId" title='StkId' data-type='TValue *' data-ref="StkId">StkId</a> <dfn class="local col5 decl" id="15obj" title='obj' data-type='StkId' data-ref="15obj">obj</dfn>);</td></tr>
+<tr><th id="542">542</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <em>const</em> <em>char</em> *<dfn class="decl fn" id="luaO_pushvfstring" title='luaO_pushvfstring' data-ref="luaO_pushvfstring">luaO_pushvfstring</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col6 decl" id="16L" title='L' data-type='lua_State *' data-ref="16L">L</dfn>, <em>const</em> <em>char</em> *<dfn class="local col7 decl" id="17fmt" title='fmt' data-type='const char *' data-ref="17fmt">fmt</dfn>,</td></tr>
+<tr><th id="543">543</th><td>                                                       <span class='typedef' title='va_list' data-type='__builtin_va_list' data-ref="va_list">va_list</span> <dfn class="local col8 decl" id="18argp" title='argp' data-type='struct __va_list_tag *' data-ref="18argp">argp</dfn>);</td></tr>
+<tr><th id="544">544</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <em>const</em> <em>char</em> *<dfn class="decl fn" id="luaO_pushfstring" title='luaO_pushfstring' data-ref="luaO_pushfstring">luaO_pushfstring</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col9 decl" id="19L" title='L' data-type='lua_State *' data-ref="19L">L</dfn>, <em>const</em> <em>char</em> *<dfn class="local col0 decl" id="20fmt" title='fmt' data-type='const char *' data-ref="20fmt">fmt</dfn>, ...);</td></tr>
+<tr><th id="545">545</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <em>void</em> <dfn class="decl fn" id="luaO_chunkid" title='luaO_chunkid' data-ref="luaO_chunkid">luaO_chunkid</dfn> (<em>char</em> *<dfn class="local col1 decl" id="21out" title='out' data-type='char *' data-ref="21out">out</dfn>, <em>const</em> <em>char</em> *<dfn class="local col2 decl" id="22source" title='source' data-type='const char *' data-ref="22source">source</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col3 decl" id="23len" title='len' data-type='size_t' data-ref="23len">len</dfn>);</td></tr>
+<tr><th id="546">546</th><td></td></tr>
+<tr><th id="547">547</th><td></td></tr>
+<tr><th id="548">548</th><td><u>#<span data-ppcond="8">endif</span></u></td></tr>
+<tr><th id="549">549</th><td></td></tr>
+<tr><th id="550">550</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='lstring.c.html'>lua/src/lstring.c</a><br/>Generated on <em>2018-Apr-07</em> from project lua<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

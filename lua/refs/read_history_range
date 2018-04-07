@@ -1,0 +1,6 @@
+<dec f='include/readline/history.h' l='194' type='int read_history_range(const char * , int , int )'/>
+<doc f='include/readline/history.h' l='189'>/* Read a range of lines from FILENAME, adding them to the history list.
+   Start reading at the FROM&apos;th line and end at the TO&apos;th.  If FROM
+   is zero, start at the beginning.  If TO is less than FROM, read
+   until the end of the file.  If FILENAME is NULL, then read from
+   ~/.history.  Returns 0 if successful, or errno if not. */</doc>

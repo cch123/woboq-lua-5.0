@@ -1,0 +1,29 @@
+<dec f='lua/src/lua.h' l='42'/>
+<use f='lua/src/lauxlib.c' l='76' u='c'/>
+<use f='lua/src/lauxlib.c' l='307' u='c'/>
+<use f='lua/src/lauxlib.c' l='973' u='c'/>
+<doc f='lua/src/lua.h' l='37'>/*
+** Pseudo-indices
+** (-LUAI_MAXSTACK is the minimum valid index; we keep some free empty
+** space after that to help overflow detection)
+*/</doc>
+<use f='lua/src/ldblib.c' l='42' u='c'/>
+<use f='lua/src/ldblib.c' l='308' u='c'/>
+<use f='lua/src/ldblib.c' l='361' u='c'/>
+<use f='lua/src/ldblib.c' l='364' u='c'/>
+<use f='lua/src/ldblib.c' l='390' u='c'/>
+<use f='lua/src/liolib.c' l='211' u='c'/>
+<use f='lua/src/liolib.c' l='290' u='c'/>
+<use f='lua/src/liolib.c' l='307' u='c'/>
+<use f='lua/src/liolib.c' l='310' u='c'/>
+<use f='lua/src/liolib.c' l='355' u='c'/>
+<use f='lua/src/liolib.c' l='756' u='c'/>
+<use f='lua/src/loadlib.c' l='280' u='c'/>
+<use f='lua/src/loadlib.c' l='319' u='c'/>
+<use f='lua/src/loadlib.c' l='332' u='c'/>
+<use f='lua/src/loadlib.c' l='562' u='c'/>
+<use f='lua/src/loadlib.c' l='600' u='c'/>
+<use f='lua/src/loadlib.c' l='763' u='c'/>
+<use f='lua/src/loadlib.c' l='779' u='c'/>
+<use f='lua/src/loadlib.c' l='782' u='c'/>
+<use f='lua/src/lua.c' l='569' u='c'/>

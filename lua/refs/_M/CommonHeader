@@ -1,0 +1,7 @@
+<dec f='lua/src/lobject.h' l='79'/>
+<use f='lua/src/lobject.h' l='86' u='c'/>
+<use f='lua/src/lobject.h' l='304' u='c'/>
+<use f='lua/src/lobject.h' l='347' u='c'/>
+<use f='lua/src/lobject.h' l='408' u='c'/>
+<use f='lua/src/lobject.h' l='498' u='c'/>
+<use f='lua/src/lstate.h' l='161' u='c'/>

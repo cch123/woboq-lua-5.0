@@ -1,0 +1,4 @@
+<dec f='lua/src/lgc.h' l='136' type='void luaC_step(lua_State * L)'/>
+<use f='lua/src/lvm.c' l='874' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='1076' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='1292' macro='1' u='c'/>

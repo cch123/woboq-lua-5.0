@@ -1,0 +1,39 @@
+<def f='lua/src/lstate.h' l='119' ll='154'/>
+<size>1336</size>
+<doc f='lua/src/lstate.h' l='116'>/*
+** &apos;global state&apos;, shared by all threads of this state
+*/</doc>
+<mbr r='global_State::frealloc' o='0' t='lua_Alloc'/>
+<mbr r='global_State::ud' o='64' t='void *'/>
+<mbr r='global_State::totalbytes' o='128' t='l_mem'/>
+<mbr r='global_State::GCdebt' o='192' t='l_mem'/>
+<mbr r='global_State::GCmemtrav' o='256' t='lu_mem'/>
+<mbr r='global_State::GCestimate' o='320' t='lu_mem'/>
+<mbr r='global_State::strt' o='384' t='stringtable'/>
+<mbr r='global_State::l_registry' o='512' t='TValue'/>
+<mbr r='global_State::seed' o='640' t='unsigned int'/>
+<mbr r='global_State::currentwhite' o='672' t='lu_byte'/>
+<mbr r='global_State::gcstate' o='680' t='lu_byte'/>
+<mbr r='global_State::gckind' o='688' t='lu_byte'/>
+<mbr r='global_State::gcrunning' o='696' t='lu_byte'/>
+<mbr r='global_State::allgc' o='704' t='GCObject *'/>
+<mbr r='global_State::sweepgc' o='768' t='GCObject **'/>
+<mbr r='global_State::finobj' o='832' t='GCObject *'/>
+<mbr r='global_State::gray' o='896' t='GCObject *'/>
+<mbr r='global_State::grayagain' o='960' t='GCObject *'/>
+<mbr r='global_State::weak' o='1024' t='GCObject *'/>
+<mbr r='global_State::ephemeron' o='1088' t='GCObject *'/>
+<mbr r='global_State::allweak' o='1152' t='GCObject *'/>
+<mbr r='global_State::tobefnz' o='1216' t='GCObject *'/>
+<mbr r='global_State::fixedgc' o='1280' t='GCObject *'/>
+<mbr r='global_State::twups' o='1344' t='struct lua_State *'/>
+<mbr r='global_State::gcfinnum' o='1408' t='unsigned int'/>
+<mbr r='global_State::gcpause' o='1440' t='int'/>
+<mbr r='global_State::gcstepmul' o='1472' t='int'/>
+<mbr r='global_State::panic' o='1536' t='lua_CFunction'/>
+<mbr r='global_State::mainthread' o='1600' t='struct lua_State *'/>
+<mbr r='global_State::version' o='1664' t='const lua_Number *'/>
+<mbr r='global_State::memerrmsg' o='1728' t='TString *'/>
+<mbr r='global_State::tmname' o='1792' t='TString *[24]'/>
+<mbr r='global_State::mt' o='3328' t='struct Table *[9]'/>
+<mbr r='global_State::strcache' o='3904' t='TString *[53][2]'/>

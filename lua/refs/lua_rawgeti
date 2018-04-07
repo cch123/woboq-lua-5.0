@@ -1,0 +1,9 @@
+<dec f='lua/src/lua.h' l='246' type='int lua_rawgeti(lua_State * L, int idx, lua_Integer n)'/>
+<use f='lua/src/lauxlib.c' l='602' u='c' c='luaL_ref'/>
+<use f='lua/src/lauxlib.c' l='606' u='c' c='luaL_ref'/>
+<use f='lua/src/lauxlib.c' l='619' u='c' c='luaL_unref'/>
+<use f='lua/src/lbaselib.c' l='488' macro='1' u='c'/>
+<use f='lua/src/loadlib.c' l='348' u='c' c='gctm'/>
+<use f='lua/src/loadlib.c' l='578' u='c' c='findloader'/>
+<use f='lua/src/loadlib.c' l='784' macro='1' u='c'/>
+<use f='lua/src/lua.c' l='431' u='c' c='pushargs'/>

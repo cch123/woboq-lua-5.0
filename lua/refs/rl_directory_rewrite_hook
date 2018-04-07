@@ -1,0 +1,12 @@
+<dec f='include/readline/readline.h' l='711' type='rl_icppfunc_t *'/>
+<doc f='include/readline/readline.h' l='700'>/* If non-zero, this is the address of a function to call when completing
+   a directory name.  This function takes the address of the directory name
+   to be modified as an argument.  Unlike rl_directory_completion_hook, it
+   only modifies the directory name used in opendir(2), not what is displayed
+   when the possible completions are printed or inserted.  If set, it takes
+   precedence over rl_directory_completion_hook.  The directory rewrite
+   hook should perform any necessary dequoting.  This function has the same
+   return value properties as the directory_completion_hook.
+
+   I&apos;m not happy with how this works yet, so it&apos;s undocumented.  I&apos;m trying
+   it in bash to see how well it goes. */</doc>

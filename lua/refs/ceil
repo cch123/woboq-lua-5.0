@@ -1,0 +1,3 @@
+<dec f='include/x86_64-linux-gnu/bits/mathcalls.h' l='178' type='double ceil(double __x)'/>
+<use f='lua/src/lmathlib.c' l='120' u='c' c='math_ceil'/>
+<use f='lua/src/lmathlib.c' l='157' u='c' c='math_modf'/>

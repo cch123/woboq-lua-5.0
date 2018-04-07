@@ -1,0 +1,8 @@
+<dec f='lua/src/ltm.h' l='51'/>
+<use f='lua/src/lvm.c' l='174' u='c'/>
+<use f='lua/src/lvm.c' l='211' u='c'/>
+<use f='lua/src/lvm.c' l='430' u='c'/>
+<use f='lua/src/lvm.c' l='432' u='c'/>
+<use f='lua/src/lvm.c' l='438' u='c'/>
+<use f='lua/src/lvm.c' l='440' u='c'/>
+<use f='lua/src/lvm.c' l='522' u='c'/>

@@ -1,0 +1,4 @@
+<dec f='include/readline/history.h' l='227' type='char * history_arg_extract(int , int , const char * )'/>
+<doc f='include/readline/history.h' l='224'>/* Extract a string segment consisting of the FIRST through LAST
+   arguments present in STRING.  Arguments are broken up as in
+   the shell. */</doc>

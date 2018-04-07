@@ -1,0 +1,11 @@
+<dec f='lua/src/lvm.h' l='98' type='int luaV_lessequal(lua_State * L, const TValue * l, const TValue * r)'/>
+<def f='lua/src/lvm.c' l='384' ll='400' type='int luaV_lessequal(lua_State * L, const TValue * l, const TValue * r)'/>
+<use f='lua/src/lvm.c' l='1106' u='c' c='luaV_execute'/>
+<doc f='lua/src/lvm.c' l='376'>/*
+** Main operation less than or equal to; return &apos;l &lt;= r&apos;. If it needs
+** a metamethod and there is no &apos;__le&apos;, try &apos;__lt&apos;, based on
+** l &lt;= r iff !(r &lt; l) (assuming a total order). If the metamethod
+** yields during this substitution, the continuation has to know
+** about it (to negate the result of r&lt;l); bit CIST_LEQ in the call
+** status keeps that information.
+*/</doc>

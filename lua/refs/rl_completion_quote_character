@@ -1,0 +1,3 @@
+<dec f='include/readline/readline.h' l='798' type='int'/>
+<doc f='include/readline/readline.h' l='796'>/* Set to any quote character readline thinks it finds before any application
+   completion function is called. */</doc>

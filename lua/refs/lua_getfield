@@ -1,0 +1,22 @@
+<dec f='lua/src/lua.h' l='243' type='int lua_getfield(lua_State * L, int idx, const char * k)'/>
+<use f='lua/src/lauxlib.c' l='76' u='c' c='pushglobalfuncname'/>
+<use f='lua/src/lauxlib.c' l='300' macro='1' u='c'/>
+<use f='lua/src/lauxlib.c' l='313' macro='1' u='c'/>
+<use f='lua/src/lauxlib.c' l='322' macro='1' u='c'/>
+<use f='lua/src/lauxlib.c' l='952' u='c' c='luaL_getsubtable'/>
+<use f='lua/src/lauxlib.c' l='974' u='c' c='luaL_requiref'/>
+<use f='lua/src/liolib.c' l='211' u='c' c='io_close'/>
+<use f='lua/src/liolib.c' l='290' u='c' c='getiofile'/>
+<use f='lua/src/liolib.c' l='310' u='c' c='g_iofile'/>
+<use f='lua/src/liolib.c' l='355' u='c' c='io_lines'/>
+<use f='lua/src/loadlib.c' l='280' u='c' c='noenv'/>
+<use f='lua/src/loadlib.c' l='320' u='c' c='checkclib'/>
+<use f='lua/src/loadlib.c' l='476' u='c' c='findfile'/>
+<use f='lua/src/loadlib.c' l='562' u='c' c='searcher_preload'/>
+<use f='lua/src/loadlib.c' l='563' u='c' c='searcher_preload'/>
+<use f='lua/src/loadlib.c' l='574' u='c' c='findloader'/>
+<use f='lua/src/loadlib.c' l='600' u='c' c='ll_require'/>
+<use f='lua/src/loadlib.c' l='601' u='c' c='ll_require'/>
+<use f='lua/src/loadlib.c' l='612' u='c' c='ll_require'/>
+<use f='lua/src/loslib.c' l='228' u='c' c='getboolfield'/>
+<use f='lua/src/loslib.c' l='241' u='c' c='getfield'/>

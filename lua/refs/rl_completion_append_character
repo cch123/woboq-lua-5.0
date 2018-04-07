@@ -1,0 +1,3 @@
+<dec f='include/readline/readline.h' l='790' type='int'/>
+<doc f='include/readline/readline.h' l='788'>/* Character appended to completed words when at the end of the line.  The
+   default is a space.  Nothing is added if this is &apos;\0&apos;. */</doc>

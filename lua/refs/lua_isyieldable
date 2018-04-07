@@ -1,0 +1,2 @@
+<dec f='lua/src/lua.h' l='293' type='int lua_isyieldable(lua_State * L)'/>
+<use f='lua/src/lcorolib.c' l='139' u='c' c='luaB_yieldable'/>

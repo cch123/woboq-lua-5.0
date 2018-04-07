@@ -1,0 +1,6 @@
+<dec f='lua/src/lopcodes.h' l='233' type='46'/>
+<use f='lua/src/lopcodes.h' l='237' u='r'/>
+<use f='lua/src/lopcodes.h' l='237' u='r'/>
+<use f='lua/src/luac.c' l='382' c='PrintCode'/>
+<doc f='lua/src/lopcodes.h' l='233'>/*	Ax	extra (larger) argument for previous opcode	*/</doc>
+<use f='lua/src/lvm.c' l='1313' c='luaV_execute'/>

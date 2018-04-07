@@ -1,0 +1,11 @@
+<dec f='lua/src/lua.h' l='176' type='int lua_isinteger(lua_State * L, int idx)'/>
+<use f='lua/src/lauxlib.c' l='818' u='c' c='luaL_tolstring'/>
+<use f='lua/src/liolib.c' l='621' u='c' c='g_write'/>
+<use f='lua/src/lmathlib.c' l='40' u='c' c='math_abs'/>
+<use f='lua/src/lmathlib.c' l='106' u='c' c='math_floor'/>
+<use f='lua/src/lmathlib.c' l='117' u='c' c='math_ceil'/>
+<use f='lua/src/lmathlib.c' l='128' u='c' c='math_fmod'/>
+<use f='lua/src/lmathlib.c' l='128' u='c' c='math_fmod'/>
+<use f='lua/src/lmathlib.c' l='150' u='c' c='math_modf'/>
+<use f='lua/src/lmathlib.c' l='286' u='c' c='math_type'/>
+<use f='lua/src/lstrlib.c' l='954' u='c' c='addliteral'/>

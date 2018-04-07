@@ -1,0 +1,2 @@
+<dec f='lua/src/lundump.h' l='29' type='int luaU_dump(lua_State * L, const Proto * f, lua_Writer w, void * data, int strip)'/>
+<use f='lua/src/luac.c' l='184' u='c' c='pmain'/>

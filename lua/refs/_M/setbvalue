@@ -1,0 +1,4 @@
+<dec f='lua/src/lobject.h' l='218'/>
+<use f='lua/src/lundump.c' l='133' u='c'/>
+<use f='lua/src/lvm.c' l='820' u='c'/>
+<use f='lua/src/lvm.c' l='1060' u='c'/>

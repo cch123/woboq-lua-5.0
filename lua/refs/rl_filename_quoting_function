@@ -1,0 +1,5 @@
+<dec f='include/readline/readline.h' l='759' type='rl_quote_func_t *'/>
+<doc f='include/readline/readline.h' l='755'>/* Set to a function to quote a filename in an application-specific fashion.
+   Called with the text to quote, the type of match found (single or multiple)
+   and a pointer to the quoting character to be used, which the function can
+   reset if desired. */</doc>

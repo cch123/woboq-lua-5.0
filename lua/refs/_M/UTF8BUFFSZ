@@ -1,0 +1,2 @@
+<dec f='lua/src/lobject.h' l='531'/>
+<doc f='lua/src/lobject.h' l='530'>/* size of buffer for &apos;luaO_utf8esc&apos; function */</doc>

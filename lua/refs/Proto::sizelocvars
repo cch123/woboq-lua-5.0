@@ -1,0 +1,6 @@
+<dec f='lua/src/lobject.h' l='417' type='int'/>
+<offset>288</offset>
+<use f='lua/src/luac.c' l='412' u='r' c='PrintHeader'/>
+<use f='lua/src/luac.c' l='412' u='r' c='PrintHeader'/>
+<use f='lua/src/luac.c' l='426' u='r' c='PrintDebug'/>
+<use f='lua/src/lundump.c' l='188' u='w' c='LoadDebug'/>

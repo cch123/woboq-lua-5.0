@@ -1,0 +1,6 @@
+<dec f='lua/src/lobject.h' l='411' type='lu_byte'/>
+<offset>96</offset>
+<doc f='lua/src/lobject.h' l='411'>/* number of registers needed by this function */</doc>
+<use f='lua/src/luac.c' l='410' u='r' c='PrintHeader'/>
+<use f='lua/src/luac.c' l='410' u='r' c='PrintHeader'/>
+<use f='lua/src/lundump.c' l='210' u='w' c='LoadFunction'/>

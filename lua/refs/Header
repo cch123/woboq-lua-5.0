@@ -1,0 +1,5 @@
+<def f='lua/src/lstrlib.c' l='1153' ll='1157'/>
+<size>16</size>
+<doc f='lua/src/lstrlib.c' l='1150'>/*
+** information to pack/unpack stuff
+*/</doc>

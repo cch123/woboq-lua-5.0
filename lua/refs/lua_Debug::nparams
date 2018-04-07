@@ -1,0 +1,4 @@
+<dec f='lua/src/lua.h' l='451' type='unsigned char'/>
+<offset>424</offset>
+<doc f='lua/src/lua.h' l='451'>/* (u) number of parameters */</doc>
+<use f='lua/src/ldblib.c' l='176' u='r' c='db_getinfo'/>

@@ -1,0 +1,15 @@
+<dec f='lua/src/lopcodes.h' l='100'/>
+<use f='lua/src/luac.c' l='297' u='c'/>
+<use f='lua/src/lvm.c' l='685' u='c'/>
+<use f='lua/src/lvm.c' l='820' u='c'/>
+<use f='lua/src/lvm.c' l='825' u='c'/>
+<use f='lua/src/lvm.c' l='832' u='c'/>
+<use f='lua/src/lvm.c' l='837' u='c'/>
+<use f='lua/src/lvm.c' l='856' u='c'/>
+<use f='lua/src/lvm.c' l='868' u='c'/>
+<use f='lua/src/lvm.c' l='1068' u='c'/>
+<use f='lua/src/lvm.c' l='1131' u='c'/>
+<use f='lua/src/lvm.c' l='1146' u='c'/>
+<use f='lua/src/lvm.c' l='1177' u='c'/>
+<use f='lua/src/lvm.c' l='1264' u='c'/>
+<use f='lua/src/lvm.c' l='1296' u='c'/>

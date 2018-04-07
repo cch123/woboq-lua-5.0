@@ -1,0 +1,21 @@
+<dec f='lua/src/lobject.h' l='425' type='Upvaldesc *'/>
+<offset>704</offset>
+<doc f='lua/src/lobject.h' l='425'>/* upvalue information */</doc>
+<use f='lua/src/luac.c' l='152' u='r' c='combine'/>
+<use f='lua/src/luac.c' l='285' u='r' c='PrintCode'/>
+<use f='lua/src/luac.c' l='285' u='r' c='PrintCode'/>
+<use f='lua/src/luac.c' l='285' u='r' c='PrintCode'/>
+<use f='lua/src/luac.c' l='285' u='r' c='PrintCode'/>
+<use f='lua/src/luac.c' l='285' u='r' c='PrintCode'/>
+<use f='lua/src/luac.c' l='285' u='r' c='PrintCode'/>
+<use f='lua/src/luac.c' l='285' u='r' c='PrintDebug'/>
+<use f='lua/src/luac.c' l='285' u='r' c='PrintDebug'/>
+<use f='lua/src/luac.c' l='438' u='r' c='PrintDebug'/>
+<use f='lua/src/luac.c' l='438' u='r' c='PrintDebug'/>
+<use f='lua/src/lundump.c' l='169' u='w' c='LoadUpvalues'/>
+<use f='lua/src/lundump.c' l='172' u='r' c='LoadUpvalues'/>
+<use f='lua/src/lundump.c' l='174' u='r' c='LoadUpvalues'/>
+<use f='lua/src/lundump.c' l='175' u='r' c='LoadUpvalues'/>
+<use f='lua/src/lundump.c' l='198' u='r' c='LoadDebug'/>
+<use f='lua/src/lvm.c' l='614' u='r' c='getcached'/>
+<use f='lua/src/lvm.c' l='635' u='r' c='pushclosure'/>

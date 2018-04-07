@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='324' type='int rl_translate_keyseq(const char * , char * , int * )'/>
+<doc f='include/readline/readline.h' l='323'>/* Undocumented in the texinfo manual; not really useful to programs. */</doc>

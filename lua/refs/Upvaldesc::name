@@ -1,0 +1,13 @@
+<dec f='lua/src/lobject.h' l='387' type='TString *'/>
+<offset>0</offset>
+<doc f='lua/src/lobject.h' l='387'>/* upvalue name (for debug information) */</doc>
+<use f='lua/src/luac.c' l='285' u='r' c='PrintCode'/>
+<use f='lua/src/luac.c' l='285' u='r' c='PrintCode'/>
+<use f='lua/src/luac.c' l='285' u='r' c='PrintCode'/>
+<use f='lua/src/luac.c' l='285' u='r' c='PrintCode'/>
+<use f='lua/src/luac.c' l='285' u='r' c='PrintCode'/>
+<use f='lua/src/luac.c' l='285' u='r' c='PrintCode'/>
+<use f='lua/src/luac.c' l='285' u='r' c='PrintDebug'/>
+<use f='lua/src/luac.c' l='285' u='r' c='PrintDebug'/>
+<use f='lua/src/lundump.c' l='172' u='w' c='LoadUpvalues'/>
+<use f='lua/src/lundump.c' l='198' u='w' c='LoadDebug'/>

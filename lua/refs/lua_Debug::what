@@ -1,0 +1,6 @@
+<dec f='lua/src/lua.h' l='445' type='const char *'/>
+<use f='lua/src/lauxlib.c' l='101' u='r' c='pushfuncname'/>
+<use f='lua/src/lauxlib.c' l='103' u='r' c='pushfuncname'/>
+<offset>192</offset>
+<doc f='lua/src/lua.h' l='445'>/* (S) &apos;Lua&apos;, &apos;C&apos;, &apos;main&apos;, &apos;tail&apos; */</doc>
+<use f='lua/src/ldblib.c' l='170' u='r' c='db_getinfo'/>

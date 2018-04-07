@@ -1,0 +1,11 @@
+<dec f='lua/src/llimits.h' l='139'/>
+<use f='lua/src/lmem.h' l='59' u='c'/>
+<use f='lua/src/ldebug.h' l='21' u='c'/>
+<use f='lua/src/ldebug.h' l='23' u='c'/>
+<use f='lua/src/ldebug.h' l='25' u='c'/>
+<use f='lua/src/ldebug.h' l='28' u='c'/>
+<use f='lua/src/ldebug.h' l='30' u='c'/>
+<use f='lua/src/ldebug.h' l='32' u='c'/>
+<use f='lua/src/ldebug.h' l='35' u='c'/>
+<use f='lua/src/ldo.h' l='54' u='c'/>
+<use f='lua/src/lundump.c' l='39' u='c'/>

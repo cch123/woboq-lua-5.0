@@ -1,0 +1,20 @@
+<dec f='lua/src/lauxlib.h' l='60' type='void luaL_checkany(lua_State * L, int arg)'/>
+<def f='lua/src/lauxlib.c' l='384' ll='387' macro='1' type='void luaL_checkany(lua_State * L, int arg)'/>
+<use f='lua/src/lbaselib.c' l='71' u='c' c='luaB_tonumber'/>
+<use f='lua/src/lbaselib.c' l='115' u='c' c='luaB_getmetatable'/>
+<use f='lua/src/lbaselib.c' l='139' u='c' c='luaB_rawequal'/>
+<use f='lua/src/lbaselib.c' l='140' u='c' c='luaB_rawequal'/>
+<use f='lua/src/lbaselib.c' l='157' u='c' c='luaB_rawget'/>
+<use f='lua/src/lbaselib.c' l='165' u='c' c='luaB_rawset'/>
+<use f='lua/src/lbaselib.c' l='166' u='c' c='luaB_rawset'/>
+<use f='lua/src/lbaselib.c' l='211' u='c' c='pairsmeta'/>
+<use f='lua/src/lbaselib.c' l='376' u='c' c='luaB_assert'/>
+<use f='lua/src/lbaselib.c' l='421' u='c' c='luaB_pcall'/>
+<use f='lua/src/lbaselib.c' l='447' u='c' c='luaB_tostring'/>
+<use f='lua/src/ldblib.c' l='48' u='c' c='db_getmetatable'/>
+<use f='lua/src/ldblib.c' l='77' u='c' c='db_setuservalue'/>
+<use f='lua/src/ldblib.c' l='233' u='c' c='db_setlocal'/>
+<use f='lua/src/ldblib.c' l='266' u='c' c='db_setupvalue'/>
+<use f='lua/src/liolib.c' l='152' u='c' c='io_type'/>
+<use f='lua/src/lmathlib.c' l='89' u='c' c='math_toint'/>
+<use f='lua/src/lmathlib.c' l='292' u='c' c='math_type'/>

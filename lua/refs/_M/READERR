@@ -1,0 +1,3 @@
+<dec f='include/readline/readline.h' l='832'/>
+<doc f='include/readline/readline.h' l='830'>/* Input error; can be returned by (*rl_getc_function) if readline is reading
+   a top-level command (RL_ISSTATE (RL_STATE_READCMD)). */</doc>

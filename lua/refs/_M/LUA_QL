@@ -1,0 +1,6 @@
+<dec f='lua/src/luaconf.h' l='765'/>
+<doc f='lua/src/luaconf.h' l='760'>/*
+@@ LUA_QL describes how error messages quote program elements.
+** Lua does not use these macros anymore; they are here for
+** compatibility only.
+*/</doc>

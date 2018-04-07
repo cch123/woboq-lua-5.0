@@ -1,0 +1,1 @@
+<dec f='lua/src/lfunc.h' l='53' type='void luaF_initupvals(lua_State * L, LClosure * cl)'/>

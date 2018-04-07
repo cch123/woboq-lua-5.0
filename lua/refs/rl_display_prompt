@@ -1,0 +1,3 @@
+<dec f='include/readline/readline.h' l='513' type='char *'/>
+<doc f='include/readline/readline.h' l='511'>/* The prompt string that is actually displayed by rl_redisplay.  Public so
+   applications can more easily supply their own redisplay functions. */</doc>

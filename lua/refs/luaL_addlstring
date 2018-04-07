@@ -1,0 +1,12 @@
+<dec f='lua/src/lauxlib.h' l='165' type='void luaL_addlstring(luaL_Buffer * B, const char * s, size_t l)'/>
+<def f='lua/src/lauxlib.c' l='528' ll='534' macro='1' type='void luaL_addlstring(luaL_Buffer * B, const char * s, size_t l)'/>
+<use f='lua/src/lauxlib.c' l='538' u='c' c='luaL_addstring'/>
+<use f='lua/src/lauxlib.c' l='564' u='c' c='luaL_addvalue'/>
+<use f='lua/src/lauxlib.c' l='998' u='c' c='luaL_gsub'/>
+<use f='lua/src/lstrlib.c' l='184' u='c' c='writer'/>
+<use f='lua/src/lstrlib.c' l='719' u='c' c='add_s'/>
+<use f='lua/src/lstrlib.c' l='794' u='c' c='str_gsub'/>
+<use f='lua/src/lstrlib.c' l='1381' u='c' c='str_pack'/>
+<use f='lua/src/lstrlib.c' l='1393' u='c' c='str_pack'/>
+<use f='lua/src/lstrlib.c' l='1401' u='c' c='str_pack'/>
+<use f='lua/src/ltablib.c' l='179' u='c' c='tconcat'/>

@@ -1,0 +1,15 @@
+<dec f='lua/src/lauxlib.h' l='99' type='void luaL_setfuncs(lua_State * L, const luaL_Reg * l, int nup)'/>
+<def f='lua/src/lauxlib.c' l='934' ll='944' macro='1' type='void luaL_setfuncs(lua_State * L, const luaL_Reg * l, int nup)'/>
+<use f='lua/src/lbaselib.c' l='489' u='c' c='luaopen_base'/>
+<use f='lua/src/lbitlib.c' l='221' macro='1' u='c'/>
+<use f='lua/src/lcorolib.c' l='165' macro='1' u='c'/>
+<use f='lua/src/ldblib.c' l='453' macro='1' u='c'/>
+<use f='lua/src/liolib.c' l='732' u='c' c='createmeta'/>
+<use f='lua/src/liolib.c' l='763' macro='1' u='c'/>
+<use f='lua/src/lmathlib.c' l='399' macro='1' u='c'/>
+<use f='lua/src/loadlib.c' l='769' macro='1' u='c'/>
+<use f='lua/src/loadlib.c' l='786' u='c' c='luaopen_package'/>
+<use f='lua/src/loslib.c' l='404' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='1580' macro='1' u='c'/>
+<use f='lua/src/ltablib.c' l='442' macro='1' u='c'/>
+<use f='lua/src/lutf8lib.c' l='251' macro='1' u='c'/>

@@ -1,0 +1,9 @@
+<dec f='lua/src/lstring.h' l='44' type='TString * luaS_newlstr(lua_State * L, const char * str, size_t l)'/>
+<use f='lua/src/lstring.c' l='121' macro='1' u='c'/>
+<def f='lua/src/lstring.c' l='199' ll='210' type='TString * luaS_newlstr(lua_State * L, const char * str, size_t l)'/>
+<use f='lua/src/lstring.c' l='231' u='c' c='luaS_new'/>
+<doc f='lua/src/lstring.c' l='196'>/*
+** new string (with explicit length)
+*/</doc>
+<use f='lua/src/lundump.c' l='97' u='c' c='LoadString'/>
+<use f='lua/src/lvm.c' l='500' u='c' c='luaV_concat'/>

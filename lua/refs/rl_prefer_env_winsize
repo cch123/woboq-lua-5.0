@@ -1,0 +1,4 @@
+<dec f='include/readline/readline.h' l='557' type='int'/>
+<doc f='include/readline/readline.h' l='554'>/* If non-zero, Readline gives values of LINES and COLUMNS from the environment
+   greater precedence than values fetched from the kernel when computing the
+   screen dimensions. */</doc>

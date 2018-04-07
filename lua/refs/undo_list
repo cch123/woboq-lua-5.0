@@ -1,0 +1,8 @@
+<def f='include/readline/readline.h' l='58' ll='63'/>
+<size>32</size>
+<doc f='include/readline/readline.h' l='57'>/* What an element of THE_UNDO_LIST looks like. */</doc>
+<mbr r='undo_list::next' o='0' t='struct undo_list *'/>
+<mbr r='undo_list::start' o='64' t='int'/>
+<mbr r='undo_list::end' o='96' t='int'/>
+<mbr r='undo_list::text' o='128' t='char *'/>
+<mbr r='undo_list::what' o='192' t='enum undo_code'/>

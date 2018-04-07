@@ -1,0 +1,10 @@
+<dec f='lua/src/lstate.h' l='91' type='unsigned short'/>
+<offset>528</offset>
+<use f='lua/src/ltm.c' l='113' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='393' u='w' c='luaV_lessequal'/>
+<use f='lua/src/lvm.c' l='395' u='w' c='luaV_lessequal'/>
+<use f='lua/src/lvm.c' l='673' u='r' c='luaV_finishOp'/>
+<use f='lua/src/lvm.c' l='675' u='w' c='luaV_finishOp'/>
+<use f='lua/src/lvm.c' l='791' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1169' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1180' u='r' c='luaV_execute'/>

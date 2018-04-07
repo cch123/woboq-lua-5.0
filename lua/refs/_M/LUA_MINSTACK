@@ -1,0 +1,4 @@
+<dec f='lua/src/lua.h' l='79'/>
+<doc f='lua/src/lua.h' l='78'>/* minimum Lua stack available to a C function */</doc>
+<use f='lua/src/liolib.c' l='534' u='c'/>
+<use f='lua/src/lua.c' l='391' u='c'/>

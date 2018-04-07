@@ -1,0 +1,8 @@
+<dec f='lua/src/luaconf.h' l='326'/>
+<use f='lua/src/lua.h' l='383' u='a'/>
+<use f='lua/src/lauxlib.h' l='245' u='a'/>
+<doc f='lua/src/luaconf.h' l='321'>/*
+@@ LUA_COMPAT_APIINTCASTS controls the presence of macros for
+** manipulating other integer types (lua_pushunsigned, lua_tounsigned,
+** luaL_checkint, luaL_checklong, etc.)
+*/</doc>

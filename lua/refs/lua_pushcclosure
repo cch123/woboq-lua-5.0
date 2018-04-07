@@ -1,0 +1,15 @@
+<dec f='lua/src/lua.h' l='232' type='void lua_pushcclosure(lua_State * L, lua_CFunction fn, int n)'/>
+<use f='lua/src/lauxlib.c' l='487' macro='1' u='c'/>
+<use f='lua/src/lauxlib.c' l='940' u='c' c='luaL_setfuncs'/>
+<use f='lua/src/lauxlib.c' l='977' macro='1' u='c'/>
+<use f='lua/src/lbaselib.c' l='213' macro='1' u='c'/>
+<use f='lua/src/lcorolib.c' l='101' u='c' c='luaB_cowrap'/>
+<use f='lua/src/liolib.c' l='340' u='c' c='aux_lines'/>
+<use f='lua/src/loadlib.c' l='387' macro='1' u='c'/>
+<use f='lua/src/loadlib.c' l='742' u='c' c='createsearcherstable'/>
+<use f='lua/src/loadlib.c' l='760' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='698' u='c' c='gmatch'/>
+<use f='lua/src/lua.c' l='201' macro='1' u='c'/>
+<use f='lua/src/lua.c' l='603' macro='1' u='c'/>
+<use f='lua/src/luac.c' l='200' macro='1' u='c'/>
+<use f='lua/src/lutf8lib.c' l='227' macro='1' u='c'/>

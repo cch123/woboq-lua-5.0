@@ -1,0 +1,6 @@
+<dec f='lua/src/lua.h' l='241' type='int lua_getglobal(lua_State * L, const char * name)'/>
+<use f='lua/src/lbaselib.c' l='27' u='c' c='luaB_print'/>
+<use f='lua/src/lua.c' l='261' u='c' c='dolibrary'/>
+<use f='lua/src/lua.c' l='275' u='c' c='get_prompt'/>
+<use f='lua/src/lua.c' l='392' u='c' c='l_print'/>
+<use f='lua/src/lua.c' l='426' u='c' c='pushargs'/>

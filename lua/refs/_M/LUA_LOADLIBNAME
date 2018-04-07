@@ -1,0 +1,2 @@
+<dec f='lua/src/lualib.h' l='47'/>
+<use f='lua/src/linit.c' l='44' u='c'/>

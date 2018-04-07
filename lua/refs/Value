@@ -1,0 +1,11 @@
+<def f='lua/src/lobject.h' l='100' ll='107'/>
+<size>8</size>
+<doc f='lua/src/lobject.h' l='97'>/*
+** Union of all Lua values
+*/</doc>
+<mbr r='Value::gc' o='0' t='GCObject *'/>
+<mbr r='Value::p' o='0' t='void *'/>
+<mbr r='Value::b' o='0' t='int'/>
+<mbr r='Value::f' o='0' t='lua_CFunction'/>
+<mbr r='Value::i' o='0' t='lua_Integer'/>
+<mbr r='Value::n' o='0' t='lua_Number'/>

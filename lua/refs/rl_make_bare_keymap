@@ -1,0 +1,5 @@
+<dec f='include/readline/keymaps.h' l='68' type='Keymap rl_make_bare_keymap()'/>
+<dec f='include/readline/readline.h' l='342' type='Keymap rl_make_bare_keymap()'/>
+<doc f='include/readline/readline.h' l='341'>/* Functions for manipulating keymaps. */</doc>
+<doc f='include/readline/keymaps.h' l='66'>/* Return a new, empty keymap.
+   Free it with free() when you are done. */</doc>

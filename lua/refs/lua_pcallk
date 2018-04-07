@@ -1,0 +1,8 @@
+<dec f='lua/src/lua.h' l='276' type='int lua_pcallk(lua_State * L, int nargs, int nresults, int errfunc, lua_KContext ctx, lua_KFunction k)'/>
+<use f='lua/src/lbaselib.c' l='424' u='c' c='luaB_pcall'/>
+<use f='lua/src/lbaselib.c' l='441' u='c' c='luaB_xpcall'/>
+<use f='lua/src/ldblib.c' l='410' macro='1' u='c'/>
+<use f='lua/src/lua.c' l='205' macro='1' u='c'/>
+<use f='lua/src/lua.c' l='394' macro='1' u='c'/>
+<use f='lua/src/lua.c' l='606' macro='1' u='c'/>
+<use f='lua/src/luac.c' l='203' macro='1' u='c'/>

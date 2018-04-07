@@ -1,0 +1,2 @@
+<dec f='lua/src/lopcodes.h' l='290' type='const char *const [48]'/>
+<use f='lua/src/luac.c' l='305' u='r' c='PrintCode'/>

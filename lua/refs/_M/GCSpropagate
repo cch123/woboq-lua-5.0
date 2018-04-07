@@ -1,0 +1,4 @@
+<dec f='lua/src/lgc.h' l='39'/>
+<doc f='lua/src/lgc.h' l='36'>/*
+** Possible states of the Garbage Collector
+*/</doc>

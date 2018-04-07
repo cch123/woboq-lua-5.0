@@ -1,0 +1,6 @@
+<dec f='lua/src/luaconf.h' l='91'/>
+<use f='lua/src/luaconf.h' l='721' u='c'/>
+<use f='lua/src/llimits.h' l='25' u='c'/>
+<use f='lua/src/llimits.h' l='162' u='c'/>
+<use f='lua/src/lopcodes.h' l='59' u='c'/>
+<use f='lua/src/lopcodes.h' l='67' u='c'/>

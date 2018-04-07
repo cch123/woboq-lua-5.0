@@ -1,0 +1,4 @@
+<def f='lua/src/lobject.h' l='113' ll='115'/>
+<size>16</size>
+<mbr r='lua_TValue::value_' o='0' t='Value'/>
+<mbr r='lua_TValue::tt_' o='64' t='int'/>

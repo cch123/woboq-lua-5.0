@@ -1,0 +1,4 @@
+<dec f='lua/src/lzio.h' l='49' type='size_t luaZ_read(ZIO * z, void * b, size_t n)'/>
+<use f='lua/src/lundump.c' l='52' u='c' c='LoadBlock'/>
+<def f='lua/src/lzio.c' l='48' ll='67' type='size_t luaZ_read(ZIO * z, void * b, size_t n)'/>
+<doc f='lua/src/lzio.c' l='47'>/* --------------------------------------------------------------- read --- */</doc>

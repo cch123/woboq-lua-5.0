@@ -1,0 +1,8 @@
+<dec f='include/libio.h' l='62'/>
+<use f='include/stdio.h' l='133' u='a'/>
+<use f='lua/src/lauxlib.c' l='675' u='c'/>
+<use f='lua/src/lauxlib.c' l='695' u='c'/>
+<use f='lua/src/lauxlib.c' l='725' u='c'/>
+<use f='lua/src/liolib.c' l='473' u='c'/>
+<use f='lua/src/liolib.c' l='481' u='c'/>
+<use f='lua/src/liolib.c' l='485' u='c'/>

@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='139' type='int rl_vi_editing_mode(int , int )'/>
+<doc f='include/readline/readline.h' l='138'>/* Bindable commands to set the editing mode (emacs or vi). */</doc>

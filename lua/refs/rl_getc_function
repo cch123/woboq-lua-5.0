@@ -1,0 +1,3 @@
+<dec f='include/readline/readline.h' l='581' type='rl_getc_func_t *'/>
+<doc f='include/readline/readline.h' l='579'>/* The address of the function to call to fetch a character from the current
+   Readline input stream */</doc>

@@ -1,0 +1,5 @@
+<dec f='include/readline/readline.h' l='665' type='char *'/>
+<doc f='include/readline/readline.h' l='662'>/* The list of characters that signal a break between words for
+   rl_complete_internal.  The default list is the contents of
+   rl_basic_word_break_characters.  */</doc>
+<doc f='include/readline/readline.h' l='665'>/*const*/</doc>

@@ -1,0 +1,13 @@
+<dec f='lua/src/lauxlib.h' l='58' type='void luaL_checkstack(lua_State * L, int sz, const char * msg)'/>
+<use f='lua/src/lauxlib.c' l='133' u='c' c='luaL_traceback'/>
+<def f='lua/src/lauxlib.c' l='368' ll='375' macro='1' type='void luaL_checkstack(lua_State * L, int space, const char * msg)'/>
+<use f='lua/src/lauxlib.c' l='935' u='c' c='luaL_setfuncs'/>
+<use f='lua/src/lbaselib.c' l='319' u='c' c='generic_reader'/>
+<use f='lua/src/liolib.c' l='534' u='c' c='g_read'/>
+<use f='lua/src/liolib.c' l='591' u='c' c='io_readline'/>
+<use f='lua/src/lstrlib.c' l='160' u='c' c='str_byte'/>
+<use f='lua/src/lstrlib.c' l='572' u='c' c='push_captures'/>
+<use f='lua/src/lstrlib.c' l='1492' u='c' c='str_unpack'/>
+<use f='lua/src/lua.c' l='391' u='c' c='l_print'/>
+<use f='lua/src/lua.c' l='429' u='c' c='pushargs'/>
+<use f='lua/src/lutf8lib.c' l='113' u='c' c='codepoint'/>

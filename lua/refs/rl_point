@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='519' type='int'/>
+<doc f='include/readline/readline.h' l='518'>/* The location of point, and end. */</doc>

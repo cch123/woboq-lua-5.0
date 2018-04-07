@@ -1,0 +1,2 @@
+<dec f='lua/src/ltm.h' l='63' type='void luaT_init(lua_State * L)'/>
+<def f='lua/src/ltm.c' l='37' ll='52' type='void luaT_init(lua_State * L)'/>

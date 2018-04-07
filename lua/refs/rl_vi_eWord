@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='275' type='int rl_vi_eWord(int , int )'/>
+<dec f='include/readline/readline.h' l='278' type='int rl_vi_eword(int , int )'/>

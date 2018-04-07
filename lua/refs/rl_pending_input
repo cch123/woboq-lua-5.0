@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='530' type='int'/>
+<doc f='include/readline/readline.h' l='529'>/* If set to a character value, that will be the next keystroke read. */</doc>

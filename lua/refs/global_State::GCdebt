@@ -1,0 +1,6 @@
+<dec f='lua/src/lstate.h' l='123' type='l_mem'/>
+<offset>192</offset>
+<doc f='lua/src/lstate.h' l='123'>/* bytes allocated not yet compensated by the collector */</doc>
+<use f='lua/src/lvm.c' l='874' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='1076' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='1292' macro='1' u='r'/>

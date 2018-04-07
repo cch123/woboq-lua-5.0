@@ -1,0 +1,13 @@
+<dec f='lua/src/lobject.h' l='422' type='struct Proto **'/>
+<offset>512</offset>
+<doc f='lua/src/lobject.h' l='422'>/* functions defined inside the function */</doc>
+<use f='lua/src/luac.c' l='151' u='r' c='combine'/>
+<use f='lua/src/luac.c' l='152' u='r' c='combine'/>
+<use f='lua/src/luac.c' l='152' u='r' c='combine'/>
+<use f='lua/src/luac.c' l='377' u='r' c='PrintCode'/>
+<use f='lua/src/luac.c' l='448' u='r' c='PrintFunction'/>
+<use f='lua/src/lundump.c' l='155' u='w' c='LoadProtos'/>
+<use f='lua/src/lundump.c' l='158' u='r' c='LoadProtos'/>
+<use f='lua/src/lundump.c' l='160' u='r' c='LoadProtos'/>
+<use f='lua/src/lundump.c' l='161' u='r' c='LoadProtos'/>
+<use f='lua/src/lvm.c' l='1286' u='r' c='luaV_execute'/>

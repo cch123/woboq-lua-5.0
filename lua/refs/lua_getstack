@@ -1,0 +1,10 @@
+<dec f='lua/src/lua.h' l='424' type='int lua_getstack(lua_State * L, int level, lua_Debug * ar)'/>
+<use f='lua/src/lauxlib.c' l='114' u='c' c='lastlevel'/>
+<use f='lua/src/lauxlib.c' l='118' u='c' c='lastlevel'/>
+<use f='lua/src/lauxlib.c' l='135' u='c' c='luaL_traceback'/>
+<use f='lua/src/lauxlib.c' l='166' u='c' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='207' u='c' c='luaL_where'/>
+<use f='lua/src/lcorolib.c' l='121' u='c' c='luaB_costatus'/>
+<use f='lua/src/ldblib.c' l='157' u='c' c='db_getinfo'/>
+<use f='lua/src/ldblib.c' l='206' u='c' c='db_getlocal'/>
+<use f='lua/src/ldblib.c' l='231' u='c' c='db_setlocal'/>

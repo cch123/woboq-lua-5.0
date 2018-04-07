@@ -1,0 +1,11 @@
+<dec f='include/stdio.h' l='168' type='struct _IO_FILE *'/>
+<use f='include/x86_64-linux-gnu/bits/stdio.h' l='46' macro='1' u='r'/>
+<use f='include/x86_64-linux-gnu/bits/stdio.h' l='72' macro='1' u='r'/>
+<use f='include/x86_64-linux-gnu/bits/stdio.h' l='72' macro='1' u='r'/>
+<use f='include/x86_64-linux-gnu/bits/stdio.h' l='72' macro='1' u='r'/>
+<use f='include/x86_64-linux-gnu/bits/stdio.h' l='72' macro='1' u='r'/>
+<use f='lua/src/lauxlib.c' l='711' macro='1' u='r'/>
+<doc f='include/stdio.h' l='167'>/* Standard streams.  */</doc>
+<doc f='include/stdio.h' l='168'>/* Standard input stream.  */</doc>
+<use f='lua/src/ldblib.c' l='406' macro='1' u='r'/>
+<use f='lua/src/liolib.c' l='766' macro='1' u='r'/>

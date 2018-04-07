@@ -1,0 +1,33 @@
+<dec f='lua/src/lauxlib.h' l='51' type='lua_Number luaL_checknumber(lua_State * L, int arg)'/>
+<def f='lua/src/lauxlib.c' l='408' ll='414' macro='1' type='lua_Number luaL_checknumber(lua_State * L, int arg)'/>
+<use f='lua/src/lauxlib.c' l='418' u='c' c='luaL_optnumber'/>
+<use f='lua/src/lmathlib.c' l='46' u='c' c='math_abs'/>
+<use f='lua/src/lmathlib.c' l='51' u='c' c='math_sin'/>
+<use f='lua/src/lmathlib.c' l='56' u='c' c='math_cos'/>
+<use f='lua/src/lmathlib.c' l='61' u='c' c='math_tan'/>
+<use f='lua/src/lmathlib.c' l='66' u='c' c='math_asin'/>
+<use f='lua/src/lmathlib.c' l='71' u='c' c='math_acos'/>
+<use f='lua/src/lmathlib.c' l='76' u='c' c='math_atan'/>
+<use f='lua/src/lmathlib.c' l='109' u='c' c='math_floor'/>
+<use f='lua/src/lmathlib.c' l='120' u='c' c='math_ceil'/>
+<use f='lua/src/lmathlib.c' l='138' u='c' c='math_fmod'/>
+<use f='lua/src/lmathlib.c' l='139' u='c' c='math_fmod'/>
+<use f='lua/src/lmathlib.c' l='155' u='c' c='math_modf'/>
+<use f='lua/src/lmathlib.c' l='167' u='c' c='math_sqrt'/>
+<use f='lua/src/lmathlib.c' l='180' u='c' c='math_log'/>
+<use f='lua/src/lmathlib.c' l='185' u='c' c='math_log'/>
+<use f='lua/src/lmathlib.c' l='200' u='c' c='math_exp'/>
+<use f='lua/src/lmathlib.c' l='205' u='c' c='math_deg'/>
+<use f='lua/src/lmathlib.c' l='210' u='c' c='math_rad'/>
+<use f='lua/src/lmathlib.c' l='278' u='c' c='math_randomseed'/>
+<use f='lua/src/lmathlib.c' l='307' u='c' c='math_cosh'/>
+<use f='lua/src/lmathlib.c' l='312' u='c' c='math_sinh'/>
+<use f='lua/src/lmathlib.c' l='317' u='c' c='math_tanh'/>
+<use f='lua/src/lmathlib.c' l='322' u='c' c='math_pow'/>
+<use f='lua/src/lmathlib.c' l='323' u='c' c='math_pow'/>
+<use f='lua/src/lmathlib.c' l='330' u='c' c='math_frexp'/>
+<use f='lua/src/lmathlib.c' l='336' u='c' c='math_ldexp'/>
+<use f='lua/src/lmathlib.c' l='343' u='c' c='math_log10'/>
+<use f='lua/src/lstrlib.c' l='1051' u='c' c='str_format'/>
+<use f='lua/src/lstrlib.c' l='1055' u='c' c='str_format'/>
+<use f='lua/src/lstrlib.c' l='1367' u='c' c='str_pack'/>

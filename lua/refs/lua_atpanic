@@ -1,0 +1,2 @@
+<dec f='lua/src/lua.h' l='149' type='lua_CFunction lua_atpanic(lua_State * L, lua_CFunction panicf)'/>
+<use f='lua/src/lauxlib.c' l='1028' u='c' c='luaL_newstate'/>

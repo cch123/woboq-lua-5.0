@@ -1,0 +1,10 @@
+<dec f='lua/src/lua.h' l='187' type='void * lua_touserdata(lua_State * L, int idx)'/>
+<use f='lua/src/lauxlib.c' l='319' u='c' c='luaL_testudata'/>
+<use f='lua/src/lauxlib.c' l='464' u='c' c='resizebox'/>
+<use f='lua/src/liolib.c' l='291' u='c' c='getiofile'/>
+<use f='lua/src/liolib.c' l='585' u='c' c='io_readline'/>
+<use f='lua/src/loadlib.c' l='321' u='c' c='checkclib'/>
+<use f='lua/src/loadlib.c' l='349' u='c' c='gctm'/>
+<use f='lua/src/lstrlib.c' l='674' u='c' c='gmatch_aux'/>
+<use f='lua/src/lua.c' l='556' u='c' c='pmain'/>
+<use f='lua/src/luac.c' l='168' u='c' c='pmain'/>

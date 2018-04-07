@@ -1,0 +1,4 @@
+<dec f='include/readline/readline.h' l='605' type='int'/>
+<doc f='include/readline/readline.h' l='602'>/* If non-zero, the application has already printed the prompt (rl_prompt)
+   before calling readline, so readline should not output it the first time
+   redisplay is done. */</doc>

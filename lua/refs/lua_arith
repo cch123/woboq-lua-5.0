@@ -1,0 +1,1 @@
+<dec f='lua/src/lua.h' l='211' type='void lua_arith(lua_State * L, int op)'/>

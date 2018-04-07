@@ -1,0 +1,4 @@
+<dec f='include/stdio.h' l='912' type='void flockfile(FILE * __stream)'/>
+<doc f='include/stdio.h' l='911'>/* Acquire ownership of STREAM.  */</doc>
+<use f='lua/src/liolib.c' l='87' u='c' c='read_number'/>
+<use f='lua/src/liolib.c' l='87' u='c' c='read_line'/>

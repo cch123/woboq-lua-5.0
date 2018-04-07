@@ -1,0 +1,4 @@
+<dec f='lua/src/lstring.h' l='27'/>
+<doc f='lua/src/lstring.h' l='24'>/*
+** test whether a string is a reserved word
+*/</doc>

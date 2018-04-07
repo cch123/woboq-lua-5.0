@@ -1,0 +1,1 @@
+<dec f='lua/src/ldebug.h' l='35' type='void luaG_errormsg(lua_State * L)'/>

@@ -1,0 +1,2 @@
+<dec f='lua/src/lua.h' l='266' type='void lua_setuservalue(lua_State * L, int idx)'/>
+<use f='lua/src/ldblib.c' l='79' u='c' c='db_setuservalue'/>

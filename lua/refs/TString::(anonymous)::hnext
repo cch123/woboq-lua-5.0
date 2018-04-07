@@ -1,0 +1,9 @@
+<dec f='lua/src/lobject.h' l='310' type='struct TString *'/>
+<use f='lua/src/lstring.c' l='83' u='r' c='luaS_resize'/>
+<use f='lua/src/lstring.c' l='85' u='w' c='luaS_resize'/>
+<use f='lua/src/lstring.c' l='158' u='a' c='luaS_remove'/>
+<use f='lua/src/lstring.c' l='159' u='r' c='luaS_remove'/>
+<use f='lua/src/lstring.c' l='173' u='r' c='internshrstr'/>
+<use f='lua/src/lstring.c' l='189' u='w' c='internshrstr'/>
+<offset>0</offset>
+<doc f='lua/src/lobject.h' l='310'>/* linked list for hash table */</doc>

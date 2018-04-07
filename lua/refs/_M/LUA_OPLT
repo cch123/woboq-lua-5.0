@@ -1,0 +1,4 @@
+<dec f='lua/src/lua.h' l='214'/>
+<use f='lua/src/lmathlib.c' l='221' u='c'/>
+<use f='lua/src/lmathlib.c' l='235' u='c'/>
+<use f='lua/src/ltablib.c' l='289' u='c'/>

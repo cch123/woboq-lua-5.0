@@ -1,0 +1,8 @@
+<dec f='lua/src/lobject.h' l='79' type='lu_byte'/>
+<offset>72</offset>
+<use f='lua/src/ltable.c' l='488' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='218' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='233' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='852' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='864' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='1280' macro='1' u='r'/>

@@ -1,0 +1,5 @@
+<dec f='lua/src/lauxlib.h' l='33' type='lua_CFunction'/>
+<use f='lua/src/lauxlib.c' l='940' u='r' c='luaL_setfuncs'/>
+<offset>64</offset>
+<use f='lua/src/linit.c' l='63' u='r' c='luaL_openlibs'/>
+<use f='lua/src/linit.c' l='64' u='r' c='luaL_openlibs'/>

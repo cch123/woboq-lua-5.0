@@ -1,0 +1,2 @@
+<dec f='include/x86_64-linux-gnu/bits/string2.h' l='1063'/>
+<use f='lua/src/lstrlib.c' l='583' u='c'/>

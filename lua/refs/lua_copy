@@ -1,0 +1,5 @@
+<dec f='lua/src/lua.h' l='163' type='void lua_copy(lua_State * L, int fromidx, int toidx)'/>
+<use f='lua/src/lauxlib.c' l='83' u='c' c='pushglobalfuncname'/>
+<use f='lua/src/lbaselib.c' l='329' macro='1' u='c'/>
+<use f='lua/src/liolib.c' l='356' macro='1' u='c'/>
+<use f='lua/src/liolib.c' l='363' macro='1' u='c'/>

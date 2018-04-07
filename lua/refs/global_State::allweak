@@ -1,0 +1,3 @@
+<dec f='lua/src/lstate.h' l='140' type='GCObject *'/>
+<offset>1152</offset>
+<doc f='lua/src/lstate.h' l='140'>/* list of all-weak tables */</doc>

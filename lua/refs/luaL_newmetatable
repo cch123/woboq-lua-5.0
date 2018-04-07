@@ -1,0 +1,4 @@
+<dec f='lua/src/lauxlib.h' l='62' type='int luaL_newmetatable(lua_State * L, const char * tname)'/>
+<def f='lua/src/lauxlib.c' l='299' ll='309' macro='1' type='int luaL_newmetatable(lua_State * L, const char * tname)'/>
+<use f='lua/src/lauxlib.c' l='486' u='c' c='newbox'/>
+<use f='lua/src/liolib.c' l='729' u='c' c='createmeta'/>

@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='146' type='int rl_re_read_init_file(int , int )'/>
+<doc f='include/readline/readline.h' l='145'>/* Bindable commands for managing key bindings. */</doc>

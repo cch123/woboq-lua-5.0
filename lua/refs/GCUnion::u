@@ -1,0 +1,13 @@
+<dec f='lua/src/lstate.h' l='196' type='struct Udata'/>
+<use f='lua/src/lstring.c' l='242' macro='1' u='a'/>
+<offset>0</offset>
+<use f='lua/src/ltm.c' l='77' macro='1' u='a'/>
+<use f='lua/src/ltm.c' l='93' macro='1' u='a'/>
+<use f='lua/src/lvm.c' l='428' macro='1' u='a'/>
+<use f='lua/src/lvm.c' l='428' macro='1' u='a'/>
+<use f='lua/src/lvm.c' l='430' macro='1' u='a'/>
+<use f='lua/src/lvm.c' l='430' macro='1' u='a'/>
+<use f='lua/src/lvm.c' l='430' macro='1' u='a'/>
+<use f='lua/src/lvm.c' l='432' macro='1' u='a'/>
+<use f='lua/src/lvm.c' l='432' macro='1' u='a'/>
+<use f='lua/src/lvm.c' l='432' macro='1' u='a'/>

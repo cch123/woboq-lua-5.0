@@ -1,0 +1,4 @@
+<dec f='lua/src/lua.h' l='449' type='int'/>
+<offset>384</offset>
+<doc f='lua/src/lua.h' l='449'>/* (S) */</doc>
+<use f='lua/src/ldblib.c' l='169' u='r' c='db_getinfo'/>

@@ -1,0 +1,7 @@
+<def f='lua/src/lobject.h' l='475' ll='481'/>
+<size>16</size>
+<doc f='lua/src/lobject.h' l='471'>/*
+** Tables
+*/</doc>
+<mbr r='TKey::nk' o='0' t='struct (anonymous struct at /vagrant/data/lua-5.3.4/src/lobject.h:476:3)'/>
+<mbr r='TKey::tvk' o='0' t='TValue'/>

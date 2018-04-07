@@ -1,0 +1,4 @@
+<dec f='include/readline/readline.h' l='746' type='int'/>
+<doc f='include/readline/readline.h' l='743'>/* Non-zero means that the results of the matches are to be treated
+   as filenames.  This is ALWAYS zero on entry, and can only be changed
+   within a completion entry finder function. */</doc>

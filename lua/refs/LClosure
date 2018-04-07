@@ -1,0 +1,9 @@
+<def f='lua/src/lobject.h' l='453' ll='457'/>
+<size>40</size>
+<mbr r='LClosure::next' o='0' t='GCObject *'/>
+<mbr r='LClosure::tt' o='64' t='lu_byte'/>
+<mbr r='LClosure::marked' o='72' t='lu_byte'/>
+<mbr r='LClosure::nupvalues' o='80' t='lu_byte'/>
+<mbr r='LClosure::gclist' o='128' t='GCObject *'/>
+<mbr r='LClosure::p' o='192' t='struct Proto *'/>
+<mbr r='LClosure::upvals' o='256' t='UpVal *[1]'/>

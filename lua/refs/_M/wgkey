@@ -1,0 +1,6 @@
+<dec f='lua/src/ltable.h' l='25'/>
+<use f='lua/src/ltable.c' l='324' u='c'/>
+<doc f='lua/src/ltable.h' l='21'>/*
+** writable version of &apos;gkey&apos;; allows updates to individual fields,
+** but not to the whole (which has incompatible type)
+*/</doc>

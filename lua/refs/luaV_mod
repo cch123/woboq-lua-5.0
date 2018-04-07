@@ -1,0 +1,8 @@
+<dec f='lua/src/lvm.h' l='109' type='lua_Integer luaV_mod(lua_State * L, lua_Integer x, lua_Integer y)'/>
+<def f='lua/src/lvm.c' l='572' ll='584' type='lua_Integer luaV_mod(lua_State * L, lua_Integer m, lua_Integer n)'/>
+<use f='lua/src/lvm.c' l='997' u='c' c='luaV_execute'/>
+<doc f='lua/src/lvm.c' l='567'>/*
+** Integer modulus; return &apos;m % n&apos;. (Assume that C &apos;%&apos; with
+** negative operands follows C99 behavior. See previous comment
+** about luaV_div.)
+*/</doc>

@@ -1,0 +1,5 @@
+<dec f='lua/src/luaconf.h' l='319'/>
+<doc f='lua/src/luaconf.h' l='316'>/*
+@@ LUA_COMPAT_IPAIRS controls the effectiveness of the __ipairs metamethod.
+*/</doc>
+<use f='lua/src/lbaselib.c' l='258' u='a'/>

@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='395' type='void rl_save_prompt()'/>
+<doc f='include/readline/readline.h' l='394'>/* Save and restore internal prompt redisplay information. */</doc>

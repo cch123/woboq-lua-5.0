@@ -1,0 +1,7 @@
+<dec f='lua/src/lgc.h' l='141' type='void luaC_barrierback_(lua_State * L, Table * o)'/>
+<use f='lua/src/ltable.c' l='488' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='218' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='233' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='852' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='864' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='1280' macro='1' u='c'/>

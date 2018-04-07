@@ -1,0 +1,4 @@
+<dec f='lua/src/lstate.h' l='220'/>
+<use f='lua/src/lstring.c' l='122' u='c'/>
+<doc f='lua/src/lstate.h' l='219'>/* macro to convert a Lua object into a GCObject */</doc>
+<use f='lua/src/ltm.c' l='50' u='c'/>

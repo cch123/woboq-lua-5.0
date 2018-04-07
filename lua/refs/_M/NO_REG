@@ -1,0 +1,4 @@
+<dec f='lua/src/lopcodes.h' l='153'/>
+<doc f='lua/src/lopcodes.h' l='150'>/*
+** invalid register that fits in 8 bits
+*/</doc>

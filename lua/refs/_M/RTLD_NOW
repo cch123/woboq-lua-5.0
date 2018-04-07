@@ -1,0 +1,2 @@
+<dec f='include/x86_64-linux-gnu/bits/dlfcn.h' l='25'/>
+<use f='lua/src/loadlib.c' l='127' u='c'/>

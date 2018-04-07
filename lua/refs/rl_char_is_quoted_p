@@ -1,0 +1,4 @@
+<dec f='include/readline/readline.h' l='769' type='rl_linebuf_func_t *'/>
+<doc f='include/readline/readline.h' l='766'>/* Function to call to decide whether or not a word break character is
+   quoted.  If a character is quoted, it does not break words for the
+   completer. */</doc>

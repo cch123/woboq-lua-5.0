@@ -1,0 +1,13 @@
+<dec f='include/readline/history.h' l='222' type='int history_expand(char * , char ** )'/>
+<doc f='include/readline/history.h' l='210'>/* Expand the string STRING, placing the result into OUTPUT, a pointer
+   to a string.  Returns:
+
+   0) If no expansions took place (or, if the only change in
+      the text was the de-slashifying of the history expansion
+      character)
+   1) If expansions did take place
+  -1) If there was an error in expansion.
+   2) If the returned line should just be printed.
+
+  If an error occurred in expansion, then OUTPUT contains a descriptive
+  error message. */</doc>

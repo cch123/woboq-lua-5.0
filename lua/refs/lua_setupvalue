@@ -1,0 +1,3 @@
+<dec f='lua/src/lua.h' l='429' type='const char * lua_setupvalue(lua_State * L, int funcindex, int n)'/>
+<use f='lua/src/lbaselib.c' l='274' u='c' c='load_aux'/>
+<use f='lua/src/ldblib.c' l='252' u='c' c='auxupvalue'/>

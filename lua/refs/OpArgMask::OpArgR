@@ -1,0 +1,2 @@
+<dec f='lua/src/lopcodes.h' l='277' type='2'/>
+<doc f='lua/src/lopcodes.h' l='277'>/* argument is a register or a jump offset */</doc>

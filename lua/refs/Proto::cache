@@ -1,0 +1,5 @@
+<dec f='lua/src/lobject.h' l='426' type='struct LClosure *'/>
+<offset>768</offset>
+<doc f='lua/src/lobject.h' l='426'>/* last-created closure with this prototype */</doc>
+<use f='lua/src/lvm.c' l='611' u='r' c='getcached'/>
+<use f='lua/src/lvm.c' l='649' u='w' c='pushclosure'/>

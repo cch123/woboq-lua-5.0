@@ -1,0 +1,6 @@
+<dec f='lua/src/lualib.h' l='21' type='int luaopen_coroutine(lua_State * L)'/>
+<def f='lua/src/lcorolib.c' l='164' ll='167' macro='1' type='int luaopen_coroutine(lua_State * L)'/>
+<use f='lua/src/linit.c' l='45' u='r'/>
+<use f='lua/src/linit.c' l='45' u='r'/>
+<use f='lua/src/linit.c' l='45' u='r'/>
+<use f='lua/src/linit.c' l='45' u='r'/>

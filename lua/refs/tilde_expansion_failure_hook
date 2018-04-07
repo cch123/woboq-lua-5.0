@@ -1,0 +1,5 @@
+<dec f='include/readline/tilde.h' l='54' type='tilde_hook_func_t *'/>
+<doc f='include/readline/tilde.h' l='50'>/* If non-null, this contains the address of a function to call if the
+   standard meaning for expanding a tilde fails.  The function is called
+   with the text (sans tilde, as in &quot;foo&quot;), and returns a malloc()&apos;ed string
+   which is the expansion, or a NULL pointer if there is no expansion. */</doc>

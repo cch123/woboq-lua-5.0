@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='542' type='int'/>
+<doc f='include/readline/readline.h' l='541'>/* The current value of the numeric argument specified by the user. */</doc>

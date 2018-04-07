@@ -1,0 +1,8 @@
+<dec f='lua/src/lobject.h' l='420' type='TValue *'/>
+<offset>384</offset>
+<doc f='lua/src/lobject.h' l='420'>/* constants used by the function */</doc>
+<use f='lua/src/luac.c' l='256' u='r' c='PrintConstant'/>
+<use f='lua/src/lundump.c' l='121' u='w' c='LoadConstants'/>
+<use f='lua/src/lundump.c' l='124' u='r' c='LoadConstants'/>
+<use f='lua/src/lundump.c' l='126' u='r' c='LoadConstants'/>
+<use f='lua/src/lvm.c' l='795' u='r' c='luaV_execute'/>

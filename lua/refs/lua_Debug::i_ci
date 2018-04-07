@@ -1,0 +1,4 @@
+<dec f='lua/src/lua.h' l='456' type='struct CallInfo *'/>
+<offset>960</offset>
+<doc f='lua/src/lua.h' l='455'>/* private part */</doc>
+<doc f='lua/src/lua.h' l='456'>/* active function */</doc>

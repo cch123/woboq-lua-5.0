@@ -1,0 +1,6 @@
+<dec f='lua/src/lua.h' l='251' type='int lua_getmetatable(lua_State * L, int objindex)'/>
+<use f='lua/src/lauxlib.c' l='321' u='c' c='luaL_testudata'/>
+<use f='lua/src/lauxlib.c' l='773' u='c' c='luaL_getmetafield'/>
+<use f='lua/src/lbaselib.c' l='116' u='c' c='luaB_getmetatable'/>
+<use f='lua/src/ldblib.c' l='49' u='c' c='db_getmetatable'/>
+<use f='lua/src/ltablib.c' l='49' u='c' c='checktab'/>

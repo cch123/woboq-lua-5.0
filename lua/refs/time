@@ -1,0 +1,3 @@
+<use f='lua/src/loslib.c' l='286' u='c' c='os_date'/>
+<use f='lua/src/loslib.c' l='327' u='c' c='os_time'/>
+<use f='lua/src/ltablib.c' l='260' u='c' c='l_randomizePivot'/>

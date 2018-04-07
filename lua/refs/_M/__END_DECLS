@@ -1,0 +1,14 @@
+<dec f='include/x86_64-linux-gnu/sys/cdefs.h' l='102'/>
+<use f='include/errno.h' l='58' u='c'/>
+<use f='include/stdio.h' l='942' u='c'/>
+<use f='include/x86_64-linux-gnu/sys/types.h' l='273' u='c'/>
+<use f='include/stdlib.h' l='967' u='c'/>
+<use f='include/string.h' l='658' u='c'/>
+<use f='include/signal.h' l='375' u='c'/>
+<use f='include/x86_64-linux-gnu/sys/wait.h' l='173' u='c'/>
+<use f='include/ctype.h' l='347' u='c'/>
+<use f='include/locale.h' l='205' u='c'/>
+<use f='include/math.h' l='534' u='c'/>
+<use f='include/dlfcn.h' l='188' u='c'/>
+<use f='include/unistd.h' l='1154' u='c'/>
+<use f='include/assert.h' l='85' u='c'/>

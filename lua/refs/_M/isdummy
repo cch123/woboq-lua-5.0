@@ -1,0 +1,6 @@
+<dec f='lua/src/ltable.h' l='31'/>
+<use f='lua/src/ltable.c' l='415' u='c'/>
+<use f='lua/src/ltable.c' l='423' u='c'/>
+<use f='lua/src/ltable.c' l='456' u='c'/>
+<use f='lua/src/ltable.c' l='654' u='c'/>
+<doc f='lua/src/ltable.h' l='30'>/* true when &apos;t&apos; is using &apos;dummynode&apos; as its hash part */</doc>

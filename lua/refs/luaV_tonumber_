@@ -1,0 +1,27 @@
+<dec f='lua/src/lvm.h' l='99' type='int luaV_tonumber_(const TValue * obj, lua_Number * n)'/>
+<use f='lua/src/ltm.c' l='145' macro='1' u='c'/>
+<use f='lua/src/ltm.c' l='145' macro='1' u='c'/>
+<def f='lua/src/lvm.c' l='72' ll='85' type='int luaV_tonumber_(const TValue * obj, lua_Number * n)'/>
+<use f='lua/src/lvm.c' l='140' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='897' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='897' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='911' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='911' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='925' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='925' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='935' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='935' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='999' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='999' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='1015' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='1015' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='1025' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='1025' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='1038' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='1229' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='1232' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='1235' macro='1' u='c'/>
+<doc f='lua/src/lvm.c' l='68'>/*
+** Try to convert a value to a float. The float case is already handled
+** by the macro &apos;tonumber&apos;.
+*/</doc>

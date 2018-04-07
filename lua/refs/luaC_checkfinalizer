@@ -1,0 +1,1 @@
+<dec f='lua/src/lgc.h' l='143' type='void luaC_checkfinalizer(lua_State * L, GCObject * o, Table * mt)'/>

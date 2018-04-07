@@ -1,0 +1,5 @@
+<dec f='lua/src/lua.h' l='234' type='void lua_pushlightuserdata(lua_State * L, void * p)'/>
+<use f='lua/src/ldblib.c' l='286' u='c' c='db_upvalueid'/>
+<use f='lua/src/loadlib.c' l='333' u='c' c='addtoclib'/>
+<use f='lua/src/lua.c' l='605' u='c' c='main'/>
+<use f='lua/src/luac.c' l='202' u='c' c='main'/>

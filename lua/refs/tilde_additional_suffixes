@@ -1,0 +1,4 @@
+<dec f='include/readline/tilde.h' l='64' type='char **'/>
+<doc f='include/readline/tilde.h' l='61'>/* When non-null, this is a NULL terminated array of strings which match
+   the end of a username, instead of just &quot;/&quot;.  Bash sets this to
+   `:&apos; and `=~&apos;. */</doc>

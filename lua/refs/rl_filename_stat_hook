@@ -1,0 +1,6 @@
+<dec f='include/readline/readline.h' l='718' type='rl_icppfunc_t *'/>
+<doc f='include/readline/readline.h' l='713'>/* If non-zero, this is the address of a function for the completer to call
+   before deciding which character to append to a completed name.  It should
+   modify the directory name passed as an argument if appropriate, and return
+   non-zero if it modifies the name.  This should not worry about dequoting
+   the filename; that has already happened by the time it gets here. */</doc>

@@ -1,0 +1,6 @@
+<dec f='lua/src/lua.h' l='355'/>
+<use f='lua/src/lauxlib.c' l='597' u='c'/>
+<use f='lua/src/lbaselib.c' l='322' u='c'/>
+<use f='lua/src/liolib.c' l='354' u='c'/>
+<use f='lua/src/loadlib.c' l='610' u='c'/>
+<use f='lua/src/ltablib.c' l='288' u='c'/>

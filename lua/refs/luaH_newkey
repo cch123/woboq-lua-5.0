@@ -1,0 +1,12 @@
+<dec f='lua/src/ltable.h' l='49' type='TValue * luaH_newkey(lua_State * L, Table * t, const TValue * key)'/>
+<def f='lua/src/ltable.c' l='442' ll='491' type='TValue * luaH_newkey(lua_State * L, Table * t, const TValue * key)'/>
+<use f='lua/src/ltable.c' l='595' u='c' c='luaH_set'/>
+<use f='lua/src/ltable.c' l='607' u='c' c='luaH_setint'/>
+<doc f='lua/src/ltable.c' l='435'>/*
+** inserts a new key into a hash table; first, check whether key&apos;s main
+** position is free. If not, check whether colliding node is in its main
+** position or not: if it is not, move colliding node to an empty place and
+** put new key in its main position; otherwise (colliding node is in its main
+** position), new key goes to an empty position.
+*/</doc>
+<use f='lua/src/lvm.c' l='214' u='c' c='luaV_finishset'/>

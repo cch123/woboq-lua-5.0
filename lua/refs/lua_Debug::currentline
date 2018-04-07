@@ -1,0 +1,10 @@
+<dec f='lua/src/lua.h' l='447' type='int'/>
+<use f='lua/src/lauxlib.c' l='143' u='r' c='luaL_traceback'/>
+<use f='lua/src/lauxlib.c' l='144' u='r' c='luaL_traceback'/>
+<use f='lua/src/lauxlib.c' l='209' u='r' c='luaL_where'/>
+<use f='lua/src/lauxlib.c' l='210' u='r' c='luaL_where'/>
+<offset>320</offset>
+<doc f='lua/src/lua.h' l='447'>/* (l) */</doc>
+<use f='lua/src/ldblib.c' l='173' u='r' c='db_getinfo'/>
+<use f='lua/src/ldblib.c' l='312' u='r' c='hookf'/>
+<use f='lua/src/ldblib.c' l='313' u='r' c='hookf'/>

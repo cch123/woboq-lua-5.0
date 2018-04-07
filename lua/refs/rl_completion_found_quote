@@ -1,0 +1,3 @@
+<dec f='include/readline/readline.h' l='802' type='int'/>
+<doc f='include/readline/readline.h' l='800'>/* Set to a non-zero value if readline found quoting anywhere in the word to
+   be completed; set before any application completion function is called. */</doc>

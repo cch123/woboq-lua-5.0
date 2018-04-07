@@ -1,0 +1,5 @@
+<dec f='lua/src/lstring.h' l='46' type='TString * luaS_createlngstrobj(lua_State * L, size_t l)'/>
+<def f='lua/src/lstring.c' l='147' ll='151' type='TString * luaS_createlngstrobj(lua_State * L, size_t l)'/>
+<use f='lua/src/lstring.c' l='206' u='c' c='luaS_newlstr'/>
+<use f='lua/src/lundump.c' l='100' u='c' c='LoadString'/>
+<use f='lua/src/lvm.c' l='503' u='c' c='luaV_concat'/>

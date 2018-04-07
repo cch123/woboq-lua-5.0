@@ -1,0 +1,1 @@
+<dec f='lua/src/lgc.h' l='140' type='void luaC_barrier_(lua_State * L, GCObject * o, GCObject * v)'/>

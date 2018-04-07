@@ -1,0 +1,6 @@
+<dec f='lua/src/lvm.h' l='97' type='int luaV_lessthan(lua_State * L, const TValue * l, const TValue * r)'/>
+<def f='lua/src/lvm.c' l='364' ll='373' type='int luaV_lessthan(lua_State * L, const TValue * l, const TValue * r)'/>
+<use f='lua/src/lvm.c' l='1097' u='c' c='luaV_execute'/>
+<doc f='lua/src/lvm.c' l='361'>/*
+** Main operation less than; return &apos;l &lt; r&apos;.
+*/</doc>

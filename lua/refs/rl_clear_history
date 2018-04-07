@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='446' type='void rl_clear_history()'/>
+<doc f='include/readline/readline.h' l='444'>/* History management functions. */</doc>

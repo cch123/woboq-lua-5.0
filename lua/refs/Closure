@@ -1,0 +1,4 @@
+<def f='lua/src/lobject.h' l='460' ll='463'/>
+<size>48</size>
+<mbr r='Closure::c' o='0' t='CClosure'/>
+<mbr r='Closure::l' o='0' t='LClosure'/>

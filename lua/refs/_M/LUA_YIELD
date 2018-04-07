@@ -1,0 +1,6 @@
+<dec f='lua/src/lua.h' l='48'/>
+<dec f='lua/src/lua.h' l='295'/>
+<use f='lua/src/lbaselib.c' l='409' u='c'/>
+<use f='lua/src/lcorolib.c' l='40' u='c'/>
+<use f='lua/src/lcorolib.c' l='116' u='c'/>
+<use f='lua/src/lcorolib.c' l='107' u='c'/>

@@ -1,0 +1,4 @@
+<dec f='include/readline/history.h' l='93' type='HIST_ENTRY * remove_history(int )'/>
+<doc f='include/readline/history.h' l='90'>/* A reasonably useless function, only here for completeness.  WHICH
+   is the magic number that tells us which element to delete.  The
+   elements are numbered from 0. */</doc>

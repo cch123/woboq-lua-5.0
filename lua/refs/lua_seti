@@ -1,0 +1,10 @@
+<dec f='lua/src/lua.h' l='261' type='void lua_seti(lua_State * L, int idx, lua_Integer n)'/>
+<use f='lua/src/ltablib.c' l='93' u='c' c='tinsert'/>
+<use f='lua/src/ltablib.c' l='101' u='c' c='tinsert'/>
+<use f='lua/src/ltablib.c' l='114' u='c' c='tremove'/>
+<use f='lua/src/ltablib.c' l='117' u='c' c='tremove'/>
+<use f='lua/src/ltablib.c' l='145' u='c' c='tmove'/>
+<use f='lua/src/ltablib.c' l='151' u='c' c='tmove'/>
+<use f='lua/src/ltablib.c' l='200' u='c' c='pack'/>
+<use f='lua/src/ltablib.c' l='278' u='c' c='set2'/>
+<use f='lua/src/ltablib.c' l='279' u='c' c='set2'/>

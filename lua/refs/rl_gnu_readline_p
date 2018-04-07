@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='490' type='int'/>
+<doc f='include/readline/readline.h' l='489'>/* True if this is real GNU readline. */</doc>

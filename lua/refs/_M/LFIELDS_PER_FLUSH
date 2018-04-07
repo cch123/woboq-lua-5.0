@@ -1,0 +1,3 @@
+<dec f='lua/src/lopcodes.h' l='294'/>
+<doc f='lua/src/lopcodes.h' l='293'>/* number of list items to accumulate before a SETLIST instruction */</doc>
+<use f='lua/src/lvm.c' l='1274' u='c'/>

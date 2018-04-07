@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>tilde.h source code [include/readline/tilde.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/readline/tilde.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>include</a>/<a href='./'>readline</a>/<a href='tilde.h.html'>tilde.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* tilde.h: Externally available variables and function in libtilde.a. */</i></td></tr>
+<tr><th id="2">2</th><td></td></tr>
+<tr><th id="3">3</th><td><i>/* Copyright (C) 1992-2009 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>   This file contains the Readline Library (Readline), a set of</i></td></tr>
+<tr><th id="6">6</th><td><i>   routines for providing Emacs style line input to programs that ask</i></td></tr>
+<tr><th id="7">7</th><td><i>   for it.</i></td></tr>
+<tr><th id="8">8</th><td><i></i></td></tr>
+<tr><th id="9">9</th><td><i>   Readline is free software: you can redistribute it and/or modify</i></td></tr>
+<tr><th id="10">10</th><td><i>   it under the terms of the GNU General Public License as published by</i></td></tr>
+<tr><th id="11">11</th><td><i>   the Free Software Foundation, either version 3 of the License, or</i></td></tr>
+<tr><th id="12">12</th><td><i>   (at your option) any later version.</i></td></tr>
+<tr><th id="13">13</th><td><i></i></td></tr>
+<tr><th id="14">14</th><td><i>   Readline is distributed in the hope that it will be useful,</i></td></tr>
+<tr><th id="15">15</th><td><i>   but WITHOUT ANY WARRANTY; without even the implied warranty of</i></td></tr>
+<tr><th id="16">16</th><td><i>   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</i></td></tr>
+<tr><th id="17">17</th><td><i>   GNU General Public License for more details.</i></td></tr>
+<tr><th id="18">18</th><td><i></i></td></tr>
+<tr><th id="19">19</th><td><i>   You should have received a copy of the GNU General Public License</i></td></tr>
+<tr><th id="20">20</th><td><i>   along with Readline.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</i></td></tr>
+<tr><th id="21">21</th><td><i>*/</i></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><u>#<span data-ppcond="23">if</span> !defined (<span class="macro" data-ref="_M/_TILDE_H_">_TILDE_H_</span>)</u></td></tr>
+<tr><th id="24">24</th><td><u>#  define <dfn class="macro" id="_M/_TILDE_H_" data-ref="_M/_TILDE_H_">_TILDE_H_</dfn></u></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><u>#<span data-ppcond="26">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="27">27</th><td><b>extern</b> <q>"C"</q> {</td></tr>
+<tr><th id="28">28</th><td><u>#<span data-ppcond="26">endif</span></u></td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td><i>/* A function can be defined using prototypes and compile on both ANSI C</i></td></tr>
+<tr><th id="31">31</th><td><i>   and traditional C compilers with something like this:</i></td></tr>
+<tr><th id="32">32</th><td><i>	extern char *func PARAMS((char *, char *, int)); */</i></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><u>#<span data-ppcond="34">if</span> !defined (<a class="macro" href="rlstdc.h.html#33" data-ref="_M/PARAMS">PARAMS</a>)</u></td></tr>
+<tr><th id="35">35</th><td><u>#  if defined (__STDC__) || defined (__GNUC__) || defined (__cplusplus)</u></td></tr>
+<tr><th id="36">36</th><td><u>#    define PARAMS(protos) protos</u></td></tr>
+<tr><th id="37">37</th><td><u>#  else</u></td></tr>
+<tr><th id="38">38</th><td><u>#    define PARAMS(protos) ()</u></td></tr>
+<tr><th id="39">39</th><td><u>#  endif</u></td></tr>
+<tr><th id="40">40</th><td><u>#<span data-ppcond="34">endif</span></u></td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><b>typedef</b> <em>char</em> *<dfn class="typedef" id="tilde_hook_func_t" title='tilde_hook_func_t' data-type='char *(char *)' data-ref="tilde_hook_func_t">tilde_hook_func_t</dfn> <a class="macro" href="rlstdc.h.html#33" title="(char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>char</em> *));</td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td><i>/* If non-null, this contains the address of a function that the application</i></td></tr>
+<tr><th id="45">45</th><td><i>   wants called before trying the standard tilde expansions.  The function</i></td></tr>
+<tr><th id="46">46</th><td><i>   is called with the text sans tilde, and returns a malloc()'ed string</i></td></tr>
+<tr><th id="47">47</th><td><i>   which is the expansion, or a NULL pointer if the expansion fails. */</i></td></tr>
+<tr><th id="48">48</th><td><b>extern</b> <a class="typedef" href="#tilde_hook_func_t" title='tilde_hook_func_t' data-type='char *(char *)' data-ref="tilde_hook_func_t">tilde_hook_func_t</a> *<dfn class="decl" id="tilde_expansion_preexpansion_hook" title='tilde_expansion_preexpansion_hook' data-ref="tilde_expansion_preexpansion_hook">tilde_expansion_preexpansion_hook</dfn>;</td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td><i>/* If non-null, this contains the address of a function to call if the</i></td></tr>
+<tr><th id="51">51</th><td><i>   standard meaning for expanding a tilde fails.  The function is called</i></td></tr>
+<tr><th id="52">52</th><td><i>   with the text (sans tilde, as in "foo"), and returns a malloc()'ed string</i></td></tr>
+<tr><th id="53">53</th><td><i>   which is the expansion, or a NULL pointer if there is no expansion. */</i></td></tr>
+<tr><th id="54">54</th><td><b>extern</b> <a class="typedef" href="#tilde_hook_func_t" title='tilde_hook_func_t' data-type='char *(char *)' data-ref="tilde_hook_func_t">tilde_hook_func_t</a> *<dfn class="decl" id="tilde_expansion_failure_hook" title='tilde_expansion_failure_hook' data-ref="tilde_expansion_failure_hook">tilde_expansion_failure_hook</dfn>;</td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td><i>/* When non-null, this is a NULL terminated array of strings which</i></td></tr>
+<tr><th id="57">57</th><td><i>   are duplicates for a tilde prefix.  Bash uses this to expand</i></td></tr>
+<tr><th id="58">58</th><td><i>   `=~' and `:~'. */</i></td></tr>
+<tr><th id="59">59</th><td><b>extern</b> <em>char</em> **<dfn class="decl" id="tilde_additional_prefixes" title='tilde_additional_prefixes' data-ref="tilde_additional_prefixes">tilde_additional_prefixes</dfn>;</td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td><i>/* When non-null, this is a NULL terminated array of strings which match</i></td></tr>
+<tr><th id="62">62</th><td><i>   the end of a username, instead of just "/".  Bash sets this to</i></td></tr>
+<tr><th id="63">63</th><td><i>   `:' and `=~'. */</i></td></tr>
+<tr><th id="64">64</th><td><b>extern</b> <em>char</em> **<dfn class="decl" id="tilde_additional_suffixes" title='tilde_additional_suffixes' data-ref="tilde_additional_suffixes">tilde_additional_suffixes</dfn>;</td></tr>
+<tr><th id="65">65</th><td></td></tr>
+<tr><th id="66">66</th><td><i>/* Return a new string which is the result of tilde expanding STRING. */</i></td></tr>
+<tr><th id="67">67</th><td><b>extern</b> <em>char</em> *<dfn class="decl fn" id="tilde_expand" title='tilde_expand' data-ref="tilde_expand">tilde_expand</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="68">68</th><td></td></tr>
+<tr><th id="69">69</th><td><i>/* Do the work of tilde expansion on FILENAME.  FILENAME starts with a</i></td></tr>
+<tr><th id="70">70</th><td><i>   tilde.  If there is no expansion, call tilde_expansion_failure_hook. */</i></td></tr>
+<tr><th id="71">71</th><td><b>extern</b> <em>char</em> *<dfn class="decl fn" id="tilde_expand_word" title='tilde_expand_word' data-ref="tilde_expand_word">tilde_expand_word</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td><i>/* Find the portion of the string beginning with ~ that should be expanded. */</i></td></tr>
+<tr><th id="74">74</th><td><b>extern</b> <em>char</em> *<dfn class="decl fn" id="tilde_find_word" title='tilde_find_word' data-ref="tilde_find_word">tilde_find_word</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, int, int *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <em>int</em>, <em>int</em> *));</td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td><u>#<span data-ppcond="76">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="77">77</th><td>}</td></tr>
+<tr><th id="78">78</th><td><u>#<span data-ppcond="76">endif</span></u></td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td><u>#<span data-ppcond="23">endif</span> /* _TILDE_H_ */</u></td></tr>
+<tr><th id="81">81</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../lua/src/lua.c.html'>lua/src/lua.c</a><br/>Generated on <em>2018-Apr-07</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

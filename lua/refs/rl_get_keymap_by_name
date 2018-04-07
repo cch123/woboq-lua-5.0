@@ -1,0 +1,4 @@
+<dec f='include/readline/keymaps.h' l='85' type='Keymap rl_get_keymap_by_name(const char * )'/>
+<dec f='include/readline/readline.h' l='348' type='Keymap rl_get_keymap_by_name(const char * )'/>
+<doc f='include/readline/keymaps.h' l='83'>/* Return the keymap corresponding to a given name.  Names look like
+   `emacs&apos; or `emacs-meta&apos; or `vi-insert&apos;.  */</doc>

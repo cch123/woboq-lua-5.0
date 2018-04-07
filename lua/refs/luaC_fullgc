@@ -1,0 +1,1 @@
+<dec f='lua/src/lgc.h' l='138' type='void luaC_fullgc(lua_State * L, int isemergency)'/>

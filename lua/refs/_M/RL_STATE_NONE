@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='845'/>
+<doc f='include/readline/readline.h' l='844'>/* Possible state values for rl_readline_state */</doc>

@@ -1,0 +1,18 @@
+<dec f='lua/src/lobject.h' l='478' type='int'/>
+<offset>96</offset>
+<doc f='lua/src/lobject.h' l='478'>/* for chaining (offset for next node) */</doc>
+<use f='lua/src/ltable.c' l='177' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='323' macro='1' u='w'/>
+<use f='lua/src/ltable.c' l='468' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='469' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='470' macro='1' u='w'/>
+<use f='lua/src/ltable.c' l='472' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='473' macro='1' u='w'/>
+<use f='lua/src/ltable.c' l='474' macro='1' u='w'/>
+<use f='lua/src/ltable.c' l='480' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='481' macro='1' u='w'/>
+<use f='lua/src/ltable.c' l='481' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='483' macro='1' u='w'/>
+<use f='lua/src/ltable.c' l='507' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='528' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='547' macro='1' u='r'/>

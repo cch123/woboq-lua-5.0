@@ -1,0 +1,2 @@
+<dec f='lua/src/lua.h' l='289' type='int lua_yieldk(lua_State * L, int nresults, lua_KContext ctx, lua_KFunction k)'/>
+<use f='lua/src/lcorolib.c' l='107' macro='1' u='c'/>

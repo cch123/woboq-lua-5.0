@@ -1,0 +1,5 @@
+<dec f='include/ctype.h' l='59' type='8'/>
+<use f='lua/src/lbaselib.c' l='54' macro='1' u='r'/>
+<use f='lua/src/lbaselib.c' l='62' macro='1' u='r'/>
+<doc f='include/ctype.h' l='59'>/* Alphanumeric.  */</doc>
+<use f='lua/src/lstrlib.c' l='293' macro='1' u='r'/>

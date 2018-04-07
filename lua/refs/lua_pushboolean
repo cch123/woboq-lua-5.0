@@ -1,0 +1,22 @@
+<dec f='lua/src/lua.h' l='233' type='void lua_pushboolean(lua_State * L, int b)'/>
+<use f='lua/src/lauxlib.c' l='237' u='c' c='luaL_fileresult'/>
+<use f='lua/src/lauxlib.c' l='281' u='c' c='luaL_execresult'/>
+<use f='lua/src/lbaselib.c' l='141' u='c' c='luaB_rawequal'/>
+<use f='lua/src/lbaselib.c' l='190' u='c' c='luaB_collectgarbage'/>
+<use f='lua/src/lbaselib.c' l='410' u='c' c='finishpcall'/>
+<use f='lua/src/lbaselib.c' l='422' u='c' c='luaB_pcall'/>
+<use f='lua/src/lbaselib.c' l='438' u='c' c='luaB_xpcall'/>
+<use f='lua/src/lbitlib.c' l='67' u='c' c='b_test'/>
+<use f='lua/src/lcorolib.c' l='62' u='c' c='luaB_coresume'/>
+<use f='lua/src/lcorolib.c' l='67' u='c' c='luaB_coresume'/>
+<use f='lua/src/lcorolib.c' l='139' u='c' c='luaB_yieldable'/>
+<use f='lua/src/lcorolib.c' l='146' u='c' c='luaB_corunning'/>
+<use f='lua/src/ldblib.c' l='118' u='c' c='settabsb'/>
+<use f='lua/src/liolib.c' l='338' u='c' c='aux_lines'/>
+<use f='lua/src/lmathlib.c' l='175' u='c' c='math_ult'/>
+<use f='lua/src/loadlib.c' l='380' u='c' c='lookforfunc'/>
+<use f='lua/src/loadlib.c' l='613' u='c' c='ll_require'/>
+<use f='lua/src/loslib.c' l='147' u='c' c='os_execute'/>
+<use f='lua/src/loslib.c' l='205' u='c' c='setboolfield'/>
+<use f='lua/src/lua.c' l='568' u='c' c='pmain'/>
+<use f='lua/src/lua.c' l='591' u='c' c='pmain'/>

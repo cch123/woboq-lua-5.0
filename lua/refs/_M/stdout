@@ -1,0 +1,6 @@
+<dec f='include/stdio.h' l='173'/>
+<use f='include/x86_64-linux-gnu/bits/stdio.h' l='38' u='c'/>
+<use f='include/x86_64-linux-gnu/bits/stdio.h' l='81' u='c'/>
+<use f='include/x86_64-linux-gnu/bits/stdio.h' l='107' u='c'/>
+<use f='lua/src/liolib.c' l='767' u='c'/>
+<use f='lua/src/luac.c' l='181' u='c'/>

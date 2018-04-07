@@ -1,0 +1,6 @@
+<dec f='lua/src/ltm.h' l='58' type='const char * luaT_objtypename(lua_State * L, const TValue * o)'/>
+<def f='lua/src/ltm.c' l='90' ll='99' type='const char * luaT_objtypename(lua_State * L, const TValue * o)'/>
+<doc f='lua/src/ltm.c' l='86'>/*
+** Return the name of the type of an object. For tables and userdata
+** with metatable, use their &apos;__name&apos; metafield, if present.
+*/</doc>

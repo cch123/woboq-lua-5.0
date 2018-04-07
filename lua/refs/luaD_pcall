@@ -1,0 +1,1 @@
+<dec f='lua/src/ldo.h' l='45' type='int luaD_pcall(lua_State * L, Pfunc func, void * u, ptrdiff_t oldtop, ptrdiff_t ef)'/>

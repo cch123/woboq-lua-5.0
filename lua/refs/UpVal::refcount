@@ -1,0 +1,4 @@
+<dec f='lua/src/lfunc.h' l='37' type='lu_mem'/>
+<offset>64</offset>
+<doc f='lua/src/lfunc.h' l='37'>/* reference counter */</doc>
+<use f='lua/src/lvm.c' l='645' u='w' c='pushclosure'/>

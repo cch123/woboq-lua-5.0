@@ -1,0 +1,9 @@
+<dec f='include/x86_64-linux-gnu/sys/cdefs.h' l='56'/>
+<use f='include/stdio.h' l='365' u='c'/>
+<use f='include/stdio.h' l='380' u='c'/>
+<use f='include/stdio.h' l='388' u='c'/>
+<use f='include/stdio.h' l='392' u='c'/>
+<use f='include/x86_64-linux-gnu/sys/wait.h' l='163' u='c'/>
+<use f='include/dlfcn.h' l='56' u='c'/>
+<use f='include/dlfcn.h' l='60' u='c'/>
+<use f='include/unistd.h' l='759' u='c'/>

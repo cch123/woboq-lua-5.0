@@ -1,0 +1,15 @@
+<dec f='include/string.h' l='42' type='void * memcpy(void *restrict __dest, const void *restrict __src, size_t __n)'/>
+<use f='lua/src/lauxlib.c' l='519' u='c' c='luaL_prepbuffsize'/>
+<use f='lua/src/lauxlib.c' l='531' u='c' c='luaL_addlstring'/>
+<doc f='include/string.h' l='41'>/* Copy N bytes of SRC to DEST.  */</doc>
+<use f='lua/src/loslib.c' l='268' u='c' c='checkoption'/>
+<use f='lua/src/lstring.c' l='187' u='c' c='internshrstr'/>
+<use f='lua/src/lstring.c' l='207' u='c' c='luaS_newlstr'/>
+<use f='lua/src/lstrlib.c' l='135' u='c' c='str_rep'/>
+<use f='lua/src/lstrlib.c' l='137' u='c' c='str_rep'/>
+<use f='lua/src/lstrlib.c' l='141' u='c' c='str_rep'/>
+<use f='lua/src/lstrlib.c' l='996' u='c' c='scanformat'/>
+<use f='lua/src/ltablib.c' l='263' u='c' c='l_randomizePivot'/>
+<use f='lua/src/ltablib.c' l='264' u='c' c='l_randomizePivot'/>
+<use f='lua/src/lvm.c' l='464' u='c' c='copy2buff'/>
+<use f='lua/src/lzio.c' l='60' u='c' c='luaZ_read'/>

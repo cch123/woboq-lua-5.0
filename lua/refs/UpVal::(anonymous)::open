@@ -1,0 +1,3 @@
+<dec f='lua/src/lfunc.h' l='42' type='struct (anonymous struct at /vagrant/data/lua-5.3.4/src/lfunc.h:39:5)'/>
+<offset>0</offset>
+<doc f='lua/src/lfunc.h' l='39'>/* (when open) */</doc>

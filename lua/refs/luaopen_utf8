@@ -1,0 +1,6 @@
+<dec f='lua/src/lualib.h' l='36' type='int luaopen_utf8(lua_State * L)'/>
+<use f='lua/src/linit.c' l='51' u='r'/>
+<use f='lua/src/linit.c' l='51' u='r'/>
+<use f='lua/src/linit.c' l='51' u='r'/>
+<use f='lua/src/linit.c' l='51' u='r'/>
+<def f='lua/src/lutf8lib.c' l='250' ll='255' macro='1' type='int luaopen_utf8(lua_State * L)'/>

@@ -1,0 +1,2 @@
+<dec f='include/x86_64-linux-gnu/bits/huge_val.h' l='27'/>
+<use f='lua/src/lmathlib.c' l='402' u='c'/>

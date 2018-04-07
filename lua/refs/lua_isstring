@@ -1,0 +1,6 @@
+<dec f='lua/src/lua.h' l='174' type='int lua_isstring(lua_State * L, int idx)'/>
+<use f='lua/src/lauxlib.c' l='812' u='c' c='luaL_tolstring'/>
+<use f='lua/src/lbaselib.c' l='327' u='c' c='generic_reader'/>
+<use f='lua/src/loadlib.c' l='587' u='c' c='findloader'/>
+<use f='lua/src/lstrlib.c' l='756' u='c' c='add_value'/>
+<use f='lua/src/ltablib.c' l='162' u='c' c='addfield'/>

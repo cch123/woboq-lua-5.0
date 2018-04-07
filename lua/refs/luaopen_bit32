@@ -1,0 +1,6 @@
+<dec f='lua/src/lualib.h' l='39' type='int luaopen_bit32(lua_State * L)'/>
+<def f='lua/src/lbitlib.c' l='220' ll='223' macro='1' type='int luaopen_bit32(lua_State * L)'/>
+<use f='lua/src/linit.c' l='54' u='r'/>
+<use f='lua/src/linit.c' l='54' u='r'/>
+<use f='lua/src/linit.c' l='54' u='r'/>
+<use f='lua/src/linit.c' l='54' u='r'/>

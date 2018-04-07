@@ -1,0 +1,3 @@
+<dec f='lua/src/lopcodes.h' l='173' type='2'/>
+<doc f='lua/src/lopcodes.h' l='173'>/*	A 	R(A) := Kst(extra arg)				*/</doc>
+<use f='lua/src/lvm.c' l='812' c='luaV_execute'/>

@@ -1,0 +1,1 @@
+<dec f='lua/src/lfunc.h' l='57' type='const char * luaF_getlocalname(const Proto * func, int local_number, int pc)'/>

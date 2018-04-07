@@ -1,0 +1,4 @@
+<dec f='include/readline/readline.h' l='670' type='rl_cpvfunc_t *'/>
+<doc f='include/readline/readline.h' l='667'>/* Hook function to allow an application to set the completion word
+   break characters before readline breaks up the line.  Allows
+   position-dependent word break characters. */</doc>

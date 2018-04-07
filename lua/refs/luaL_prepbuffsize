@@ -1,0 +1,28 @@
+<dec f='lua/src/lauxlib.h' l='164' type='char * luaL_prepbuffsize(luaL_Buffer * B, size_t sz)'/>
+<def f='lua/src/lauxlib.c' l='505' ll='525' macro='1' type='char * luaL_prepbuffsize(luaL_Buffer * B, size_t sz)'/>
+<use f='lua/src/lauxlib.c' l='530' u='c' c='luaL_addlstring'/>
+<use f='lua/src/lauxlib.c' l='579' u='c' c='luaL_buffinitsize'/>
+<use f='lua/src/liolib.c' l='482' macro='1' u='c'/>
+<use f='lua/src/liolib.c' l='491' macro='1' u='c'/>
+<use f='lua/src/liolib.c' l='503' macro='1' u='c'/>
+<use f='lua/src/liolib.c' l='516' u='c' c='read_chars'/>
+<use f='lua/src/loslib.c' l='308' macro='1' u='c'/>
+<use f='lua/src/loslib.c' l='311' u='c' c='os_date'/>
+<use f='lua/src/lstrlib.c' l='710' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='716' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='790' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='909' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='912' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='913' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='924' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='927' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='952' u='c' c='addliteral'/>
+<use f='lua/src/lstrlib.c' l='1026' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='1028' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='1031' u='c' c='str_format'/>
+<use f='lua/src/lstrlib.c' l='1297' u='c' c='packint'/>
+<use f='lua/src/lstrlib.c' l='1344' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='1366' u='c' c='str_pack'/>
+<use f='lua/src/lstrlib.c' l='1383' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='1402' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='1406' macro='1' u='c'/>

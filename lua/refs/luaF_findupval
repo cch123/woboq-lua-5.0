@@ -1,0 +1,2 @@
+<dec f='lua/src/lfunc.h' l='54' type='UpVal * luaF_findupval(lua_State * L, StkId level)'/>
+<use f='lua/src/lvm.c' l='642' u='c' c='pushclosure'/>

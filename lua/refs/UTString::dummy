@@ -1,0 +1,3 @@
+<dec f='lua/src/lobject.h' l='319' type='L_Umaxalign'/>
+<offset>0</offset>
+<doc f='lua/src/lobject.h' l='319'>/* ensures maximum alignment for strings */</doc>

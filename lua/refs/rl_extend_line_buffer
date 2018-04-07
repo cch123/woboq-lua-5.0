@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='428' type='void rl_extend_line_buffer(int )'/>
+<doc f='include/readline/readline.h' l='427'>/* `Public&apos; utility functions . */</doc>

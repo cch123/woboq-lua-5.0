@@ -1,0 +1,5 @@
+<dec f='lua/src/lua.h' l='218' type='int lua_compare(lua_State * L, int idx1, int idx2, int op)'/>
+<use f='lua/src/lmathlib.c' l='221' u='c' c='math_min'/>
+<use f='lua/src/lmathlib.c' l='235' u='c' c='math_max'/>
+<use f='lua/src/ltablib.c' l='142' u='c' c='tmove'/>
+<use f='lua/src/ltablib.c' l='289' u='c' c='sort_comp'/>

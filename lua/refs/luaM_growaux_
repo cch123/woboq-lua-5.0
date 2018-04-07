@@ -1,0 +1,1 @@
+<dec f='lua/src/lmem.h' l='64' type='void * luaM_growaux_(lua_State * L, void * block, int * size, size_t size_elem, int limit, const char * what)'/>

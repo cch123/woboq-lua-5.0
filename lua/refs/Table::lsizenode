@@ -1,0 +1,20 @@
+<dec f='lua/src/lobject.h' l='500' type='lu_byte'/>
+<offset>88</offset>
+<doc f='lua/src/lobject.h' l='500'>/* log2 of size of &apos;node&apos; array */</doc>
+<use f='lua/src/ltable.c' l='120' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='122' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='124' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='126' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='128' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='130' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='132' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='135' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='195' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='286' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='311' u='w' c='setnodevector'/>
+<use f='lua/src/ltable.c' l='327' u='w' c='setnodevector'/>
+<use f='lua/src/ltable.c' l='338' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='369' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='416' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='502' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='521' macro='1' u='r'/>

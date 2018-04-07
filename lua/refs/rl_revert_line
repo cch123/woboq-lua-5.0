@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='192' type='int rl_revert_line(int , int )'/>
+<doc f='include/readline/readline.h' l='191'>/* Bindable undo commands. */</doc>

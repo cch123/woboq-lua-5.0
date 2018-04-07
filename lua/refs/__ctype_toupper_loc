@@ -1,0 +1,6 @@
+<dec f='include/ctype.h' l='83' type='const __int32_t ** __ctype_toupper_loc()'/>
+<use f='include/ctype.h' l='223' u='c' c='toupper'/>
+<use f='lua/src/lbaselib.c' l='58' macro='1' u='c'/>
+<use f='lua/src/lbaselib.c' l='58' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='116' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='116' macro='1' u='c'/>

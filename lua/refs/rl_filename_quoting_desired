@@ -1,0 +1,6 @@
+<dec f='include/readline/readline.h' l='753' type='int'/>
+<doc f='include/readline/readline.h' l='748'>/* Non-zero means that the results of the matches are to be quoted using
+   double quotes (or an application-specific quoting mechanism) if the
+   filename contains any characters in rl_word_break_chars.  This is
+   ALWAYS non-zero on entry, and can only be changed within a completion
+   entry finder function. */</doc>

@@ -1,0 +1,6 @@
+<dec f='include/stdio.h' l='283' type='FILE * fopen(const char *restrict __filename, const char *restrict __modes)'/>
+<use f='lua/src/lauxlib.c' l='715' u='c' c='luaL_loadfilex'/>
+<use f='lua/src/liolib.c' l='245' u='c' c='opencheck'/>
+<use f='lua/src/liolib.c' l='257' u='c' c='io_open'/>
+<use f='lua/src/loadlib.c' l='417' u='c' c='readable'/>
+<use f='lua/src/luac.c' l='181' u='c' c='pmain'/>

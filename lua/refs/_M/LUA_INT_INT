@@ -1,0 +1,3 @@
+<dec f='lua/src/luaconf.h' l='109'/>
+<use f='lua/src/luaconf.h' l='542' u='c'/>
+<doc f='lua/src/luaconf.h' l='108'>/* predefined options for LUA_INT_TYPE */</doc>

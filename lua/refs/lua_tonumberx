@@ -1,0 +1,5 @@
+<dec f='lua/src/lua.h' l='181' type='lua_Number lua_tonumberx(lua_State * L, int idx, int * isnum)'/>
+<use f='lua/src/lauxlib.c' l='410' u='c' c='luaL_checknumber'/>
+<use f='lua/src/lauxlib.c' l='821' macro='1' u='c'/>
+<use f='lua/src/liolib.c' l='625' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='955' macro='1' u='c'/>

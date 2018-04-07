@@ -1,0 +1,20 @@
+<dec f='lua/src/lobject.h' l='505' type='struct Table *'/>
+<offset>320</offset>
+<use f='lua/src/ltable.c' l='405' u='w' c='luaH_new'/>
+<use f='lua/src/ltm.c' l='74' u='r' c='luaT_gettmbyobj'/>
+<use f='lua/src/ltm.c' l='92' u='r' c='luaT_objtypename'/>
+<use f='lua/src/lvm.c' l='174' u='r' c='luaV_finishget'/>
+<use f='lua/src/lvm.c' l='174' u='r' c='luaV_finishget'/>
+<use f='lua/src/lvm.c' l='174' u='r' c='luaV_finishget'/>
+<use f='lua/src/lvm.c' l='211' u='r' c='luaV_finishset'/>
+<use f='lua/src/lvm.c' l='211' u='r' c='luaV_finishset'/>
+<use f='lua/src/lvm.c' l='211' u='r' c='luaV_finishset'/>
+<use f='lua/src/lvm.c' l='438' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='438' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='438' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='440' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='440' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='440' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='522' u='r' c='luaV_objlen'/>
+<use f='lua/src/lvm.c' l='522' u='r' c='luaV_objlen'/>
+<use f='lua/src/lvm.c' l='522' u='r' c='luaV_objlen'/>

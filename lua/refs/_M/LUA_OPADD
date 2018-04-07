@@ -1,0 +1,4 @@
+<dec f='lua/src/lua.h' l='196'/>
+<doc f='lua/src/lua.h' l='192'>/*
+** Comparison and arithmetic functions
+*/</doc>

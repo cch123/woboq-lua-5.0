@@ -1,0 +1,9 @@
+<def f='lua/src/lobject.h' l='397' ll='401'/>
+<size>16</size>
+<doc f='lua/src/lobject.h' l='393'>/*
+** Description of a local variable for function prototypes
+** (used for debug information)
+*/</doc>
+<mbr r='LocVar::varname' o='0' t='TString *'/>
+<mbr r='LocVar::startpc' o='64' t='int'/>
+<mbr r='LocVar::endpc' o='96' t='int'/>

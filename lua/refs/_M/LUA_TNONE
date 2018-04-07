@@ -1,0 +1,6 @@
+<dec f='lua/src/lua.h' l='62'/>
+<use f='lua/src/lauxlib.c' l='385' u='c'/>
+<doc f='lua/src/lua.h' l='59'>/*
+** basic types
+*/</doc>
+<use f='lua/src/lbaselib.c' l='203' u='c'/>

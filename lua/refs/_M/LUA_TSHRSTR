@@ -1,0 +1,10 @@
+<dec f='lua/src/lobject.h' l='53'/>
+<use f='lua/src/lstring.c' l='186' u='c'/>
+<doc f='lua/src/lobject.h' l='52'>/* Variant tags for strings */</doc>
+<use f='lua/src/ltable.c' l='123' u='c'/>
+<use f='lua/src/ltable.c' l='557' u='c'/>
+<use f='lua/src/ltable.c' l='572' u='c'/>
+<use f='lua/src/luac.c' l='276' u='c'/>
+<use f='lua/src/lundump.c' l='141' u='c'/>
+<use f='lua/src/lvm.c' l='425' u='c'/>
+<use f='lua/src/lvm.c' l='527' u='c'/>

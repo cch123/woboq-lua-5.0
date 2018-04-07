@@ -1,0 +1,5 @@
+<dec f='lua/src/lobject.h' l='336'/>
+<doc f='lua/src/lobject.h' l='335'>/* get string length from &apos;TString *s&apos; */</doc>
+<use f='lua/src/luac.c' l='229' u='c'/>
+<use f='lua/src/lvm.c' l='250' u='c'/>
+<use f='lua/src/lvm.c' l='252' u='c'/>

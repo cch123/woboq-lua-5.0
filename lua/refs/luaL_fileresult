@@ -1,0 +1,15 @@
+<dec f='lua/src/lauxlib.h' l='73' type='int luaL_fileresult(lua_State * L, int stat, const char * fname)'/>
+<def f='lua/src/lauxlib.c' l='234' ll='249' macro='1' type='int luaL_fileresult(lua_State * L, int stat, const char * fname)'/>
+<use f='lua/src/lauxlib.c' l='277' u='c' c='luaL_execresult'/>
+<use f='lua/src/liolib.c' l='231' u='c' c='io_fclose'/>
+<use f='lua/src/liolib.c' l='258' u='c' c='io_open'/>
+<use f='lua/src/liolib.c' l='277' u='c' c='io_popen'/>
+<use f='lua/src/liolib.c' l='284' u='c' c='io_tmpfile'/>
+<use f='lua/src/liolib.c' l='565' u='c' c='g_read'/>
+<use f='lua/src/liolib.c' l='635' u='c' c='g_write'/>
+<use f='lua/src/liolib.c' l='662' u='c' c='f_seek'/>
+<use f='lua/src/liolib.c' l='677' u='c' c='f_setvbuf'/>
+<use f='lua/src/liolib.c' l='683' u='c' c='io_flush'/>
+<use f='lua/src/liolib.c' l='688' u='c' c='f_flush'/>
+<use f='lua/src/loslib.c' l='155' u='c' c='os_remove'/>
+<use f='lua/src/loslib.c' l='162' u='c' c='os_rename'/>

@@ -1,0 +1,7 @@
+<def f='lua/src/lobject.h' l='318' ll='321'/>
+<size>24</size>
+<doc f='lua/src/lobject.h' l='315'>/*
+** Ensures that address after this type is always fully aligned.
+*/</doc>
+<mbr r='UTString::dummy' o='0' t='L_Umaxalign'/>
+<mbr r='UTString::tsv' o='0' t='TString'/>

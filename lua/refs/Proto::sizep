@@ -1,0 +1,9 @@
+<dec f='lua/src/lobject.h' l='416' type='int'/>
+<offset>256</offset>
+<doc f='lua/src/lobject.h' l='416'>/* size of &apos;p&apos; */</doc>
+<use f='lua/src/luac.c' l='412' u='r' c='PrintHeader'/>
+<use f='lua/src/luac.c' l='412' u='r' c='PrintHeader'/>
+<use f='lua/src/luac.c' l='444' u='r' c='PrintFunction'/>
+<use f='lua/src/lundump.c' l='156' u='w' c='LoadProtos'/>
+<use f='lua/src/lvm.c' l='1162' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1178' u='r' c='luaV_execute'/>

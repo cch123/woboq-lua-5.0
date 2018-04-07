@@ -1,0 +1,16 @@
+<dec f='lua/src/lauxlib.h' l='195' type='lua_CFunction'/>
+<offset>64</offset>
+<doc f='lua/src/lauxlib.h' l='195'>/* to close stream (NULL for closed streams) */</doc>
+<use f='lua/src/liolib.c' l='147' u='r' c='io_type'/>
+<use f='lua/src/liolib.c' l='147' u='r' c='f_tostring'/>
+<use f='lua/src/liolib.c' l='147' u='r' c='tofile'/>
+<use f='lua/src/liolib.c' l='190' u='w' c='newprefile'/>
+<use f='lua/src/liolib.c' l='203' u='r' c='aux_close'/>
+<use f='lua/src/liolib.c' l='204' u='w' c='aux_close'/>
+<use f='lua/src/liolib.c' l='147' u='r' c='f_gc'/>
+<use f='lua/src/liolib.c' l='238' u='w' c='newfile'/>
+<use f='lua/src/liolib.c' l='276' u='w' c='io_popen'/>
+<use f='lua/src/liolib.c' l='147' u='r' c='getiofile'/>
+<use f='lua/src/liolib.c' l='147' u='r' c='io_readline'/>
+<use f='lua/src/liolib.c' l='742' u='w' c='io_noclose'/>
+<use f='lua/src/liolib.c' l='753' u='w' c='createstdfile'/>

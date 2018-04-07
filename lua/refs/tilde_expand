@@ -1,0 +1,2 @@
+<dec f='include/readline/tilde.h' l='67' type='char * tilde_expand(const char * )'/>
+<doc f='include/readline/tilde.h' l='66'>/* Return a new string which is the result of tilde expanding STRING. */</doc>

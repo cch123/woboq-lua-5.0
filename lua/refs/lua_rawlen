@@ -1,0 +1,4 @@
+<dec f='lua/src/lua.h' l='185' type='size_t lua_rawlen(lua_State * L, int idx)'/>
+<use f='lua/src/lauxlib.c' l='610' u='c' c='luaL_ref'/>
+<use f='lua/src/lbaselib.c' l='150' u='c' c='luaB_rawlen'/>
+<use f='lua/src/liolib.c' l='494' u='c' c='read_line'/>

@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='367' type='void rl_add_undo(enum undo_code , int , int , char * )'/>
+<doc f='include/readline/readline.h' l='366'>/* Functions for undoing, from undo.c */</doc>

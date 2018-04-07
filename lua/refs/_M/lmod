@@ -1,0 +1,8 @@
+<dec f='lua/src/lobject.h' l='514'/>
+<use f='lua/src/lstring.c' l='84' u='c'/>
+<use f='lua/src/lstring.c' l='156' u='c'/>
+<use f='lua/src/lstring.c' l='171' u='c'/>
+<use f='lua/src/lstring.c' l='184' u='c'/>
+<doc f='lua/src/lobject.h' l='511'>/*
+** &apos;module&apos; operation for hashing (size is always a power of 2)
+*/</doc>

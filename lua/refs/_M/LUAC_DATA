@@ -1,0 +1,4 @@
+<dec f='lua/src/lundump.h' l='16'/>
+<doc f='lua/src/lundump.h' l='15'>/* data to catch conversion errors */</doc>
+<use f='lua/src/lundump.c' l='220' u='c'/>
+<use f='lua/src/lundump.c' l='242' u='c'/>

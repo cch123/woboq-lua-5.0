@@ -1,0 +1,2 @@
+<use f='lua/src/loslib.c' l='219' u='r' c='setallfields'/>
+<use f='lua/src/loslib.c' l='337' u='w' c='os_time'/>

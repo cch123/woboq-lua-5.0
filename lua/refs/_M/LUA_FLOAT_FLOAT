@@ -1,0 +1,3 @@
+<dec f='lua/src/luaconf.h' l='114'/>
+<use f='lua/src/luaconf.h' l='455' u='c'/>
+<doc f='lua/src/luaconf.h' l='113'>/* predefined options for LUA_FLOAT_TYPE */</doc>

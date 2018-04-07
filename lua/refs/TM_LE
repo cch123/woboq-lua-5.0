@@ -1,0 +1,2 @@
+<dec f='lua/src/ltm.h' l='40' type='21'/>
+<use f='lua/src/lvm.c' l='390' u='r' c='luaV_lessequal'/>

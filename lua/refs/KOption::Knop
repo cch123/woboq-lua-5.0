@@ -1,0 +1,5 @@
+<dec f='lua/src/lstrlib.c' l='1172' type='8'/>
+<use f='lua/src/lstrlib.c' l='1255' u='r' c='getoption'/>
+<use f='lua/src/lstrlib.c' l='1407' c='str_pack'/>
+<use f='lua/src/lstrlib.c' l='1529' c='str_unpack'/>
+<doc f='lua/src/lstrlib.c' l='1172'>/* no-op (configuration or spaces) */</doc>

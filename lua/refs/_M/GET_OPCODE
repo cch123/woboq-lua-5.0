@@ -1,0 +1,7 @@
+<dec f='lua/src/lopcodes.h' l='89'/>
+<use f='lua/src/luac.c' l='295' u='c'/>
+<doc f='lua/src/lopcodes.h' l='85'>/*
+** the following macros help to manipulate instructions
+*/</doc>
+<use f='lua/src/lvm.c' l='660' u='c'/>
+<use f='lua/src/lvm.c' l='802' u='c'/>

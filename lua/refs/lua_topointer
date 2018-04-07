@@ -1,0 +1,2 @@
+<dec f='lua/src/lua.h' l='189' type='const void * lua_topointer(lua_State * L, int idx)'/>
+<use f='lua/src/lauxlib.c' l='837' u='c' c='luaL_tolstring'/>

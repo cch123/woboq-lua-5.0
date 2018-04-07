@@ -1,0 +1,12 @@
+<dec f='lua/src/lstate.h' l='166' type='CallInfo *'/>
+<offset>256</offset>
+<doc f='lua/src/lstate.h' l='166'>/* call info for current function */</doc>
+<use f='lua/src/ltm.c' l='113' u='r' c='luaT_callTM'/>
+<use f='lua/src/lvm.c' l='393' u='r' c='luaV_lessequal'/>
+<use f='lua/src/lvm.c' l='395' u='r' c='luaV_lessequal'/>
+<use f='lua/src/lvm.c' l='657' u='r' c='luaV_finishOp'/>
+<use f='lua/src/lvm.c' l='787' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1140' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1154' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1170' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1183' u='r' c='luaV_execute'/>

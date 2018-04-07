@@ -1,0 +1,5 @@
+<dec f='lua/src/ltm.h' l='20' type='1'/>
+<use f='lua/src/lvm.c' l='211' u='r' c='luaV_finishset'/>
+<use f='lua/src/lvm.c' l='211' u='r' c='luaV_finishset'/>
+<use f='lua/src/lvm.c' l='211' u='r' c='luaV_finishset'/>
+<use f='lua/src/lvm.c' l='224' u='r' c='luaV_finishset'/>

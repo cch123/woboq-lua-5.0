@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='434' type='int rl_set_signals()'/>
+<doc f='include/readline/readline.h' l='433'>/* Readline signal handling, from signals.c */</doc>

@@ -1,0 +1,4 @@
+<dec f='lua/src/lobject.h' l='410' type='lu_byte'/>
+<offset>88</offset>
+<use f='lua/src/luac.c' l='409' u='r' c='PrintHeader'/>
+<use f='lua/src/lundump.c' l='209' u='w' c='LoadFunction'/>

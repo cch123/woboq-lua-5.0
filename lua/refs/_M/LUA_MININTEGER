@@ -1,0 +1,8 @@
+<dec f='lua/src/luaconf.h' l='568'/>
+<use f='lua/src/lmathlib.c' l='406' u='c'/>
+<use f='lua/src/lstrlib.c' l='961' u='c'/>
+<use f='lua/src/lvm.c' l='147' u='c'/>
+<use f='lua/src/lvm.c' l='284' u='c'/>
+<use f='lua/src/lvm.c' l='286' u='c'/>
+<use f='lua/src/lvm.c' l='303' u='c'/>
+<use f='lua/src/lvm.c' l='305' u='c'/>

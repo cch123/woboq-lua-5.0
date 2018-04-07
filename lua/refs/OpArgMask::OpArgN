@@ -1,0 +1,4 @@
+<dec f='lua/src/lopcodes.h' l='275' type='0'/>
+<use f='lua/src/luac.c' l='310' u='r' c='PrintCode'/>
+<use f='lua/src/luac.c' l='311' u='r' c='PrintCode'/>
+<doc f='lua/src/lopcodes.h' l='275'>/* argument is not used */</doc>

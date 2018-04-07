@@ -1,0 +1,5 @@
+<dec f='lua/src/luaconf.h' l='526'/>
+<doc f='lua/src/luaconf.h' l='524'>/* The following definitions are good for most cases here */</doc>
+<use f='lua/src/liolib.c' l='622' u='c'/>
+<use f='lua/src/lstrlib.c' l='963' u='c'/>
+<use f='lua/src/luac.c' l='274' u='c'/>

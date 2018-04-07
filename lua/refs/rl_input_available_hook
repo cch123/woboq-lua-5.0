@@ -1,0 +1,3 @@
+<dec f='include/readline/readline.h' l='577' type='rl_hook_func_t *'/>
+<doc f='include/readline/readline.h' l='575'>/* The address of a function to call if Readline needs to know whether or not
+   there is data available from the current input source. */</doc>

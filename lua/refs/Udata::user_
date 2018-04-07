@@ -1,0 +1,4 @@
+<dec f='lua/src/lobject.h' l='351' type='union Value'/>
+<use f='lua/src/lstring.c' l='245' macro='1' u='w'/>
+<offset>256</offset>
+<doc f='lua/src/lobject.h' l='351'>/* user value */</doc>

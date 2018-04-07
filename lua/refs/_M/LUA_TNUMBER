@@ -1,0 +1,11 @@
+<dec f='lua/src/lua.h' l='67'/>
+<use f='lua/src/lauxlib.c' l='412' u='c'/>
+<use f='lua/src/lauxlib.c' l='426' u='c'/>
+<use f='lua/src/lauxlib.c' l='817' u='c'/>
+<use f='lua/src/lbaselib.c' l='72' u='c'/>
+<use f='lua/src/liolib.c' l='537' u='c'/>
+<use f='lua/src/liolib.c' l='619' u='c'/>
+<use f='lua/src/lmathlib.c' l='285' u='c'/>
+<use f='lua/src/lstrlib.c' l='773' u='c'/>
+<use f='lua/src/lstrlib.c' l='951' u='c'/>
+<use f='lua/src/lvm.c' l='410' u='c'/>

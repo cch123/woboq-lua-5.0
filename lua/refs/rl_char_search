@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='125' type='int rl_char_search(int , int )'/>
+<doc f='include/readline/readline.h' l='124'>/* Bindable commands for searching within a line. */</doc>

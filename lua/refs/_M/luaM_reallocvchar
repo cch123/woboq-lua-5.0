@@ -1,0 +1,4 @@
+<dec f='lua/src/lmem.h' l='38'/>
+<doc f='lua/src/lmem.h' l='35'>/*
+** Arrays of chars do not need any test
+*/</doc>

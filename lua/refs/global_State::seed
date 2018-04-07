@@ -1,0 +1,5 @@
+<dec f='lua/src/lstate.h' l='128' type='unsigned int'/>
+<use f='lua/src/lstring.c' l='148' u='r' c='luaS_createlngstrobj'/>
+<use f='lua/src/lstring.c' l='170' u='r' c='internshrstr'/>
+<offset>640</offset>
+<doc f='lua/src/lstate.h' l='128'>/* randomized seed for hashes */</doc>

@@ -1,0 +1,19 @@
+<dec f='include/stdio.h' l='169' type='struct _IO_FILE *'/>
+<use f='include/x86_64-linux-gnu/bits/stdio.h' l='38' macro='1' u='r'/>
+<use f='include/x86_64-linux-gnu/bits/stdio.h' l='81' macro='1' u='r'/>
+<use f='include/x86_64-linux-gnu/bits/stdio.h' l='107' macro='1' u='r'/>
+<use f='include/x86_64-linux-gnu/bits/stdio.h' l='107' macro='1' u='r'/>
+<use f='include/x86_64-linux-gnu/bits/stdio.h' l='107' macro='1' u='r'/>
+<use f='include/x86_64-linux-gnu/bits/stdio.h' l='107' macro='1' u='r'/>
+<doc f='include/stdio.h' l='169'>/* Standard output stream.  */</doc>
+<use f='lua/src/lbaselib.c' l='37' macro='1' u='r'/>
+<use f='lua/src/lbaselib.c' l='38' macro='1' u='r'/>
+<use f='lua/src/lbaselib.c' l='41' macro='1' u='r'/>
+<use f='lua/src/lbaselib.c' l='41' macro='1' u='r'/>
+<use f='lua/src/liolib.c' l='767' macro='1' u='r'/>
+<use f='lua/src/lua.c' l='213' macro='1' u='r'/>
+<use f='lua/src/lua.c' l='214' macro='1' u='r'/>
+<use f='lua/src/lua.c' l='214' macro='1' u='r'/>
+<use f='lua/src/lua.c' l='416' macro='1' u='r'/>
+<use f='lua/src/lua.c' l='416' macro='1' u='r'/>
+<use f='lua/src/luac.c' l='181' macro='1' u='r'/>

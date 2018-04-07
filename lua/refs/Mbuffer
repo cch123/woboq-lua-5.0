@@ -1,0 +1,5 @@
+<def f='lua/src/lzio.h' l='23' ll='27'/>
+<size>24</size>
+<mbr r='Mbuffer::buffer' o='0' t='char *'/>
+<mbr r='Mbuffer::n' o='64' t='size_t'/>
+<mbr r='Mbuffer::buffsize' o='128' t='size_t'/>

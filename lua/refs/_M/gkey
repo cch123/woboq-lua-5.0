@@ -1,0 +1,14 @@
+<dec f='lua/src/ltable.h' l='19'/>
+<use f='lua/src/ltable.c' l='170' u='c'/>
+<use f='lua/src/ltable.c' l='171' u='c'/>
+<use f='lua/src/ltable.c' l='172' u='c'/>
+<use f='lua/src/ltable.c' l='197' u='c'/>
+<use f='lua/src/ltable.c' l='290' u='c'/>
+<use f='lua/src/ltable.c' l='360' u='c'/>
+<use f='lua/src/ltable.c' l='426' u='c'/>
+<use f='lua/src/ltable.c' l='465' u='c'/>
+<use f='lua/src/ltable.c' l='504' u='c'/>
+<use f='lua/src/ltable.c' l='504' u='c'/>
+<use f='lua/src/ltable.c' l='524' u='c'/>
+<use f='lua/src/ltable.c' l='544' u='c'/>
+<doc f='lua/src/ltable.h' l='18'>/* &apos;const&apos; to avoid wrong writings that can mess up field &apos;next&apos; */</doc>

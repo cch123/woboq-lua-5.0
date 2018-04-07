@@ -1,0 +1,2 @@
+<dec f='lua/src/lobject.h' l='63'/>
+<doc f='lua/src/lobject.h' l='62'>/* Bit mark for collectable types */</doc>

@@ -1,0 +1,3 @@
+<dec f='lua/src/lstate.h' l='176' type='ptrdiff_t'/>
+<offset>1408</offset>
+<doc f='lua/src/lstate.h' l='176'>/* current error handling function (stack index) */</doc>

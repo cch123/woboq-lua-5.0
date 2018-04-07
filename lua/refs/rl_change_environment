@@ -1,0 +1,3 @@
+<dec f='include/readline/readline.h' l='628' type='int'/>
+<doc f='include/readline/readline.h' l='626'>/* If non-zero, the readline SIGWINCH handler will modify LINES and
+   COLUMNS in the environment. */</doc>

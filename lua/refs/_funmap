@@ -1,0 +1,5 @@
+<def f='include/readline/readline.h' l='69' ll='72'/>
+<size>16</size>
+<doc f='include/readline/readline.h' l='68'>/* The data structure for mapping textual names to code addresses. */</doc>
+<mbr r='_funmap::name' o='0' t='const char *'/>
+<mbr r='_funmap::function' o='64' t='rl_command_func_t *'/>

@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='87' type='int rl_forward_byte(int , int )'/>
+<doc f='include/readline/readline.h' l='86'>/* Bindable commands for moving the cursor. */</doc>

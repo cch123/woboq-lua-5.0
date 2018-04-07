@@ -1,0 +1,5 @@
+<dec f='lua/src/lopcodes.h' l='210' type='32'/>
+<use f='lua/src/luac.c' l='360' c='PrintCode'/>
+<doc f='lua/src/lopcodes.h' l='210'>/*	A B C	if ((RK(B) &lt;  RK(C)) ~= A) then pc++		*/</doc>
+<use f='lua/src/lvm.c' l='670' c='luaV_finishOp'/>
+<use f='lua/src/lvm.c' l='1095' c='luaV_execute'/>

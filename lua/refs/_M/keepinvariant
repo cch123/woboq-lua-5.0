@@ -1,0 +1,8 @@
+<dec f='lua/src/lgc.h' l='61'/>
+<doc f='lua/src/lgc.h' l='53'>/*
+** macro to tell when main invariant (white objects cannot point to black
+** ones) must be kept. During a collection, the sweep
+** phase may break the invariant, as objects turned white may point to
+** still-black objects. The invariant is restored when sweep ends and
+** all objects are white again.
+*/</doc>

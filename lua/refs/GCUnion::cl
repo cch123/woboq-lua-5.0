@@ -1,0 +1,7 @@
+<dec f='lua/src/lstate.h' l='197' type='union Closure'/>
+<offset>0</offset>
+<use f='lua/src/luac.c' l='142' macro='1' u='m'/>
+<use f='lua/src/luac.c' l='148' macro='1' u='m'/>
+<use f='lua/src/luac.c' l='151' macro='1' u='m'/>
+<use f='lua/src/lvm.c' l='794' macro='1' u='m'/>
+<use f='lua/src/lvm.c' l='1159' macro='1' u='m'/>

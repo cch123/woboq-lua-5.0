@@ -1,0 +1,2 @@
+<dec f='include/stdio.h' l='286' type='FILE * freopen(const char *restrict __filename, const char *restrict __modes, FILE *restrict __stream)'/>
+<use f='lua/src/lauxlib.c' l='721' u='c' c='luaL_loadfilex'/>

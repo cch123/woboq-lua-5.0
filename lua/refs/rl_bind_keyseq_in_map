@@ -1,0 +1,1 @@
+<dec f='include/readline/readline.h' l='309' type='int rl_bind_keyseq_in_map(const char * , rl_command_func_t * , Keymap )'/>

@@ -1,0 +1,14 @@
+<dec f='lua/src/lua.h' l='227' type='const char * lua_pushlstring(lua_State * L, const char * s, size_t len)'/>
+<use f='lua/src/lauxlib.c' l='544' u='c' c='luaL_pushresult'/>
+<use f='lua/src/loadlib.c' l='430' u='c' c='pushnexttemplate'/>
+<use f='lua/src/loadlib.c' l='519' u='c' c='loadfunc'/>
+<use f='lua/src/loadlib.c' l='544' u='c' c='searcher_Croot'/>
+<use f='lua/src/lstrlib.c' l='78' u='c' c='str_sub'/>
+<use f='lua/src/lstrlib.c' l='554' u='c' c='push_onecapture'/>
+<use f='lua/src/lstrlib.c' l='564' u='c' c='push_onecapture'/>
+<use f='lua/src/lstrlib.c' l='754' u='c' c='add_value'/>
+<use f='lua/src/lstrlib.c' l='1513' u='c' c='str_unpack'/>
+<use f='lua/src/lstrlib.c' l='1519' u='c' c='str_unpack'/>
+<use f='lua/src/lstrlib.c' l='1525' u='c' c='str_unpack'/>
+<use f='lua/src/lua.c' l='322' u='c' c='pushline'/>
+<use f='lua/src/lutf8lib.c' l='252' u='c' c='luaopen_utf8'/>

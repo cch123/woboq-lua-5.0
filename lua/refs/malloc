@@ -1,0 +1,2 @@
+<dec f='include/stdlib.h' l='466' type='void * malloc(size_t __size)'/>
+<doc f='include/stdlib.h' l='465'>/* Allocate SIZE bytes of memory.  */</doc>

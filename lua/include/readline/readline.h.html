@@ -1,0 +1,943 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>readline.h source code [include/readline/readline.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="_funmap,readline_state,undo_code,undo_list "/>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/readline/readline.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>include</a>/<a href='./'>readline</a>/<a href='readline.h.html'>readline.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Readline.h -- the names of functions callable from within readline. */</i></td></tr>
+<tr><th id="2">2</th><td></td></tr>
+<tr><th id="3">3</th><td><i>/* Copyright (C) 1987-2013 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>   This file is part of the GNU Readline Library (Readline), a library</i></td></tr>
+<tr><th id="6">6</th><td><i>   for reading lines of text with interactive input and history editing.      </i></td></tr>
+<tr><th id="7">7</th><td><i></i></td></tr>
+<tr><th id="8">8</th><td><i>   Readline is free software: you can redistribute it and/or modify</i></td></tr>
+<tr><th id="9">9</th><td><i>   it under the terms of the GNU General Public License as published by</i></td></tr>
+<tr><th id="10">10</th><td><i>   the Free Software Foundation, either version 3 of the License, or</i></td></tr>
+<tr><th id="11">11</th><td><i>   (at your option) any later version.</i></td></tr>
+<tr><th id="12">12</th><td><i></i></td></tr>
+<tr><th id="13">13</th><td><i>   Readline is distributed in the hope that it will be useful,</i></td></tr>
+<tr><th id="14">14</th><td><i>   but WITHOUT ANY WARRANTY; without even the implied warranty of</i></td></tr>
+<tr><th id="15">15</th><td><i>   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</i></td></tr>
+<tr><th id="16">16</th><td><i>   GNU General Public License for more details.</i></td></tr>
+<tr><th id="17">17</th><td><i></i></td></tr>
+<tr><th id="18">18</th><td><i>   You should have received a copy of the GNU General Public License</i></td></tr>
+<tr><th id="19">19</th><td><i>   along with Readline.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</i></td></tr>
+<tr><th id="20">20</th><td><i>*/</i></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><u>#<span data-ppcond="22">if</span> !defined (<span class="macro" data-ref="_M/_READLINE_H_">_READLINE_H_</span>)</u></td></tr>
+<tr><th id="23">23</th><td><u>#define <dfn class="macro" id="_M/_READLINE_H_" data-ref="_M/_READLINE_H_">_READLINE_H_</dfn></u></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><u>#<span data-ppcond="25">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="26">26</th><td><b>extern</b> <q>"C"</q> {</td></tr>
+<tr><th id="27">27</th><td><u>#<span data-ppcond="25">endif</span></u></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><u>#<span data-ppcond="29">if</span> defined (<span class="macro" data-ref="_M/READLINE_LIBRARY">READLINE_LIBRARY</span>)</u></td></tr>
+<tr><th id="30">30</th><td><u>#  include "rlstdc.h"</u></td></tr>
+<tr><th id="31">31</th><td><u>#  include "rltypedefs.h"</u></td></tr>
+<tr><th id="32">32</th><td><u>#  include "keymaps.h"</u></td></tr>
+<tr><th id="33">33</th><td><u>#  include "tilde.h"</u></td></tr>
+<tr><th id="34">34</th><td><u>#<span data-ppcond="29">else</span></u></td></tr>
+<tr><th id="35">35</th><td><u>#  include <a href="../stdio.h.html">&lt;stdio.h&gt;</a></u></td></tr>
+<tr><th id="36">36</th><td><u>#  include <a href="rlstdc.h.html">&lt;readline/rlstdc.h&gt;</a></u></td></tr>
+<tr><th id="37">37</th><td><u>#  include <a href="rltypedefs.h.html">&lt;readline/rltypedefs.h&gt;</a></u></td></tr>
+<tr><th id="38">38</th><td><u>#  include <a href="keymaps.h.html">&lt;readline/keymaps.h&gt;</a></u></td></tr>
+<tr><th id="39">39</th><td><u>#  include <a href="tilde.h.html">&lt;readline/tilde.h&gt;</a></u></td></tr>
+<tr><th id="40">40</th><td><u>#<span data-ppcond="29">endif</span></u></td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><i>/* Hex-encoded Readline version number. */</i></td></tr>
+<tr><th id="43">43</th><td><u>#define <dfn class="macro" id="_M/RL_READLINE_VERSION" data-ref="_M/RL_READLINE_VERSION">RL_READLINE_VERSION</dfn>	0x0603		/* Readline 6.3 */</u></td></tr>
+<tr><th id="44">44</th><td><u>#define <dfn class="macro" id="_M/RL_VERSION_MAJOR" data-ref="_M/RL_VERSION_MAJOR">RL_VERSION_MAJOR</dfn>	6</u></td></tr>
+<tr><th id="45">45</th><td><u>#define <dfn class="macro" id="_M/RL_VERSION_MINOR" data-ref="_M/RL_VERSION_MINOR">RL_VERSION_MINOR</dfn>	3</u></td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td><i>/* Readline data structures. */</i></td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td><i>/* Maintaining the state of undo.  We remember individual deletes and inserts</i></td></tr>
+<tr><th id="50">50</th><td><i>   on a chain of things to do. */</i></td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td><i>/* The actions that undo knows how to undo.  Notice that UNDO_DELETE means</i></td></tr>
+<tr><th id="53">53</th><td><i>   to insert some text, and UNDO_INSERT means to delete some text.   I.e.,</i></td></tr>
+<tr><th id="54">54</th><td><i>   the code tells undo what to undo, not how to undo it. */</i></td></tr>
+<tr><th id="55">55</th><td><b>enum</b> <dfn class="type def" id="undo_code" title='undo_code' data-ref="undo_code">undo_code</dfn> { <dfn class="enum" id="undo_code::UNDO_DELETE" title='undo_code::UNDO_DELETE' data-ref="undo_code::UNDO_DELETE">UNDO_DELETE</dfn>, <dfn class="enum" id="undo_code::UNDO_INSERT" title='undo_code::UNDO_INSERT' data-ref="undo_code::UNDO_INSERT">UNDO_INSERT</dfn>, <dfn class="enum" id="undo_code::UNDO_BEGIN" title='undo_code::UNDO_BEGIN' data-ref="undo_code::UNDO_BEGIN">UNDO_BEGIN</dfn>, <dfn class="enum" id="undo_code::UNDO_END" title='undo_code::UNDO_END' data-ref="undo_code::UNDO_END">UNDO_END</dfn> };</td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td><i>/* What an element of THE_UNDO_LIST looks like. */</i></td></tr>
+<tr><th id="58">58</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="undo_list" title='undo_list' data-ref="undo_list"><a class="type" href="#undo_list" title='undo_list' data-ref="undo_list">undo_list</a></dfn> {</td></tr>
+<tr><th id="59">59</th><td>  <b>struct</b> <a class="type" href="#undo_list" title='undo_list' data-ref="undo_list">undo_list</a> *<dfn class="decl field" id="undo_list::next" title='undo_list::next' data-ref="undo_list::next">next</dfn>;</td></tr>
+<tr><th id="60">60</th><td>  <em>int</em> <dfn class="decl field" id="undo_list::start" title='undo_list::start' data-ref="undo_list::start">start</dfn>, <dfn class="decl field" id="undo_list::end" title='undo_list::end' data-ref="undo_list::end">end</dfn>;		<i>/* Where the change took place. */</i></td></tr>
+<tr><th id="61">61</th><td>  <em>char</em> *<dfn class="decl field" id="undo_list::text" title='undo_list::text' data-ref="undo_list::text">text</dfn>;			<i>/* The text to insert, if undoing a delete. */</i></td></tr>
+<tr><th id="62">62</th><td>  <b>enum</b> <a class="type" href="#undo_code" title='undo_code' data-ref="undo_code">undo_code</a> <dfn class="decl field" id="undo_list::what" title='undo_list::what' data-ref="undo_list::what">what</dfn>;		<i>/* Delete, Insert, Begin, End. */</i></td></tr>
+<tr><th id="63">63</th><td>} <dfn class="typedef" id="UNDO_LIST" title='UNDO_LIST' data-type='struct undo_list' data-ref="UNDO_LIST">UNDO_LIST</dfn>;</td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td><i>/* The current undo list for RL_LINE_BUFFER. */</i></td></tr>
+<tr><th id="66">66</th><td><b>extern</b> <a class="typedef" href="#UNDO_LIST" title='UNDO_LIST' data-type='struct undo_list' data-ref="UNDO_LIST">UNDO_LIST</a> *<dfn class="decl" id="rl_undo_list" title='rl_undo_list' data-ref="rl_undo_list">rl_undo_list</dfn>;</td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td><i>/* The data structure for mapping textual names to code addresses. */</i></td></tr>
+<tr><th id="69">69</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="_funmap" title='_funmap' data-ref="_funmap"><a class="type" href="#_funmap" title='_funmap' data-ref="_funmap">_funmap</a></dfn> {</td></tr>
+<tr><th id="70">70</th><td>  <em>const</em> <em>char</em> *<dfn class="decl field" id="_funmap::name" title='_funmap::name' data-ref="_funmap::name">name</dfn>;</td></tr>
+<tr><th id="71">71</th><td>  <a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *<dfn class="decl field" id="_funmap::function" title='_funmap::function' data-ref="_funmap::function">function</dfn>;</td></tr>
+<tr><th id="72">72</th><td>} <dfn class="typedef" id="FUNMAP" title='FUNMAP' data-type='struct _funmap' data-ref="FUNMAP">FUNMAP</dfn>;</td></tr>
+<tr><th id="73">73</th><td></td></tr>
+<tr><th id="74">74</th><td><b>extern</b> <a class="typedef" href="#FUNMAP" title='FUNMAP' data-type='struct _funmap' data-ref="FUNMAP">FUNMAP</a> **<dfn class="decl" id="funmap" title='funmap' data-ref="funmap">funmap</dfn>;</td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td><i>/* **************************************************************** */</i></td></tr>
+<tr><th id="77">77</th><td><i>/*								    */</i></td></tr>
+<tr><th id="78">78</th><td><i>/*	     Functions available to bind to key sequences	    */</i></td></tr>
+<tr><th id="79">79</th><td><i>/*								    */</i></td></tr>
+<tr><th id="80">80</th><td><i>/* **************************************************************** */</i></td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td><i>/* Bindable commands for numeric arguments. */</i></td></tr>
+<tr><th id="83">83</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_digit_argument" title='rl_digit_argument' data-ref="rl_digit_argument">rl_digit_argument</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="84">84</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_universal_argument" title='rl_universal_argument' data-ref="rl_universal_argument">rl_universal_argument</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td><i>/* Bindable commands for moving the cursor. */</i></td></tr>
+<tr><th id="87">87</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_forward_byte" title='rl_forward_byte' data-ref="rl_forward_byte">rl_forward_byte</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="88">88</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_forward_char" title='rl_forward_char' data-ref="rl_forward_char">rl_forward_char</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="89">89</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_forward" title='rl_forward' data-ref="rl_forward">rl_forward</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="90">90</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_backward_byte" title='rl_backward_byte' data-ref="rl_backward_byte">rl_backward_byte</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="91">91</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_backward_char" title='rl_backward_char' data-ref="rl_backward_char">rl_backward_char</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="92">92</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_backward" title='rl_backward' data-ref="rl_backward">rl_backward</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="93">93</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_beg_of_line" title='rl_beg_of_line' data-ref="rl_beg_of_line">rl_beg_of_line</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="94">94</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_end_of_line" title='rl_end_of_line' data-ref="rl_end_of_line">rl_end_of_line</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="95">95</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_forward_word" title='rl_forward_word' data-ref="rl_forward_word">rl_forward_word</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="96">96</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_backward_word" title='rl_backward_word' data-ref="rl_backward_word">rl_backward_word</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="97">97</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_refresh_line" title='rl_refresh_line' data-ref="rl_refresh_line">rl_refresh_line</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="98">98</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_clear_screen" title='rl_clear_screen' data-ref="rl_clear_screen">rl_clear_screen</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="99">99</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_skip_csi_sequence" title='rl_skip_csi_sequence' data-ref="rl_skip_csi_sequence">rl_skip_csi_sequence</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="100">100</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_arrow_keys" title='rl_arrow_keys' data-ref="rl_arrow_keys">rl_arrow_keys</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="101">101</th><td></td></tr>
+<tr><th id="102">102</th><td><i>/* Bindable commands for inserting and deleting text. */</i></td></tr>
+<tr><th id="103">103</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_insert" title='rl_insert' data-ref="rl_insert">rl_insert</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="104">104</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_quoted_insert" title='rl_quoted_insert' data-ref="rl_quoted_insert">rl_quoted_insert</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="105">105</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_tab_insert" title='rl_tab_insert' data-ref="rl_tab_insert">rl_tab_insert</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="106">106</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_newline" title='rl_newline' data-ref="rl_newline">rl_newline</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="107">107</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_do_lowercase_version" title='rl_do_lowercase_version' data-ref="rl_do_lowercase_version">rl_do_lowercase_version</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="108">108</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_rubout" title='rl_rubout' data-ref="rl_rubout">rl_rubout</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="109">109</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_delete" title='rl_delete' data-ref="rl_delete">rl_delete</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="110">110</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_rubout_or_delete" title='rl_rubout_or_delete' data-ref="rl_rubout_or_delete">rl_rubout_or_delete</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="111">111</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_delete_horizontal_space" title='rl_delete_horizontal_space' data-ref="rl_delete_horizontal_space">rl_delete_horizontal_space</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="112">112</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_delete_or_show_completions" title='rl_delete_or_show_completions' data-ref="rl_delete_or_show_completions">rl_delete_or_show_completions</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="113">113</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_insert_comment" title='rl_insert_comment' data-ref="rl_insert_comment">rl_insert_comment</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td><i>/* Bindable commands for changing case. */</i></td></tr>
+<tr><th id="116">116</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_upcase_word" title='rl_upcase_word' data-ref="rl_upcase_word">rl_upcase_word</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="117">117</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_downcase_word" title='rl_downcase_word' data-ref="rl_downcase_word">rl_downcase_word</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="118">118</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_capitalize_word" title='rl_capitalize_word' data-ref="rl_capitalize_word">rl_capitalize_word</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="119">119</th><td></td></tr>
+<tr><th id="120">120</th><td><i>/* Bindable commands for transposing characters and words. */</i></td></tr>
+<tr><th id="121">121</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_transpose_words" title='rl_transpose_words' data-ref="rl_transpose_words">rl_transpose_words</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="122">122</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_transpose_chars" title='rl_transpose_chars' data-ref="rl_transpose_chars">rl_transpose_chars</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="123">123</th><td></td></tr>
+<tr><th id="124">124</th><td><i>/* Bindable commands for searching within a line. */</i></td></tr>
+<tr><th id="125">125</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_char_search" title='rl_char_search' data-ref="rl_char_search">rl_char_search</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="126">126</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_backward_char_search" title='rl_backward_char_search' data-ref="rl_backward_char_search">rl_backward_char_search</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td><i>/* Bindable commands for readline's interface to the command history. */</i></td></tr>
+<tr><th id="129">129</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_beginning_of_history" title='rl_beginning_of_history' data-ref="rl_beginning_of_history">rl_beginning_of_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="130">130</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_end_of_history" title='rl_end_of_history' data-ref="rl_end_of_history">rl_end_of_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="131">131</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_get_next_history" title='rl_get_next_history' data-ref="rl_get_next_history">rl_get_next_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="132">132</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_get_previous_history" title='rl_get_previous_history' data-ref="rl_get_previous_history">rl_get_previous_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="133">133</th><td></td></tr>
+<tr><th id="134">134</th><td><i>/* Bindable commands for managing the mark and region. */</i></td></tr>
+<tr><th id="135">135</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_set_mark" title='rl_set_mark' data-ref="rl_set_mark">rl_set_mark</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="136">136</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_exchange_point_and_mark" title='rl_exchange_point_and_mark' data-ref="rl_exchange_point_and_mark">rl_exchange_point_and_mark</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="137">137</th><td></td></tr>
+<tr><th id="138">138</th><td><i>/* Bindable commands to set the editing mode (emacs or vi). */</i></td></tr>
+<tr><th id="139">139</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_editing_mode" title='rl_vi_editing_mode' data-ref="rl_vi_editing_mode">rl_vi_editing_mode</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="140">140</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_emacs_editing_mode" title='rl_emacs_editing_mode' data-ref="rl_emacs_editing_mode">rl_emacs_editing_mode</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="141">141</th><td></td></tr>
+<tr><th id="142">142</th><td><i>/* Bindable commands to change the insert mode (insert or overwrite) */</i></td></tr>
+<tr><th id="143">143</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_overwrite_mode" title='rl_overwrite_mode' data-ref="rl_overwrite_mode">rl_overwrite_mode</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="144">144</th><td></td></tr>
+<tr><th id="145">145</th><td><i>/* Bindable commands for managing key bindings. */</i></td></tr>
+<tr><th id="146">146</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_re_read_init_file" title='rl_re_read_init_file' data-ref="rl_re_read_init_file">rl_re_read_init_file</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="147">147</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_dump_functions" title='rl_dump_functions' data-ref="rl_dump_functions">rl_dump_functions</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="148">148</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_dump_macros" title='rl_dump_macros' data-ref="rl_dump_macros">rl_dump_macros</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="149">149</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_dump_variables" title='rl_dump_variables' data-ref="rl_dump_variables">rl_dump_variables</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="150">150</th><td></td></tr>
+<tr><th id="151">151</th><td><i>/* Bindable commands for word completion. */</i></td></tr>
+<tr><th id="152">152</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_complete" title='rl_complete' data-ref="rl_complete">rl_complete</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="153">153</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_possible_completions" title='rl_possible_completions' data-ref="rl_possible_completions">rl_possible_completions</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="154">154</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_insert_completions" title='rl_insert_completions' data-ref="rl_insert_completions">rl_insert_completions</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="155">155</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_old_menu_complete" title='rl_old_menu_complete' data-ref="rl_old_menu_complete">rl_old_menu_complete</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="156">156</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_menu_complete" title='rl_menu_complete' data-ref="rl_menu_complete">rl_menu_complete</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="157">157</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_backward_menu_complete" title='rl_backward_menu_complete' data-ref="rl_backward_menu_complete">rl_backward_menu_complete</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="158">158</th><td></td></tr>
+<tr><th id="159">159</th><td><i>/* Bindable commands for killing and yanking text, and managing the kill ring. */</i></td></tr>
+<tr><th id="160">160</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_kill_word" title='rl_kill_word' data-ref="rl_kill_word">rl_kill_word</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="161">161</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_backward_kill_word" title='rl_backward_kill_word' data-ref="rl_backward_kill_word">rl_backward_kill_word</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="162">162</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_kill_line" title='rl_kill_line' data-ref="rl_kill_line">rl_kill_line</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="163">163</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_backward_kill_line" title='rl_backward_kill_line' data-ref="rl_backward_kill_line">rl_backward_kill_line</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="164">164</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_kill_full_line" title='rl_kill_full_line' data-ref="rl_kill_full_line">rl_kill_full_line</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="165">165</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_unix_word_rubout" title='rl_unix_word_rubout' data-ref="rl_unix_word_rubout">rl_unix_word_rubout</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="166">166</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_unix_filename_rubout" title='rl_unix_filename_rubout' data-ref="rl_unix_filename_rubout">rl_unix_filename_rubout</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="167">167</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_unix_line_discard" title='rl_unix_line_discard' data-ref="rl_unix_line_discard">rl_unix_line_discard</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="168">168</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_copy_region_to_kill" title='rl_copy_region_to_kill' data-ref="rl_copy_region_to_kill">rl_copy_region_to_kill</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="169">169</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_kill_region" title='rl_kill_region' data-ref="rl_kill_region">rl_kill_region</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="170">170</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_copy_forward_word" title='rl_copy_forward_word' data-ref="rl_copy_forward_word">rl_copy_forward_word</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="171">171</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_copy_backward_word" title='rl_copy_backward_word' data-ref="rl_copy_backward_word">rl_copy_backward_word</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="172">172</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_yank" title='rl_yank' data-ref="rl_yank">rl_yank</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="173">173</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_yank_pop" title='rl_yank_pop' data-ref="rl_yank_pop">rl_yank_pop</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="174">174</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_yank_nth_arg" title='rl_yank_nth_arg' data-ref="rl_yank_nth_arg">rl_yank_nth_arg</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="175">175</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_yank_last_arg" title='rl_yank_last_arg' data-ref="rl_yank_last_arg">rl_yank_last_arg</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="176">176</th><td><i>/* Not available unless __CYGWIN__ is defined. */</i></td></tr>
+<tr><th id="177">177</th><td><u>#<span data-ppcond="177">ifdef</span> <span class="macro" data-ref="_M/__CYGWIN__">__CYGWIN__</span></u></td></tr>
+<tr><th id="178">178</th><td><b>extern</b> <em>int</em> rl_paste_from_clipboard PARAMS((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="179">179</th><td><u>#<span data-ppcond="177">endif</span></u></td></tr>
+<tr><th id="180">180</th><td></td></tr>
+<tr><th id="181">181</th><td><i>/* Bindable commands for incremental searching. */</i></td></tr>
+<tr><th id="182">182</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_reverse_search_history" title='rl_reverse_search_history' data-ref="rl_reverse_search_history">rl_reverse_search_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="183">183</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_forward_search_history" title='rl_forward_search_history' data-ref="rl_forward_search_history">rl_forward_search_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="184">184</th><td></td></tr>
+<tr><th id="185">185</th><td><i>/* Bindable keyboard macro commands. */</i></td></tr>
+<tr><th id="186">186</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_start_kbd_macro" title='rl_start_kbd_macro' data-ref="rl_start_kbd_macro">rl_start_kbd_macro</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="187">187</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_end_kbd_macro" title='rl_end_kbd_macro' data-ref="rl_end_kbd_macro">rl_end_kbd_macro</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="188">188</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_call_last_kbd_macro" title='rl_call_last_kbd_macro' data-ref="rl_call_last_kbd_macro">rl_call_last_kbd_macro</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="189">189</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_print_last_kbd_macro" title='rl_print_last_kbd_macro' data-ref="rl_print_last_kbd_macro">rl_print_last_kbd_macro</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="190">190</th><td></td></tr>
+<tr><th id="191">191</th><td><i>/* Bindable undo commands. */</i></td></tr>
+<tr><th id="192">192</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_revert_line" title='rl_revert_line' data-ref="rl_revert_line">rl_revert_line</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="193">193</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_undo_command" title='rl_undo_command' data-ref="rl_undo_command">rl_undo_command</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="194">194</th><td></td></tr>
+<tr><th id="195">195</th><td><i>/* Bindable tilde expansion commands. */</i></td></tr>
+<tr><th id="196">196</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_tilde_expand" title='rl_tilde_expand' data-ref="rl_tilde_expand">rl_tilde_expand</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="197">197</th><td></td></tr>
+<tr><th id="198">198</th><td><i>/* Bindable terminal control commands. */</i></td></tr>
+<tr><th id="199">199</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_restart_output" title='rl_restart_output' data-ref="rl_restart_output">rl_restart_output</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="200">200</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_stop_output" title='rl_stop_output' data-ref="rl_stop_output">rl_stop_output</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="201">201</th><td></td></tr>
+<tr><th id="202">202</th><td><i>/* Miscellaneous bindable commands. */</i></td></tr>
+<tr><th id="203">203</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_abort" title='rl_abort' data-ref="rl_abort">rl_abort</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="204">204</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_tty_status" title='rl_tty_status' data-ref="rl_tty_status">rl_tty_status</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="205">205</th><td></td></tr>
+<tr><th id="206">206</th><td><i>/* Bindable commands for incremental and non-incremental history searching. */</i></td></tr>
+<tr><th id="207">207</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_history_search_forward" title='rl_history_search_forward' data-ref="rl_history_search_forward">rl_history_search_forward</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="208">208</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_history_search_backward" title='rl_history_search_backward' data-ref="rl_history_search_backward">rl_history_search_backward</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="209">209</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_history_substr_search_forward" title='rl_history_substr_search_forward' data-ref="rl_history_substr_search_forward">rl_history_substr_search_forward</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="210">210</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_history_substr_search_backward" title='rl_history_substr_search_backward' data-ref="rl_history_substr_search_backward">rl_history_substr_search_backward</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="211">211</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_noninc_forward_search" title='rl_noninc_forward_search' data-ref="rl_noninc_forward_search">rl_noninc_forward_search</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="212">212</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_noninc_reverse_search" title='rl_noninc_reverse_search' data-ref="rl_noninc_reverse_search">rl_noninc_reverse_search</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="213">213</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_noninc_forward_search_again" title='rl_noninc_forward_search_again' data-ref="rl_noninc_forward_search_again">rl_noninc_forward_search_again</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="214">214</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_noninc_reverse_search_again" title='rl_noninc_reverse_search_again' data-ref="rl_noninc_reverse_search_again">rl_noninc_reverse_search_again</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="215">215</th><td></td></tr>
+<tr><th id="216">216</th><td><i>/* Bindable command used when inserting a matching close character. */</i></td></tr>
+<tr><th id="217">217</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_insert_close" title='rl_insert_close' data-ref="rl_insert_close">rl_insert_close</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="218">218</th><td></td></tr>
+<tr><th id="219">219</th><td><i>/* Not available unless READLINE_CALLBACKS is defined. */</i></td></tr>
+<tr><th id="220">220</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_callback_handler_install" title='rl_callback_handler_install' data-ref="rl_callback_handler_install">rl_callback_handler_install</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, rl_vcpfunc_t *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <a class="typedef" href="rltypedefs.h.html#rl_vcpfunc_t" title='rl_vcpfunc_t' data-type='void (char *)' data-ref="rl_vcpfunc_t">rl_vcpfunc_t</a> *));</td></tr>
+<tr><th id="221">221</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_callback_read_char" title='rl_callback_read_char' data-ref="rl_callback_read_char">rl_callback_read_char</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="222">222</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_callback_handler_remove" title='rl_callback_handler_remove' data-ref="rl_callback_handler_remove">rl_callback_handler_remove</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="223">223</th><td></td></tr>
+<tr><th id="224">224</th><td><i>/* Things for vi mode. Not available unless readline is compiled -DVI_MODE. */</i></td></tr>
+<tr><th id="225">225</th><td><i>/* VI-mode bindable commands. */</i></td></tr>
+<tr><th id="226">226</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_redo" title='rl_vi_redo' data-ref="rl_vi_redo">rl_vi_redo</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="227">227</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_undo" title='rl_vi_undo' data-ref="rl_vi_undo">rl_vi_undo</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="228">228</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_yank_arg" title='rl_vi_yank_arg' data-ref="rl_vi_yank_arg">rl_vi_yank_arg</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="229">229</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_fetch_history" title='rl_vi_fetch_history' data-ref="rl_vi_fetch_history">rl_vi_fetch_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="230">230</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_search_again" title='rl_vi_search_again' data-ref="rl_vi_search_again">rl_vi_search_again</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="231">231</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_search" title='rl_vi_search' data-ref="rl_vi_search">rl_vi_search</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="232">232</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_complete" title='rl_vi_complete' data-ref="rl_vi_complete">rl_vi_complete</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="233">233</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_tilde_expand" title='rl_vi_tilde_expand' data-ref="rl_vi_tilde_expand">rl_vi_tilde_expand</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="234">234</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_prev_word" title='rl_vi_prev_word' data-ref="rl_vi_prev_word">rl_vi_prev_word</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="235">235</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_next_word" title='rl_vi_next_word' data-ref="rl_vi_next_word">rl_vi_next_word</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="236">236</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_end_word" title='rl_vi_end_word' data-ref="rl_vi_end_word">rl_vi_end_word</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="237">237</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_insert_beg" title='rl_vi_insert_beg' data-ref="rl_vi_insert_beg">rl_vi_insert_beg</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="238">238</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_append_mode" title='rl_vi_append_mode' data-ref="rl_vi_append_mode">rl_vi_append_mode</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="239">239</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_append_eol" title='rl_vi_append_eol' data-ref="rl_vi_append_eol">rl_vi_append_eol</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="240">240</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_eof_maybe" title='rl_vi_eof_maybe' data-ref="rl_vi_eof_maybe">rl_vi_eof_maybe</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="241">241</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_insertion_mode" title='rl_vi_insertion_mode' data-ref="rl_vi_insertion_mode">rl_vi_insertion_mode</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="242">242</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_insert_mode" title='rl_vi_insert_mode' data-ref="rl_vi_insert_mode">rl_vi_insert_mode</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="243">243</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_movement_mode" title='rl_vi_movement_mode' data-ref="rl_vi_movement_mode">rl_vi_movement_mode</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="244">244</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_arg_digit" title='rl_vi_arg_digit' data-ref="rl_vi_arg_digit">rl_vi_arg_digit</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="245">245</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_change_case" title='rl_vi_change_case' data-ref="rl_vi_change_case">rl_vi_change_case</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="246">246</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_put" title='rl_vi_put' data-ref="rl_vi_put">rl_vi_put</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="247">247</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_column" title='rl_vi_column' data-ref="rl_vi_column">rl_vi_column</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="248">248</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_delete_to" title='rl_vi_delete_to' data-ref="rl_vi_delete_to">rl_vi_delete_to</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="249">249</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_change_to" title='rl_vi_change_to' data-ref="rl_vi_change_to">rl_vi_change_to</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="250">250</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_yank_to" title='rl_vi_yank_to' data-ref="rl_vi_yank_to">rl_vi_yank_to</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="251">251</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_rubout" title='rl_vi_rubout' data-ref="rl_vi_rubout">rl_vi_rubout</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="252">252</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_delete" title='rl_vi_delete' data-ref="rl_vi_delete">rl_vi_delete</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="253">253</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_back_to_indent" title='rl_vi_back_to_indent' data-ref="rl_vi_back_to_indent">rl_vi_back_to_indent</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="254">254</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_first_print" title='rl_vi_first_print' data-ref="rl_vi_first_print">rl_vi_first_print</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="255">255</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_char_search" title='rl_vi_char_search' data-ref="rl_vi_char_search">rl_vi_char_search</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="256">256</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_match" title='rl_vi_match' data-ref="rl_vi_match">rl_vi_match</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="257">257</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_change_char" title='rl_vi_change_char' data-ref="rl_vi_change_char">rl_vi_change_char</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="258">258</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_subst" title='rl_vi_subst' data-ref="rl_vi_subst">rl_vi_subst</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="259">259</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_overstrike" title='rl_vi_overstrike' data-ref="rl_vi_overstrike">rl_vi_overstrike</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="260">260</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_overstrike_delete" title='rl_vi_overstrike_delete' data-ref="rl_vi_overstrike_delete">rl_vi_overstrike_delete</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="261">261</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_replace" title='rl_vi_replace' data-ref="rl_vi_replace">rl_vi_replace</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="262">262</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_set_mark" title='rl_vi_set_mark' data-ref="rl_vi_set_mark">rl_vi_set_mark</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="263">263</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_goto_mark" title='rl_vi_goto_mark' data-ref="rl_vi_goto_mark">rl_vi_goto_mark</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="264">264</th><td></td></tr>
+<tr><th id="265">265</th><td><i>/* VI-mode utility functions. */</i></td></tr>
+<tr><th id="266">266</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_check" title='rl_vi_check' data-ref="rl_vi_check">rl_vi_check</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="267">267</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_domove" title='rl_vi_domove' data-ref="rl_vi_domove">rl_vi_domove</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int *)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em> *));</td></tr>
+<tr><th id="268">268</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_bracktype" title='rl_vi_bracktype' data-ref="rl_vi_bracktype">rl_vi_bracktype</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>));</td></tr>
+<tr><th id="269">269</th><td></td></tr>
+<tr><th id="270">270</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_vi_start_inserting" title='rl_vi_start_inserting' data-ref="rl_vi_start_inserting">rl_vi_start_inserting</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="271">271</th><td></td></tr>
+<tr><th id="272">272</th><td><i>/* VI-mode pseudo-bindable commands, used as utility functions. */</i></td></tr>
+<tr><th id="273">273</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_fWord" title='rl_vi_fWord' data-ref="rl_vi_fWord">rl_vi_fWord</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="274">274</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_bWord" title='rl_vi_bWord' data-ref="rl_vi_bWord">rl_vi_bWord</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="275">275</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_eWord" title='rl_vi_eWord' data-ref="rl_vi_eWord">rl_vi_eWord</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="276">276</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_fword" title='rl_vi_fword' data-ref="rl_vi_fword">rl_vi_fword</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="277">277</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_bword" title='rl_vi_bword' data-ref="rl_vi_bword">rl_vi_bword</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="278">278</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_vi_eword" title='rl_vi_eword' data-ref="rl_vi_eword">rl_vi_eword</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="279">279</th><td></td></tr>
+<tr><th id="280">280</th><td><i>/* **************************************************************** */</i></td></tr>
+<tr><th id="281">281</th><td><i>/*								    */</i></td></tr>
+<tr><th id="282">282</th><td><i>/*			Well Published Functions		    */</i></td></tr>
+<tr><th id="283">283</th><td><i>/*								    */</i></td></tr>
+<tr><th id="284">284</th><td><i>/* **************************************************************** */</i></td></tr>
+<tr><th id="285">285</th><td></td></tr>
+<tr><th id="286">286</th><td><i>/* Readline functions. */</i></td></tr>
+<tr><th id="287">287</th><td><i>/* Read a line of input.  Prompt with PROMPT.  A NULL PROMPT means none. */</i></td></tr>
+<tr><th id="288">288</th><td><b>extern</b> <em>char</em> *<dfn class="decl fn" id="readline" title='readline' data-ref="readline">readline</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="289">289</th><td></td></tr>
+<tr><th id="290">290</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_set_prompt" title='rl_set_prompt' data-ref="rl_set_prompt">rl_set_prompt</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="291">291</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_expand_prompt" title='rl_expand_prompt' data-ref="rl_expand_prompt">rl_expand_prompt</dfn> <a class="macro" href="rlstdc.h.html#33" title="(char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>char</em> *));</td></tr>
+<tr><th id="292">292</th><td></td></tr>
+<tr><th id="293">293</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_initialize" title='rl_initialize' data-ref="rl_initialize">rl_initialize</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="294">294</th><td></td></tr>
+<tr><th id="295">295</th><td><i>/* Undocumented; unused by readline */</i></td></tr>
+<tr><th id="296">296</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_discard_argument" title='rl_discard_argument' data-ref="rl_discard_argument">rl_discard_argument</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="297">297</th><td></td></tr>
+<tr><th id="298">298</th><td><i>/* Utility functions to bind keys to readline commands. */</i></td></tr>
+<tr><th id="299">299</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_add_defun" title='rl_add_defun' data-ref="rl_add_defun">rl_add_defun</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, rl_command_func_t *, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *, <em>int</em>));</td></tr>
+<tr><th id="300">300</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_bind_key" title='rl_bind_key' data-ref="rl_bind_key">rl_bind_key</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, rl_command_func_t *)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *));</td></tr>
+<tr><th id="301">301</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_bind_key_in_map" title='rl_bind_key_in_map' data-ref="rl_bind_key_in_map">rl_bind_key_in_map</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, rl_command_func_t *, Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *, <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="302">302</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_unbind_key" title='rl_unbind_key' data-ref="rl_unbind_key">rl_unbind_key</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>));</td></tr>
+<tr><th id="303">303</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_unbind_key_in_map" title='rl_unbind_key_in_map' data-ref="rl_unbind_key_in_map">rl_unbind_key_in_map</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="304">304</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_bind_key_if_unbound" title='rl_bind_key_if_unbound' data-ref="rl_bind_key_if_unbound">rl_bind_key_if_unbound</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, rl_command_func_t *)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *));</td></tr>
+<tr><th id="305">305</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_bind_key_if_unbound_in_map" title='rl_bind_key_if_unbound_in_map' data-ref="rl_bind_key_if_unbound_in_map">rl_bind_key_if_unbound_in_map</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, rl_command_func_t *, Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *, <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="306">306</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_unbind_function_in_map" title='rl_unbind_function_in_map' data-ref="rl_unbind_function_in_map">rl_unbind_function_in_map</dfn> <a class="macro" href="rlstdc.h.html#33" title="(rl_command_func_t *, Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *, <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="307">307</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_unbind_command_in_map" title='rl_unbind_command_in_map' data-ref="rl_unbind_command_in_map">rl_unbind_command_in_map</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="308">308</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_bind_keyseq" title='rl_bind_keyseq' data-ref="rl_bind_keyseq">rl_bind_keyseq</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, rl_command_func_t *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *));</td></tr>
+<tr><th id="309">309</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_bind_keyseq_in_map" title='rl_bind_keyseq_in_map' data-ref="rl_bind_keyseq_in_map">rl_bind_keyseq_in_map</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, rl_command_func_t *, Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *, <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="310">310</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_bind_keyseq_if_unbound" title='rl_bind_keyseq_if_unbound' data-ref="rl_bind_keyseq_if_unbound">rl_bind_keyseq_if_unbound</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, rl_command_func_t *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *));</td></tr>
+<tr><th id="311">311</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_bind_keyseq_if_unbound_in_map" title='rl_bind_keyseq_if_unbound_in_map' data-ref="rl_bind_keyseq_if_unbound_in_map">rl_bind_keyseq_if_unbound_in_map</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, rl_command_func_t *, Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *, <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="312">312</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_generic_bind" title='rl_generic_bind' data-ref="rl_generic_bind">rl_generic_bind</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, const char *, char *, Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>const</em> <em>char</em> *, <em>char</em> *, <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="313">313</th><td></td></tr>
+<tr><th id="314">314</th><td><b>extern</b> <em>char</em> *<dfn class="decl fn" id="rl_variable_value" title='rl_variable_value' data-ref="rl_variable_value">rl_variable_value</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="315">315</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_variable_bind" title='rl_variable_bind' data-ref="rl_variable_bind">rl_variable_bind</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="316">316</th><td></td></tr>
+<tr><th id="317">317</th><td><i>/* Backwards compatibility, use rl_bind_keyseq_in_map instead. */</i></td></tr>
+<tr><th id="318">318</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_set_key" title='rl_set_key' data-ref="rl_set_key">rl_set_key</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, rl_command_func_t *, Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *, <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="319">319</th><td></td></tr>
+<tr><th id="320">320</th><td><i>/* Backwards compatibility, use rl_generic_bind instead. */</i></td></tr>
+<tr><th id="321">321</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_macro_bind" title='rl_macro_bind' data-ref="rl_macro_bind">rl_macro_bind</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, const char *, Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <em>const</em> <em>char</em> *, <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="322">322</th><td></td></tr>
+<tr><th id="323">323</th><td><i>/* Undocumented in the texinfo manual; not really useful to programs. */</i></td></tr>
+<tr><th id="324">324</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_translate_keyseq" title='rl_translate_keyseq' data-ref="rl_translate_keyseq">rl_translate_keyseq</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, char *, int *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <em>char</em> *, <em>int</em> *));</td></tr>
+<tr><th id="325">325</th><td><b>extern</b> <em>char</em> *<dfn class="decl fn" id="rl_untranslate_keyseq" title='rl_untranslate_keyseq' data-ref="rl_untranslate_keyseq">rl_untranslate_keyseq</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>));</td></tr>
+<tr><th id="326">326</th><td></td></tr>
+<tr><th id="327">327</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *<dfn class="decl fn" id="rl_named_function" title='rl_named_function' data-ref="rl_named_function">rl_named_function</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="328">328</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *<dfn class="decl fn" id="rl_function_of_keyseq" title='rl_function_of_keyseq' data-ref="rl_function_of_keyseq">rl_function_of_keyseq</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, Keymap, int *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>, <em>int</em> *));</td></tr>
+<tr><th id="329">329</th><td></td></tr>
+<tr><th id="330">330</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_list_funmap_names" title='rl_list_funmap_names' data-ref="rl_list_funmap_names">rl_list_funmap_names</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="331">331</th><td><b>extern</b> <em>char</em> **<dfn class="decl fn" id="rl_invoking_keyseqs_in_map" title='rl_invoking_keyseqs_in_map' data-ref="rl_invoking_keyseqs_in_map">rl_invoking_keyseqs_in_map</dfn> <a class="macro" href="rlstdc.h.html#33" title="(rl_command_func_t *, Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *, <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="332">332</th><td><b>extern</b> <em>char</em> **<dfn class="decl fn" id="rl_invoking_keyseqs" title='rl_invoking_keyseqs' data-ref="rl_invoking_keyseqs">rl_invoking_keyseqs</dfn> <a class="macro" href="rlstdc.h.html#33" title="(rl_command_func_t *)" data-ref="_M/PARAMS">PARAMS</a>((<a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *));</td></tr>
+<tr><th id="333">333</th><td> </td></tr>
+<tr><th id="334">334</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_function_dumper" title='rl_function_dumper' data-ref="rl_function_dumper">rl_function_dumper</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>));</td></tr>
+<tr><th id="335">335</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_macro_dumper" title='rl_macro_dumper' data-ref="rl_macro_dumper">rl_macro_dumper</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>));</td></tr>
+<tr><th id="336">336</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_variable_dumper" title='rl_variable_dumper' data-ref="rl_variable_dumper">rl_variable_dumper</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>));</td></tr>
+<tr><th id="337">337</th><td></td></tr>
+<tr><th id="338">338</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_read_init_file" title='rl_read_init_file' data-ref="rl_read_init_file">rl_read_init_file</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="339">339</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_parse_and_bind" title='rl_parse_and_bind' data-ref="rl_parse_and_bind">rl_parse_and_bind</dfn> <a class="macro" href="rlstdc.h.html#33" title="(char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>char</em> *));</td></tr>
+<tr><th id="340">340</th><td></td></tr>
+<tr><th id="341">341</th><td><i>/* Functions for manipulating keymaps. */</i></td></tr>
+<tr><th id="342">342</th><td><b>extern</b> <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a> <a class="decl fn" href="keymaps.h.html#rl_make_bare_keymap" title='rl_make_bare_keymap' data-ref="rl_make_bare_keymap" id="rl_make_bare_keymap">rl_make_bare_keymap</a> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="343">343</th><td><b>extern</b> <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a> <a class="decl fn" href="keymaps.h.html#rl_copy_keymap" title='rl_copy_keymap' data-ref="rl_copy_keymap" id="rl_copy_keymap">rl_copy_keymap</a> <a class="macro" href="rlstdc.h.html#33" title="(Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="344">344</th><td><b>extern</b> <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a> <a class="decl fn" href="keymaps.h.html#rl_make_keymap" title='rl_make_keymap' data-ref="rl_make_keymap" id="rl_make_keymap">rl_make_keymap</a> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="345">345</th><td><b>extern</b> <em>void</em> <a class="decl fn" href="keymaps.h.html#rl_discard_keymap" title='rl_discard_keymap' data-ref="rl_discard_keymap" id="rl_discard_keymap">rl_discard_keymap</a> <a class="macro" href="rlstdc.h.html#33" title="(Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="346">346</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_free_keymap" title='rl_free_keymap' data-ref="rl_free_keymap">rl_free_keymap</dfn> <a class="macro" href="rlstdc.h.html#33" title="(Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="347">347</th><td></td></tr>
+<tr><th id="348">348</th><td><b>extern</b> <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a> <a class="decl fn" href="keymaps.h.html#rl_get_keymap_by_name" title='rl_get_keymap_by_name' data-ref="rl_get_keymap_by_name" id="rl_get_keymap_by_name">rl_get_keymap_by_name</a> <a class="macro" href="rlstdc.h.html#33" title="(const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="349">349</th><td><b>extern</b> <em>char</em> *<dfn class="decl fn" id="rl_get_keymap_name" title='rl_get_keymap_name' data-ref="rl_get_keymap_name">rl_get_keymap_name</dfn> <a class="macro" href="rlstdc.h.html#33" title="(Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="350">350</th><td><b>extern</b> <em>void</em> <a class="decl fn" href="keymaps.h.html#rl_set_keymap" title='rl_set_keymap' data-ref="rl_set_keymap" id="rl_set_keymap">rl_set_keymap</a> <a class="macro" href="rlstdc.h.html#33" title="(Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="351">351</th><td><b>extern</b> <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a> <a class="decl fn" href="keymaps.h.html#rl_get_keymap" title='rl_get_keymap' data-ref="rl_get_keymap" id="rl_get_keymap">rl_get_keymap</a> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="352">352</th><td><i>/* Undocumented; used internally only. */</i></td></tr>
+<tr><th id="353">353</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_set_keymap_from_edit_mode" title='rl_set_keymap_from_edit_mode' data-ref="rl_set_keymap_from_edit_mode">rl_set_keymap_from_edit_mode</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="354">354</th><td><b>extern</b> <em>char</em> *<dfn class="decl fn" id="rl_get_keymap_name_from_edit_mode" title='rl_get_keymap_name_from_edit_mode' data-ref="rl_get_keymap_name_from_edit_mode">rl_get_keymap_name_from_edit_mode</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="355">355</th><td></td></tr>
+<tr><th id="356">356</th><td><i>/* Functions for manipulating the funmap, which maps command names to functions. */</i></td></tr>
+<tr><th id="357">357</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_add_funmap_entry" title='rl_add_funmap_entry' data-ref="rl_add_funmap_entry">rl_add_funmap_entry</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, rl_command_func_t *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *));</td></tr>
+<tr><th id="358">358</th><td><b>extern</b> <em>const</em> <em>char</em> **<dfn class="decl fn" id="rl_funmap_names" title='rl_funmap_names' data-ref="rl_funmap_names">rl_funmap_names</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="359">359</th><td><i>/* Undocumented, only used internally -- there is only one funmap, and this</i></td></tr>
+<tr><th id="360">360</th><td><i>   function may be called only once. */</i></td></tr>
+<tr><th id="361">361</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_initialize_funmap" title='rl_initialize_funmap' data-ref="rl_initialize_funmap">rl_initialize_funmap</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="362">362</th><td></td></tr>
+<tr><th id="363">363</th><td><i>/* Utility functions for managing keyboard macros. */</i></td></tr>
+<tr><th id="364">364</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_push_macro_input" title='rl_push_macro_input' data-ref="rl_push_macro_input">rl_push_macro_input</dfn> <a class="macro" href="rlstdc.h.html#33" title="(char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>char</em> *));</td></tr>
+<tr><th id="365">365</th><td></td></tr>
+<tr><th id="366">366</th><td><i>/* Functions for undoing, from undo.c */</i></td></tr>
+<tr><th id="367">367</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_add_undo" title='rl_add_undo' data-ref="rl_add_undo">rl_add_undo</dfn> <a class="macro" href="rlstdc.h.html#33" title="(enum undo_code, int, int, char *)" data-ref="_M/PARAMS">PARAMS</a>((<b>enum</b> <a class="type" href="#undo_code" title='undo_code' data-ref="undo_code">undo_code</a>, <em>int</em>, <em>int</em>, <em>char</em> *));</td></tr>
+<tr><th id="368">368</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_free_undo_list" title='rl_free_undo_list' data-ref="rl_free_undo_list">rl_free_undo_list</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="369">369</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_do_undo" title='rl_do_undo' data-ref="rl_do_undo">rl_do_undo</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="370">370</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_begin_undo_group" title='rl_begin_undo_group' data-ref="rl_begin_undo_group">rl_begin_undo_group</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="371">371</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_end_undo_group" title='rl_end_undo_group' data-ref="rl_end_undo_group">rl_end_undo_group</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="372">372</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_modifying" title='rl_modifying' data-ref="rl_modifying">rl_modifying</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="373">373</th><td></td></tr>
+<tr><th id="374">374</th><td><i>/* Functions for redisplay. */</i></td></tr>
+<tr><th id="375">375</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_redisplay" title='rl_redisplay' data-ref="rl_redisplay">rl_redisplay</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="376">376</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_on_new_line" title='rl_on_new_line' data-ref="rl_on_new_line">rl_on_new_line</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="377">377</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_on_new_line_with_prompt" title='rl_on_new_line_with_prompt' data-ref="rl_on_new_line_with_prompt">rl_on_new_line_with_prompt</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="378">378</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_forced_update_display" title='rl_forced_update_display' data-ref="rl_forced_update_display">rl_forced_update_display</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="379">379</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_clear_message" title='rl_clear_message' data-ref="rl_clear_message">rl_clear_message</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="380">380</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_reset_line_state" title='rl_reset_line_state' data-ref="rl_reset_line_state">rl_reset_line_state</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="381">381</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_crlf" title='rl_crlf' data-ref="rl_crlf">rl_crlf</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="382">382</th><td></td></tr>
+<tr><th id="383">383</th><td><u>#<span data-ppcond="383">if</span> defined (<span class="macro" data-ref="_M/USE_VARARGS">USE_VARARGS</span>) &amp;&amp; defined (<span class="macro" data-ref="_M/PREFER_STDARG">PREFER_STDARG</span>)</u></td></tr>
+<tr><th id="384">384</th><td><b>extern</b> <em>int</em> rl_message (<em>const</em> <em>char</em> *, ...)  __rl_attribute__((__format__ (printf, <var>1</var>, <var>2</var>)));</td></tr>
+<tr><th id="385">385</th><td><u>#<span data-ppcond="383">else</span></u></td></tr>
+<tr><th id="386">386</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_message" title='rl_message' data-ref="rl_message">rl_message</dfn> ();</td></tr>
+<tr><th id="387">387</th><td><u>#<span data-ppcond="383">endif</span></u></td></tr>
+<tr><th id="388">388</th><td></td></tr>
+<tr><th id="389">389</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_show_char" title='rl_show_char' data-ref="rl_show_char">rl_show_char</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>));</td></tr>
+<tr><th id="390">390</th><td></td></tr>
+<tr><th id="391">391</th><td><i>/* Undocumented in texinfo manual. */</i></td></tr>
+<tr><th id="392">392</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_character_len" title='rl_character_len' data-ref="rl_character_len">rl_character_len</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="393">393</th><td></td></tr>
+<tr><th id="394">394</th><td><i>/* Save and restore internal prompt redisplay information. */</i></td></tr>
+<tr><th id="395">395</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_save_prompt" title='rl_save_prompt' data-ref="rl_save_prompt">rl_save_prompt</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="396">396</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_restore_prompt" title='rl_restore_prompt' data-ref="rl_restore_prompt">rl_restore_prompt</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="397">397</th><td></td></tr>
+<tr><th id="398">398</th><td><i>/* Modifying text. */</i></td></tr>
+<tr><th id="399">399</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_replace_line" title='rl_replace_line' data-ref="rl_replace_line">rl_replace_line</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <em>int</em>));</td></tr>
+<tr><th id="400">400</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_insert_text" title='rl_insert_text' data-ref="rl_insert_text">rl_insert_text</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="401">401</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_delete_text" title='rl_delete_text' data-ref="rl_delete_text">rl_delete_text</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="402">402</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_kill_text" title='rl_kill_text' data-ref="rl_kill_text">rl_kill_text</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="403">403</th><td><b>extern</b> <em>char</em> *<dfn class="decl fn" id="rl_copy_text" title='rl_copy_text' data-ref="rl_copy_text">rl_copy_text</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="404">404</th><td></td></tr>
+<tr><th id="405">405</th><td><i>/* Terminal and tty mode management. */</i></td></tr>
+<tr><th id="406">406</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_prep_terminal" title='rl_prep_terminal' data-ref="rl_prep_terminal">rl_prep_terminal</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>));</td></tr>
+<tr><th id="407">407</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_deprep_terminal" title='rl_deprep_terminal' data-ref="rl_deprep_terminal">rl_deprep_terminal</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="408">408</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_tty_set_default_bindings" title='rl_tty_set_default_bindings' data-ref="rl_tty_set_default_bindings">rl_tty_set_default_bindings</dfn> <a class="macro" href="rlstdc.h.html#33" title="(Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="409">409</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_tty_unset_default_bindings" title='rl_tty_unset_default_bindings' data-ref="rl_tty_unset_default_bindings">rl_tty_unset_default_bindings</dfn> <a class="macro" href="rlstdc.h.html#33" title="(Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="410">410</th><td></td></tr>
+<tr><th id="411">411</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_reset_terminal" title='rl_reset_terminal' data-ref="rl_reset_terminal">rl_reset_terminal</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="412">412</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_resize_terminal" title='rl_resize_terminal' data-ref="rl_resize_terminal">rl_resize_terminal</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="413">413</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_set_screen_size" title='rl_set_screen_size' data-ref="rl_set_screen_size">rl_set_screen_size</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="414">414</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_get_screen_size" title='rl_get_screen_size' data-ref="rl_get_screen_size">rl_get_screen_size</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int *, int *)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em> *, <em>int</em> *));</td></tr>
+<tr><th id="415">415</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_reset_screen_size" title='rl_reset_screen_size' data-ref="rl_reset_screen_size">rl_reset_screen_size</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="416">416</th><td></td></tr>
+<tr><th id="417">417</th><td><b>extern</b> <em>char</em> *<dfn class="decl fn" id="rl_get_termcap" title='rl_get_termcap' data-ref="rl_get_termcap">rl_get_termcap</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="418">418</th><td></td></tr>
+<tr><th id="419">419</th><td><i>/* Functions for character input. */</i></td></tr>
+<tr><th id="420">420</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_stuff_char" title='rl_stuff_char' data-ref="rl_stuff_char">rl_stuff_char</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>));</td></tr>
+<tr><th id="421">421</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_execute_next" title='rl_execute_next' data-ref="rl_execute_next">rl_execute_next</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>));</td></tr>
+<tr><th id="422">422</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_clear_pending_input" title='rl_clear_pending_input' data-ref="rl_clear_pending_input">rl_clear_pending_input</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="423">423</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_read_key" title='rl_read_key' data-ref="rl_read_key">rl_read_key</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="424">424</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_getc" title='rl_getc' data-ref="rl_getc">rl_getc</dfn> <a class="macro" href="rlstdc.h.html#33" title="(FILE *)" data-ref="_M/PARAMS">PARAMS</a>((<a class="typedef" href="../stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *));</td></tr>
+<tr><th id="425">425</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_set_keyboard_input_timeout" title='rl_set_keyboard_input_timeout' data-ref="rl_set_keyboard_input_timeout">rl_set_keyboard_input_timeout</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>));</td></tr>
+<tr><th id="426">426</th><td></td></tr>
+<tr><th id="427">427</th><td><i>/* `Public' utility functions . */</i></td></tr>
+<tr><th id="428">428</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_extend_line_buffer" title='rl_extend_line_buffer' data-ref="rl_extend_line_buffer">rl_extend_line_buffer</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>));</td></tr>
+<tr><th id="429">429</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_ding" title='rl_ding' data-ref="rl_ding">rl_ding</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="430">430</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_alphabetic" title='rl_alphabetic' data-ref="rl_alphabetic">rl_alphabetic</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>));</td></tr>
+<tr><th id="431">431</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_free" title='rl_free' data-ref="rl_free">rl_free</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void *)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em> *));</td></tr>
+<tr><th id="432">432</th><td></td></tr>
+<tr><th id="433">433</th><td><i>/* Readline signal handling, from signals.c */</i></td></tr>
+<tr><th id="434">434</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_set_signals" title='rl_set_signals' data-ref="rl_set_signals">rl_set_signals</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="435">435</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_clear_signals" title='rl_clear_signals' data-ref="rl_clear_signals">rl_clear_signals</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="436">436</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_cleanup_after_signal" title='rl_cleanup_after_signal' data-ref="rl_cleanup_after_signal">rl_cleanup_after_signal</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="437">437</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_reset_after_signal" title='rl_reset_after_signal' data-ref="rl_reset_after_signal">rl_reset_after_signal</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="438">438</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_free_line_state" title='rl_free_line_state' data-ref="rl_free_line_state">rl_free_line_state</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="439">439</th><td></td></tr>
+<tr><th id="440">440</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_echo_signal_char" title='rl_echo_signal_char' data-ref="rl_echo_signal_char">rl_echo_signal_char</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>)); </td></tr>
+<tr><th id="441">441</th><td></td></tr>
+<tr><th id="442">442</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_set_paren_blink_timeout" title='rl_set_paren_blink_timeout' data-ref="rl_set_paren_blink_timeout">rl_set_paren_blink_timeout</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>));</td></tr>
+<tr><th id="443">443</th><td></td></tr>
+<tr><th id="444">444</th><td><i>/* History management functions. */</i></td></tr>
+<tr><th id="445">445</th><td></td></tr>
+<tr><th id="446">446</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_clear_history" title='rl_clear_history' data-ref="rl_clear_history">rl_clear_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="447">447</th><td></td></tr>
+<tr><th id="448">448</th><td><i>/* Undocumented. */</i></td></tr>
+<tr><th id="449">449</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_maybe_save_line" title='rl_maybe_save_line' data-ref="rl_maybe_save_line">rl_maybe_save_line</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="450">450</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_maybe_unsave_line" title='rl_maybe_unsave_line' data-ref="rl_maybe_unsave_line">rl_maybe_unsave_line</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="451">451</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_maybe_replace_line" title='rl_maybe_replace_line' data-ref="rl_maybe_replace_line">rl_maybe_replace_line</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="452">452</th><td></td></tr>
+<tr><th id="453">453</th><td><i>/* Completion functions. */</i></td></tr>
+<tr><th id="454">454</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_complete_internal" title='rl_complete_internal' data-ref="rl_complete_internal">rl_complete_internal</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>));</td></tr>
+<tr><th id="455">455</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_display_match_list" title='rl_display_match_list' data-ref="rl_display_match_list">rl_display_match_list</dfn> <a class="macro" href="rlstdc.h.html#33" title="(char **, int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>char</em> **, <em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="456">456</th><td></td></tr>
+<tr><th id="457">457</th><td><b>extern</b> <em>char</em> **<dfn class="decl fn" id="rl_completion_matches" title='rl_completion_matches' data-ref="rl_completion_matches">rl_completion_matches</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, rl_compentry_func_t *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <a class="typedef" href="rltypedefs.h.html#rl_compentry_func_t" title='rl_compentry_func_t' data-type='char *(const char *, int)' data-ref="rl_compentry_func_t">rl_compentry_func_t</a> *));</td></tr>
+<tr><th id="458">458</th><td><b>extern</b> <em>char</em> *<dfn class="decl fn" id="rl_username_completion_function" title='rl_username_completion_function' data-ref="rl_username_completion_function">rl_username_completion_function</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <em>int</em>));</td></tr>
+<tr><th id="459">459</th><td><b>extern</b> <em>char</em> *<dfn class="decl fn" id="rl_filename_completion_function" title='rl_filename_completion_function' data-ref="rl_filename_completion_function">rl_filename_completion_function</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <em>int</em>));</td></tr>
+<tr><th id="460">460</th><td></td></tr>
+<tr><th id="461">461</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_completion_mode" title='rl_completion_mode' data-ref="rl_completion_mode">rl_completion_mode</dfn> <a class="macro" href="rlstdc.h.html#33" title="(rl_command_func_t *)" data-ref="_M/PARAMS">PARAMS</a>((<a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *));</td></tr>
+<tr><th id="462">462</th><td></td></tr>
+<tr><th id="463">463</th><td><u>#<span data-ppcond="463">if</span> 0</u></td></tr>
+<tr><th id="464">464</th><td><i>/* Backwards compatibility (compat.c).  These will go away sometime. */</i></td></tr>
+<tr><th id="465">465</th><td><b>extern</b> <em>void</em> free_undo_list PARAMS((<em>void</em>));</td></tr>
+<tr><th id="466">466</th><td><b>extern</b> <em>int</em> maybe_save_line PARAMS((<em>void</em>));</td></tr>
+<tr><th id="467">467</th><td><b>extern</b> <em>int</em> maybe_unsave_line PARAMS((<em>void</em>));</td></tr>
+<tr><th id="468">468</th><td><b>extern</b> <em>int</em> maybe_replace_line PARAMS((<em>void</em>));</td></tr>
+<tr><th id="469">469</th><td></td></tr>
+<tr><th id="470">470</th><td><b>extern</b> <em>int</em> ding PARAMS((<em>void</em>));</td></tr>
+<tr><th id="471">471</th><td><b>extern</b> <em>int</em> alphabetic PARAMS((<em>int</em>));</td></tr>
+<tr><th id="472">472</th><td><b>extern</b> <em>int</em> crlf PARAMS((<em>void</em>));</td></tr>
+<tr><th id="473">473</th><td></td></tr>
+<tr><th id="474">474</th><td><b>extern</b> <em>char</em> **completion_matches PARAMS((<em>char</em> *, rl_compentry_func_t *));</td></tr>
+<tr><th id="475">475</th><td><b>extern</b> <em>char</em> *username_completion_function PARAMS((<em>const</em> <em>char</em> *, <em>int</em>));</td></tr>
+<tr><th id="476">476</th><td><b>extern</b> <em>char</em> *filename_completion_function PARAMS((<em>const</em> <em>char</em> *, <em>int</em>));</td></tr>
+<tr><th id="477">477</th><td><u>#<span data-ppcond="463">endif</span></u></td></tr>
+<tr><th id="478">478</th><td></td></tr>
+<tr><th id="479">479</th><td><i>/* **************************************************************** */</i></td></tr>
+<tr><th id="480">480</th><td><i>/*								    */</i></td></tr>
+<tr><th id="481">481</th><td><i>/*			Well Published Variables		    */</i></td></tr>
+<tr><th id="482">482</th><td><i>/*								    */</i></td></tr>
+<tr><th id="483">483</th><td><i>/* **************************************************************** */</i></td></tr>
+<tr><th id="484">484</th><td></td></tr>
+<tr><th id="485">485</th><td><i>/* The version of this incarnation of the readline library. */</i></td></tr>
+<tr><th id="486">486</th><td><b>extern</b> <em>const</em> <em>char</em> *<dfn class="decl" id="rl_library_version" title='rl_library_version' data-ref="rl_library_version">rl_library_version</dfn>;		<i>/* e.g., "4.2" */</i></td></tr>
+<tr><th id="487">487</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_readline_version" title='rl_readline_version' data-ref="rl_readline_version">rl_readline_version</dfn>;			<i>/* e.g., 0x0402 */</i></td></tr>
+<tr><th id="488">488</th><td></td></tr>
+<tr><th id="489">489</th><td><i>/* True if this is real GNU readline. */</i></td></tr>
+<tr><th id="490">490</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_gnu_readline_p" title='rl_gnu_readline_p' data-ref="rl_gnu_readline_p">rl_gnu_readline_p</dfn>;</td></tr>
+<tr><th id="491">491</th><td></td></tr>
+<tr><th id="492">492</th><td><i>/* Flags word encapsulating the current readline state. */</i></td></tr>
+<tr><th id="493">493</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_readline_state" title='rl_readline_state' data-ref="rl_readline_state">rl_readline_state</dfn>;</td></tr>
+<tr><th id="494">494</th><td></td></tr>
+<tr><th id="495">495</th><td><i>/* Says which editing mode readline is currently using.  1 means emacs mode;</i></td></tr>
+<tr><th id="496">496</th><td><i>   0 means vi mode. */</i></td></tr>
+<tr><th id="497">497</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_editing_mode" title='rl_editing_mode' data-ref="rl_editing_mode">rl_editing_mode</dfn>;</td></tr>
+<tr><th id="498">498</th><td></td></tr>
+<tr><th id="499">499</th><td><i>/* Insert or overwrite mode for emacs mode.  1 means insert mode; 0 means</i></td></tr>
+<tr><th id="500">500</th><td><i>   overwrite mode.  Reset to insert mode on each input line. */</i></td></tr>
+<tr><th id="501">501</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_insert_mode" title='rl_insert_mode' data-ref="rl_insert_mode">rl_insert_mode</dfn>;</td></tr>
+<tr><th id="502">502</th><td></td></tr>
+<tr><th id="503">503</th><td><i>/* The name of the calling program.  You should initialize this to</i></td></tr>
+<tr><th id="504">504</th><td><i>   whatever was in argv[0].  It is used when parsing conditionals. */</i></td></tr>
+<tr><th id="505">505</th><td><b>extern</b> <em>const</em> <em>char</em> *<dfn class="decl" id="rl_readline_name" title='rl_readline_name' data-ref="rl_readline_name">rl_readline_name</dfn>;</td></tr>
+<tr><th id="506">506</th><td></td></tr>
+<tr><th id="507">507</th><td><i>/* The prompt readline uses.  This is set from the argument to</i></td></tr>
+<tr><th id="508">508</th><td><i>   readline (), and should not be assigned to directly. */</i></td></tr>
+<tr><th id="509">509</th><td><b>extern</b> <em>char</em> *<dfn class="decl" id="rl_prompt" title='rl_prompt' data-ref="rl_prompt">rl_prompt</dfn>;</td></tr>
+<tr><th id="510">510</th><td></td></tr>
+<tr><th id="511">511</th><td><i>/* The prompt string that is actually displayed by rl_redisplay.  Public so</i></td></tr>
+<tr><th id="512">512</th><td><i>   applications can more easily supply their own redisplay functions. */</i></td></tr>
+<tr><th id="513">513</th><td><b>extern</b> <em>char</em> *<dfn class="decl" id="rl_display_prompt" title='rl_display_prompt' data-ref="rl_display_prompt">rl_display_prompt</dfn>;</td></tr>
+<tr><th id="514">514</th><td></td></tr>
+<tr><th id="515">515</th><td><i>/* The line buffer that is in use. */</i></td></tr>
+<tr><th id="516">516</th><td><b>extern</b> <em>char</em> *<dfn class="decl" id="rl_line_buffer" title='rl_line_buffer' data-ref="rl_line_buffer">rl_line_buffer</dfn>;</td></tr>
+<tr><th id="517">517</th><td></td></tr>
+<tr><th id="518">518</th><td><i>/* The location of point, and end. */</i></td></tr>
+<tr><th id="519">519</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_point" title='rl_point' data-ref="rl_point">rl_point</dfn>;</td></tr>
+<tr><th id="520">520</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_end" title='rl_end' data-ref="rl_end">rl_end</dfn>;</td></tr>
+<tr><th id="521">521</th><td></td></tr>
+<tr><th id="522">522</th><td><i>/* The mark, or saved cursor position. */</i></td></tr>
+<tr><th id="523">523</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_mark" title='rl_mark' data-ref="rl_mark">rl_mark</dfn>;</td></tr>
+<tr><th id="524">524</th><td></td></tr>
+<tr><th id="525">525</th><td><i>/* Flag to indicate that readline has finished with the current input</i></td></tr>
+<tr><th id="526">526</th><td><i>   line and should return it. */</i></td></tr>
+<tr><th id="527">527</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_done" title='rl_done' data-ref="rl_done">rl_done</dfn>;</td></tr>
+<tr><th id="528">528</th><td></td></tr>
+<tr><th id="529">529</th><td><i>/* If set to a character value, that will be the next keystroke read. */</i></td></tr>
+<tr><th id="530">530</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_pending_input" title='rl_pending_input' data-ref="rl_pending_input">rl_pending_input</dfn>;</td></tr>
+<tr><th id="531">531</th><td></td></tr>
+<tr><th id="532">532</th><td><i>/* Non-zero if we called this function from _rl_dispatch().  It's present</i></td></tr>
+<tr><th id="533">533</th><td><i>   so functions can find out whether they were called from a key binding</i></td></tr>
+<tr><th id="534">534</th><td><i>   or directly from an application. */</i></td></tr>
+<tr><th id="535">535</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_dispatching" title='rl_dispatching' data-ref="rl_dispatching">rl_dispatching</dfn>;</td></tr>
+<tr><th id="536">536</th><td></td></tr>
+<tr><th id="537">537</th><td><i>/* Non-zero if the user typed a numeric argument before executing the</i></td></tr>
+<tr><th id="538">538</th><td><i>   current function. */</i></td></tr>
+<tr><th id="539">539</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_explicit_arg" title='rl_explicit_arg' data-ref="rl_explicit_arg">rl_explicit_arg</dfn>;</td></tr>
+<tr><th id="540">540</th><td></td></tr>
+<tr><th id="541">541</th><td><i>/* The current value of the numeric argument specified by the user. */</i></td></tr>
+<tr><th id="542">542</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_numeric_arg" title='rl_numeric_arg' data-ref="rl_numeric_arg">rl_numeric_arg</dfn>;</td></tr>
+<tr><th id="543">543</th><td></td></tr>
+<tr><th id="544">544</th><td><i>/* The address of the last command function Readline executed. */</i></td></tr>
+<tr><th id="545">545</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *<dfn class="decl" id="rl_last_func" title='rl_last_func' data-ref="rl_last_func">rl_last_func</dfn>;</td></tr>
+<tr><th id="546">546</th><td></td></tr>
+<tr><th id="547">547</th><td><i>/* The name of the terminal to use. */</i></td></tr>
+<tr><th id="548">548</th><td><b>extern</b> <em>const</em> <em>char</em> *<dfn class="decl" id="rl_terminal_name" title='rl_terminal_name' data-ref="rl_terminal_name">rl_terminal_name</dfn>;</td></tr>
+<tr><th id="549">549</th><td></td></tr>
+<tr><th id="550">550</th><td><i>/* The input and output streams. */</i></td></tr>
+<tr><th id="551">551</th><td><b>extern</b> <a class="typedef" href="../stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="decl" id="rl_instream" title='rl_instream' data-ref="rl_instream">rl_instream</dfn>;</td></tr>
+<tr><th id="552">552</th><td><b>extern</b> <a class="typedef" href="../stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="decl" id="rl_outstream" title='rl_outstream' data-ref="rl_outstream">rl_outstream</dfn>;</td></tr>
+<tr><th id="553">553</th><td></td></tr>
+<tr><th id="554">554</th><td><i>/* If non-zero, Readline gives values of LINES and COLUMNS from the environment</i></td></tr>
+<tr><th id="555">555</th><td><i>   greater precedence than values fetched from the kernel when computing the</i></td></tr>
+<tr><th id="556">556</th><td><i>   screen dimensions. */</i></td></tr>
+<tr><th id="557">557</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_prefer_env_winsize" title='rl_prefer_env_winsize' data-ref="rl_prefer_env_winsize">rl_prefer_env_winsize</dfn>;</td></tr>
+<tr><th id="558">558</th><td></td></tr>
+<tr><th id="559">559</th><td><i>/* If non-zero, then this is the address of a function to call just</i></td></tr>
+<tr><th id="560">560</th><td><i>   before readline_internal () prints the first prompt. */</i></td></tr>
+<tr><th id="561">561</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_hook_func_t" title='rl_hook_func_t' data-type='int (void)' data-ref="rl_hook_func_t">rl_hook_func_t</a> *<dfn class="decl" id="rl_startup_hook" title='rl_startup_hook' data-ref="rl_startup_hook">rl_startup_hook</dfn>;</td></tr>
+<tr><th id="562">562</th><td></td></tr>
+<tr><th id="563">563</th><td><i>/* If non-zero, this is the address of a function to call just before</i></td></tr>
+<tr><th id="564">564</th><td><i>   readline_internal_setup () returns and readline_internal starts</i></td></tr>
+<tr><th id="565">565</th><td><i>   reading input characters. */</i></td></tr>
+<tr><th id="566">566</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_hook_func_t" title='rl_hook_func_t' data-type='int (void)' data-ref="rl_hook_func_t">rl_hook_func_t</a> *<dfn class="decl" id="rl_pre_input_hook" title='rl_pre_input_hook' data-ref="rl_pre_input_hook">rl_pre_input_hook</dfn>;</td></tr>
+<tr><th id="567">567</th><td>      </td></tr>
+<tr><th id="568">568</th><td><i>/* The address of a function to call periodically while Readline is</i></td></tr>
+<tr><th id="569">569</th><td><i>   awaiting character input, or NULL, for no event handling. */</i></td></tr>
+<tr><th id="570">570</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_hook_func_t" title='rl_hook_func_t' data-type='int (void)' data-ref="rl_hook_func_t">rl_hook_func_t</a> *<dfn class="decl" id="rl_event_hook" title='rl_event_hook' data-ref="rl_event_hook">rl_event_hook</dfn>;</td></tr>
+<tr><th id="571">571</th><td></td></tr>
+<tr><th id="572">572</th><td><i>/* The address of a function to call if a read is interrupted by a signal. */</i></td></tr>
+<tr><th id="573">573</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_hook_func_t" title='rl_hook_func_t' data-type='int (void)' data-ref="rl_hook_func_t">rl_hook_func_t</a> *<dfn class="decl" id="rl_signal_event_hook" title='rl_signal_event_hook' data-ref="rl_signal_event_hook">rl_signal_event_hook</dfn>;</td></tr>
+<tr><th id="574">574</th><td></td></tr>
+<tr><th id="575">575</th><td><i>/* The address of a function to call if Readline needs to know whether or not</i></td></tr>
+<tr><th id="576">576</th><td><i>   there is data available from the current input source. */</i></td></tr>
+<tr><th id="577">577</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_hook_func_t" title='rl_hook_func_t' data-type='int (void)' data-ref="rl_hook_func_t">rl_hook_func_t</a> *<dfn class="decl" id="rl_input_available_hook" title='rl_input_available_hook' data-ref="rl_input_available_hook">rl_input_available_hook</dfn>;</td></tr>
+<tr><th id="578">578</th><td></td></tr>
+<tr><th id="579">579</th><td><i>/* The address of the function to call to fetch a character from the current</i></td></tr>
+<tr><th id="580">580</th><td><i>   Readline input stream */</i></td></tr>
+<tr><th id="581">581</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_getc_func_t" title='rl_getc_func_t' data-type='int (FILE *)' data-ref="rl_getc_func_t">rl_getc_func_t</a> *<dfn class="decl" id="rl_getc_function" title='rl_getc_function' data-ref="rl_getc_function">rl_getc_function</dfn>;</td></tr>
+<tr><th id="582">582</th><td></td></tr>
+<tr><th id="583">583</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_voidfunc_t" title='rl_voidfunc_t' data-type='void (void)' data-ref="rl_voidfunc_t">rl_voidfunc_t</a> *<dfn class="decl" id="rl_redisplay_function" title='rl_redisplay_function' data-ref="rl_redisplay_function">rl_redisplay_function</dfn>;</td></tr>
+<tr><th id="584">584</th><td></td></tr>
+<tr><th id="585">585</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_vintfunc_t" title='rl_vintfunc_t' data-type='void (int)' data-ref="rl_vintfunc_t">rl_vintfunc_t</a> *<dfn class="decl" id="rl_prep_term_function" title='rl_prep_term_function' data-ref="rl_prep_term_function">rl_prep_term_function</dfn>;</td></tr>
+<tr><th id="586">586</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_voidfunc_t" title='rl_voidfunc_t' data-type='void (void)' data-ref="rl_voidfunc_t">rl_voidfunc_t</a> *<dfn class="decl" id="rl_deprep_term_function" title='rl_deprep_term_function' data-ref="rl_deprep_term_function">rl_deprep_term_function</dfn>;</td></tr>
+<tr><th id="587">587</th><td></td></tr>
+<tr><th id="588">588</th><td><i>/* Dispatch variables. */</i></td></tr>
+<tr><th id="589">589</th><td><b>extern</b> <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a> <dfn class="decl" id="rl_executing_keymap" title='rl_executing_keymap' data-ref="rl_executing_keymap">rl_executing_keymap</dfn>;</td></tr>
+<tr><th id="590">590</th><td><b>extern</b> <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a> <dfn class="decl" id="rl_binding_keymap" title='rl_binding_keymap' data-ref="rl_binding_keymap">rl_binding_keymap</dfn>;</td></tr>
+<tr><th id="591">591</th><td></td></tr>
+<tr><th id="592">592</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_executing_key" title='rl_executing_key' data-ref="rl_executing_key">rl_executing_key</dfn>;</td></tr>
+<tr><th id="593">593</th><td><b>extern</b> <em>char</em> *<dfn class="decl" id="rl_executing_keyseq" title='rl_executing_keyseq' data-ref="rl_executing_keyseq">rl_executing_keyseq</dfn>;</td></tr>
+<tr><th id="594">594</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_key_sequence_length" title='rl_key_sequence_length' data-ref="rl_key_sequence_length">rl_key_sequence_length</dfn>;</td></tr>
+<tr><th id="595">595</th><td></td></tr>
+<tr><th id="596">596</th><td><i>/* Display variables. */</i></td></tr>
+<tr><th id="597">597</th><td><i>/* If non-zero, readline will erase the entire line, including any prompt,</i></td></tr>
+<tr><th id="598">598</th><td><i>   if the only thing typed on an otherwise-blank line is something bound to</i></td></tr>
+<tr><th id="599">599</th><td><i>   rl_newline. */</i></td></tr>
+<tr><th id="600">600</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_erase_empty_line" title='rl_erase_empty_line' data-ref="rl_erase_empty_line">rl_erase_empty_line</dfn>;</td></tr>
+<tr><th id="601">601</th><td></td></tr>
+<tr><th id="602">602</th><td><i>/* If non-zero, the application has already printed the prompt (rl_prompt)</i></td></tr>
+<tr><th id="603">603</th><td><i>   before calling readline, so readline should not output it the first time</i></td></tr>
+<tr><th id="604">604</th><td><i>   redisplay is done. */</i></td></tr>
+<tr><th id="605">605</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_already_prompted" title='rl_already_prompted' data-ref="rl_already_prompted">rl_already_prompted</dfn>;</td></tr>
+<tr><th id="606">606</th><td></td></tr>
+<tr><th id="607">607</th><td><i>/* A non-zero value means to read only this many characters rather than</i></td></tr>
+<tr><th id="608">608</th><td><i>   up to a character bound to accept-line. */</i></td></tr>
+<tr><th id="609">609</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_num_chars_to_read" title='rl_num_chars_to_read' data-ref="rl_num_chars_to_read">rl_num_chars_to_read</dfn>;</td></tr>
+<tr><th id="610">610</th><td></td></tr>
+<tr><th id="611">611</th><td><i>/* The text of a currently-executing keyboard macro. */</i></td></tr>
+<tr><th id="612">612</th><td><b>extern</b> <em>char</em> *<dfn class="decl" id="rl_executing_macro" title='rl_executing_macro' data-ref="rl_executing_macro">rl_executing_macro</dfn>;</td></tr>
+<tr><th id="613">613</th><td></td></tr>
+<tr><th id="614">614</th><td><i>/* Variables to control readline signal handling. */</i></td></tr>
+<tr><th id="615">615</th><td><i>/* If non-zero, readline will install its own signal handlers for</i></td></tr>
+<tr><th id="616">616</th><td><i>   SIGINT, SIGTERM, SIGQUIT, SIGALRM, SIGTSTP, SIGTTIN, and SIGTTOU. */</i></td></tr>
+<tr><th id="617">617</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_catch_signals" title='rl_catch_signals' data-ref="rl_catch_signals">rl_catch_signals</dfn>;</td></tr>
+<tr><th id="618">618</th><td></td></tr>
+<tr><th id="619">619</th><td><i>/* If non-zero, readline will install a signal handler for SIGWINCH</i></td></tr>
+<tr><th id="620">620</th><td><i>   that also attempts to call any calling application's SIGWINCH signal</i></td></tr>
+<tr><th id="621">621</th><td><i>   handler.  Note that the terminal is not cleaned up before the</i></td></tr>
+<tr><th id="622">622</th><td><i>   application's signal handler is called; use rl_cleanup_after_signal()</i></td></tr>
+<tr><th id="623">623</th><td><i>   to do that. */</i></td></tr>
+<tr><th id="624">624</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_catch_sigwinch" title='rl_catch_sigwinch' data-ref="rl_catch_sigwinch">rl_catch_sigwinch</dfn>;</td></tr>
+<tr><th id="625">625</th><td></td></tr>
+<tr><th id="626">626</th><td><i>/* If non-zero, the readline SIGWINCH handler will modify LINES and</i></td></tr>
+<tr><th id="627">627</th><td><i>   COLUMNS in the environment. */</i></td></tr>
+<tr><th id="628">628</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_change_environment" title='rl_change_environment' data-ref="rl_change_environment">rl_change_environment</dfn>;</td></tr>
+<tr><th id="629">629</th><td></td></tr>
+<tr><th id="630">630</th><td><i>/* Completion variables. */</i></td></tr>
+<tr><th id="631">631</th><td><i>/* Pointer to the generator function for completion_matches ().</i></td></tr>
+<tr><th id="632">632</th><td><i>   NULL means to use rl_filename_completion_function (), the default</i></td></tr>
+<tr><th id="633">633</th><td><i>   filename completer. */</i></td></tr>
+<tr><th id="634">634</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_compentry_func_t" title='rl_compentry_func_t' data-type='char *(const char *, int)' data-ref="rl_compentry_func_t">rl_compentry_func_t</a> *<dfn class="decl" id="rl_completion_entry_function" title='rl_completion_entry_function' data-ref="rl_completion_entry_function">rl_completion_entry_function</dfn>;</td></tr>
+<tr><th id="635">635</th><td></td></tr>
+<tr><th id="636">636</th><td><i>/* Optional generator for menu completion.  Default is</i></td></tr>
+<tr><th id="637">637</th><td><i>   rl_completion_entry_function (rl_filename_completion_function). */</i></td></tr>
+<tr><th id="638">638</th><td> <b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_compentry_func_t" title='rl_compentry_func_t' data-type='char *(const char *, int)' data-ref="rl_compentry_func_t">rl_compentry_func_t</a> *<dfn class="decl" id="rl_menu_completion_entry_function" title='rl_menu_completion_entry_function' data-ref="rl_menu_completion_entry_function">rl_menu_completion_entry_function</dfn>;</td></tr>
+<tr><th id="639">639</th><td></td></tr>
+<tr><th id="640">640</th><td><i>/* If rl_ignore_some_completions_function is non-NULL it is the address</i></td></tr>
+<tr><th id="641">641</th><td><i>   of a function to call after all of the possible matches have been</i></td></tr>
+<tr><th id="642">642</th><td><i>   generated, but before the actual completion is done to the input line.</i></td></tr>
+<tr><th id="643">643</th><td><i>   The function is called with one argument; a NULL terminated array</i></td></tr>
+<tr><th id="644">644</th><td><i>   of (char *).  If your function removes any of the elements, they</i></td></tr>
+<tr><th id="645">645</th><td><i>   must be free()'ed. */</i></td></tr>
+<tr><th id="646">646</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_compignore_func_t" title='rl_compignore_func_t' data-type='int (char **)' data-ref="rl_compignore_func_t">rl_compignore_func_t</a> *<dfn class="decl" id="rl_ignore_some_completions_function" title='rl_ignore_some_completions_function' data-ref="rl_ignore_some_completions_function">rl_ignore_some_completions_function</dfn>;</td></tr>
+<tr><th id="647">647</th><td></td></tr>
+<tr><th id="648">648</th><td><i>/* Pointer to alternative function to create matches.</i></td></tr>
+<tr><th id="649">649</th><td><i>   Function is called with TEXT, START, and END.</i></td></tr>
+<tr><th id="650">650</th><td><i>   START and END are indices in RL_LINE_BUFFER saying what the boundaries</i></td></tr>
+<tr><th id="651">651</th><td><i>   of TEXT are.</i></td></tr>
+<tr><th id="652">652</th><td><i>   If this function exists and returns NULL then call the value of</i></td></tr>
+<tr><th id="653">653</th><td><i>   rl_completion_entry_function to try to match, otherwise use the</i></td></tr>
+<tr><th id="654">654</th><td><i>   array of strings returned. */</i></td></tr>
+<tr><th id="655">655</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_completion_func_t" title='rl_completion_func_t' data-type='char **(const char *, int, int)' data-ref="rl_completion_func_t">rl_completion_func_t</a> *<dfn class="decl" id="rl_attempted_completion_function" title='rl_attempted_completion_function' data-ref="rl_attempted_completion_function">rl_attempted_completion_function</dfn>;</td></tr>
+<tr><th id="656">656</th><td></td></tr>
+<tr><th id="657">657</th><td><i>/* The basic list of characters that signal a break between words for the</i></td></tr>
+<tr><th id="658">658</th><td><i>   completer routine.  The initial contents of this variable is what</i></td></tr>
+<tr><th id="659">659</th><td><i>   breaks words in the shell, i.e. "n\"\\'`@$&gt;". */</i></td></tr>
+<tr><th id="660">660</th><td><b>extern</b> <em>const</em> <em>char</em> *<dfn class="decl" id="rl_basic_word_break_characters" title='rl_basic_word_break_characters' data-ref="rl_basic_word_break_characters">rl_basic_word_break_characters</dfn>;</td></tr>
+<tr><th id="661">661</th><td></td></tr>
+<tr><th id="662">662</th><td><i>/* The list of characters that signal a break between words for</i></td></tr>
+<tr><th id="663">663</th><td><i>   rl_complete_internal.  The default list is the contents of</i></td></tr>
+<tr><th id="664">664</th><td><i>   rl_basic_word_break_characters.  */</i></td></tr>
+<tr><th id="665">665</th><td><b>extern</b> <i>/*const*/</i> <em>char</em> *<dfn class="decl" id="rl_completer_word_break_characters" title='rl_completer_word_break_characters' data-ref="rl_completer_word_break_characters">rl_completer_word_break_characters</dfn>;</td></tr>
+<tr><th id="666">666</th><td></td></tr>
+<tr><th id="667">667</th><td><i>/* Hook function to allow an application to set the completion word</i></td></tr>
+<tr><th id="668">668</th><td><i>   break characters before readline breaks up the line.  Allows</i></td></tr>
+<tr><th id="669">669</th><td><i>   position-dependent word break characters. */</i></td></tr>
+<tr><th id="670">670</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_cpvfunc_t" title='rl_cpvfunc_t' data-type='char *(void)' data-ref="rl_cpvfunc_t">rl_cpvfunc_t</a> *<dfn class="decl" id="rl_completion_word_break_hook" title='rl_completion_word_break_hook' data-ref="rl_completion_word_break_hook">rl_completion_word_break_hook</dfn>;</td></tr>
+<tr><th id="671">671</th><td></td></tr>
+<tr><th id="672">672</th><td><i>/* List of characters which can be used to quote a substring of the line.</i></td></tr>
+<tr><th id="673">673</th><td><i>   Completion occurs on the entire substring, and within the substring   </i></td></tr>
+<tr><th id="674">674</th><td><i>   rl_completer_word_break_characters are treated as any other character,</i></td></tr>
+<tr><th id="675">675</th><td><i>   unless they also appear within this list. */</i></td></tr>
+<tr><th id="676">676</th><td><b>extern</b> <em>const</em> <em>char</em> *<dfn class="decl" id="rl_completer_quote_characters" title='rl_completer_quote_characters' data-ref="rl_completer_quote_characters">rl_completer_quote_characters</dfn>;</td></tr>
+<tr><th id="677">677</th><td></td></tr>
+<tr><th id="678">678</th><td><i>/* List of quote characters which cause a word break. */</i></td></tr>
+<tr><th id="679">679</th><td><b>extern</b> <em>const</em> <em>char</em> *<dfn class="decl" id="rl_basic_quote_characters" title='rl_basic_quote_characters' data-ref="rl_basic_quote_characters">rl_basic_quote_characters</dfn>;</td></tr>
+<tr><th id="680">680</th><td></td></tr>
+<tr><th id="681">681</th><td><i>/* List of characters that need to be quoted in filenames by the completer. */</i></td></tr>
+<tr><th id="682">682</th><td><b>extern</b> <em>const</em> <em>char</em> *<dfn class="decl" id="rl_filename_quote_characters" title='rl_filename_quote_characters' data-ref="rl_filename_quote_characters">rl_filename_quote_characters</dfn>;</td></tr>
+<tr><th id="683">683</th><td></td></tr>
+<tr><th id="684">684</th><td><i>/* List of characters that are word break characters, but should be left</i></td></tr>
+<tr><th id="685">685</th><td><i>   in TEXT when it is passed to the completion function.  The shell uses</i></td></tr>
+<tr><th id="686">686</th><td><i>   this to help determine what kind of completing to do. */</i></td></tr>
+<tr><th id="687">687</th><td><b>extern</b> <em>const</em> <em>char</em> *<dfn class="decl" id="rl_special_prefixes" title='rl_special_prefixes' data-ref="rl_special_prefixes">rl_special_prefixes</dfn>;</td></tr>
+<tr><th id="688">688</th><td></td></tr>
+<tr><th id="689">689</th><td><i>/* If non-zero, then this is the address of a function to call when</i></td></tr>
+<tr><th id="690">690</th><td><i>   completing on a directory name.  The function is called with</i></td></tr>
+<tr><th id="691">691</th><td><i>   the address of a string (the current directory name) as an arg.  It</i></td></tr>
+<tr><th id="692">692</th><td><i>   changes what is displayed when the possible completions are printed</i></td></tr>
+<tr><th id="693">693</th><td><i>   or inserted.  The directory completion hook should perform</i></td></tr>
+<tr><th id="694">694</th><td><i>   any necessary dequoting.  This function should return 1 if it modifies</i></td></tr>
+<tr><th id="695">695</th><td><i>   the directory name pointer passed as an argument.  If the directory</i></td></tr>
+<tr><th id="696">696</th><td><i>   completion hook returns 0, it should not modify the directory name</i></td></tr>
+<tr><th id="697">697</th><td><i>   pointer passed as an argument. */</i></td></tr>
+<tr><th id="698">698</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_icppfunc_t" title='rl_icppfunc_t' data-type='int (char **)' data-ref="rl_icppfunc_t">rl_icppfunc_t</a> *<dfn class="decl" id="rl_directory_completion_hook" title='rl_directory_completion_hook' data-ref="rl_directory_completion_hook">rl_directory_completion_hook</dfn>;</td></tr>
+<tr><th id="699">699</th><td></td></tr>
+<tr><th id="700">700</th><td><i>/* If non-zero, this is the address of a function to call when completing</i></td></tr>
+<tr><th id="701">701</th><td><i>   a directory name.  This function takes the address of the directory name</i></td></tr>
+<tr><th id="702">702</th><td><i>   to be modified as an argument.  Unlike rl_directory_completion_hook, it</i></td></tr>
+<tr><th id="703">703</th><td><i>   only modifies the directory name used in opendir(2), not what is displayed</i></td></tr>
+<tr><th id="704">704</th><td><i>   when the possible completions are printed or inserted.  If set, it takes</i></td></tr>
+<tr><th id="705">705</th><td><i>   precedence over rl_directory_completion_hook.  The directory rewrite</i></td></tr>
+<tr><th id="706">706</th><td><i>   hook should perform any necessary dequoting.  This function has the same</i></td></tr>
+<tr><th id="707">707</th><td><i>   return value properties as the directory_completion_hook.</i></td></tr>
+<tr><th id="708">708</th><td><i></i></td></tr>
+<tr><th id="709">709</th><td><i>   I'm not happy with how this works yet, so it's undocumented.  I'm trying</i></td></tr>
+<tr><th id="710">710</th><td><i>   it in bash to see how well it goes. */</i></td></tr>
+<tr><th id="711">711</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_icppfunc_t" title='rl_icppfunc_t' data-type='int (char **)' data-ref="rl_icppfunc_t">rl_icppfunc_t</a> *<dfn class="decl" id="rl_directory_rewrite_hook" title='rl_directory_rewrite_hook' data-ref="rl_directory_rewrite_hook">rl_directory_rewrite_hook</dfn>;</td></tr>
+<tr><th id="712">712</th><td></td></tr>
+<tr><th id="713">713</th><td><i>/* If non-zero, this is the address of a function for the completer to call</i></td></tr>
+<tr><th id="714">714</th><td><i>   before deciding which character to append to a completed name.  It should</i></td></tr>
+<tr><th id="715">715</th><td><i>   modify the directory name passed as an argument if appropriate, and return</i></td></tr>
+<tr><th id="716">716</th><td><i>   non-zero if it modifies the name.  This should not worry about dequoting</i></td></tr>
+<tr><th id="717">717</th><td><i>   the filename; that has already happened by the time it gets here. */</i></td></tr>
+<tr><th id="718">718</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_icppfunc_t" title='rl_icppfunc_t' data-type='int (char **)' data-ref="rl_icppfunc_t">rl_icppfunc_t</a> *<dfn class="decl" id="rl_filename_stat_hook" title='rl_filename_stat_hook' data-ref="rl_filename_stat_hook">rl_filename_stat_hook</dfn>;</td></tr>
+<tr><th id="719">719</th><td></td></tr>
+<tr><th id="720">720</th><td><i>/* If non-zero, this is the address of a function to call when reading</i></td></tr>
+<tr><th id="721">721</th><td><i>   directory entries from the filesystem for completion and comparing</i></td></tr>
+<tr><th id="722">722</th><td><i>   them to the partial word to be completed.  The function should</i></td></tr>
+<tr><th id="723">723</th><td><i>   either return its first argument (if no conversion takes place) or</i></td></tr>
+<tr><th id="724">724</th><td><i>   newly-allocated memory.  This can, for instance, convert filenames</i></td></tr>
+<tr><th id="725">725</th><td><i>   between character sets for comparison against what's typed at the</i></td></tr>
+<tr><th id="726">726</th><td><i>   keyboard.  The returned value is what is added to the list of</i></td></tr>
+<tr><th id="727">727</th><td><i>   matches.  The second argument is the length of the filename to be</i></td></tr>
+<tr><th id="728">728</th><td><i>   converted. */</i></td></tr>
+<tr><th id="729">729</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_dequote_func_t" title='rl_dequote_func_t' data-type='char *(char *, int)' data-ref="rl_dequote_func_t">rl_dequote_func_t</a> *<dfn class="decl" id="rl_filename_rewrite_hook" title='rl_filename_rewrite_hook' data-ref="rl_filename_rewrite_hook">rl_filename_rewrite_hook</dfn>;</td></tr>
+<tr><th id="730">730</th><td></td></tr>
+<tr><th id="731">731</th><td><i>/* Backwards compatibility with previous versions of readline. */</i></td></tr>
+<tr><th id="732">732</th><td><u>#define <dfn class="macro" id="_M/rl_symbolic_link_hook" data-ref="_M/rl_symbolic_link_hook">rl_symbolic_link_hook</dfn> rl_directory_completion_hook</u></td></tr>
+<tr><th id="733">733</th><td></td></tr>
+<tr><th id="734">734</th><td><i>/* If non-zero, then this is the address of a function to call when</i></td></tr>
+<tr><th id="735">735</th><td><i>   completing a word would normally display the list of possible matches.</i></td></tr>
+<tr><th id="736">736</th><td><i>   This function is called instead of actually doing the display.</i></td></tr>
+<tr><th id="737">737</th><td><i>   It takes three arguments: (char **matches, int num_matches, int max_length)</i></td></tr>
+<tr><th id="738">738</th><td><i>   where MATCHES is the array of strings that matched, NUM_MATCHES is the</i></td></tr>
+<tr><th id="739">739</th><td><i>   number of strings in that array, and MAX_LENGTH is the length of the</i></td></tr>
+<tr><th id="740">740</th><td><i>   longest string in that array. */</i></td></tr>
+<tr><th id="741">741</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_compdisp_func_t" title='rl_compdisp_func_t' data-type='void (char **, int, int)' data-ref="rl_compdisp_func_t">rl_compdisp_func_t</a> *<dfn class="decl" id="rl_completion_display_matches_hook" title='rl_completion_display_matches_hook' data-ref="rl_completion_display_matches_hook">rl_completion_display_matches_hook</dfn>;</td></tr>
+<tr><th id="742">742</th><td></td></tr>
+<tr><th id="743">743</th><td><i>/* Non-zero means that the results of the matches are to be treated</i></td></tr>
+<tr><th id="744">744</th><td><i>   as filenames.  This is ALWAYS zero on entry, and can only be changed</i></td></tr>
+<tr><th id="745">745</th><td><i>   within a completion entry finder function. */</i></td></tr>
+<tr><th id="746">746</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_filename_completion_desired" title='rl_filename_completion_desired' data-ref="rl_filename_completion_desired">rl_filename_completion_desired</dfn>;</td></tr>
+<tr><th id="747">747</th><td></td></tr>
+<tr><th id="748">748</th><td><i>/* Non-zero means that the results of the matches are to be quoted using</i></td></tr>
+<tr><th id="749">749</th><td><i>   double quotes (or an application-specific quoting mechanism) if the</i></td></tr>
+<tr><th id="750">750</th><td><i>   filename contains any characters in rl_word_break_chars.  This is</i></td></tr>
+<tr><th id="751">751</th><td><i>   ALWAYS non-zero on entry, and can only be changed within a completion</i></td></tr>
+<tr><th id="752">752</th><td><i>   entry finder function. */</i></td></tr>
+<tr><th id="753">753</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_filename_quoting_desired" title='rl_filename_quoting_desired' data-ref="rl_filename_quoting_desired">rl_filename_quoting_desired</dfn>;</td></tr>
+<tr><th id="754">754</th><td></td></tr>
+<tr><th id="755">755</th><td><i>/* Set to a function to quote a filename in an application-specific fashion.</i></td></tr>
+<tr><th id="756">756</th><td><i>   Called with the text to quote, the type of match found (single or multiple)</i></td></tr>
+<tr><th id="757">757</th><td><i>   and a pointer to the quoting character to be used, which the function can</i></td></tr>
+<tr><th id="758">758</th><td><i>   reset if desired. */</i></td></tr>
+<tr><th id="759">759</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_quote_func_t" title='rl_quote_func_t' data-type='char *(char *, int, char *)' data-ref="rl_quote_func_t">rl_quote_func_t</a> *<dfn class="decl" id="rl_filename_quoting_function" title='rl_filename_quoting_function' data-ref="rl_filename_quoting_function">rl_filename_quoting_function</dfn>;</td></tr>
+<tr><th id="760">760</th><td></td></tr>
+<tr><th id="761">761</th><td><i>/* Function to call to remove quoting characters from a filename.  Called</i></td></tr>
+<tr><th id="762">762</th><td><i>   before completion is attempted, so the embedded quotes do not interfere</i></td></tr>
+<tr><th id="763">763</th><td><i>   with matching names in the file system. */</i></td></tr>
+<tr><th id="764">764</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_dequote_func_t" title='rl_dequote_func_t' data-type='char *(char *, int)' data-ref="rl_dequote_func_t">rl_dequote_func_t</a> *<dfn class="decl" id="rl_filename_dequoting_function" title='rl_filename_dequoting_function' data-ref="rl_filename_dequoting_function">rl_filename_dequoting_function</dfn>;</td></tr>
+<tr><th id="765">765</th><td></td></tr>
+<tr><th id="766">766</th><td><i>/* Function to call to decide whether or not a word break character is</i></td></tr>
+<tr><th id="767">767</th><td><i>   quoted.  If a character is quoted, it does not break words for the</i></td></tr>
+<tr><th id="768">768</th><td><i>   completer. */</i></td></tr>
+<tr><th id="769">769</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_linebuf_func_t" title='rl_linebuf_func_t' data-type='int (char *, int)' data-ref="rl_linebuf_func_t">rl_linebuf_func_t</a> *<dfn class="decl" id="rl_char_is_quoted_p" title='rl_char_is_quoted_p' data-ref="rl_char_is_quoted_p">rl_char_is_quoted_p</dfn>;</td></tr>
+<tr><th id="770">770</th><td></td></tr>
+<tr><th id="771">771</th><td><i>/* Non-zero means to suppress normal filename completion after the</i></td></tr>
+<tr><th id="772">772</th><td><i>   user-specified completion function has been called. */</i></td></tr>
+<tr><th id="773">773</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_attempted_completion_over" title='rl_attempted_completion_over' data-ref="rl_attempted_completion_over">rl_attempted_completion_over</dfn>;</td></tr>
+<tr><th id="774">774</th><td></td></tr>
+<tr><th id="775">775</th><td><i>/* Set to a character describing the type of completion being attempted by</i></td></tr>
+<tr><th id="776">776</th><td><i>   rl_complete_internal; available for use by application completion</i></td></tr>
+<tr><th id="777">777</th><td><i>   functions. */</i></td></tr>
+<tr><th id="778">778</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_completion_type" title='rl_completion_type' data-ref="rl_completion_type">rl_completion_type</dfn>;</td></tr>
+<tr><th id="779">779</th><td></td></tr>
+<tr><th id="780">780</th><td><i>/* Set to the last key used to invoke one of the completion functions */</i></td></tr>
+<tr><th id="781">781</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_completion_invoking_key" title='rl_completion_invoking_key' data-ref="rl_completion_invoking_key">rl_completion_invoking_key</dfn>;</td></tr>
+<tr><th id="782">782</th><td></td></tr>
+<tr><th id="783">783</th><td><i>/* Up to this many items will be displayed in response to a</i></td></tr>
+<tr><th id="784">784</th><td><i>   possible-completions call.  After that, we ask the user if she</i></td></tr>
+<tr><th id="785">785</th><td><i>   is sure she wants to see them all.  The default value is 100. */</i></td></tr>
+<tr><th id="786">786</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_completion_query_items" title='rl_completion_query_items' data-ref="rl_completion_query_items">rl_completion_query_items</dfn>;</td></tr>
+<tr><th id="787">787</th><td></td></tr>
+<tr><th id="788">788</th><td><i>/* Character appended to completed words when at the end of the line.  The</i></td></tr>
+<tr><th id="789">789</th><td><i>   default is a space.  Nothing is added if this is '\0'. */</i></td></tr>
+<tr><th id="790">790</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_completion_append_character" title='rl_completion_append_character' data-ref="rl_completion_append_character">rl_completion_append_character</dfn>;</td></tr>
+<tr><th id="791">791</th><td></td></tr>
+<tr><th id="792">792</th><td><i>/* If set to non-zero by an application completion function,</i></td></tr>
+<tr><th id="793">793</th><td><i>   rl_completion_append_character will not be appended. */</i></td></tr>
+<tr><th id="794">794</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_completion_suppress_append" title='rl_completion_suppress_append' data-ref="rl_completion_suppress_append">rl_completion_suppress_append</dfn>;</td></tr>
+<tr><th id="795">795</th><td></td></tr>
+<tr><th id="796">796</th><td><i>/* Set to any quote character readline thinks it finds before any application</i></td></tr>
+<tr><th id="797">797</th><td><i>   completion function is called. */</i></td></tr>
+<tr><th id="798">798</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_completion_quote_character" title='rl_completion_quote_character' data-ref="rl_completion_quote_character">rl_completion_quote_character</dfn>;</td></tr>
+<tr><th id="799">799</th><td></td></tr>
+<tr><th id="800">800</th><td><i>/* Set to a non-zero value if readline found quoting anywhere in the word to</i></td></tr>
+<tr><th id="801">801</th><td><i>   be completed; set before any application completion function is called. */</i></td></tr>
+<tr><th id="802">802</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_completion_found_quote" title='rl_completion_found_quote' data-ref="rl_completion_found_quote">rl_completion_found_quote</dfn>;</td></tr>
+<tr><th id="803">803</th><td></td></tr>
+<tr><th id="804">804</th><td><i>/* If non-zero, the completion functions don't append any closing quote.</i></td></tr>
+<tr><th id="805">805</th><td><i>   This is set to 0 by rl_complete_internal and may be changed by an</i></td></tr>
+<tr><th id="806">806</th><td><i>   application-specific completion function. */</i></td></tr>
+<tr><th id="807">807</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_completion_suppress_quote" title='rl_completion_suppress_quote' data-ref="rl_completion_suppress_quote">rl_completion_suppress_quote</dfn>;</td></tr>
+<tr><th id="808">808</th><td></td></tr>
+<tr><th id="809">809</th><td><i>/* If non-zero, readline will sort the completion matches.  On by default. */</i></td></tr>
+<tr><th id="810">810</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_sort_completion_matches" title='rl_sort_completion_matches' data-ref="rl_sort_completion_matches">rl_sort_completion_matches</dfn>;</td></tr>
+<tr><th id="811">811</th><td></td></tr>
+<tr><th id="812">812</th><td><i>/* If non-zero, a slash will be appended to completed filenames that are</i></td></tr>
+<tr><th id="813">813</th><td><i>   symbolic links to directory names, subject to the value of the</i></td></tr>
+<tr><th id="814">814</th><td><i>   mark-directories variable (which is user-settable).  This exists so</i></td></tr>
+<tr><th id="815">815</th><td><i>   that application completion functions can override the user's preference</i></td></tr>
+<tr><th id="816">816</th><td><i>   (set via the mark-symlinked-directories variable) if appropriate.</i></td></tr>
+<tr><th id="817">817</th><td><i>   It's set to the value of _rl_complete_mark_symlink_dirs in</i></td></tr>
+<tr><th id="818">818</th><td><i>   rl_complete_internal before any application-specific completion</i></td></tr>
+<tr><th id="819">819</th><td><i>   function is called, so without that function doing anything, the user's</i></td></tr>
+<tr><th id="820">820</th><td><i>   preferences are honored. */</i></td></tr>
+<tr><th id="821">821</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_completion_mark_symlink_dirs" title='rl_completion_mark_symlink_dirs' data-ref="rl_completion_mark_symlink_dirs">rl_completion_mark_symlink_dirs</dfn>;</td></tr>
+<tr><th id="822">822</th><td></td></tr>
+<tr><th id="823">823</th><td><i>/* If non-zero, then disallow duplicates in the matches. */</i></td></tr>
+<tr><th id="824">824</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_ignore_completion_duplicates" title='rl_ignore_completion_duplicates' data-ref="rl_ignore_completion_duplicates">rl_ignore_completion_duplicates</dfn>;</td></tr>
+<tr><th id="825">825</th><td></td></tr>
+<tr><th id="826">826</th><td><i>/* If this is non-zero, completion is (temporarily) inhibited, and the</i></td></tr>
+<tr><th id="827">827</th><td><i>   completion character will be inserted as any other. */</i></td></tr>
+<tr><th id="828">828</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="rl_inhibit_completion" title='rl_inhibit_completion' data-ref="rl_inhibit_completion">rl_inhibit_completion</dfn>;</td></tr>
+<tr><th id="829">829</th><td></td></tr>
+<tr><th id="830">830</th><td><i>/* Input error; can be returned by (*rl_getc_function) if readline is reading</i></td></tr>
+<tr><th id="831">831</th><td><i>   a top-level command (RL_ISSTATE (RL_STATE_READCMD)). */</i></td></tr>
+<tr><th id="832">832</th><td><u>#define <dfn class="macro" id="_M/READERR" data-ref="_M/READERR">READERR</dfn>			(-2)</u></td></tr>
+<tr><th id="833">833</th><td></td></tr>
+<tr><th id="834">834</th><td><i>/* Definitions available for use by readline clients. */</i></td></tr>
+<tr><th id="835">835</th><td><u>#define <dfn class="macro" id="_M/RL_PROMPT_START_IGNORE" data-ref="_M/RL_PROMPT_START_IGNORE">RL_PROMPT_START_IGNORE</dfn>	'\001'</u></td></tr>
+<tr><th id="836">836</th><td><u>#define <dfn class="macro" id="_M/RL_PROMPT_END_IGNORE" data-ref="_M/RL_PROMPT_END_IGNORE">RL_PROMPT_END_IGNORE</dfn>	'\002'</u></td></tr>
+<tr><th id="837">837</th><td></td></tr>
+<tr><th id="838">838</th><td><i>/* Possible values for do_replace argument to rl_filename_quoting_function,</i></td></tr>
+<tr><th id="839">839</th><td><i>   called by rl_complete_internal. */</i></td></tr>
+<tr><th id="840">840</th><td><u>#define <dfn class="macro" id="_M/NO_MATCH" data-ref="_M/NO_MATCH">NO_MATCH</dfn>        0</u></td></tr>
+<tr><th id="841">841</th><td><u>#define <dfn class="macro" id="_M/SINGLE_MATCH" data-ref="_M/SINGLE_MATCH">SINGLE_MATCH</dfn>    1</u></td></tr>
+<tr><th id="842">842</th><td><u>#define <dfn class="macro" id="_M/MULT_MATCH" data-ref="_M/MULT_MATCH">MULT_MATCH</dfn>      2</u></td></tr>
+<tr><th id="843">843</th><td></td></tr>
+<tr><th id="844">844</th><td><i>/* Possible state values for rl_readline_state */</i></td></tr>
+<tr><th id="845">845</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_NONE" data-ref="_M/RL_STATE_NONE">RL_STATE_NONE</dfn>		0x000000		/* no state; before first call */</u></td></tr>
+<tr><th id="846">846</th><td></td></tr>
+<tr><th id="847">847</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_INITIALIZING" data-ref="_M/RL_STATE_INITIALIZING">RL_STATE_INITIALIZING</dfn>	0x0000001	/* initializing */</u></td></tr>
+<tr><th id="848">848</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_INITIALIZED" data-ref="_M/RL_STATE_INITIALIZED">RL_STATE_INITIALIZED</dfn>	0x0000002	/* initialization done */</u></td></tr>
+<tr><th id="849">849</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_TERMPREPPED" data-ref="_M/RL_STATE_TERMPREPPED">RL_STATE_TERMPREPPED</dfn>	0x0000004	/* terminal is prepped */</u></td></tr>
+<tr><th id="850">850</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_READCMD" data-ref="_M/RL_STATE_READCMD">RL_STATE_READCMD</dfn>	0x0000008	/* reading a command key */</u></td></tr>
+<tr><th id="851">851</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_METANEXT" data-ref="_M/RL_STATE_METANEXT">RL_STATE_METANEXT</dfn>	0x0000010	/* reading input after ESC */</u></td></tr>
+<tr><th id="852">852</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_DISPATCHING" data-ref="_M/RL_STATE_DISPATCHING">RL_STATE_DISPATCHING</dfn>	0x0000020	/* dispatching to a command */</u></td></tr>
+<tr><th id="853">853</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_MOREINPUT" data-ref="_M/RL_STATE_MOREINPUT">RL_STATE_MOREINPUT</dfn>	0x0000040	/* reading more input in a command function */</u></td></tr>
+<tr><th id="854">854</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_ISEARCH" data-ref="_M/RL_STATE_ISEARCH">RL_STATE_ISEARCH</dfn>	0x0000080	/* doing incremental search */</u></td></tr>
+<tr><th id="855">855</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_NSEARCH" data-ref="_M/RL_STATE_NSEARCH">RL_STATE_NSEARCH</dfn>	0x0000100	/* doing non-inc search */</u></td></tr>
+<tr><th id="856">856</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_SEARCH" data-ref="_M/RL_STATE_SEARCH">RL_STATE_SEARCH</dfn>		0x0000200	/* doing a history search */</u></td></tr>
+<tr><th id="857">857</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_NUMERICARG" data-ref="_M/RL_STATE_NUMERICARG">RL_STATE_NUMERICARG</dfn>	0x0000400	/* reading numeric argument */</u></td></tr>
+<tr><th id="858">858</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_MACROINPUT" data-ref="_M/RL_STATE_MACROINPUT">RL_STATE_MACROINPUT</dfn>	0x0000800	/* getting input from a macro */</u></td></tr>
+<tr><th id="859">859</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_MACRODEF" data-ref="_M/RL_STATE_MACRODEF">RL_STATE_MACRODEF</dfn>	0x0001000	/* defining keyboard macro */</u></td></tr>
+<tr><th id="860">860</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_OVERWRITE" data-ref="_M/RL_STATE_OVERWRITE">RL_STATE_OVERWRITE</dfn>	0x0002000	/* overwrite mode */</u></td></tr>
+<tr><th id="861">861</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_COMPLETING" data-ref="_M/RL_STATE_COMPLETING">RL_STATE_COMPLETING</dfn>	0x0004000	/* doing completion */</u></td></tr>
+<tr><th id="862">862</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_SIGHANDLER" data-ref="_M/RL_STATE_SIGHANDLER">RL_STATE_SIGHANDLER</dfn>	0x0008000	/* in readline sighandler */</u></td></tr>
+<tr><th id="863">863</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_UNDOING" data-ref="_M/RL_STATE_UNDOING">RL_STATE_UNDOING</dfn>	0x0010000	/* doing an undo */</u></td></tr>
+<tr><th id="864">864</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_INPUTPENDING" data-ref="_M/RL_STATE_INPUTPENDING">RL_STATE_INPUTPENDING</dfn>	0x0020000	/* rl_execute_next called */</u></td></tr>
+<tr><th id="865">865</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_TTYCSAVED" data-ref="_M/RL_STATE_TTYCSAVED">RL_STATE_TTYCSAVED</dfn>	0x0040000	/* tty special chars saved */</u></td></tr>
+<tr><th id="866">866</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_CALLBACK" data-ref="_M/RL_STATE_CALLBACK">RL_STATE_CALLBACK</dfn>	0x0080000	/* using the callback interface */</u></td></tr>
+<tr><th id="867">867</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_VIMOTION" data-ref="_M/RL_STATE_VIMOTION">RL_STATE_VIMOTION</dfn>	0x0100000	/* reading vi motion arg */</u></td></tr>
+<tr><th id="868">868</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_MULTIKEY" data-ref="_M/RL_STATE_MULTIKEY">RL_STATE_MULTIKEY</dfn>	0x0200000	/* reading multiple-key command */</u></td></tr>
+<tr><th id="869">869</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_VICMDONCE" data-ref="_M/RL_STATE_VICMDONCE">RL_STATE_VICMDONCE</dfn>	0x0400000	/* entered vi command mode at least once */</u></td></tr>
+<tr><th id="870">870</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_REDISPLAYING" data-ref="_M/RL_STATE_REDISPLAYING">RL_STATE_REDISPLAYING</dfn>	0x0800000	/* updating terminal display */</u></td></tr>
+<tr><th id="871">871</th><td></td></tr>
+<tr><th id="872">872</th><td><u>#define <dfn class="macro" id="_M/RL_STATE_DONE" data-ref="_M/RL_STATE_DONE">RL_STATE_DONE</dfn>		0x1000000	/* done; accepted line */</u></td></tr>
+<tr><th id="873">873</th><td></td></tr>
+<tr><th id="874">874</th><td><u>#define <dfn class="macro" id="_M/RL_SETSTATE" data-ref="_M/RL_SETSTATE">RL_SETSTATE</dfn>(x)		(rl_readline_state |= (x))</u></td></tr>
+<tr><th id="875">875</th><td><u>#define <dfn class="macro" id="_M/RL_UNSETSTATE" data-ref="_M/RL_UNSETSTATE">RL_UNSETSTATE</dfn>(x)	(rl_readline_state &amp;= ~(x))</u></td></tr>
+<tr><th id="876">876</th><td><u>#define <dfn class="macro" id="_M/RL_ISSTATE" data-ref="_M/RL_ISSTATE">RL_ISSTATE</dfn>(x)		(rl_readline_state &amp; (x))</u></td></tr>
+<tr><th id="877">877</th><td></td></tr>
+<tr><th id="878">878</th><td><b>struct</b> <dfn class="type def" id="readline_state" title='readline_state' data-ref="readline_state">readline_state</dfn> {</td></tr>
+<tr><th id="879">879</th><td>  <i>/* line state */</i></td></tr>
+<tr><th id="880">880</th><td>  <em>int</em> <dfn class="decl field" id="readline_state::point" title='readline_state::point' data-ref="readline_state::point">point</dfn>;</td></tr>
+<tr><th id="881">881</th><td>  <em>int</em> <dfn class="decl field" id="readline_state::end" title='readline_state::end' data-ref="readline_state::end">end</dfn>;</td></tr>
+<tr><th id="882">882</th><td>  <em>int</em> <dfn class="decl field" id="readline_state::mark" title='readline_state::mark' data-ref="readline_state::mark">mark</dfn>;</td></tr>
+<tr><th id="883">883</th><td>  <em>char</em> *<dfn class="decl field" id="readline_state::buffer" title='readline_state::buffer' data-ref="readline_state::buffer">buffer</dfn>;</td></tr>
+<tr><th id="884">884</th><td>  <em>int</em> <dfn class="decl field" id="readline_state::buflen" title='readline_state::buflen' data-ref="readline_state::buflen">buflen</dfn>;</td></tr>
+<tr><th id="885">885</th><td>  <a class="typedef" href="#UNDO_LIST" title='UNDO_LIST' data-type='struct undo_list' data-ref="UNDO_LIST">UNDO_LIST</a> *<dfn class="decl field" id="readline_state::ul" title='readline_state::ul' data-ref="readline_state::ul">ul</dfn>;</td></tr>
+<tr><th id="886">886</th><td>  <em>char</em> *<dfn class="decl field" id="readline_state::prompt" title='readline_state::prompt' data-ref="readline_state::prompt">prompt</dfn>;</td></tr>
+<tr><th id="887">887</th><td></td></tr>
+<tr><th id="888">888</th><td>  <i>/* global state */</i></td></tr>
+<tr><th id="889">889</th><td>  <em>int</em> <dfn class="decl field" id="readline_state::rlstate" title='readline_state::rlstate' data-ref="readline_state::rlstate">rlstate</dfn>;</td></tr>
+<tr><th id="890">890</th><td>  <em>int</em> <dfn class="decl field" id="readline_state::done" title='readline_state::done' data-ref="readline_state::done">done</dfn>;</td></tr>
+<tr><th id="891">891</th><td>  <a class="typedef" href="keymaps.h.html#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a> <dfn class="decl field" id="readline_state::kmap" title='readline_state::kmap' data-ref="readline_state::kmap">kmap</dfn>;</td></tr>
+<tr><th id="892">892</th><td></td></tr>
+<tr><th id="893">893</th><td>  <i>/* input state */</i></td></tr>
+<tr><th id="894">894</th><td>  <a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *<dfn class="decl field" id="readline_state::lastfunc" title='readline_state::lastfunc' data-ref="readline_state::lastfunc">lastfunc</dfn>;</td></tr>
+<tr><th id="895">895</th><td>  <em>int</em> <dfn class="decl field" id="readline_state::insmode" title='readline_state::insmode' data-ref="readline_state::insmode">insmode</dfn>;</td></tr>
+<tr><th id="896">896</th><td>  <em>int</em> <dfn class="decl field" id="readline_state::edmode" title='readline_state::edmode' data-ref="readline_state::edmode">edmode</dfn>;</td></tr>
+<tr><th id="897">897</th><td>  <em>int</em> <dfn class="decl field" id="readline_state::kseqlen" title='readline_state::kseqlen' data-ref="readline_state::kseqlen">kseqlen</dfn>;</td></tr>
+<tr><th id="898">898</th><td>  <a class="typedef" href="../stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="decl field" id="readline_state::inf" title='readline_state::inf' data-ref="readline_state::inf">inf</dfn>;</td></tr>
+<tr><th id="899">899</th><td>  <a class="typedef" href="../stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="decl field" id="readline_state::outf" title='readline_state::outf' data-ref="readline_state::outf">outf</dfn>;</td></tr>
+<tr><th id="900">900</th><td>  <em>int</em> <dfn class="decl field" id="readline_state::pendingin" title='readline_state::pendingin' data-ref="readline_state::pendingin">pendingin</dfn>;</td></tr>
+<tr><th id="901">901</th><td>  <em>char</em> *<dfn class="decl field" id="readline_state::macro" title='readline_state::macro' data-ref="readline_state::macro">macro</dfn>;</td></tr>
+<tr><th id="902">902</th><td></td></tr>
+<tr><th id="903">903</th><td>  <i>/* signal state */</i></td></tr>
+<tr><th id="904">904</th><td>  <em>int</em> <dfn class="decl field" id="readline_state::catchsigs" title='readline_state::catchsigs' data-ref="readline_state::catchsigs">catchsigs</dfn>;</td></tr>
+<tr><th id="905">905</th><td>  <em>int</em> <dfn class="decl field" id="readline_state::catchsigwinch" title='readline_state::catchsigwinch' data-ref="readline_state::catchsigwinch">catchsigwinch</dfn>;</td></tr>
+<tr><th id="906">906</th><td></td></tr>
+<tr><th id="907">907</th><td>  <i>/* search state */</i></td></tr>
+<tr><th id="908">908</th><td></td></tr>
+<tr><th id="909">909</th><td>  <i>/* completion state */</i></td></tr>
+<tr><th id="910">910</th><td></td></tr>
+<tr><th id="911">911</th><td>  <i>/* options state */</i></td></tr>
+<tr><th id="912">912</th><td></td></tr>
+<tr><th id="913">913</th><td>  <i>/* reserved for future expansion, so the struct size doesn't change */</i></td></tr>
+<tr><th id="914">914</th><td>  <em>char</em> <dfn class="decl field" id="readline_state::reserved" title='readline_state::reserved' data-ref="readline_state::reserved">reserved</dfn>[<var>64</var>];</td></tr>
+<tr><th id="915">915</th><td>};</td></tr>
+<tr><th id="916">916</th><td></td></tr>
+<tr><th id="917">917</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_save_state" title='rl_save_state' data-ref="rl_save_state">rl_save_state</dfn> <a class="macro" href="rlstdc.h.html#33" title="(struct readline_state *)" data-ref="_M/PARAMS">PARAMS</a>((<b>struct</b> <a class="type" href="#readline_state" title='readline_state' data-ref="readline_state">readline_state</a> *));</td></tr>
+<tr><th id="918">918</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="rl_restore_state" title='rl_restore_state' data-ref="rl_restore_state">rl_restore_state</dfn> <a class="macro" href="rlstdc.h.html#33" title="(struct readline_state *)" data-ref="_M/PARAMS">PARAMS</a>((<b>struct</b> <a class="type" href="#readline_state" title='readline_state' data-ref="readline_state">readline_state</a> *));</td></tr>
+<tr><th id="919">919</th><td></td></tr>
+<tr><th id="920">920</th><td><u>#<span data-ppcond="920">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="921">921</th><td>}</td></tr>
+<tr><th id="922">922</th><td><u>#<span data-ppcond="920">endif</span></u></td></tr>
+<tr><th id="923">923</th><td></td></tr>
+<tr><th id="924">924</th><td><u>#<span data-ppcond="22">endif</span> /* _READLINE_H_ */</u></td></tr>
+<tr><th id="925">925</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../lua/src/lua.c.html'>lua/src/lua.c</a><br/>Generated on <em>2018-Apr-07</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

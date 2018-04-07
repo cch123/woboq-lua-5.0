@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='353' type='void rl_set_keymap_from_edit_mode()'/>
+<doc f='include/readline/readline.h' l='352'>/* Undocumented; used internally only. */</doc>

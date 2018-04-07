@@ -1,0 +1,3 @@
+<dec f='lua/src/lopcodes.h' l='174' type='3'/>
+<doc f='lua/src/lopcodes.h' l='174'>/*	A B C	R(A) := (Bool)B; if (C) pc++			*/</doc>
+<use f='lua/src/lvm.c' l='819' c='luaV_execute'/>

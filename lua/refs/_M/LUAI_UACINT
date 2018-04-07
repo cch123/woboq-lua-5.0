@@ -1,0 +1,6 @@
+<dec f='lua/src/luaconf.h' l='528'/>
+<use f='lua/src/lauxlib.c' l='819' u='c'/>
+<use f='lua/src/liolib.c' l='623' u='c'/>
+<use f='lua/src/llimits.h' l='80' u='c'/>
+<use f='lua/src/lstrlib.c' l='964' u='c'/>
+<use f='lua/src/lstrlib.c' l='1045' u='c'/>

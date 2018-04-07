@@ -1,0 +1,3 @@
+<dec f='include/readline/history.h' l='131' type='HIST_ENTRY * current_history()'/>
+<doc f='include/readline/history.h' l='129'>/* Return the history entry at the current position, as determined by
+   history_offset.  If there is no entry there, return a NULL pointer. */</doc>

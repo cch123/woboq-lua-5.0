@@ -1,0 +1,4 @@
+<dec f='lua/src/lopcodes.h' l='222' type='40'/>
+<use f='lua/src/luac.c' l='372' c='PrintCode'/>
+<doc f='lua/src/lopcodes.h' l='222'>/*	A sBx	R(A)-=R(A+2); pc+=sBx				*/</doc>
+<use f='lua/src/lvm.c' l='1214' c='luaV_execute'/>

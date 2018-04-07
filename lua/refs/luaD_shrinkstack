@@ -1,0 +1,1 @@
+<dec f='lua/src/ldo.h' l='51' type='void luaD_shrinkstack(lua_State * L)'/>

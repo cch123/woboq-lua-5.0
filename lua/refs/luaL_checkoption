@@ -1,0 +1,6 @@
+<dec f='lua/src/lauxlib.h' l='70' type='int luaL_checkoption(lua_State * L, int arg, const char * def, const char *const * lst)'/>
+<def f='lua/src/lauxlib.c' l='348' ll='358' macro='1' type='int luaL_checkoption(lua_State * L, int arg, const char * def, const char *const * lst)'/>
+<use f='lua/src/lbaselib.c' l='180' u='c' c='luaB_collectgarbage'/>
+<use f='lua/src/liolib.c' l='655' u='c' c='f_seek'/>
+<use f='lua/src/liolib.c' l='674' u='c' c='f_setvbuf'/>
+<use f='lua/src/loslib.c' l='365' u='c' c='os_setlocale'/>

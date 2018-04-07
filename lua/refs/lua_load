@@ -1,0 +1,5 @@
+<dec f='lua/src/lua.h' l='280' type='int lua_load(lua_State * L, lua_Reader reader, void * dt, const char * chunkname, const char * mode)'/>
+<use f='lua/src/lauxlib.c' l='727' u='c' c='luaL_loadfilex'/>
+<use f='lua/src/lauxlib.c' l='760' u='c' c='luaL_loadbufferx'/>
+<use f='lua/src/lbaselib.c' l='348' u='c' c='luaB_load'/>
+<use f='lua/src/luac.c' l='147' u='c' c='combine'/>

@@ -1,0 +1,14 @@
+<dec f='lua/src/lobject.h' l='492' type='TValue'/>
+<offset>0</offset>
+<use f='lua/src/ltable.c' l='196' macro='1' u='a'/>
+<use f='lua/src/ltable.c' l='198' macro='1' u='a'/>
+<use f='lua/src/ltable.c' l='289' macro='1' u='a'/>
+<use f='lua/src/ltable.c' l='325' macro='1' u='a'/>
+<use f='lua/src/ltable.c' l='357' macro='1' u='a'/>
+<use f='lua/src/ltable.c' l='360' macro='1' u='a'/>
+<use f='lua/src/ltable.c' l='456' macro='1' u='a'/>
+<use f='lua/src/ltable.c' l='476' macro='1' u='a'/>
+<use f='lua/src/ltable.c' l='490' macro='1' u='a'/>
+<use f='lua/src/ltable.c' l='505' macro='1' u='a'/>
+<use f='lua/src/ltable.c' l='526' macro='1' u='a'/>
+<use f='lua/src/ltable.c' l='545' macro='1' u='a'/>

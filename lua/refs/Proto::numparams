@@ -1,0 +1,8 @@
+<dec f='lua/src/lobject.h' l='409' type='lu_byte'/>
+<offset>80</offset>
+<doc f='lua/src/lobject.h' l='409'>/* number of fixed parameters */</doc>
+<use f='lua/src/luac.c' l='409' u='r' c='PrintHeader'/>
+<use f='lua/src/luac.c' l='409' u='r' c='PrintHeader'/>
+<use f='lua/src/lundump.c' l='208' u='w' c='LoadFunction'/>
+<use f='lua/src/lvm.c' l='1159' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1298' u='r' c='luaV_execute'/>

@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>lcorolib.c source code [lua/src/lcorolib.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'lua/src/lcorolib.c'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>lua</a>/<a href='./'>src</a>/<a href='lcorolib.c.html'>lcorolib.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*</i></td></tr>
+<tr><th id="2">2</th><td><i>** $Id: lcorolib.c,v 1.10 2016/04/11 19:19:55 roberto Exp $</i></td></tr>
+<tr><th id="3">3</th><td><i>** Coroutine Library</i></td></tr>
+<tr><th id="4">4</th><td><i>** See Copyright Notice in lua.h</i></td></tr>
+<tr><th id="5">5</th><td><i>*/</i></td></tr>
+<tr><th id="6">6</th><td></td></tr>
+<tr><th id="7">7</th><td><u>#define <dfn class="macro" id="_M/lcorolib_c" data-ref="_M/lcorolib_c">lcorolib_c</dfn></u></td></tr>
+<tr><th id="8">8</th><td><u>#define <dfn class="macro" id="_M/LUA_LIB" data-ref="_M/LUA_LIB">LUA_LIB</dfn></u></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td><u>#include <a href="lprefix.h.html">"lprefix.h"</a></u></td></tr>
+<tr><th id="11">11</th><td></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><u>#include <a href="../../include/stdlib.h.html">&lt;stdlib.h&gt;</a></u></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><u>#include <a href="lua.h.html">"lua.h"</a></u></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#include <a href="lauxlib.h.html">"lauxlib.h"</a></u></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="lualib.h.html">"lualib.h"</a></u></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><em>static</em> <a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="tu decl def fn" id="getco" title='getco' data-type='lua_State * getco(lua_State * L)' data-ref="getco">getco</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col1 decl" id="1L" title='L' data-type='lua_State *' data-ref="1L">L</dfn>) {</td></tr>
+<tr><th id="22">22</th><td>  <a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col2 decl" id="2co" title='co' data-type='lua_State *' data-ref="2co">co</dfn> = <a class="ref fn" href="lua.h.html#lua_tothread" title='lua_tothread' data-ref="lua_tothread">lua_tothread</a>(<a class="local col1 ref" href="#1L" title='L' data-ref="1L">L</a>, <var>1</var>);</td></tr>
+<tr><th id="23">23</th><td>  <a class="macro" href="lauxlib.h.html#122" title="((void)((co) || luaL_argerror(L, (1), (&quot;thread expected&quot;))))" data-ref="_M/luaL_argcheck">luaL_argcheck</a>(<a class="local col1 ref" href="#1L" title='L' data-ref="1L">L</a>, <a class="local col2 ref" href="#2co" title='co' data-ref="2co">co</a>, <var>1</var>, <q>"thread expected"</q>);</td></tr>
+<tr><th id="24">24</th><td>  <b>return</b> <a class="local col2 ref" href="#2co" title='co' data-ref="2co">co</a>;</td></tr>
+<tr><th id="25">25</th><td>}</td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><em>static</em> <em>int</em> <dfn class="tu decl def fn" id="auxresume" title='auxresume' data-type='int auxresume(lua_State * L, lua_State * co, int narg)' data-ref="auxresume">auxresume</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col3 decl" id="3L" title='L' data-type='lua_State *' data-ref="3L">L</dfn>, <a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col4 decl" id="4co" title='co' data-type='lua_State *' data-ref="4co">co</dfn>, <em>int</em> <dfn class="local col5 decl" id="5narg" title='narg' data-type='int' data-ref="5narg">narg</dfn>) {</td></tr>
+<tr><th id="29">29</th><td>  <em>int</em> <dfn class="local col6 decl" id="6status" title='status' data-type='int' data-ref="6status">status</dfn>;</td></tr>
+<tr><th id="30">30</th><td>  <b>if</b> (!<a class="ref fn" href="lua.h.html#lua_checkstack" title='lua_checkstack' data-ref="lua_checkstack">lua_checkstack</a>(<a class="local col4 ref" href="#4co" title='co' data-ref="4co">co</a>, <a class="local col5 ref" href="#5narg" title='narg' data-ref="5narg">narg</a>)) {</td></tr>
+<tr><th id="31">31</th><td>    <a class="macro" href="lua.h.html#361" title="lua_pushstring(L, &quot;&quot; &quot;too many arguments to resume&quot;)" data-ref="_M/lua_pushliteral">lua_pushliteral</a>(<a class="local col3 ref" href="#3L" title='L' data-ref="3L">L</a>, <q>"too many arguments to resume"</q>);</td></tr>
+<tr><th id="32">32</th><td>    <b>return</b> -<var>1</var>;  <i>/* error flag */</i></td></tr>
+<tr><th id="33">33</th><td>  }</td></tr>
+<tr><th id="34">34</th><td>  <b>if</b> (<a class="ref fn" href="lua.h.html#lua_status" title='lua_status' data-ref="lua_status">lua_status</a>(<a class="local col4 ref" href="#4co" title='co' data-ref="4co">co</a>) == <a class="macro" href="lua.h.html#47" title="0" data-ref="_M/LUA_OK">LUA_OK</a> &amp;&amp; <a class="ref fn" href="lua.h.html#lua_gettop" title='lua_gettop' data-ref="lua_gettop">lua_gettop</a>(<a class="local col4 ref" href="#4co" title='co' data-ref="4co">co</a>) == <var>0</var>) {</td></tr>
+<tr><th id="35">35</th><td>    <a class="macro" href="lua.h.html#361" title="lua_pushstring(L, &quot;&quot; &quot;cannot resume dead coroutine&quot;)" data-ref="_M/lua_pushliteral">lua_pushliteral</a>(<a class="local col3 ref" href="#3L" title='L' data-ref="3L">L</a>, <q>"cannot resume dead coroutine"</q>);</td></tr>
+<tr><th id="36">36</th><td>    <b>return</b> -<var>1</var>;  <i>/* error flag */</i></td></tr>
+<tr><th id="37">37</th><td>  }</td></tr>
+<tr><th id="38">38</th><td>  <a class="ref fn" href="lua.h.html#lua_xmove" title='lua_xmove' data-ref="lua_xmove">lua_xmove</a>(<a class="local col3 ref" href="#3L" title='L' data-ref="3L">L</a>, <a class="local col4 ref" href="#4co" title='co' data-ref="4co">co</a>, <a class="local col5 ref" href="#5narg" title='narg' data-ref="5narg">narg</a>);</td></tr>
+<tr><th id="39">39</th><td>  <a class="local col6 ref" href="#6status" title='status' data-ref="6status">status</a> = <a class="ref fn" href="lua.h.html#lua_resume" title='lua_resume' data-ref="lua_resume">lua_resume</a>(<a class="local col4 ref" href="#4co" title='co' data-ref="4co">co</a>, <a class="local col3 ref" href="#3L" title='L' data-ref="3L">L</a>, <a class="local col5 ref" href="#5narg" title='narg' data-ref="5narg">narg</a>);</td></tr>
+<tr><th id="40">40</th><td>  <b>if</b> (<a class="local col6 ref" href="#6status" title='status' data-ref="6status">status</a> == <a class="macro" href="lua.h.html#47" title="0" data-ref="_M/LUA_OK">LUA_OK</a> || <a class="local col6 ref" href="#6status" title='status' data-ref="6status">status</a> == <a class="macro" href="lua.h.html#48" title="1" data-ref="_M/LUA_YIELD">LUA_YIELD</a>) {</td></tr>
+<tr><th id="41">41</th><td>    <em>int</em> <dfn class="local col7 decl" id="7nres" title='nres' data-type='int' data-ref="7nres">nres</dfn> = <a class="ref fn" href="lua.h.html#lua_gettop" title='lua_gettop' data-ref="lua_gettop">lua_gettop</a>(<a class="local col4 ref" href="#4co" title='co' data-ref="4co">co</a>);</td></tr>
+<tr><th id="42">42</th><td>    <b>if</b> (!<a class="ref fn" href="lua.h.html#lua_checkstack" title='lua_checkstack' data-ref="lua_checkstack">lua_checkstack</a>(<a class="local col3 ref" href="#3L" title='L' data-ref="3L">L</a>, <a class="local col7 ref" href="#7nres" title='nres' data-ref="7nres">nres</a> + <var>1</var>)) {</td></tr>
+<tr><th id="43">43</th><td>      <a class="macro" href="lua.h.html#344" title="lua_settop(co, -(nres)-1)" data-ref="_M/lua_pop">lua_pop</a>(<a class="local col4 ref" href="#4co" title='co' data-ref="4co">co</a>, <a class="local col7 ref" href="#7nres" title='nres' data-ref="7nres">nres</a>);  <i>/* remove results anyway */</i></td></tr>
+<tr><th id="44">44</th><td>      <a class="macro" href="lua.h.html#361" title="lua_pushstring(L, &quot;&quot; &quot;too many results to resume&quot;)" data-ref="_M/lua_pushliteral">lua_pushliteral</a>(<a class="local col3 ref" href="#3L" title='L' data-ref="3L">L</a>, <q>"too many results to resume"</q>);</td></tr>
+<tr><th id="45">45</th><td>      <b>return</b> -<var>1</var>;  <i>/* error flag */</i></td></tr>
+<tr><th id="46">46</th><td>    }</td></tr>
+<tr><th id="47">47</th><td>    <a class="ref fn" href="lua.h.html#lua_xmove" title='lua_xmove' data-ref="lua_xmove">lua_xmove</a>(<a class="local col4 ref" href="#4co" title='co' data-ref="4co">co</a>, <a class="local col3 ref" href="#3L" title='L' data-ref="3L">L</a>, <a class="local col7 ref" href="#7nres" title='nres' data-ref="7nres">nres</a>);  <i>/* move yielded values */</i></td></tr>
+<tr><th id="48">48</th><td>    <b>return</b> <a class="local col7 ref" href="#7nres" title='nres' data-ref="7nres">nres</a>;</td></tr>
+<tr><th id="49">49</th><td>  }</td></tr>
+<tr><th id="50">50</th><td>  <b>else</b> {</td></tr>
+<tr><th id="51">51</th><td>    <a class="ref fn" href="lua.h.html#lua_xmove" title='lua_xmove' data-ref="lua_xmove">lua_xmove</a>(<a class="local col4 ref" href="#4co" title='co' data-ref="4co">co</a>, <a class="local col3 ref" href="#3L" title='L' data-ref="3L">L</a>, <var>1</var>);  <i>/* move error message */</i></td></tr>
+<tr><th id="52">52</th><td>    <b>return</b> -<var>1</var>;  <i>/* error flag */</i></td></tr>
+<tr><th id="53">53</th><td>  }</td></tr>
+<tr><th id="54">54</th><td>}</td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td><em>static</em> <em>int</em> <dfn class="tu decl def fn" id="luaB_coresume" title='luaB_coresume' data-type='int luaB_coresume(lua_State * L)' data-ref="luaB_coresume">luaB_coresume</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col8 decl" id="8L" title='L' data-type='lua_State *' data-ref="8L">L</dfn>) {</td></tr>
+<tr><th id="58">58</th><td>  <a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col9 decl" id="9co" title='co' data-type='lua_State *' data-ref="9co">co</dfn> = <a class="tu ref fn" href="#getco" title='getco' data-use='c' data-ref="getco">getco</a>(<a class="local col8 ref" href="#8L" title='L' data-ref="8L">L</a>);</td></tr>
+<tr><th id="59">59</th><td>  <em>int</em> <dfn class="local col0 decl" id="10r" title='r' data-type='int' data-ref="10r">r</dfn>;</td></tr>
+<tr><th id="60">60</th><td>  <a class="local col0 ref" href="#10r" title='r' data-ref="10r">r</a> = <a class="tu ref fn" href="#auxresume" title='auxresume' data-use='c' data-ref="auxresume">auxresume</a>(<a class="local col8 ref" href="#8L" title='L' data-ref="8L">L</a>, <a class="local col9 ref" href="#9co" title='co' data-ref="9co">co</a>, <a class="ref fn" href="lua.h.html#lua_gettop" title='lua_gettop' data-ref="lua_gettop">lua_gettop</a>(<a class="local col8 ref" href="#8L" title='L' data-ref="8L">L</a>) - <var>1</var>);</td></tr>
+<tr><th id="61">61</th><td>  <b>if</b> (<a class="local col0 ref" href="#10r" title='r' data-ref="10r">r</a> &lt; <var>0</var>) {</td></tr>
+<tr><th id="62">62</th><td>    <a class="ref fn" href="lua.h.html#lua_pushboolean" title='lua_pushboolean' data-ref="lua_pushboolean">lua_pushboolean</a>(<a class="local col8 ref" href="#8L" title='L' data-ref="8L">L</a>, <var>0</var>);</td></tr>
+<tr><th id="63">63</th><td>    <a class="macro" href="lua.h.html#369" title="lua_rotate(L, (-2), 1)" data-ref="_M/lua_insert">lua_insert</a>(<a class="local col8 ref" href="#8L" title='L' data-ref="8L">L</a>, -<var>2</var>);</td></tr>
+<tr><th id="64">64</th><td>    <b>return</b> <var>2</var>;  <i>/* return false + error message */</i></td></tr>
+<tr><th id="65">65</th><td>  }</td></tr>
+<tr><th id="66">66</th><td>  <b>else</b> {</td></tr>
+<tr><th id="67">67</th><td>    <a class="ref fn" href="lua.h.html#lua_pushboolean" title='lua_pushboolean' data-ref="lua_pushboolean">lua_pushboolean</a>(<a class="local col8 ref" href="#8L" title='L' data-ref="8L">L</a>, <var>1</var>);</td></tr>
+<tr><th id="68">68</th><td>    <a class="macro" href="lua.h.html#369" title="lua_rotate(L, (-(r + 1)), 1)" data-ref="_M/lua_insert">lua_insert</a>(<a class="local col8 ref" href="#8L" title='L' data-ref="8L">L</a>, -(<a class="local col0 ref" href="#10r" title='r' data-ref="10r">r</a> + <var>1</var>));</td></tr>
+<tr><th id="69">69</th><td>    <b>return</b> <a class="local col0 ref" href="#10r" title='r' data-ref="10r">r</a> + <var>1</var>;  <i>/* return true + 'resume' returns */</i></td></tr>
+<tr><th id="70">70</th><td>  }</td></tr>
+<tr><th id="71">71</th><td>}</td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td></td></tr>
+<tr><th id="74">74</th><td><em>static</em> <em>int</em> <dfn class="tu decl def fn" id="luaB_auxwrap" title='luaB_auxwrap' data-type='int luaB_auxwrap(lua_State * L)' data-ref="luaB_auxwrap">luaB_auxwrap</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col1 decl" id="11L" title='L' data-type='lua_State *' data-ref="11L">L</dfn>) {</td></tr>
+<tr><th id="75">75</th><td>  <a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col2 decl" id="12co" title='co' data-type='lua_State *' data-ref="12co">co</dfn> = <a class="ref fn" href="lua.h.html#lua_tothread" title='lua_tothread' data-ref="lua_tothread">lua_tothread</a>(<a class="local col1 ref" href="#11L" title='L' data-ref="11L">L</a>, <a class="macro" href="lua.h.html#43" title="((-1000000 - 1000) - (1))" data-ref="_M/lua_upvalueindex">lua_upvalueindex</a>(<var>1</var>));</td></tr>
+<tr><th id="76">76</th><td>  <em>int</em> <dfn class="local col3 decl" id="13r" title='r' data-type='int' data-ref="13r">r</dfn> = <a class="tu ref fn" href="#auxresume" title='auxresume' data-use='c' data-ref="auxresume">auxresume</a>(<a class="local col1 ref" href="#11L" title='L' data-ref="11L">L</a>, <a class="local col2 ref" href="#12co" title='co' data-ref="12co">co</a>, <a class="ref fn" href="lua.h.html#lua_gettop" title='lua_gettop' data-ref="lua_gettop">lua_gettop</a>(<a class="local col1 ref" href="#11L" title='L' data-ref="11L">L</a>));</td></tr>
+<tr><th id="77">77</th><td>  <b>if</b> (<a class="local col3 ref" href="#13r" title='r' data-ref="13r">r</a> &lt; <var>0</var>) {</td></tr>
+<tr><th id="78">78</th><td>    <b>if</b> (<a class="ref fn" href="lua.h.html#lua_type" title='lua_type' data-ref="lua_type">lua_type</a>(<a class="local col1 ref" href="#11L" title='L' data-ref="11L">L</a>, -<var>1</var>) == <a class="macro" href="lua.h.html#68" title="4" data-ref="_M/LUA_TSTRING">LUA_TSTRING</a>) {  <i>/* error object is a string? */</i></td></tr>
+<tr><th id="79">79</th><td>      <a class="ref fn" href="lauxlib.h.html#luaL_where" title='luaL_where' data-ref="luaL_where">luaL_where</a>(<a class="local col1 ref" href="#11L" title='L' data-ref="11L">L</a>, <var>1</var>);  <i>/* add extra info */</i></td></tr>
+<tr><th id="80">80</th><td>      <a class="macro" href="lua.h.html#369" title="lua_rotate(L, (-2), 1)" data-ref="_M/lua_insert">lua_insert</a>(<a class="local col1 ref" href="#11L" title='L' data-ref="11L">L</a>, -<var>2</var>);</td></tr>
+<tr><th id="81">81</th><td>      <a class="ref fn" href="lua.h.html#lua_concat" title='lua_concat' data-ref="lua_concat">lua_concat</a>(<a class="local col1 ref" href="#11L" title='L' data-ref="11L">L</a>, <var>2</var>);</td></tr>
+<tr><th id="82">82</th><td>    }</td></tr>
+<tr><th id="83">83</th><td>    <b>return</b> <a class="ref fn" href="lua.h.html#lua_error" title='lua_error' data-ref="lua_error">lua_error</a>(<a class="local col1 ref" href="#11L" title='L' data-ref="11L">L</a>);  <i>/* propagate error */</i></td></tr>
+<tr><th id="84">84</th><td>  }</td></tr>
+<tr><th id="85">85</th><td>  <b>return</b> <a class="local col3 ref" href="#13r" title='r' data-ref="13r">r</a>;</td></tr>
+<tr><th id="86">86</th><td>}</td></tr>
+<tr><th id="87">87</th><td></td></tr>
+<tr><th id="88">88</th><td></td></tr>
+<tr><th id="89">89</th><td><em>static</em> <em>int</em> <dfn class="tu decl def fn" id="luaB_cocreate" title='luaB_cocreate' data-type='int luaB_cocreate(lua_State * L)' data-ref="luaB_cocreate">luaB_cocreate</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col4 decl" id="14L" title='L' data-type='lua_State *' data-ref="14L">L</dfn>) {</td></tr>
+<tr><th id="90">90</th><td>  <a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col5 decl" id="15NL" title='NL' data-type='lua_State *' data-ref="15NL">NL</dfn>;</td></tr>
+<tr><th id="91">91</th><td>  <a class="ref fn" href="lauxlib.h.html#luaL_checktype" title='luaL_checktype' data-ref="luaL_checktype">luaL_checktype</a>(<a class="local col4 ref" href="#14L" title='L' data-ref="14L">L</a>, <var>1</var>, <a class="macro" href="lua.h.html#70" title="6" data-ref="_M/LUA_TFUNCTION">LUA_TFUNCTION</a>);</td></tr>
+<tr><th id="92">92</th><td>  <a class="local col5 ref" href="#15NL" title='NL' data-ref="15NL">NL</a> = <a class="ref fn" href="lua.h.html#lua_newthread" title='lua_newthread' data-ref="lua_newthread">lua_newthread</a>(<a class="local col4 ref" href="#14L" title='L' data-ref="14L">L</a>);</td></tr>
+<tr><th id="93">93</th><td>  <a class="ref fn" href="lua.h.html#lua_pushvalue" title='lua_pushvalue' data-ref="lua_pushvalue">lua_pushvalue</a>(<a class="local col4 ref" href="#14L" title='L' data-ref="14L">L</a>, <var>1</var>);  <i>/* move function to top */</i></td></tr>
+<tr><th id="94">94</th><td>  <a class="ref fn" href="lua.h.html#lua_xmove" title='lua_xmove' data-ref="lua_xmove">lua_xmove</a>(<a class="local col4 ref" href="#14L" title='L' data-ref="14L">L</a>, <a class="local col5 ref" href="#15NL" title='NL' data-ref="15NL">NL</a>, <var>1</var>);  <i>/* move function from L to NL */</i></td></tr>
+<tr><th id="95">95</th><td>  <b>return</b> <var>1</var>;</td></tr>
+<tr><th id="96">96</th><td>}</td></tr>
+<tr><th id="97">97</th><td></td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td><em>static</em> <em>int</em> <dfn class="tu decl def fn" id="luaB_cowrap" title='luaB_cowrap' data-type='int luaB_cowrap(lua_State * L)' data-ref="luaB_cowrap">luaB_cowrap</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col6 decl" id="16L" title='L' data-type='lua_State *' data-ref="16L">L</dfn>) {</td></tr>
+<tr><th id="100">100</th><td>  <a class="tu ref fn" href="#luaB_cocreate" title='luaB_cocreate' data-use='c' data-ref="luaB_cocreate">luaB_cocreate</a>(<a class="local col6 ref" href="#16L" title='L' data-ref="16L">L</a>);</td></tr>
+<tr><th id="101">101</th><td>  <a class="ref fn" href="lua.h.html#lua_pushcclosure" title='lua_pushcclosure' data-ref="lua_pushcclosure">lua_pushcclosure</a>(<a class="local col6 ref" href="#16L" title='L' data-ref="16L">L</a>, <a class="tu ref fn" href="#luaB_auxwrap" title='luaB_auxwrap' data-use='r' data-ref="luaB_auxwrap">luaB_auxwrap</a>, <var>1</var>);</td></tr>
+<tr><th id="102">102</th><td>  <b>return</b> <var>1</var>;</td></tr>
+<tr><th id="103">103</th><td>}</td></tr>
+<tr><th id="104">104</th><td></td></tr>
+<tr><th id="105">105</th><td></td></tr>
+<tr><th id="106">106</th><td><em>static</em> <em>int</em> <dfn class="tu decl def fn" id="luaB_yield" title='luaB_yield' data-type='int luaB_yield(lua_State * L)' data-ref="luaB_yield">luaB_yield</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col7 decl" id="17L" title='L' data-type='lua_State *' data-ref="17L">L</dfn>) {</td></tr>
+<tr><th id="107">107</th><td>  <b>return</b> <a class="macro" href="lua.h.html#295" title="lua_yieldk(L, (lua_gettop(L)), 0, ((void*)0))" data-ref="_M/lua_yield">lua_yield</a>(<a class="local col7 ref" href="#17L" title='L' data-ref="17L">L</a>, <a class="ref fn" href="lua.h.html#lua_gettop" title='lua_gettop' data-ref="lua_gettop">lua_gettop</a>(<a class="local col7 ref" href="#17L" title='L' data-ref="17L">L</a>));</td></tr>
+<tr><th id="108">108</th><td>}</td></tr>
+<tr><th id="109">109</th><td></td></tr>
+<tr><th id="110">110</th><td></td></tr>
+<tr><th id="111">111</th><td><em>static</em> <em>int</em> <dfn class="tu decl def fn" id="luaB_costatus" title='luaB_costatus' data-type='int luaB_costatus(lua_State * L)' data-ref="luaB_costatus">luaB_costatus</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col8 decl" id="18L" title='L' data-type='lua_State *' data-ref="18L">L</dfn>) {</td></tr>
+<tr><th id="112">112</th><td>  <a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col9 decl" id="19co" title='co' data-type='lua_State *' data-ref="19co">co</dfn> = <a class="tu ref fn" href="#getco" title='getco' data-use='c' data-ref="getco">getco</a>(<a class="local col8 ref" href="#18L" title='L' data-ref="18L">L</a>);</td></tr>
+<tr><th id="113">113</th><td>  <b>if</b> (<a class="local col8 ref" href="#18L" title='L' data-ref="18L">L</a> == <a class="local col9 ref" href="#19co" title='co' data-ref="19co">co</a>) <a class="macro" href="lua.h.html#361" title="lua_pushstring(L, &quot;&quot; &quot;running&quot;)" data-ref="_M/lua_pushliteral">lua_pushliteral</a>(<a class="local col8 ref" href="#18L" title='L' data-ref="18L">L</a>, <q>"running"</q>);</td></tr>
+<tr><th id="114">114</th><td>  <b>else</b> {</td></tr>
+<tr><th id="115">115</th><td>    <b>switch</b> (<a class="ref fn" href="lua.h.html#lua_status" title='lua_status' data-ref="lua_status">lua_status</a>(<a class="local col9 ref" href="#19co" title='co' data-ref="19co">co</a>)) {</td></tr>
+<tr><th id="116">116</th><td>      <b>case</b> <a class="macro" href="lua.h.html#48" title="1" data-ref="_M/LUA_YIELD">LUA_YIELD</a>:</td></tr>
+<tr><th id="117">117</th><td>        <a class="macro" href="lua.h.html#361" title="lua_pushstring(L, &quot;&quot; &quot;suspended&quot;)" data-ref="_M/lua_pushliteral">lua_pushliteral</a>(<a class="local col8 ref" href="#18L" title='L' data-ref="18L">L</a>, <q>"suspended"</q>);</td></tr>
+<tr><th id="118">118</th><td>        <b>break</b>;</td></tr>
+<tr><th id="119">119</th><td>      <b>case</b> <a class="macro" href="lua.h.html#47" title="0" data-ref="_M/LUA_OK">LUA_OK</a>: {</td></tr>
+<tr><th id="120">120</th><td>        <a class="typedef" href="lua.h.html#lua_Debug" title='lua_Debug' data-type='struct lua_Debug' data-ref="lua_Debug">lua_Debug</a> <dfn class="local col0 decl" id="20ar" title='ar' data-type='lua_Debug' data-ref="20ar">ar</dfn>;</td></tr>
+<tr><th id="121">121</th><td>        <b>if</b> (<a class="ref fn" href="lua.h.html#lua_getstack" title='lua_getstack' data-ref="lua_getstack">lua_getstack</a>(<a class="local col9 ref" href="#19co" title='co' data-ref="19co">co</a>, <var>0</var>, &amp;<a class="local col0 ref" href="#20ar" title='ar' data-ref="20ar">ar</a>) &gt; <var>0</var>)  <i>/* does it have frames? */</i></td></tr>
+<tr><th id="122">122</th><td>          <a class="macro" href="lua.h.html#361" title="lua_pushstring(L, &quot;&quot; &quot;normal&quot;)" data-ref="_M/lua_pushliteral">lua_pushliteral</a>(<a class="local col8 ref" href="#18L" title='L' data-ref="18L">L</a>, <q>"normal"</q>);  <i>/* it is running */</i></td></tr>
+<tr><th id="123">123</th><td>        <b>else</b> <b>if</b> (<a class="ref fn" href="lua.h.html#lua_gettop" title='lua_gettop' data-ref="lua_gettop">lua_gettop</a>(<a class="local col9 ref" href="#19co" title='co' data-ref="19co">co</a>) == <var>0</var>)</td></tr>
+<tr><th id="124">124</th><td>            <a class="macro" href="lua.h.html#361" title="lua_pushstring(L, &quot;&quot; &quot;dead&quot;)" data-ref="_M/lua_pushliteral">lua_pushliteral</a>(<a class="local col8 ref" href="#18L" title='L' data-ref="18L">L</a>, <q>"dead"</q>);</td></tr>
+<tr><th id="125">125</th><td>        <b>else</b></td></tr>
+<tr><th id="126">126</th><td>          <a class="macro" href="lua.h.html#361" title="lua_pushstring(L, &quot;&quot; &quot;suspended&quot;)" data-ref="_M/lua_pushliteral">lua_pushliteral</a>(<a class="local col8 ref" href="#18L" title='L' data-ref="18L">L</a>, <q>"suspended"</q>);  <i>/* initial state */</i></td></tr>
+<tr><th id="127">127</th><td>        <b>break</b>;</td></tr>
+<tr><th id="128">128</th><td>      }</td></tr>
+<tr><th id="129">129</th><td>      <b>default</b>:  <i>/* some error occurred */</i></td></tr>
+<tr><th id="130">130</th><td>        <a class="macro" href="lua.h.html#361" title="lua_pushstring(L, &quot;&quot; &quot;dead&quot;)" data-ref="_M/lua_pushliteral">lua_pushliteral</a>(<a class="local col8 ref" href="#18L" title='L' data-ref="18L">L</a>, <q>"dead"</q>);</td></tr>
+<tr><th id="131">131</th><td>        <b>break</b>;</td></tr>
+<tr><th id="132">132</th><td>    }</td></tr>
+<tr><th id="133">133</th><td>  }</td></tr>
+<tr><th id="134">134</th><td>  <b>return</b> <var>1</var>;</td></tr>
+<tr><th id="135">135</th><td>}</td></tr>
+<tr><th id="136">136</th><td></td></tr>
+<tr><th id="137">137</th><td></td></tr>
+<tr><th id="138">138</th><td><em>static</em> <em>int</em> <dfn class="tu decl def fn" id="luaB_yieldable" title='luaB_yieldable' data-type='int luaB_yieldable(lua_State * L)' data-ref="luaB_yieldable">luaB_yieldable</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col1 decl" id="21L" title='L' data-type='lua_State *' data-ref="21L">L</dfn>) {</td></tr>
+<tr><th id="139">139</th><td>  <a class="ref fn" href="lua.h.html#lua_pushboolean" title='lua_pushboolean' data-ref="lua_pushboolean">lua_pushboolean</a>(<a class="local col1 ref" href="#21L" title='L' data-ref="21L">L</a>, <a class="ref fn" href="lua.h.html#lua_isyieldable" title='lua_isyieldable' data-ref="lua_isyieldable">lua_isyieldable</a>(<a class="local col1 ref" href="#21L" title='L' data-ref="21L">L</a>));</td></tr>
+<tr><th id="140">140</th><td>  <b>return</b> <var>1</var>;</td></tr>
+<tr><th id="141">141</th><td>}</td></tr>
+<tr><th id="142">142</th><td></td></tr>
+<tr><th id="143">143</th><td></td></tr>
+<tr><th id="144">144</th><td><em>static</em> <em>int</em> <dfn class="tu decl def fn" id="luaB_corunning" title='luaB_corunning' data-type='int luaB_corunning(lua_State * L)' data-ref="luaB_corunning">luaB_corunning</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col2 decl" id="22L" title='L' data-type='lua_State *' data-ref="22L">L</dfn>) {</td></tr>
+<tr><th id="145">145</th><td>  <em>int</em> <dfn class="local col3 decl" id="23ismain" title='ismain' data-type='int' data-ref="23ismain">ismain</dfn> = <a class="ref fn" href="lua.h.html#lua_pushthread" title='lua_pushthread' data-ref="lua_pushthread">lua_pushthread</a>(<a class="local col2 ref" href="#22L" title='L' data-ref="22L">L</a>);</td></tr>
+<tr><th id="146">146</th><td>  <a class="ref fn" href="lua.h.html#lua_pushboolean" title='lua_pushboolean' data-ref="lua_pushboolean">lua_pushboolean</a>(<a class="local col2 ref" href="#22L" title='L' data-ref="22L">L</a>, <a class="local col3 ref" href="#23ismain" title='ismain' data-ref="23ismain">ismain</a>);</td></tr>
+<tr><th id="147">147</th><td>  <b>return</b> <var>2</var>;</td></tr>
+<tr><th id="148">148</th><td>}</td></tr>
+<tr><th id="149">149</th><td></td></tr>
+<tr><th id="150">150</th><td></td></tr>
+<tr><th id="151">151</th><td><em>static</em> <em>const</em> <a class="typedef" href="lauxlib.h.html#luaL_Reg" title='luaL_Reg' data-type='struct luaL_Reg' data-ref="luaL_Reg">luaL_Reg</a> <dfn class="tu decl def" id="co_funcs" title='co_funcs' data-type='const luaL_Reg [8]' data-ref="co_funcs">co_funcs</dfn>[] = {</td></tr>
+<tr><th id="152">152</th><td>  {<q>"create"</q>, <a class="tu ref fn" href="#luaB_cocreate" title='luaB_cocreate' data-use='r' data-ref="luaB_cocreate">luaB_cocreate</a>},</td></tr>
+<tr><th id="153">153</th><td>  {<q>"resume"</q>, <a class="tu ref fn" href="#luaB_coresume" title='luaB_coresume' data-use='r' data-ref="luaB_coresume">luaB_coresume</a>},</td></tr>
+<tr><th id="154">154</th><td>  {<q>"running"</q>, <a class="tu ref fn" href="#luaB_corunning" title='luaB_corunning' data-use='r' data-ref="luaB_corunning">luaB_corunning</a>},</td></tr>
+<tr><th id="155">155</th><td>  {<q>"status"</q>, <a class="tu ref fn" href="#luaB_costatus" title='luaB_costatus' data-use='r' data-ref="luaB_costatus">luaB_costatus</a>},</td></tr>
+<tr><th id="156">156</th><td>  {<q>"wrap"</q>, <a class="tu ref fn" href="#luaB_cowrap" title='luaB_cowrap' data-use='r' data-ref="luaB_cowrap">luaB_cowrap</a>},</td></tr>
+<tr><th id="157">157</th><td>  {<q>"yield"</q>, <a class="tu ref fn" href="#luaB_yield" title='luaB_yield' data-use='r' data-ref="luaB_yield">luaB_yield</a>},</td></tr>
+<tr><th id="158">158</th><td>  {<q>"isyieldable"</q>, <a class="tu ref fn" href="#luaB_yieldable" title='luaB_yieldable' data-use='r' data-ref="luaB_yieldable">luaB_yieldable</a>},</td></tr>
+<tr><th id="159">159</th><td>  {<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>}</td></tr>
+<tr><th id="160">160</th><td>};</td></tr>
+<tr><th id="161">161</th><td></td></tr>
+<tr><th id="162">162</th><td></td></tr>
+<tr><th id="163">163</th><td></td></tr>
+<tr><th id="164">164</th><td><a class="macro" href="luaconf.h.html#261" title="extern" data-ref="_M/LUAMOD_API">LUAMOD_API</a> <em>int</em> <dfn class="decl def fn" id="luaopen_coroutine" title='luaopen_coroutine' data-ref="luaopen_coroutine">luaopen_coroutine</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col4 decl" id="24L" title='L' data-type='lua_State *' data-ref="24L">L</dfn>) {</td></tr>
+<tr><th id="165">165</th><td>  <a class="macro" href="lauxlib.h.html#119" title="(luaL_checkversion_(L, 503, (sizeof(lua_Integer)*16 + sizeof(lua_Number))), lua_createtable(L, 0, sizeof(co_funcs)/sizeof((co_funcs)[0]) - 1), luaL_setfuncs(L,co_funcs,0))" data-ref="_M/luaL_newlib">luaL_newlib</a>(<a class="local col4 ref" href="#24L" title='L' data-ref="24L">L</a>, <a class="tu ref" href="#co_funcs" title='co_funcs' data-use='r' data-ref="co_funcs">co_funcs</a>);</td></tr>
+<tr><th id="166">166</th><td>  <b>return</b> <var>1</var>;</td></tr>
+<tr><th id="167">167</th><td>}</td></tr>
+<tr><th id="168">168</th><td></td></tr>
+<tr><th id="169">169</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Apr-07</em> from project lua<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

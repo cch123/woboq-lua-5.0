@@ -1,0 +1,14 @@
+<dec f='lua/src/lvm.h' l='46'/>
+<use f='lua/src/lvm.c' l='556' u='c'/>
+<use f='lua/src/lvm.c' l='596' u='c'/>
+<use f='lua/src/lvm.c' l='600' u='c'/>
+<use f='lua/src/lvm.c' l='895' u='c'/>
+<use f='lua/src/lvm.c' l='909' u='c'/>
+<use f='lua/src/lvm.c' l='923' u='c'/>
+<use f='lua/src/lvm.c' l='946' u='c'/>
+<use f='lua/src/lvm.c' l='956' u='c'/>
+<use f='lua/src/lvm.c' l='966' u='c'/>
+<use f='lua/src/lvm.c' l='1036' u='c'/>
+<use f='lua/src/lvm.c' l='1050' u='c'/>
+<use f='lua/src/lvm.c' l='1193' u='c'/>
+<use f='lua/src/lvm.c' l='1225' u='c'/>

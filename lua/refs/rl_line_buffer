@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='516' type='char *'/>
+<doc f='include/readline/readline.h' l='515'>/* The line buffer that is in use. */</doc>

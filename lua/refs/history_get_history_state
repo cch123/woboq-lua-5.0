@@ -1,0 +1,2 @@
+<dec f='include/readline/history.h' l='75' type='HISTORY_STATE * history_get_history_state()'/>
+<doc f='include/readline/history.h' l='74'>/* Return the current HISTORY_STATE of the history. */</doc>

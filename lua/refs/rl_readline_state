@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='493' type='int'/>
+<doc f='include/readline/readline.h' l='492'>/* Flags word encapsulating the current readline state. */</doc>

@@ -1,0 +1,2 @@
+<dec f='lua/src/lopcodes.h' l='147'/>
+<doc f='lua/src/lopcodes.h' l='146'>/* code a constant index as a RK value */</doc>

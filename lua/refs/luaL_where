@@ -1,0 +1,5 @@
+<dec f='lua/src/lauxlib.h' l='67' type='void luaL_where(lua_State * L, int lvl)'/>
+<def f='lua/src/lauxlib.c' l='205' ll='215' macro='1' type='void luaL_where(lua_State * L, int level)'/>
+<use f='lua/src/lauxlib.c' l='226' u='c' c='luaL_error'/>
+<use f='lua/src/lbaselib.c' l='106' u='c' c='luaB_error'/>
+<use f='lua/src/lcorolib.c' l='79' u='c' c='luaB_auxwrap'/>

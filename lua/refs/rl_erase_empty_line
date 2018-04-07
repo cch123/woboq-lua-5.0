@@ -1,0 +1,4 @@
+<dec f='include/readline/readline.h' l='600' type='int'/>
+<doc f='include/readline/readline.h' l='597'>/* If non-zero, readline will erase the entire line, including any prompt,
+   if the only thing typed on an otherwise-blank line is something bound to
+   rl_newline. */</doc>

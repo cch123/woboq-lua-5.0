@@ -1,0 +1,11 @@
+<dec f='lua/src/lauxlib.h' l='167' type='void luaL_addvalue(luaL_Buffer * B)'/>
+<def f='lua/src/lauxlib.c' l='558' ll='566' macro='1' type='void luaL_addvalue(luaL_Buffer * B)'/>
+<use f='lua/src/loadlib.c' l='451' u='c' c='searchpath'/>
+<use f='lua/src/loadlib.c' l='589' u='c' c='findloader'/>
+<use f='lua/src/lstrlib.c' l='724' u='c' c='add_s'/>
+<use f='lua/src/lstrlib.c' l='758' u='c' c='add_value'/>
+<use f='lua/src/lstrlib.c' l='971' u='c' c='addliteral'/>
+<use f='lua/src/lstrlib.c' l='1068' u='c' c='str_format'/>
+<use f='lua/src/lstrlib.c' l='1073' u='c' c='str_format'/>
+<use f='lua/src/ltablib.c' l='165' u='c' c='addfield'/>
+<use f='lua/src/lutf8lib.c' l='148' u='c' c='utfchar'/>

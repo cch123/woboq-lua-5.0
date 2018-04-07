@@ -1,0 +1,5 @@
+<dec f='include/ctype.h' l='127' type='int toupper(int __c)'/>
+<def f='include/ctype.h' l='220' ll='224' macro='1' type='int toupper(int __c)'/>
+<use f='lua/src/lbaselib.c' l='58' macro='1' u='c'/>
+<doc f='include/ctype.h' l='126'>/* Return the uppercase version of C.  */</doc>
+<use f='lua/src/lstrlib.c' l='116' macro='1' u='c'/>

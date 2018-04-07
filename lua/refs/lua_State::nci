@@ -1,0 +1,3 @@
+<dec f='lua/src/lstate.h' l='162' type='unsigned short'/>
+<offset>80</offset>
+<doc f='lua/src/lstate.h' l='162'>/* number of items in &apos;ci&apos; list */</doc>

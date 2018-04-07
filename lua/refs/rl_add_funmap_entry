@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='357' type='int rl_add_funmap_entry(const char * , rl_command_func_t * )'/>
+<doc f='include/readline/readline.h' l='356'>/* Functions for manipulating the funmap, which maps command names to functions. */</doc>

@@ -1,0 +1,3 @@
+<dec f='include/stdio.h' l='364' type='int sprintf(char *restrict __s, const char *restrict __format)'/>
+<doc f='include/stdio.h' l='363'>/* Write formatted output to S.  */</doc>
+<use f='lua/src/luac.c' l='268' u='c' c='PrintConstant'/>

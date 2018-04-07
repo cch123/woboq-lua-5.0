@@ -1,0 +1,9 @@
+<dec f='lua/src/lua.h' l='443' type='const char *'/>
+<use f='lua/src/lauxlib.c' l='100' u='r' c='pushfuncname'/>
+<use f='lua/src/lauxlib.c' l='173' u='r' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='175' u='r' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='176' u='w' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='178' u='r' c='luaL_argerror'/>
+<offset>64</offset>
+<doc f='lua/src/lua.h' l='443'>/* (n) */</doc>
+<use f='lua/src/ldblib.c' l='180' u='r' c='db_getinfo'/>

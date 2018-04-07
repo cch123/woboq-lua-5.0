@@ -1,0 +1,6 @@
+<dec f='lua/src/luaconf.h' l='537'/>
+<use f='lua/src/lua.h' l='96' u='c'/>
+<doc f='lua/src/luaconf.h' l='533'>/*
+** use LUAI_UACINT here to avoid problems with promotions (which
+** can turn a comparison between unsigneds into a signed comparison)
+*/</doc>

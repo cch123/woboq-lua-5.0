@@ -1,0 +1,8 @@
+<dec f='lua/src/lobject.h' l='423' type='int *'/>
+<offset>576</offset>
+<doc f='lua/src/lobject.h' l='423'>/* map from opcodes to source lines (debug information) */</doc>
+<use f='lua/src/luac.c' l='302' macro='1' u='r'/>
+<use f='lua/src/luac.c' l='302' macro='1' u='r'/>
+<use f='lua/src/lundump.c' l='183' u='w' c='LoadDebug'/>
+<use f='lua/src/lundump.c' l='185' u='r' c='LoadDebug'/>
+<use f='lua/src/lundump.c' l='185' u='r' c='LoadDebug'/>

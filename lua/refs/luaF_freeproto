@@ -1,0 +1,1 @@
+<dec f='lua/src/lfunc.h' l='56' type='void luaF_freeproto(lua_State * L, Proto * f)'/>

@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='152' type='int rl_complete(int , int )'/>
+<doc f='include/readline/readline.h' l='151'>/* Bindable commands for word completion. */</doc>

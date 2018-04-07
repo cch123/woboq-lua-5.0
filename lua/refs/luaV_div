@@ -1,0 +1,9 @@
+<dec f='lua/src/lvm.h' l='108' type='lua_Integer luaV_div(lua_State * L, lua_Integer x, lua_Integer y)'/>
+<def f='lua/src/lvm.c' l='552' ll='564' type='lua_Integer luaV_div(lua_State * L, lua_Integer m, lua_Integer n)'/>
+<use f='lua/src/lvm.c' l='1013' u='c' c='luaV_execute'/>
+<doc f='lua/src/lvm.c' l='546'>/*
+** Integer division; return &apos;m // n&apos;, that is, floor(m/n).
+** C division truncates its result (rounds towards zero).
+** &apos;floor(q) == trunc(q)&apos; when &apos;q &gt;= 0&apos; or when &apos;q&apos; is integer,
+** otherwise &apos;floor(q) == trunc(q) - 1&apos;.
+*/</doc>

@@ -1,0 +1,4 @@
+<dec f='include/readline/readline.h' l='786' type='int'/>
+<doc f='include/readline/readline.h' l='783'>/* Up to this many items will be displayed in response to a
+   possible-completions call.  After that, we ask the user if she
+   is sure she wants to see them all.  The default value is 100. */</doc>

@@ -1,0 +1,14 @@
+<dec f='lua/src/ltm.h' l='24' type='5'/>
+<doc f='lua/src/ltm.h' l='24'>/* last tag method with fast access */</doc>
+<use f='lua/src/lvm.c' l='430' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='430' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='430' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='432' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='432' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='432' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='438' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='438' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='438' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='440' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='440' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='440' u='r' c='luaV_equalobj'/>

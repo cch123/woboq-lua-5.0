@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='299' type='int rl_add_defun(const char * , rl_command_func_t * , int )'/>
+<doc f='include/readline/readline.h' l='298'>/* Utility functions to bind keys to readline commands. */</doc>

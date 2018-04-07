@@ -1,0 +1,3 @@
+<dec f='lua/src/lauxlib.h' l='52' type='lua_Number luaL_optnumber(lua_State * L, int arg, lua_Number def)'/>
+<def f='lua/src/lauxlib.c' l='417' ll='419' macro='1' type='lua_Number luaL_optnumber(lua_State * L, int arg, lua_Number def)'/>
+<use f='lua/src/lmathlib.c' l='77' u='c' c='math_atan'/>

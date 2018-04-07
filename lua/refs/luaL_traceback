@@ -1,0 +1,4 @@
+<dec f='lua/src/lauxlib.h' l='103' type='void luaL_traceback(lua_State * L, lua_State * L1, const char * msg, int level)'/>
+<def f='lua/src/lauxlib.c' l='125' ll='153' macro='1' type='void luaL_traceback(lua_State * L, lua_State * L1, const char * msg, int level)'/>
+<use f='lua/src/ldblib.c' l='425' u='c' c='db_traceback'/>
+<use f='lua/src/lua.c' l='189' u='c' c='msghandler'/>

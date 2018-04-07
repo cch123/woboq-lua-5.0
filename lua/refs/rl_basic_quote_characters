@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='679' type='const char *'/>
+<doc f='include/readline/readline.h' l='678'>/* List of quote characters which cause a word break. */</doc>

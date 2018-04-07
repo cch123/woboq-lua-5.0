@@ -1,0 +1,6 @@
+<dec f='lua/src/lstrlib.c' l='1168' type='4'/>
+<use f='lua/src/lstrlib.c' l='1239' u='r' c='getoption'/>
+<use f='lua/src/lstrlib.c' l='1386' c='str_pack'/>
+<use f='lua/src/lstrlib.c' l='1430' c='str_packsize'/>
+<use f='lua/src/lstrlib.c' l='1516' c='str_unpack'/>
+<doc f='lua/src/lstrlib.c' l='1168'>/* strings with prefixed length */</doc>

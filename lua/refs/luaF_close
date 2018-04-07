@@ -1,0 +1,9 @@
+<dec f='lua/src/lfunc.h' l='55' type='void luaF_close(lua_State * L, StkId level)'/>
+<use f='lua/src/lvm.c' l='740' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='740' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='740' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='740' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='740' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='740' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1162' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1178' u='c' c='luaV_execute'/>

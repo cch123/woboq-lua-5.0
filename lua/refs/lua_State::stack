@@ -1,0 +1,5 @@
+<dec f='lua/src/lstate.h' l='169' type='StkId'/>
+<offset>448</offset>
+<doc f='lua/src/lstate.h' l='169'>/* stack base */</doc>
+<use f='lua/src/ltm.c' l='104' macro='1' u='r'/>
+<use f='lua/src/ltm.c' l='118' macro='1' u='r'/>

@@ -1,0 +1,8 @@
+<dec f='include/string.h' l='65' type='int memcmp(const void * __s1, const void * __s2, size_t __n)'/>
+<doc f='include/string.h' l='64'>/* Compare N bytes of S1 and S2.  */</doc>
+<use f='lua/src/loslib.c' l='267' u='c' c='checkoption'/>
+<use f='lua/src/lstring.c' l='45' u='c' c='luaS_eqlngstr'/>
+<use f='lua/src/lstring.c' l='175' u='c' c='internshrstr'/>
+<use f='lua/src/lstrlib.c' l='419' u='c' c='match_capture'/>
+<use f='lua/src/lstrlib.c' l='538' u='c' c='lmemfind'/>
+<use f='lua/src/lundump.c' l='223' u='c' c='checkliteral'/>

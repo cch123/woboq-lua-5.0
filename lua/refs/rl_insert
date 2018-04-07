@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='103' type='int rl_insert(int , int )'/>
+<doc f='include/readline/readline.h' l='102'>/* Bindable commands for inserting and deleting text. */</doc>

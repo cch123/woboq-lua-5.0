@@ -1,0 +1,4 @@
+<dec f='lua/src/lauxlib.h' l='74' type='int luaL_execresult(lua_State * L, int stat)'/>
+<def f='lua/src/lauxlib.c' l='274' ll='288' macro='1' type='int luaL_execresult(lua_State * L, int stat)'/>
+<use f='lua/src/liolib.c' l='267' u='c' c='io_pclose'/>
+<use f='lua/src/loslib.c' l='145' u='c' c='os_execute'/>

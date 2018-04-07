@@ -1,0 +1,6 @@
+<dec f='lua/src/lobject.h' l='102' type='void *'/>
+<offset>0</offset>
+<doc f='lua/src/lobject.h' l='102'>/* light userdata */</doc>
+<use f='lua/src/ltable.c' l='130' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='423' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='423' macro='1' u='r'/>

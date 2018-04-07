@@ -1,0 +1,11 @@
+<dec f='lua/src/lobject.h' l='424' type='LocVar *'/>
+<offset>640</offset>
+<doc f='lua/src/lobject.h' l='424'>/* information about local variables (debug information) */</doc>
+<use f='lua/src/luac.c' l='431' u='r' c='PrintDebug'/>
+<use f='lua/src/luac.c' l='431' u='r' c='PrintDebug'/>
+<use f='lua/src/luac.c' l='431' u='r' c='PrintDebug'/>
+<use f='lua/src/lundump.c' l='187' u='w' c='LoadDebug'/>
+<use f='lua/src/lundump.c' l='190' u='r' c='LoadDebug'/>
+<use f='lua/src/lundump.c' l='192' u='r' c='LoadDebug'/>
+<use f='lua/src/lundump.c' l='193' u='r' c='LoadDebug'/>
+<use f='lua/src/lundump.c' l='194' u='r' c='LoadDebug'/>

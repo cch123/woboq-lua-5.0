@@ -1,0 +1,4 @@
+<dec f='lua/src/lobject.h' l='541' type='void luaO_tostring(lua_State * L, StkId obj)'/>
+<use f='lua/src/lvm.c' l='455' u='c' c='luaV_concat'/>
+<use f='lua/src/lvm.c' l='455' u='c' c='luaV_concat'/>
+<use f='lua/src/lvm.c' l='455' u='c' c='luaV_concat'/>

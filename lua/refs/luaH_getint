@@ -1,0 +1,11 @@
+<dec f='lua/src/ltable.h' l='43' type='const TValue * luaH_getint(Table * t, lua_Integer key)'/>
+<def f='lua/src/ltable.c' l='497' ll='514' type='const TValue * luaH_getint(Table * t, lua_Integer key)'/>
+<use f='lua/src/ltable.c' l='573' u='c' c='luaH_get'/>
+<use f='lua/src/ltable.c' l='578' u='c' c='luaH_get'/>
+<use f='lua/src/ltable.c' l='600' u='c' c='luaH_setint'/>
+<use f='lua/src/ltable.c' l='617' u='c' c='unbound_search'/>
+<use f='lua/src/ltable.c' l='622' u='c' c='unbound_search'/>
+<use f='lua/src/ltable.c' l='630' u='c' c='unbound_search'/>
+<doc f='lua/src/ltable.c' l='494'>/*
+** search function for integers
+*/</doc>

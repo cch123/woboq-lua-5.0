@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='321' type='int rl_macro_bind(const char * , const char * , Keymap )'/>
+<doc f='include/readline/readline.h' l='320'>/* Backwards compatibility, use rl_generic_bind instead. */</doc>

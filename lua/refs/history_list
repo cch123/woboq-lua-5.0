@@ -1,0 +1,4 @@
+<dec f='include/readline/history.h' l='123' type='HIST_ENTRY ** history_list()'/>
+<doc f='include/readline/history.h' l='120'>/* Return a NULL terminated array of HIST_ENTRY which is the current input
+   history.  Element 0 of this list is the beginning of time.  If there
+   is no history, return NULL. */</doc>

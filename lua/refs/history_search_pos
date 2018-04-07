@@ -1,0 +1,6 @@
+<dec f='include/readline/history.h' l='180' type='int history_search_pos(const char * , int , int )'/>
+<doc f='include/readline/history.h' l='175'>/* Search for STRING in the history list, starting at POS, an
+   absolute index into the list.  DIR, if negative, says to search
+   backwards from POS, else forwards.
+   Returns the absolute index of the history element where STRING
+   was found, or -1 otherwise. */</doc>

@@ -1,0 +1,4 @@
+<dec f='include/readline/tilde.h' l='59' type='char **'/>
+<doc f='include/readline/tilde.h' l='56'>/* When non-null, this is a NULL terminated array of strings which
+   are duplicates for a tilde prefix.  Bash uses this to expand
+   `=~&apos; and `:~&apos;. */</doc>

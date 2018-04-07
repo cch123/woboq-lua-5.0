@@ -1,0 +1,3 @@
+<dec f='include/ctype.h' l='229'/>
+<use f='lua/src/lbaselib.c' l='58' u='c'/>
+<use f='lua/src/lstrlib.c' l='116' u='c'/>

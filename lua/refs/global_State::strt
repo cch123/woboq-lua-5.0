@@ -1,0 +1,14 @@
+<dec f='lua/src/lstate.h' l='126' type='stringtable'/>
+<use f='lua/src/lstring.c' l='73' u='a' c='luaS_resize'/>
+<use f='lua/src/lstring.c' l='155' u='a' c='luaS_remove'/>
+<use f='lua/src/lstring.c' l='171' u='m' c='internshrstr'/>
+<use f='lua/src/lstring.c' l='171' u='m' c='internshrstr'/>
+<use f='lua/src/lstring.c' l='182' u='m' c='internshrstr'/>
+<use f='lua/src/lstring.c' l='182' u='m' c='internshrstr'/>
+<use f='lua/src/lstring.c' l='182' u='m' c='internshrstr'/>
+<use f='lua/src/lstring.c' l='183' u='m' c='internshrstr'/>
+<use f='lua/src/lstring.c' l='184' u='m' c='internshrstr'/>
+<use f='lua/src/lstring.c' l='184' u='m' c='internshrstr'/>
+<use f='lua/src/lstring.c' l='191' u='m' c='internshrstr'/>
+<offset>384</offset>
+<doc f='lua/src/lstate.h' l='126'>/* hash table for strings */</doc>

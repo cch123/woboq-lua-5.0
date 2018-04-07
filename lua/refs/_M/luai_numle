@@ -1,0 +1,5 @@
+<dec f='lua/src/llimits.h' l='297'/>
+<use f='lua/src/lvm.c' l='311' u='c'/>
+<use f='lua/src/lvm.c' l='352' u='c'/>
+<use f='lua/src/lvm.c' l='1205' u='c'/>
+<use f='lua/src/lvm.c' l='1206' u='c'/>

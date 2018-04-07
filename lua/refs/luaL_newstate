@@ -1,0 +1,4 @@
+<dec f='lua/src/lauxlib.h' l='92' type='lua_State * luaL_newstate()'/>
+<def f='lua/src/lauxlib.c' l='1026' ll='1030' macro='1' type='lua_State * luaL_newstate()'/>
+<use f='lua/src/lua.c' l='598' u='c' c='main'/>
+<use f='lua/src/luac.c' l='198' u='c' c='main'/>

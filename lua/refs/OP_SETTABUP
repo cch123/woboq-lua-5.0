@@ -1,0 +1,5 @@
+<dec f='lua/src/lopcodes.h' l='181' type='8'/>
+<use f='lua/src/luac.c' l='338' c='PrintCode'/>
+<doc f='lua/src/lopcodes.h' l='181'>/*	A B C	UpValue[A][RK(B)] := RK(C)			*/</doc>
+<use f='lua/src/lvm.c' l='707' c='luaV_finishOp'/>
+<use f='lua/src/lvm.c' l='848' c='luaV_execute'/>

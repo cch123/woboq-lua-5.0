@@ -1,0 +1,4 @@
+<dec f='lua/src/lstate.h' l='168' type='StkId'/>
+<offset>384</offset>
+<doc f='lua/src/lstate.h' l='168'>/* last free slot in the stack */</doc>
+<use f='lua/src/lvm.c' l='1303' macro='1' u='r'/>

@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='203' type='int rl_abort(int , int )'/>
+<doc f='include/readline/readline.h' l='202'>/* Miscellaneous bindable commands. */</doc>

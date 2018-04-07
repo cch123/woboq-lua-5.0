@@ -1,0 +1,5 @@
+<dec f='lua/src/llimits.h' l='198'/>
+<use f='lua/src/lstate.h' l='153' u='c'/>
+<use f='lua/src/lstring.c' l='105' u='c'/>
+<use f='lua/src/lstring.c' l='123' u='c'/>
+<use f='lua/src/lstring.c' l='220' u='c'/>

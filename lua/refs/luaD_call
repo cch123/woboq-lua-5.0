@@ -1,0 +1,3 @@
+<dec f='lua/src/ldo.h' l='43' type='void luaD_call(lua_State * L, StkId func, int nResults)'/>
+<use f='lua/src/ltm.c' l='114' u='c' c='luaT_callTM'/>
+<use f='lua/src/lvm.c' l='1248' u='c' c='luaV_execute'/>

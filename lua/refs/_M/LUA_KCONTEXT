@@ -1,0 +1,10 @@
+<dec f='lua/src/luaconf.h' l='655'/>
+<use f='lua/src/luaconf.h' l='661' u='w'/>
+<dec f='lua/src/luaconf.h' l='662'/>
+<use f='lua/src/lua.h' l='99' u='c'/>
+<doc f='lua/src/luaconf.h' l='649'>/*
+@@ LUA_KCONTEXT is the type of the context (&apos;ctx&apos;) for continuation
+** functions.  It must be a numerical type; Lua will use &apos;intptr_t&apos; if
+** available, otherwise it will use &apos;ptrdiff_t&apos; (the nearest thing to
+** &apos;intptr_t&apos; in C89)
+*/</doc>

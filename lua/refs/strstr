@@ -1,0 +1,2 @@
+<dec f='include/string.h' l='337' type='char * strstr(const char * __haystack, const char * __needle)'/>
+<use f='lua/src/lauxlib.c' l='997' u='c' c='luaL_gsub'/>

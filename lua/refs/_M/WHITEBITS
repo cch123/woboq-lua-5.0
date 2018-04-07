@@ -1,0 +1,2 @@
+<dec f='lua/src/lgc.h' l='84'/>
+<doc f='lua/src/lgc.h' l='82'>/* bit 7 is currently used by tests (luaL_checkmemory) */</doc>

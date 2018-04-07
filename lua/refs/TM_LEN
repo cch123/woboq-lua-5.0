@@ -1,0 +1,5 @@
+<dec f='lua/src/ltm.h' l='23' type='4'/>
+<use f='lua/src/lvm.c' l='522' u='r' c='luaV_objlen'/>
+<use f='lua/src/lvm.c' l='522' u='r' c='luaV_objlen'/>
+<use f='lua/src/lvm.c' l='522' u='r' c='luaV_objlen'/>
+<use f='lua/src/lvm.c' l='536' u='r' c='luaV_objlen'/>

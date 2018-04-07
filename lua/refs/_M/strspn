@@ -1,0 +1,5 @@
+<dec f='include/x86_64-linux-gnu/bits/string2.h' l='987'/>
+<use f='lua/src/lbaselib.c' l='51' u='c'/>
+<use f='lua/src/lbaselib.c' l='63' u='c'/>
+<use f='lua/src/liolib.c' l='43' u='c'/>
+<use f='lua/src/luac.c' l='270' u='c'/>

@@ -1,0 +1,20 @@
+<dec f='lua/src/lobject.h' l='479' type='struct (anonymous struct at /vagrant/data/lua-5.3.4/src/lobject.h:476:3)'/>
+<offset>0</offset>
+<use f='lua/src/ltable.c' l='177' macro='1' u='m'/>
+<use f='lua/src/ltable.c' l='323' macro='1' u='m'/>
+<use f='lua/src/ltable.c' l='324' macro='1' u='a'/>
+<use f='lua/src/ltable.c' l='468' macro='1' u='m'/>
+<use f='lua/src/ltable.c' l='469' macro='1' u='m'/>
+<use f='lua/src/ltable.c' l='470' macro='1' u='m'/>
+<use f='lua/src/ltable.c' l='472' macro='1' u='m'/>
+<use f='lua/src/ltable.c' l='473' macro='1' u='m'/>
+<use f='lua/src/ltable.c' l='474' macro='1' u='m'/>
+<use f='lua/src/ltable.c' l='480' macro='1' u='m'/>
+<use f='lua/src/ltable.c' l='481' macro='1' u='m'/>
+<use f='lua/src/ltable.c' l='481' macro='1' u='m'/>
+<use f='lua/src/ltable.c' l='483' macro='1' u='m'/>
+<use f='lua/src/ltable.c' l='487' macro='1' u='m'/>
+<use f='lua/src/ltable.c' l='487' macro='1' u='m'/>
+<use f='lua/src/ltable.c' l='507' macro='1' u='m'/>
+<use f='lua/src/ltable.c' l='528' macro='1' u='m'/>
+<use f='lua/src/ltable.c' l='547' macro='1' u='m'/>

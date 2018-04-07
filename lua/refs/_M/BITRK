@@ -1,0 +1,2 @@
+<dec f='lua/src/lopcodes.h' l='134'/>
+<doc f='lua/src/lopcodes.h' l='133'>/* this bit 1 means constant (0 means register) */</doc>

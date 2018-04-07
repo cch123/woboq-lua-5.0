@@ -1,0 +1,4 @@
+<dec f='lua/src/lauxlib.h' l='28'/>
+<doc f='lua/src/lauxlib.h' l='27'>/* key, in the registry, for table of preloaded loaders */</doc>
+<use f='lua/src/loadlib.c' l='562' u='c'/>
+<use f='lua/src/loadlib.c' l='782' u='c'/>

@@ -1,0 +1,5 @@
+<dec f='lua/src/lauxlib.h' l='137'/>
+<use f='lua/src/lauxlib.c' l='418' u='c'/>
+<use f='lua/src/lauxlib.c' l='442' u='c'/>
+<use f='lua/src/loslib.c' l='286' u='c'/>
+<use f='lua/src/ltablib.c' l='210' u='c'/>

@@ -1,0 +1,2 @@
+<dec f='lua/src/ltable.h' l='56' type='int luaH_next(lua_State * L, Table * t, StkId key)'/>
+<def f='lua/src/ltable.c' l='186' ll='203' type='int luaH_next(lua_State * L, Table * t, StkId key)'/>

@@ -1,0 +1,13 @@
+<dec f='lua/src/lobject.h' l='499' type='lu_byte'/>
+<offset>80</offset>
+<doc f='lua/src/lobject.h' l='499'>/* 1&lt;&lt;p means tagmethod(p) is not present */</doc>
+<use f='lua/src/ltable.c' l='406' u='w' c='luaH_new'/>
+<use f='lua/src/ltm.c' l='63' u='w' c='luaT_gettm'/>
+<use f='lua/src/lvm.c' l='174' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='211' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='217' macro='1' u='w'/>
+<use f='lua/src/lvm.c' l='430' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='432' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='438' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='440' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='522' macro='1' u='r'/>

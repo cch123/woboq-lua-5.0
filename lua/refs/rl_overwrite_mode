@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='143' type='int rl_overwrite_mode(int , int )'/>
+<doc f='include/readline/readline.h' l='142'>/* Bindable commands to change the insert mode (insert or overwrite) */</doc>

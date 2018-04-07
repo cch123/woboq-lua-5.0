@@ -1,0 +1,2 @@
+<dec f='include/readline/tilde.h' l='74' type='char * tilde_find_word(const char * , int , int * )'/>
+<doc f='include/readline/tilde.h' l='73'>/* Find the portion of the string beginning with ~ that should be expanded. */</doc>

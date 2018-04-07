@@ -1,0 +1,28 @@
+<def f='lua/src/lobject.h' l='407' ll='429'/>
+<size>120</size>
+<doc f='lua/src/lobject.h' l='404'>/*
+** Function Prototypes
+*/</doc>
+<mbr r='Proto::next' o='0' t='GCObject *'/>
+<mbr r='Proto::tt' o='64' t='lu_byte'/>
+<mbr r='Proto::marked' o='72' t='lu_byte'/>
+<mbr r='Proto::numparams' o='80' t='lu_byte'/>
+<mbr r='Proto::is_vararg' o='88' t='lu_byte'/>
+<mbr r='Proto::maxstacksize' o='96' t='lu_byte'/>
+<mbr r='Proto::sizeupvalues' o='128' t='int'/>
+<mbr r='Proto::sizek' o='160' t='int'/>
+<mbr r='Proto::sizecode' o='192' t='int'/>
+<mbr r='Proto::sizelineinfo' o='224' t='int'/>
+<mbr r='Proto::sizep' o='256' t='int'/>
+<mbr r='Proto::sizelocvars' o='288' t='int'/>
+<mbr r='Proto::linedefined' o='320' t='int'/>
+<mbr r='Proto::lastlinedefined' o='352' t='int'/>
+<mbr r='Proto::k' o='384' t='TValue *'/>
+<mbr r='Proto::code' o='448' t='Instruction *'/>
+<mbr r='Proto::p' o='512' t='struct Proto **'/>
+<mbr r='Proto::lineinfo' o='576' t='int *'/>
+<mbr r='Proto::locvars' o='640' t='LocVar *'/>
+<mbr r='Proto::upvalues' o='704' t='Upvaldesc *'/>
+<mbr r='Proto::cache' o='768' t='struct LClosure *'/>
+<mbr r='Proto::source' o='832' t='TString *'/>
+<mbr r='Proto::gclist' o='896' t='GCObject *'/>

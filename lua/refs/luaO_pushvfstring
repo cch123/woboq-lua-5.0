@@ -1,0 +1,1 @@
+<dec f='lua/src/lobject.h' l='542' type='const char * luaO_pushvfstring(lua_State * L, const char * fmt, struct __va_list_tag * argp)'/>

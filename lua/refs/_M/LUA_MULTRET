@@ -1,0 +1,8 @@
+<dec f='lua/src/lua.h' l='34'/>
+<doc f='lua/src/lua.h' l='33'>/* option for multiple returns in &apos;lua_pcall&apos; and &apos;lua_call&apos; */</doc>
+<use f='lua/src/lbaselib.c' l='367' u='c'/>
+<use f='lua/src/lbaselib.c' l='424' u='c'/>
+<use f='lua/src/lbaselib.c' l='441' u='c'/>
+<use f='lua/src/lua.c' l='411' u='c'/>
+<use f='lua/src/lua.c' l='445' u='c'/>
+<use f='lua/src/lvm.c' l='1149' u='c'/>

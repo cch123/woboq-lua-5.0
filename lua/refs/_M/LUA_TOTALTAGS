@@ -1,0 +1,6 @@
+<dec f='lua/src/lobject.h' l='28'/>
+<use f='lua/src/ltm.h' l='55' u='c'/>
+<doc f='lua/src/lobject.h' l='25'>/*
+** number of all possible tags (including LUA_TNONE but excluding DEADKEY)
+*/</doc>
+<use f='lua/src/ltm.c' l='29' u='c'/>

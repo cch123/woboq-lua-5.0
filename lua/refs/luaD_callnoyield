@@ -1,0 +1,2 @@
+<dec f='lua/src/ldo.h' l='44' type='void luaD_callnoyield(lua_State * L, StkId func, int nResults)'/>
+<use f='lua/src/ltm.c' l='116' u='c' c='luaT_callTM'/>

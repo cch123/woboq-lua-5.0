@@ -1,0 +1,5 @@
+<dec f='lua/src/lauxlib.h' l='166' type='void luaL_addstring(luaL_Buffer * B, const char * s)'/>
+<def f='lua/src/lauxlib.c' l='537' ll='539' macro='1' type='void luaL_addstring(luaL_Buffer * B, const char * s)'/>
+<use f='lua/src/lauxlib.c' l='999' u='c' c='luaL_gsub'/>
+<use f='lua/src/lauxlib.c' l='1002' u='c' c='luaL_gsub'/>
+<use f='lua/src/lstrlib.c' l='921' u='c' c='addquoted'/>

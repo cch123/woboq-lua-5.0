@@ -1,0 +1,5 @@
+<dec f='include/readline/history.h' l='84' type='void add_history(const char * )'/>
+<use f='lua/src/lua.c' l='85' u='c' c='addreturn'/>
+<use f='lua/src/lua.c' l='85' u='c' c='multiline'/>
+<doc f='include/readline/history.h' l='82'>/* Place STRING at the end of the history list.
+   The associated data field (if any) is set to NULL. */</doc>

@@ -1,0 +1,15 @@
+<dec f='lua/src/lobject.h' l='504' type='Node *'/>
+<offset>256</offset>
+<doc f='lua/src/lobject.h' l='504'>/* any free position is before this position */</doc>
+<use f='lua/src/ltable.c' l='312' u='w' c='setnodevector'/>
+<use f='lua/src/ltable.c' l='328' u='w' c='setnodevector'/>
+<use f='lua/src/ltable.c' l='338' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='369' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='415' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='423' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='424' u='r' c='getfreepos'/>
+<use f='lua/src/ltable.c' l='425' u='w' c='getfreepos'/>
+<use f='lua/src/ltable.c' l='426' u='r' c='getfreepos'/>
+<use f='lua/src/ltable.c' l='427' u='r' c='getfreepos'/>
+<use f='lua/src/ltable.c' l='456' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='654' macro='1' u='r'/>

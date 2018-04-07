@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>lundump.h source code [lua/src/lundump.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'lua/src/lundump.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>lua</a>/<a href='./'>src</a>/<a href='lundump.h.html'>lundump.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*</i></td></tr>
+<tr><th id="2">2</th><td><i>** $Id: lundump.h,v 1.45 2015/09/08 15:41:05 roberto Exp $</i></td></tr>
+<tr><th id="3">3</th><td><i>** load precompiled Lua chunks</i></td></tr>
+<tr><th id="4">4</th><td><i>** See Copyright Notice in lua.h</i></td></tr>
+<tr><th id="5">5</th><td><i>*/</i></td></tr>
+<tr><th id="6">6</th><td></td></tr>
+<tr><th id="7">7</th><td><u>#<span data-ppcond="7">ifndef</span> <span class="macro" data-ref="_M/lundump_h">lundump_h</span></u></td></tr>
+<tr><th id="8">8</th><td><u>#define <dfn class="macro" id="_M/lundump_h" data-ref="_M/lundump_h">lundump_h</dfn></u></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td><u>#include <a href="llimits.h.html">"llimits.h"</a></u></td></tr>
+<tr><th id="11">11</th><td><u>#include <a href="lobject.h.html">"lobject.h"</a></u></td></tr>
+<tr><th id="12">12</th><td><u>#include <a href="lzio.h.html">"lzio.h"</a></u></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><i>/* data to catch conversion errors */</i></td></tr>
+<tr><th id="16">16</th><td><u>#define <dfn class="macro" id="_M/LUAC_DATA" data-ref="_M/LUAC_DATA">LUAC_DATA</dfn>	"\x19\x93\r\n\x1a\n"</u></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><u>#define <dfn class="macro" id="_M/LUAC_INT" data-ref="_M/LUAC_INT">LUAC_INT</dfn>	0x5678</u></td></tr>
+<tr><th id="19">19</th><td><u>#define <dfn class="macro" id="_M/LUAC_NUM" data-ref="_M/LUAC_NUM">LUAC_NUM</dfn>	cast_num(370.5)</u></td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><u>#define <dfn class="macro" id="_M/MYINT" data-ref="_M/MYINT">MYINT</dfn>(s)	(s[0]-'0')</u></td></tr>
+<tr><th id="22">22</th><td><u>#define <dfn class="macro" id="_M/LUAC_VERSION" data-ref="_M/LUAC_VERSION">LUAC_VERSION</dfn>	(MYINT(LUA_VERSION_MAJOR)*16+MYINT(LUA_VERSION_MINOR))</u></td></tr>
+<tr><th id="23">23</th><td><u>#define <dfn class="macro" id="_M/LUAC_FORMAT" data-ref="_M/LUAC_FORMAT">LUAC_FORMAT</dfn>	0	/* this is the official format */</u></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><i>/* load one chunk; from lundump.c */</i></td></tr>
+<tr><th id="26">26</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <a class="typedef" href="lobject.h.html#LClosure" title='LClosure' data-type='struct LClosure' data-ref="LClosure">LClosure</a>* <dfn class="decl fn" id="luaU_undump" title='luaU_undump' data-ref="luaU_undump">luaU_undump</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a>* <dfn class="local col1 decl" id="1L" title='L' data-type='lua_State *' data-ref="1L">L</dfn>, <a class="typedef" href="lzio.h.html#ZIO" title='ZIO' data-type='struct Zio' data-ref="ZIO">ZIO</a>* <dfn class="local col2 decl" id="2Z" title='Z' data-type='ZIO *' data-ref="2Z">Z</dfn>, <em>const</em> <em>char</em>* <dfn class="local col3 decl" id="3name" title='name' data-type='const char *' data-ref="3name">name</dfn>);</td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><i>/* dump one chunk; from ldump.c */</i></td></tr>
+<tr><th id="29">29</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <em>int</em> <dfn class="decl fn" id="luaU_dump" title='luaU_dump' data-ref="luaU_dump">luaU_dump</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a>* <dfn class="local col4 decl" id="4L" title='L' data-type='lua_State *' data-ref="4L">L</dfn>, <em>const</em> <a class="typedef" href="lobject.h.html#Proto" title='Proto' data-type='struct Proto' data-ref="Proto">Proto</a>* <dfn class="local col5 decl" id="5f" title='f' data-type='const Proto *' data-ref="5f">f</dfn>, <a class="typedef" href="lua.h.html#lua_Writer" title='lua_Writer' data-type='int (*)(lua_State *, const void *, size_t, void *)' data-ref="lua_Writer">lua_Writer</a> <dfn class="local col6 decl" id="6w" title='w' data-type='lua_Writer' data-ref="6w">w</dfn>,</td></tr>
+<tr><th id="30">30</th><td>                         <em>void</em>* <dfn class="local col7 decl" id="7data" title='data' data-type='void *' data-ref="7data">data</dfn>, <em>int</em> <dfn class="local col8 decl" id="8strip" title='strip' data-type='int' data-ref="8strip">strip</dfn>);</td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><u>#<span data-ppcond="7">endif</span></u></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='luac.c.html'>lua/src/luac.c</a><br/>Generated on <em>2018-Apr-07</em> from project lua<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,0 +1,9 @@
+<dec f='lua/src/lzio.h' l='57' type='const char *'/>
+<offset>64</offset>
+<doc f='lua/src/lzio.h' l='57'>/* current position in buffer */</doc>
+<use f='lua/src/lzio.c' l='33' u='w' c='luaZ_fill'/>
+<use f='lua/src/lzio.c' l='34' u='w' c='luaZ_fill'/>
+<use f='lua/src/lzio.c' l='43' u='w' c='luaZ_init'/>
+<use f='lua/src/lzio.c' l='56' u='w' c='luaZ_read'/>
+<use f='lua/src/lzio.c' l='60' u='r' c='luaZ_read'/>
+<use f='lua/src/lzio.c' l='62' u='w' c='luaZ_read'/>

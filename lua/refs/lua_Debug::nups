@@ -1,0 +1,4 @@
+<dec f='lua/src/lua.h' l='450' type='unsigned char'/>
+<offset>416</offset>
+<doc f='lua/src/lua.h' l='450'>/* (u) number of upvalues */</doc>
+<use f='lua/src/ldblib.c' l='175' u='r' c='db_getinfo'/>

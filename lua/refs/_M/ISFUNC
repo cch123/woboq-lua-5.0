@@ -1,0 +1,2 @@
+<dec f='include/readline/keymaps.h' l='59'/>
+<doc f='include/readline/keymaps.h' l='58'>/* The values that TYPE can have in a keymap entry. */</doc>

@@ -1,0 +1,8 @@
+<dec f='lua/src/lua.h' l='265' type='int lua_setmetatable(lua_State * L, int objindex)'/>
+<use f='lua/src/lauxlib.c' l='314' u='c' c='luaL_setmetatable'/>
+<use f='lua/src/lauxlib.c' l='490' u='c' c='newbox'/>
+<use f='lua/src/lbaselib.c' l='133' u='c' c='luaB_setmetatable'/>
+<use f='lua/src/ldblib.c' l='61' u='c' c='db_setmetatable'/>
+<use f='lua/src/ldblib.c' l='368' u='c' c='db_sethook'/>
+<use f='lua/src/loadlib.c' l='762' u='c' c='createclibstable'/>
+<use f='lua/src/lstrlib.c' l='1568' u='c' c='createmetatable'/>

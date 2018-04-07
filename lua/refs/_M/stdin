@@ -1,0 +1,7 @@
+<dec f='include/stdio.h' l='172'/>
+<use f='include/x86_64-linux-gnu/bits/stdio.h' l='46' u='c'/>
+<use f='include/x86_64-linux-gnu/bits/stdio.h' l='72' u='c'/>
+<use f='lua/src/lauxlib.c' l='711' u='c'/>
+<doc f='include/stdio.h' l='171'>/* C89/C99 say they&apos;re macros.  Make them happy.  */</doc>
+<use f='lua/src/ldblib.c' l='406' u='c'/>
+<use f='lua/src/liolib.c' l='766' u='c'/>

@@ -1,0 +1,2 @@
+<dec f='include/readline/history.h' l='108' type='void stifle_history(int )'/>
+<doc f='include/readline/history.h' l='107'>/* Stifle the history list, remembering only MAX number of entries. */</doc>

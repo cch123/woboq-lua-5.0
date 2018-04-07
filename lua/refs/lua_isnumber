@@ -1,0 +1,2 @@
+<dec f='lua/src/lua.h' l='173' type='int lua_isnumber(lua_State * L, int idx)'/>
+<use f='lua/src/lauxlib.c' l='423' u='c' c='interror'/>

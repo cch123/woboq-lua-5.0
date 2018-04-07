@@ -1,0 +1,13 @@
+<def f='lua/src/lobject.h' l='497' ll='507'/>
+<size>56</size>
+<mbr r='Table::next' o='0' t='GCObject *'/>
+<mbr r='Table::tt' o='64' t='lu_byte'/>
+<mbr r='Table::marked' o='72' t='lu_byte'/>
+<mbr r='Table::flags' o='80' t='lu_byte'/>
+<mbr r='Table::lsizenode' o='88' t='lu_byte'/>
+<mbr r='Table::sizearray' o='96' t='unsigned int'/>
+<mbr r='Table::array' o='128' t='TValue *'/>
+<mbr r='Table::node' o='192' t='Node *'/>
+<mbr r='Table::lastfree' o='256' t='Node *'/>
+<mbr r='Table::metatable' o='320' t='struct Table *'/>
+<mbr r='Table::gclist' o='384' t='GCObject *'/>

@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='217' type='int rl_insert_close(int , int )'/>
+<doc f='include/readline/readline.h' l='216'>/* Bindable command used when inserting a matching close character. */</doc>

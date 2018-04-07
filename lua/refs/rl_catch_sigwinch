@@ -1,0 +1,6 @@
+<dec f='include/readline/readline.h' l='624' type='int'/>
+<doc f='include/readline/readline.h' l='619'>/* If non-zero, readline will install a signal handler for SIGWINCH
+   that also attempts to call any calling application&apos;s SIGWINCH signal
+   handler.  Note that the terminal is not cleaned up before the
+   application&apos;s signal handler is called; use rl_cleanup_after_signal()
+   to do that. */</doc>

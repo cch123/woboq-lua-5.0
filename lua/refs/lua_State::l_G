@@ -1,0 +1,22 @@
+<dec f='lua/src/lstate.h' l='165' type='global_State *'/>
+<use f='lua/src/lstring.c' l='73' macro='1' u='r'/>
+<use f='lua/src/lstring.c' l='117' macro='1' u='r'/>
+<use f='lua/src/lstring.c' l='148' macro='1' u='r'/>
+<use f='lua/src/lstring.c' l='155' macro='1' u='r'/>
+<use f='lua/src/lstring.c' l='169' macro='1' u='r'/>
+<use f='lua/src/lstring.c' l='222' macro='1' u='r'/>
+<offset>192</offset>
+<use f='lua/src/ltm.c' l='49' macro='1' u='r'/>
+<use f='lua/src/ltm.c' l='50' macro='1' u='r'/>
+<use f='lua/src/ltm.c' l='80' macro='1' u='r'/>
+<use f='lua/src/ltm.c' l='82' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='174' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='211' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='430' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='432' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='438' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='440' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='522' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='874' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='1076' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='1292' macro='1' u='r'/>

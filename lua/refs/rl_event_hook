@@ -1,0 +1,3 @@
+<dec f='include/readline/readline.h' l='570' type='rl_hook_func_t *'/>
+<doc f='include/readline/readline.h' l='568'>/* The address of a function to call periodically while Readline is
+   awaiting character input, or NULL, for no event handling. */</doc>

@@ -1,0 +1,10 @@
+<dec f='lua/src/lauxlib.h' l='233'/>
+<use f='lua/src/lauxlib.c' l='1020' u='c'/>
+<use f='lua/src/ldblib.c' l='405' u='c'/>
+<use f='lua/src/ldblib.c' l='411' u='c'/>
+<use f='lua/src/lua.c' l='131' u='c'/>
+<use f='lua/src/lua.c' l='133' u='c'/>
+<use f='lua/src/lua.c' l='135' u='c'/>
+<use f='lua/src/lua.c' l='136' u='c'/>
+<use f='lua/src/lua.c' l='156' u='c'/>
+<use f='lua/src/lua.c' l='157' u='c'/>

@@ -1,0 +1,2 @@
+<dec f='lua/src/lua.h' l='328' type='lua_Alloc lua_getallocf(lua_State * L, void ** ud)'/>
+<use f='lua/src/lauxlib.c' l='463' u='c' c='resizebox'/>

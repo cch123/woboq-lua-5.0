@@ -1,0 +1,4 @@
+<dec f='include/readline/readline.h' l='634' type='rl_compentry_func_t *'/>
+<doc f='include/readline/readline.h' l='631'>/* Pointer to the generator function for completion_matches ().
+   NULL means to use rl_filename_completion_function (), the default
+   filename completer. */</doc>

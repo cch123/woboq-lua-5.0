@@ -1,0 +1,16 @@
+<dec f='lua/src/lauxlib.h' l='163' type='void luaL_buffinit(lua_State * L, luaL_Buffer * B)'/>
+<def f='lua/src/lauxlib.c' l='569' ll='574' macro='1' type='void luaL_buffinit(lua_State * L, luaL_Buffer * B)'/>
+<use f='lua/src/lauxlib.c' l='578' u='c' c='luaL_buffinitsize'/>
+<use f='lua/src/lauxlib.c' l='996' u='c' c='luaL_gsub'/>
+<use f='lua/src/liolib.c' l='480' u='c' c='read_line'/>
+<use f='lua/src/liolib.c' l='501' u='c' c='read_all'/>
+<use f='lua/src/liolib.c' l='515' u='c' c='read_chars'/>
+<use f='lua/src/loadlib.c' l='440' u='c' c='searchpath'/>
+<use f='lua/src/loadlib.c' l='572' u='c' c='findloader'/>
+<use f='lua/src/loslib.c' l='305' u='c' c='os_date'/>
+<use f='lua/src/lstrlib.c' l='194' u='c' c='str_dump'/>
+<use f='lua/src/lstrlib.c' l='776' u='c' c='str_gsub'/>
+<use f='lua/src/lstrlib.c' l='1023' u='c' c='str_format'/>
+<use f='lua/src/lstrlib.c' l='1338' u='c' c='str_pack'/>
+<use f='lua/src/ltablib.c' l='176' u='c' c='tconcat'/>
+<use f='lua/src/lutf8lib.c' l='145' u='c' c='utfchar'/>

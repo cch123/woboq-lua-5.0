@@ -1,0 +1,6 @@
+<dec f='lua/src/lopcodes.h' l='112'/>
+<use f='lua/src/luac.c' l='301' u='c'/>
+<use f='lua/src/lvm.c' l='1196' u='c'/>
+<use f='lua/src/lvm.c' l='1207' u='c'/>
+<use f='lua/src/lvm.c' l='1239' u='c'/>
+<use f='lua/src/lvm.c' l='1259' u='c'/>

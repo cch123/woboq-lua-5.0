@@ -1,0 +1,2 @@
+<dec f='include/readline/history.h' l='66'/>
+<doc f='include/readline/history.h' l='65'>/* Flag values for the `flags&apos; member of HISTORY_STATE. */</doc>

@@ -1,0 +1,4 @@
+<dec f='include/readline/history.h' l='173' type='int history_search_prefix(const char * , int )'/>
+<doc f='include/readline/history.h' l='170'>/* Search the history for STRING, starting at history_offset.
+   The search is anchored: matching lines must begin with string.
+   DIRECTION is as in history_search(). */</doc>

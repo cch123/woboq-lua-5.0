@@ -1,0 +1,14 @@
+<dec f='lua/src/lobject.h' l='79' type='lu_byte'/>
+<offset>64</offset>
+<use f='lua/src/ltable.c' l='557' u='r' c='luaH_getstr'/>
+<use f='lua/src/ltable.c' l='561' macro='1' u='r'/>
+<use f='lua/src/luac.c' l='229' macro='1' u='r'/>
+<use f='lua/src/lundump.c' l='143' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='79' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='112' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='250' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='252' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='463' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='488' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='492' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='506' macro='1' u='r'/>

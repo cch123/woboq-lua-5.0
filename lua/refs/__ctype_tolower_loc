@@ -1,0 +1,6 @@
+<dec f='include/ctype.h' l='81' type='const __int32_t ** __ctype_tolower_loc()'/>
+<use f='include/ctype.h' l='217' u='c' c='tolower'/>
+<use f='lua/src/lstrlib.c' l='103' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='103' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='284' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='284' macro='1' u='c'/>

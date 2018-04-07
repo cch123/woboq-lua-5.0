@@ -1,0 +1,1 @@
+<dec f='lua/src/lgc.h' l='135' type='void luaC_freeallobjects(lua_State * L)'/>

@@ -1,0 +1,4 @@
+<dec f='include/ctype.h' l='49' type='512'/>
+<doc f='include/ctype.h' l='49'>/* lowercase.  */</doc>
+<use f='lua/src/lstrlib.c' l='289' macro='1' u='r'/>
+<use f='lua/src/lstrlib.c' l='298' macro='1' u='r'/>

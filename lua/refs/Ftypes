@@ -1,0 +1,5 @@
+<def f='lua/src/lstrlib.c' l='1142' ll='1147'/>
+<size>40</size>
+<doc f='lua/src/lstrlib.c' l='1139'>/*
+** Union for serializing floats
+*/</doc>

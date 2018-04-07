@@ -1,0 +1,6 @@
+<dec f='lua/src/lstring.h' l='33'/>
+<doc f='lua/src/lstring.h' l='30'>/*
+** equality for short strings, which are always internalized
+*/</doc>
+<use f='lua/src/ltable.c' l='525' u='c'/>
+<use f='lua/src/lvm.c' l='425' u='c'/>

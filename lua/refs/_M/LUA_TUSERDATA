@@ -1,0 +1,6 @@
+<dec f='lua/src/lua.h' l='71'/>
+<use f='lua/src/ldblib.c' l='67' u='c'/>
+<use f='lua/src/ldblib.c' l='76' u='c'/>
+<use f='lua/src/lstring.c' l='241' u='c'/>
+<use f='lua/src/ltm.c' l='76' u='c'/>
+<use f='lua/src/lvm.c' l='427' u='c'/>

@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='454' type='int rl_complete_internal(int )'/>
+<doc f='include/readline/readline.h' l='453'>/* Completion functions. */</doc>

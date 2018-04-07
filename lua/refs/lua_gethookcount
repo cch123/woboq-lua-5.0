@@ -1,0 +1,2 @@
+<dec f='lua/src/lua.h' l='438' type='int lua_gethookcount(lua_State * L)'/>
+<use f='lua/src/ldblib.c' l='397' u='c' c='db_gethook'/>

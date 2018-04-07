@@ -1,0 +1,7 @@
+<dec f='lua/src/luaconf.h' l='741'/>
+<use f='lua/src/lua.h' l='454' u='c'/>
+<doc f='lua/src/luaconf.h' l='736'>/*
+@@ LUA_IDSIZE gives the maximum size for the description of the source
+@@ of a function in debug information.
+** CHANGE it if you want a different size.
+*/</doc>

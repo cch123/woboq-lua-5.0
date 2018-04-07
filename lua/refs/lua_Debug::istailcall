@@ -1,0 +1,5 @@
+<dec f='lua/src/lua.h' l='453' type='char'/>
+<use f='lua/src/lauxlib.c' l='147' u='r' c='luaL_traceback'/>
+<offset>440</offset>
+<doc f='lua/src/lua.h' l='453'>/* (t) */</doc>
+<use f='lua/src/ldblib.c' l='184' u='r' c='db_getinfo'/>

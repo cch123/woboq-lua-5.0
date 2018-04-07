@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='83' type='int rl_digit_argument(int , int )'/>
+<doc f='include/readline/readline.h' l='82'>/* Bindable commands for numeric arguments. */</doc>

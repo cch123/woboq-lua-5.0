@@ -1,0 +1,6 @@
+<dec f='lua/src/lopcodes.h' l='171' type='0'/>
+<doc f='lua/src/lopcodes.h' l='168'>/*----------------------------------------------------------------------
+name		args	description
+------------------------------------------------------------------------*/</doc>
+<doc f='lua/src/lopcodes.h' l='171'>/*	A B	R(A) := R(B)					*/</doc>
+<use f='lua/src/lvm.c' l='803' c='luaV_execute'/>

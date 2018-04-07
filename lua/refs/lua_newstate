@@ -1,0 +1,2 @@
+<dec f='lua/src/lua.h' l='145' type='lua_State * lua_newstate(lua_Alloc f, void * ud)'/>
+<use f='lua/src/lauxlib.c' l='1027' u='c' c='luaL_newstate'/>

@@ -1,0 +1,2 @@
+<dec f='include/stdio.h' l='784' type='__off64_t ftello(FILE * __stream)'/>
+<use f='lua/src/liolib.c' l='111' u='c' c='f_seek'/>

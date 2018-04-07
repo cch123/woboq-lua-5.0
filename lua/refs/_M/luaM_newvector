@@ -1,0 +1,8 @@
+<dec f='lua/src/lmem.h' l='47'/>
+<use f='lua/src/ltable.c' l='320' u='c'/>
+<use f='lua/src/lundump.c' l='109' u='c'/>
+<use f='lua/src/lundump.c' l='121' u='c'/>
+<use f='lua/src/lundump.c' l='155' u='c'/>
+<use f='lua/src/lundump.c' l='169' u='c'/>
+<use f='lua/src/lundump.c' l='183' u='c'/>
+<use f='lua/src/lundump.c' l='187' u='c'/>

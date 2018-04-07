@@ -1,0 +1,4 @@
+<dec f='include/readline/history.h' l='261' type='rl_linebuf_func_t *'/>
+<doc f='include/readline/history.h' l='258'>/* If set, this function is called to decide whether or not a particular
+   history expansion should be treated as a special case for the calling
+   application and not expanded. */</doc>

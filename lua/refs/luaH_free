@@ -1,0 +1,2 @@
+<dec f='lua/src/ltable.h' l='55' type='void luaH_free(lua_State * L, Table * t)'/>
+<def f='lua/src/ltable.c' l='414' ll='419' type='void luaH_free(lua_State * L, Table * t)'/>

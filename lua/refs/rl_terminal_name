@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='548' type='const char *'/>
+<doc f='include/readline/readline.h' l='547'>/* The name of the terminal to use. */</doc>

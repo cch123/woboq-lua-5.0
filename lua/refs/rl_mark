@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='523' type='int'/>
+<doc f='include/readline/readline.h' l='522'>/* The mark, or saved cursor position. */</doc>

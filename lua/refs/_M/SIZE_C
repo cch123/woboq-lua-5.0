@@ -1,0 +1,4 @@
+<dec f='lua/src/lopcodes.h' l='38'/>
+<doc f='lua/src/lopcodes.h' l='35'>/*
+** size and position of opcode arguments.
+*/</doc>

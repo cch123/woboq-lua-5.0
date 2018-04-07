@@ -1,0 +1,17 @@
+<dec f='lua/src/ltm.h' l='69' type='void luaT_trybinTM(lua_State * L, const TValue * p1, const TValue * p2, StkId res, TMS event)'/>
+<def f='lua/src/ltm.c' l='135' ll='155' type='void luaT_trybinTM(lua_State * L, const TValue * p1, const TValue * p2, StkId res, TMS event)'/>
+<use f='lua/src/lvm.c' l='480' u='c' c='luaV_concat'/>
+<use f='lua/src/lvm.c' l='900' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='914' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='928' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='938' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='948' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='958' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='968' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='978' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='988' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1004' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1018' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1028' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1042' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1053' u='c' c='luaV_execute'/>

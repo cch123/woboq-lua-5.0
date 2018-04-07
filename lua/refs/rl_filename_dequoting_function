@@ -1,0 +1,4 @@
+<dec f='include/readline/readline.h' l='764' type='rl_dequote_func_t *'/>
+<doc f='include/readline/readline.h' l='761'>/* Function to call to remove quoting characters from a filename.  Called
+   before completion is attempted, so the embedded quotes do not interfere
+   with matching names in the file system. */</doc>

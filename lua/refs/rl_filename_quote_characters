@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='682' type='const char *'/>
+<doc f='include/readline/readline.h' l='681'>/* List of characters that need to be quoted in filenames by the completer. */</doc>

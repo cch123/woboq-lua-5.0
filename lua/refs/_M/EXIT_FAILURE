@@ -1,0 +1,9 @@
+<dec f='include/stdlib.h' l='133'/>
+<doc f='include/stdlib.h' l='131'>/* We define these the same for all machines.
+   Changes from this to the outside world should be done in `_exit&apos;.  */</doc>
+<use f='lua/src/loslib.c' l='374' u='c'/>
+<use f='lua/src/lua.c' l='601' u='c'/>
+<use f='lua/src/lua.c' l='610' u='c'/>
+<use f='lua/src/luac.c' l='41' u='c'/>
+<use f='lua/src/luac.c' l='47' u='c'/>
+<use f='lua/src/luac.c' l='67' u='c'/>

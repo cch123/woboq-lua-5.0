@@ -1,0 +1,2 @@
+<dec f='include/readline/history.h' l='256' type='int'/>
+<doc f='include/readline/history.h' l='255'>/* Backwards compatibility */</doc>

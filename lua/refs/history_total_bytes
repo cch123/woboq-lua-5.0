@@ -1,0 +1,3 @@
+<dec f='include/readline/history.h' l='143' type='int history_total_bytes()'/>
+<doc f='include/readline/history.h' l='141'>/* Return the number of bytes that the primary history entries are using.
+   This just adds up the lengths of the_history-&gt;lines. */</doc>

@@ -1,0 +1,4 @@
+<dec f='include/readline/history.h' l='113' type='int unstifle_history()'/>
+<doc f='include/readline/history.h' l='110'>/* Stop stifling the history.  This returns the previous amount the
+   history was stifled by.  The value is positive if the history was
+   stifled, negative if it wasn&apos;t. */</doc>

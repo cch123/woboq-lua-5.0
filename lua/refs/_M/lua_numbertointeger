@@ -1,0 +1,12 @@
+<dec f='lua/src/luaconf.h' l='447'/>
+<doc f='lua/src/luaconf.h' l='439'>/*
+@@ lua_numbertointeger converts a float number to an integer, or
+** returns 0 if float is not within the range of a lua_Integer.
+** (The range comparisons are tricky because of rounding. The tests
+** here assume a two-complement representation, where MININTEGER always
+** has an exact representation as a float; MAXINTEGER may not have one,
+** and therefore its conversion to float may have an ill-defined value.)
+*/</doc>
+<use f='lua/src/lmathlib.c' l='98' u='c'/>
+<use f='lua/src/ltable.c' l='101' u='c'/>
+<use f='lua/src/lvm.c' l='105' u='c'/>

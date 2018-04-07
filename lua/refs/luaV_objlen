@@ -1,0 +1,6 @@
+<dec f='lua/src/lvm.h' l='111' type='void luaV_objlen(lua_State * L, StkId ra, const TValue * rb)'/>
+<def f='lua/src/lvm.c' l='517' ll='543' type='void luaV_objlen(lua_State * L, StkId ra, const TValue * rb)'/>
+<use f='lua/src/lvm.c' l='1064' u='c' c='luaV_execute'/>
+<doc f='lua/src/lvm.c' l='514'>/*
+** Main operation &apos;ra&apos; = #rb&apos;.
+*/</doc>

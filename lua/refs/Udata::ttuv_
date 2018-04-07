@@ -1,0 +1,4 @@
+<dec f='lua/src/lobject.h' l='348' type='lu_byte'/>
+<use f='lua/src/lstring.c' l='245' macro='1' u='w'/>
+<offset>80</offset>
+<doc f='lua/src/lobject.h' l='348'>/* user value&apos;s tag */</doc>

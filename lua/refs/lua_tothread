@@ -1,0 +1,4 @@
+<dec f='lua/src/lua.h' l='188' type='lua_State * lua_tothread(lua_State * L, int idx)'/>
+<use f='lua/src/lcorolib.c' l='22' u='c' c='getco'/>
+<use f='lua/src/lcorolib.c' l='75' u='c' c='luaB_auxwrap'/>
+<use f='lua/src/ldblib.c' l='93' u='c' c='getthread'/>

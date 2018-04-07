@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='160' type='int rl_kill_word(int , int )'/>
+<doc f='include/readline/readline.h' l='159'>/* Bindable commands for killing and yanking text, and managing the kill ring. */</doc>

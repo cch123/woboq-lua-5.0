@@ -1,0 +1,9 @@
+<dec f='lua/src/lvm.h' l='96' type='int luaV_equalobj(lua_State * L, const TValue * t1, const TValue * t2)'/>
+<use f='lua/src/ltable.c' l='170' macro='1' u='c'/>
+<use f='lua/src/ltable.c' l='544' macro='1' u='c'/>
+<def f='lua/src/lvm.c' l='407' ll='450' type='int luaV_equalobj(lua_State * L, const TValue * t1, const TValue * t2)'/>
+<use f='lua/src/lvm.c' l='1088' u='c' c='luaV_execute'/>
+<doc f='lua/src/lvm.c' l='403'>/*
+** Main operation for equality of Lua values; return &apos;t1 == t2&apos;.
+** L == NULL means raw equality (no metamethods)
+*/</doc>

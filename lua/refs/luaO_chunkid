@@ -1,0 +1,1 @@
+<dec f='lua/src/lobject.h' l='545' type='void luaO_chunkid(char * out, const char * source, size_t len)'/>

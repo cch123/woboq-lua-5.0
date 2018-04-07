@@ -1,0 +1,3 @@
+<dec f='include/readline/readline.h' l='539' type='int'/>
+<doc f='include/readline/readline.h' l='537'>/* Non-zero if the user typed a numeric argument before executing the
+   current function. */</doc>

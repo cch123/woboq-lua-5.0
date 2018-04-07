@@ -1,0 +1,26 @@
+<dec f='lua/src/lua.h' l='444' type='const char *'/>
+<use f='lua/src/lauxlib.c' l='99' u='r' c='pushfuncname'/>
+<use f='lua/src/lauxlib.c' l='100' u='r' c='pushfuncname'/>
+<use f='lua/src/lauxlib.c' l='169' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='169' u='r' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='169' u='r' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='169' u='r' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='169' u='r' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='169' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='169' u='r' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='169' u='r' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='169' u='r' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='169' u='r' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='169' u='r' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='169' u='r' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='169' u='r' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='169' u='r' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='169' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='169' u='r' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='169' u='r' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='169' u='r' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='169' u='r' c='luaL_argerror'/>
+<use f='lua/src/lauxlib.c' l='169' u='r' c='luaL_argerror'/>
+<offset>128</offset>
+<doc f='lua/src/lua.h' l='444'>/* (n) &apos;global&apos;, &apos;local&apos;, &apos;field&apos;, &apos;method&apos; */</doc>
+<use f='lua/src/ldblib.c' l='181' u='r' c='db_getinfo'/>

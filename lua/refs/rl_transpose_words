@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='121' type='int rl_transpose_words(int , int )'/>
+<doc f='include/readline/readline.h' l='120'>/* Bindable commands for transposing characters and words. */</doc>

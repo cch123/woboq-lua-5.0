@@ -1,0 +1,3 @@
+<dec f='include/readline/history.h' l='127' type='int where_history()'/>
+<doc f='include/readline/history.h' l='125'>/* Returns the number which says what history element we are now
+   looking at.  */</doc>

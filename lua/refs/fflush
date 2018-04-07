@@ -1,0 +1,20 @@
+<dec f='include/stdio.h' l='242' type='int fflush(FILE * __stream)'/>
+<use f='lua/src/lauxlib.c' l='1020' macro='1' u='c'/>
+<doc f='include/stdio.h' l='238'>/* Flush STREAM, or all streams if STREAM is NULL.
+
+   This function is a possible cancellation point and therefore not
+   marked with __THROW.  */</doc>
+<use f='lua/src/lbaselib.c' l='41' macro='1' u='c'/>
+<use f='lua/src/ldblib.c' l='405' macro='1' u='c'/>
+<use f='lua/src/ldblib.c' l='411' macro='1' u='c'/>
+<use f='lua/src/liolib.c' l='59' u='c' c='io_popen'/>
+<use f='lua/src/liolib.c' l='683' u='c' c='io_flush'/>
+<use f='lua/src/liolib.c' l='688' u='c' c='f_flush'/>
+<use f='lua/src/lua.c' l='131' macro='1' u='c'/>
+<use f='lua/src/lua.c' l='133' macro='1' u='c'/>
+<use f='lua/src/lua.c' l='135' macro='1' u='c'/>
+<use f='lua/src/lua.c' l='136' macro='1' u='c'/>
+<use f='lua/src/lua.c' l='156' macro='1' u='c'/>
+<use f='lua/src/lua.c' l='157' macro='1' u='c'/>
+<use f='lua/src/lua.c' l='214' macro='1' u='c'/>
+<use f='lua/src/lua.c' l='416' macro='1' u='c'/>

@@ -1,0 +1,8 @@
+<dec f='include/stdio.h' l='543'/>
+<use f='lua/src/lauxlib.c' l='674' u='c'/>
+<use f='lua/src/lauxlib.c' l='679' u='c'/>
+<use f='lua/src/lauxlib.c' l='694' u='c'/>
+<use f='lua/src/lauxlib.c' l='696' u='c'/>
+<doc f='include/stdio.h' l='541'>/* The C standard explicitly says this is a macro, so we always do the
+   optimization for it.  */</doc>
+<use f='lua/src/liolib.c' l='470' u='c'/>

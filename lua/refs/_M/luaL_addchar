@@ -1,0 +1,17 @@
+<dec f='lua/src/lauxlib.h' l='157'/>
+<use f='lua/src/liolib.c' l='491' u='c'/>
+<use f='lua/src/loslib.c' l='308' u='c'/>
+<use f='lua/src/lstrlib.c' l='710' u='c'/>
+<use f='lua/src/lstrlib.c' l='716' u='c'/>
+<use f='lua/src/lstrlib.c' l='790' u='c'/>
+<use f='lua/src/lstrlib.c' l='909' u='c'/>
+<use f='lua/src/lstrlib.c' l='912' u='c'/>
+<use f='lua/src/lstrlib.c' l='913' u='c'/>
+<use f='lua/src/lstrlib.c' l='924' u='c'/>
+<use f='lua/src/lstrlib.c' l='927' u='c'/>
+<use f='lua/src/lstrlib.c' l='1026' u='c'/>
+<use f='lua/src/lstrlib.c' l='1028' u='c'/>
+<use f='lua/src/lstrlib.c' l='1344' u='c'/>
+<use f='lua/src/lstrlib.c' l='1383' u='c'/>
+<use f='lua/src/lstrlib.c' l='1402' u='c'/>
+<use f='lua/src/lstrlib.c' l='1406' u='c'/>

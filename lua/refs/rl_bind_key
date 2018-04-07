@@ -1,0 +1,1 @@
+<dec f='include/readline/readline.h' l='300' type='int rl_bind_key(int , rl_command_func_t * )'/>

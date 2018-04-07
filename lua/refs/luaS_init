@@ -1,0 +1,5 @@
+<dec f='lua/src/lstring.h' l='41' type='void luaS_init(lua_State * L)'/>
+<def f='lua/src/lstring.c' l='116' ll='126' type='void luaS_init(lua_State * L)'/>
+<doc f='lua/src/lstring.c' l='113'>/*
+** Initialize the string table and the string cache
+*/</doc>

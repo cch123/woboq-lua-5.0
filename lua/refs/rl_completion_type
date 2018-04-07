@@ -1,0 +1,4 @@
+<dec f='include/readline/readline.h' l='778' type='int'/>
+<doc f='include/readline/readline.h' l='775'>/* Set to a character describing the type of completion being attempted by
+   rl_complete_internal; available for use by application completion
+   functions. */</doc>

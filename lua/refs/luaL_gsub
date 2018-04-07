@@ -1,0 +1,7 @@
+<dec f='lua/src/lauxlib.h' l='96' type='const char * luaL_gsub(lua_State * L, const char * s, const char * p, const char * r)'/>
+<def f='lua/src/lauxlib.c' l='991' ll='1005' macro='1' type='const char * luaL_gsub(lua_State * L, const char * s, const char * p, const char * r)'/>
+<use f='lua/src/loadlib.c' l='301' u='c' c='setpath'/>
+<use f='lua/src/loadlib.c' l='303' u='c' c='setpath'/>
+<use f='lua/src/loadlib.c' l='442' u='c' c='searchpath'/>
+<use f='lua/src/loadlib.c' l='444' u='c' c='searchpath'/>
+<use f='lua/src/loadlib.c' l='515' u='c' c='loadfunc'/>

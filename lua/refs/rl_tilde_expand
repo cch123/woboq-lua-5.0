@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='196' type='int rl_tilde_expand(int , int )'/>
+<doc f='include/readline/readline.h' l='195'>/* Bindable tilde expansion commands. */</doc>

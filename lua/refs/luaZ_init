@@ -1,0 +1,2 @@
+<dec f='lua/src/lzio.h' l='47' type='void luaZ_init(lua_State * L, ZIO * z, lua_Reader reader, void * data)'/>
+<def f='lua/src/lzio.c' l='38' ll='44' type='void luaZ_init(lua_State * L, ZIO * z, lua_Reader reader, void * data)'/>

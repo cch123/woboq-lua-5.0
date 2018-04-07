@@ -1,0 +1,14 @@
+<dec f='lua/src/lmem.h' l='30'/>
+<doc f='lua/src/lmem.h' l='17'>/*
+** This macro reallocs a vector &apos;b&apos; from &apos;on&apos; to &apos;n&apos; elements, where
+** each element has size &apos;e&apos;. In case of arithmetic overflow of the
+** product &apos;n&apos;*&apos;e&apos;, it raises an error (calling &apos;luaM_toobig&apos;). Because
+** &apos;e&apos; is always constant, it avoids the runtime division MAX_SIZET/(e).
+**
+** (The macro is somewhat complex to avoid warnings:  The &apos;sizeof&apos;
+** comparison avoids a runtime comparison when overflow cannot occur.
+** The compiler should be able to optimize the real test by itself, but
+** when it does it, it may give a warning about &quot;comparison is always
+** false due to limited range of data type&quot;; the +1 tricks the compiler,
+** avoiding this warning but also this optimization.)
+*/</doc>

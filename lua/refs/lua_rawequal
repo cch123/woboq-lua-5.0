@@ -1,0 +1,4 @@
+<dec f='lua/src/lua.h' l='217' type='int lua_rawequal(lua_State * L, int idx1, int idx2)'/>
+<use f='lua/src/lauxlib.c' l='52' u='c' c='findfield'/>
+<use f='lua/src/lauxlib.c' l='323' u='c' c='luaL_testudata'/>
+<use f='lua/src/lbaselib.c' l='141' u='c' c='luaB_rawequal'/>

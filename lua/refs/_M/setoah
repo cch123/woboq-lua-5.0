@@ -1,0 +1,2 @@
+<dec f='lua/src/lstate.h' l='112'/>
+<doc f='lua/src/lstate.h' l='111'>/* assume that CIST_OAH has offset 0 and that &apos;v&apos; is strictly 0/1 */</doc>

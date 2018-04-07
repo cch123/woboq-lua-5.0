@@ -1,0 +1,7 @@
+<dec f='include/readline/readline.h' l='646' type='rl_compignore_func_t *'/>
+<doc f='include/readline/readline.h' l='640'>/* If rl_ignore_some_completions_function is non-NULL it is the address
+   of a function to call after all of the possible matches have been
+   generated, but before the actual completion is done to the input line.
+   The function is called with one argument; a NULL terminated array
+   of (char *).  If your function removes any of the elements, they
+   must be free()&apos;ed. */</doc>

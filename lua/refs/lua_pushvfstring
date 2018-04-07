@@ -1,0 +1,2 @@
+<dec f='lua/src/lua.h' l='229' type='const char * lua_pushvfstring(lua_State * L, const char * fmt, struct __va_list_tag * argp)'/>
+<use f='lua/src/lauxlib.c' l='227' u='c' c='luaL_error'/>

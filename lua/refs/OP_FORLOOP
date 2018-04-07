@@ -1,0 +1,5 @@
+<dec f='lua/src/lopcodes.h' l='220' type='39'/>
+<use f='lua/src/luac.c' l='371' c='PrintCode'/>
+<doc f='lua/src/lopcodes.h' l='220'>/*	A sBx	R(A)+=R(A+2);
+			if R(A) &lt;?= R(A+1) then { pc+=sBx; R(A+3)=R(A) }*/</doc>
+<use f='lua/src/lvm.c' l='1190' c='luaV_execute'/>

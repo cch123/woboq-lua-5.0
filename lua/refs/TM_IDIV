@@ -1,0 +1,2 @@
+<dec f='lua/src/ltm.h' l='31' type='12'/>
+<use f='lua/src/lvm.c' l='1018' u='r' c='luaV_execute'/>

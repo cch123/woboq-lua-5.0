@@ -1,0 +1,26 @@
+<dec f='lua/src/lua.h' l='47'/>
+<doc f='lua/src/lua.h' l='46'>/* thread status */</doc>
+<use f='lua/src/lbaselib.c' l='271' u='c'/>
+<use f='lua/src/lbaselib.c' l='365' u='c'/>
+<use f='lua/src/lbaselib.c' l='409' u='c'/>
+<use f='lua/src/lcorolib.c' l='34' u='c'/>
+<use f='lua/src/lcorolib.c' l='40' u='c'/>
+<use f='lua/src/lcorolib.c' l='119' u='c'/>
+<use f='lua/src/loadlib.c' l='500' u='c'/>
+<use f='lua/src/lua.c' l='167' u='c'/>
+<use f='lua/src/lua.c' l='240' u='c'/>
+<use f='lua/src/lua.c' l='264' u='c'/>
+<use f='lua/src/lua.c' l='336' u='c'/>
+<use f='lua/src/lua.c' l='377' u='c'/>
+<use f='lua/src/lua.c' l='394' u='c'/>
+<use f='lua/src/lua.c' l='410' u='c'/>
+<use f='lua/src/lua.c' l='412' u='c'/>
+<use f='lua/src/lua.c' l='443' u='c'/>
+<use f='lua/src/lua.c' l='527' u='c'/>
+<use f='lua/src/lua.c' l='542' u='c'/>
+<use f='lua/src/lua.c' l='574' u='c'/>
+<use f='lua/src/lua.c' l='580' u='c'/>
+<use f='lua/src/lua.c' l='610' u='c'/>
+<use f='lua/src/luac.c' l='147' u='c'/>
+<use f='lua/src/luac.c' l='175' u='c'/>
+<use f='lua/src/luac.c' l='203' u='c'/>

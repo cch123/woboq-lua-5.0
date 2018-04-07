@@ -1,0 +1,2 @@
+<dec f='lua/src/lobject.h' l='518'/>
+<use f='lua/src/ltable.c' l='319' u='c'/>

@@ -1,0 +1,6 @@
+<dec f='include/x86_64-linux-gnu/bits/errno.h' l='50' type='int * __errno_location()'/>
+<use f='lua/src/lauxlib.c' l='235' macro='1' u='c'/>
+<use f='lua/src/lauxlib.c' l='661' macro='1' u='c'/>
+<doc f='include/x86_64-linux-gnu/bits/errno.h' l='49'>/* Function to get address of global `errno&apos; variable.  */</doc>
+<use f='lua/src/liolib.c' l='247' macro='1' u='c'/>
+<use f='lua/src/luac.c' l='46' macro='1' u='c'/>

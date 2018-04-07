@@ -1,0 +1,11 @@
+<dec f='lua/src/lvm.h' l='103' type='void luaV_finishset(lua_State * L, const TValue * t, TValue * key, StkId val, const TValue * slot)'/>
+<def f='lua/src/lvm.c' l='203' ll='238' type='void luaV_finishset(lua_State * L, const TValue * t, TValue * key, StkId val, const TValue * slot)'/>
+<use f='lua/src/lvm.c' l='782' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='782' u='c' c='luaV_execute'/>
+<doc f='lua/src/lvm.c' l='196'>/*
+** Finish a table assignment &apos;t[key] = val&apos;.
+** If &apos;slot&apos; is NULL, &apos;t&apos; is not a table.  Otherwise, &apos;slot&apos; points
+** to the entry &apos;t[key]&apos;, or to &apos;luaO_nilobject&apos; if there is no such
+** entry.  (The value at &apos;slot&apos; must be nil, otherwise &apos;luaV_fastset&apos;
+** would have done the job.)
+*/</doc>

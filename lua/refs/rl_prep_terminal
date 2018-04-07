@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='406' type='void rl_prep_terminal(int )'/>
+<doc f='include/readline/readline.h' l='405'>/* Terminal and tty mode management. */</doc>

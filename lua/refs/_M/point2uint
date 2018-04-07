@@ -1,0 +1,7 @@
+<dec f='lua/src/llimits.h' l='59'/>
+<use f='lua/src/lstring.c' l='220' u='c'/>
+<doc f='lua/src/llimits.h' l='54'>/*
+** conversion of pointer to unsigned integer:
+** this is for hashing only; there is no problem if the integer
+** cannot hold the whole pointer value
+*/</doc>

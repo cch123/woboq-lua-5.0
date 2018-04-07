@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='732'/>
+<doc f='include/readline/readline.h' l='731'>/* Backwards compatibility with previous versions of readline. */</doc>

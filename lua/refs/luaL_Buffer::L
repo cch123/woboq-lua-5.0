@@ -1,0 +1,6 @@
+<dec f='lua/src/lauxlib.h' l='152' type='lua_State *'/>
+<use f='lua/src/lauxlib.c' l='506' u='r' c='luaL_prepbuffsize'/>
+<use f='lua/src/lauxlib.c' l='543' u='r' c='luaL_pushresult'/>
+<use f='lua/src/lauxlib.c' l='559' u='r' c='luaL_addvalue'/>
+<use f='lua/src/lauxlib.c' l='570' u='w' c='luaL_buffinit'/>
+<offset>192</offset>

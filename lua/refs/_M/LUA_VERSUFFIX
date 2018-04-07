@@ -1,0 +1,3 @@
+<dec f='lua/src/lualib.h' l='15'/>
+<doc f='lua/src/lualib.h' l='14'>/* version suffix for environment variable names */</doc>
+<use f='lua/src/loadlib.c' l='293' u='c'/>

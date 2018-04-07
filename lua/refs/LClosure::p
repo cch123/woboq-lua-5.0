@@ -1,0 +1,14 @@
+<dec f='lua/src/lobject.h' l='455' type='struct Proto *'/>
+<offset>192</offset>
+<use f='lua/src/luac.c' l='142' macro='1' u='r'/>
+<use f='lua/src/luac.c' l='148' macro='1' u='r'/>
+<use f='lua/src/luac.c' l='151' macro='1' u='r'/>
+<use f='lua/src/lundump.c' l='273' u='w' c='luaU_undump'/>
+<use f='lua/src/lundump.c' l='274' u='r' c='luaU_undump'/>
+<use f='lua/src/lvm.c' l='638' u='w' c='pushclosure'/>
+<use f='lua/src/lvm.c' l='795' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1159' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='1162' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1178' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1286' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1298' u='r' c='luaV_execute'/>

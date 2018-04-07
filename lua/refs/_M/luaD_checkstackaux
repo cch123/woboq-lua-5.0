@@ -1,0 +1,8 @@
+<dec f='lua/src/ldo.h' l='23'/>
+<doc f='lua/src/ldo.h' l='16'>/*
+** Macro to check stack size and grow stack if needed.  Parameters
+** &apos;pre&apos;/&apos;pos&apos; allow the macro to preserve a pointer into the
+** stack across reallocations, doing the work only when needed.
+** &apos;condmovestack&apos; is used in heavy tests to force a stack reallocation
+** at every check.
+*/</doc>

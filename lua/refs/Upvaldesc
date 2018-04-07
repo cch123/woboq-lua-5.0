@@ -1,0 +1,8 @@
+<def f='lua/src/lobject.h' l='386' ll='390'/>
+<size>16</size>
+<doc f='lua/src/lobject.h' l='383'>/*
+** Description of an upvalue for function prototypes
+*/</doc>
+<mbr r='Upvaldesc::name' o='0' t='TString *'/>
+<mbr r='Upvaldesc::instack' o='64' t='lu_byte'/>
+<mbr r='Upvaldesc::idx' o='72' t='lu_byte'/>

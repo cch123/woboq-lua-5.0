@@ -1,0 +1,6 @@
+<dec f='include/locale.h' l='57' type='char *'/>
+<use f='lua/src/liolib.c' l='441' macro='1' u='r'/>
+<offset>0</offset>
+<doc f='include/locale.h' l='55'>/* Numeric (non-monetary) information.  */</doc>
+<doc f='include/locale.h' l='57'>/* Decimal point character.  */</doc>
+<use f='lua/src/lstrlib.c' l='936' macro='1' u='r'/>

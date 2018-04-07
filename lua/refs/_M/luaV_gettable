@@ -1,0 +1,4 @@
+<dec f='lua/src/lvm.h' l='67'/>
+<doc f='lua/src/lvm.h' l='64'>/*
+** standard implementation for &apos;gettable&apos;
+*/</doc>

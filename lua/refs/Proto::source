@@ -1,0 +1,9 @@
+<dec f='lua/src/lobject.h' l='427' type='TString *'/>
+<offset>832</offset>
+<doc f='lua/src/lobject.h' l='427'>/* used for debug information */</doc>
+<use f='lua/src/luac.c' l='397' u='r' c='PrintHeader'/>
+<use f='lua/src/luac.c' l='397' u='r' c='PrintHeader'/>
+<use f='lua/src/lundump.c' l='161' u='r' c='LoadProtos'/>
+<use f='lua/src/lundump.c' l='203' u='w' c='LoadFunction'/>
+<use f='lua/src/lundump.c' l='204' u='r' c='LoadFunction'/>
+<use f='lua/src/lundump.c' l='205' u='w' c='LoadFunction'/>

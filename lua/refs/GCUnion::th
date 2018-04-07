@@ -1,0 +1,3 @@
+<dec f='lua/src/lstate.h' l='200' type='struct lua_State'/>
+<offset>0</offset>
+<doc f='lua/src/lstate.h' l='200'>/* thread */</doc>

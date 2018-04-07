@@ -1,0 +1,10 @@
+<dec f='include/readline/readline.h' l='821' type='int'/>
+<doc f='include/readline/readline.h' l='812'>/* If non-zero, a slash will be appended to completed filenames that are
+   symbolic links to directory names, subject to the value of the
+   mark-directories variable (which is user-settable).  This exists so
+   that application completion functions can override the user&apos;s preference
+   (set via the mark-symlinked-directories variable) if appropriate.
+   It&apos;s set to the value of _rl_complete_mark_symlink_dirs in
+   rl_complete_internal before any application-specific completion
+   function is called, so without that function doing anything, the user&apos;s
+   preferences are honored. */</doc>

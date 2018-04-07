@@ -1,0 +1,2 @@
+<dec f='lua/src/lua.h' l='291' type='int lua_resume(lua_State * L, lua_State * from, int narg)'/>
+<use f='lua/src/lcorolib.c' l='39' u='c' c='auxresume'/>

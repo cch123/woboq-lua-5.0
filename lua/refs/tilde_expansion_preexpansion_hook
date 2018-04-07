@@ -1,0 +1,5 @@
+<dec f='include/readline/tilde.h' l='48' type='tilde_hook_func_t *'/>
+<doc f='include/readline/tilde.h' l='44'>/* If non-null, this contains the address of a function that the application
+   wants called before trying the standard tilde expansions.  The function
+   is called with the text sans tilde, and returns a malloc()&apos;ed string
+   which is the expansion, or a NULL pointer if the expansion fails. */</doc>

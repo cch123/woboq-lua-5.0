@@ -1,0 +1,4 @@
+<dec f='include/readline/history.h' l='158' type='HIST_ENTRY * next_history()'/>
+<doc f='include/readline/history.h' l='155'>/* Move history_offset forward to the next item in the input_history,
+   and return the a pointer to that entry.  If there is no next entry,
+   return a NULL pointer. */</doc>

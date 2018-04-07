@@ -1,0 +1,3 @@
+<dec f='lua/src/ltable.h' l='54' type='void luaH_resizearray(lua_State * L, Table * t, unsigned int nasize)'/>
+<def f='lua/src/ltable.c' l='368' ll='371' type='void luaH_resizearray(lua_State * L, Table * t, unsigned int nasize)'/>
+<use f='lua/src/lvm.c' l='1276' u='c' c='luaV_execute'/>

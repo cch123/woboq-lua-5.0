@@ -1,0 +1,1 @@
+<dec f='lua/src/lua.h' l='186' type='lua_CFunction lua_tocfunction(lua_State * L, int idx)'/>

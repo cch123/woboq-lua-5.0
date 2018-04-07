@@ -1,0 +1,10 @@
+<dec f='lua/src/lua.h' l='43'/>
+<use f='lua/src/lcorolib.c' l='75' u='c'/>
+<use f='lua/src/liolib.c' l='585' u='c'/>
+<use f='lua/src/liolib.c' l='587' u='c'/>
+<use f='lua/src/liolib.c' l='593' u='c'/>
+<use f='lua/src/liolib.c' l='603' u='c'/>
+<use f='lua/src/liolib.c' l='605' u='c'/>
+<use f='lua/src/loadlib.c' l='476' u='c'/>
+<use f='lua/src/loadlib.c' l='574' u='c'/>
+<use f='lua/src/lstrlib.c' l='674' u='c'/>

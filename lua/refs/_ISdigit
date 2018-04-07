@@ -1,0 +1,12 @@
+<dec f='include/ctype.h' l='51' type='2048'/>
+<use f='lua/src/lbaselib.c' l='57' macro='1' u='r'/>
+<doc f='include/ctype.h' l='51'>/* Numeric.  */</doc>
+<use f='lua/src/liolib.c' l='424' macro='1' u='r'/>
+<use f='lua/src/lstrlib.c' l='287' macro='1' u='r'/>
+<use f='lua/src/lstrlib.c' l='713' macro='1' u='r'/>
+<use f='lua/src/lstrlib.c' l='917' macro='1' u='r'/>
+<use f='lua/src/lstrlib.c' l='986' macro='1' u='r'/>
+<use f='lua/src/lstrlib.c' l='987' macro='1' u='r'/>
+<use f='lua/src/lstrlib.c' l='990' macro='1' u='r'/>
+<use f='lua/src/lstrlib.c' l='991' macro='1' u='r'/>
+<use f='lua/src/lstrlib.c' l='993' macro='1' u='r'/>

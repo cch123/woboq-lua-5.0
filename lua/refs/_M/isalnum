@@ -1,0 +1,6 @@
+<dec f='include/ctype.h' l='197'/>
+<use f='lua/src/lbaselib.c' l='54' u='c'/>
+<use f='lua/src/lbaselib.c' l='62' u='c'/>
+<use f='lua/src/lstrlib.c' l='293' u='c'/>
+<dec f='include/readline/chardefs.h' l='78'/>
+<doc f='include/readline/chardefs.h' l='76'>/* Beware:  these only work with single-byte ASCII characters. */</doc>

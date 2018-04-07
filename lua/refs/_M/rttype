@@ -1,0 +1,2 @@
+<dec f='lua/src/lobject.h' l='127'/>
+<doc f='lua/src/lobject.h' l='126'>/* raw type tag of a TValue */</doc>

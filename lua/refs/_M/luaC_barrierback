@@ -1,0 +1,4 @@
+<dec f='lua/src/lgc.h' l='122'/>
+<use f='lua/src/ltable.c' l='488' u='c'/>
+<use f='lua/src/lvm.c' l='218' u='c'/>
+<use f='lua/src/lvm.c' l='1280' u='c'/>

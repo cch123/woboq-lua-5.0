@@ -1,0 +1,16 @@
+<dec f='lua/src/lua.h' l='369'/>
+<use f='lua/src/lauxlib.c' l='59' u='c'/>
+<use f='lua/src/lauxlib.c' l='563' u='c'/>
+<use f='lua/src/lbaselib.c' l='281' u='c'/>
+<use f='lua/src/lbaselib.c' l='423' u='c'/>
+<use f='lua/src/lcorolib.c' l='63' u='c'/>
+<use f='lua/src/lcorolib.c' l='68' u='c'/>
+<use f='lua/src/lcorolib.c' l='80' u='c'/>
+<use f='lua/src/ldblib.c' l='255' u='c'/>
+<use f='lua/src/loadlib.c' l='401' u='c'/>
+<use f='lua/src/loadlib.c' l='466' u='c'/>
+<use f='lua/src/loadlib.c' l='608' u='c'/>
+<use f='lua/src/ltablib.c' l='198' u='c'/>
+<use f='lua/src/lua.c' l='202' u='c'/>
+<use f='lua/src/lua.c' l='360' u='c'/>
+<use f='lua/src/lua.c' l='393' u='c'/>

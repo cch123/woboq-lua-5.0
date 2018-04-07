@@ -1,0 +1,4 @@
+<dec f='include/ctype.h' l='57' type='2'/>
+<doc f='include/ctype.h' l='57'>/* Control character.  */</doc>
+<use f='lua/src/lstrlib.c' l='286' macro='1' u='r'/>
+<use f='lua/src/lstrlib.c' l='915' macro='1' u='r'/>

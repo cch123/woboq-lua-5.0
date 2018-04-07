@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='116' type='int rl_upcase_word(int , int )'/>
+<doc f='include/readline/readline.h' l='115'>/* Bindable commands for changing case. */</doc>

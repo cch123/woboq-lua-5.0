@@ -1,0 +1,11 @@
+<dec f='lua/src/lauxlib.h' l='119'/>
+<use f='lua/src/lbitlib.c' l='221' u='c'/>
+<use f='lua/src/lcorolib.c' l='165' u='c'/>
+<use f='lua/src/ldblib.c' l='453' u='c'/>
+<use f='lua/src/liolib.c' l='763' u='c'/>
+<use f='lua/src/lmathlib.c' l='399' u='c'/>
+<use f='lua/src/loadlib.c' l='769' u='c'/>
+<use f='lua/src/loslib.c' l='404' u='c'/>
+<use f='lua/src/lstrlib.c' l='1580' u='c'/>
+<use f='lua/src/ltablib.c' l='442' u='c'/>
+<use f='lua/src/lutf8lib.c' l='251' u='c'/>

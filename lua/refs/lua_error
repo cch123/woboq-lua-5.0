@@ -1,0 +1,5 @@
+<dec f='lua/src/lua.h' l='319' type='int lua_error(lua_State * L)'/>
+<use f='lua/src/lauxlib.c' l='230' u='c' c='luaL_error'/>
+<use f='lua/src/lbaselib.c' l='110' u='c' c='luaB_error'/>
+<use f='lua/src/lbaselib.c' l='366' u='c' c='luaB_dofile'/>
+<use f='lua/src/lcorolib.c' l='83' u='c' c='luaB_auxwrap'/>

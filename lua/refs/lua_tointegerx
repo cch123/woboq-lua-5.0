@@ -1,0 +1,16 @@
+<dec f='lua/src/lua.h' l='182' type='lua_Integer lua_tointegerx(lua_State * L, int idx, int * isnum)'/>
+<use f='lua/src/lauxlib.c' l='432' u='c' c='luaL_checkinteger'/>
+<use f='lua/src/lauxlib.c' l='603' macro='1' u='c'/>
+<use f='lua/src/lauxlib.c' l='802' u='c' c='luaL_len'/>
+<use f='lua/src/lauxlib.c' l='819' macro='1' u='c'/>
+<use f='lua/src/liolib.c' l='587' macro='1' u='c'/>
+<use f='lua/src/liolib.c' l='623' macro='1' u='c'/>
+<use f='lua/src/lmathlib.c' l='41' macro='1' u='c'/>
+<use f='lua/src/lmathlib.c' l='85' u='c' c='math_toint'/>
+<use f='lua/src/lmathlib.c' l='129' macro='1' u='c'/>
+<use f='lua/src/lmathlib.c' l='135' macro='1' u='c'/>
+<use f='lua/src/loslib.c' l='242' u='c' c='getfield'/>
+<use f='lua/src/lstrlib.c' l='960' macro='1' u='c'/>
+<use f='lua/src/lua.c' l='555' macro='1' u='c'/>
+<use f='lua/src/luac.c' l='167' macro='1' u='c'/>
+<use f='lua/src/lutf8lib.c' l='204' macro='1' u='c'/>

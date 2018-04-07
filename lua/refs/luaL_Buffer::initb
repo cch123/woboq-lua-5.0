@@ -1,0 +1,8 @@
+<dec f='lua/src/lauxlib.h' l='153' type='char [8192]'/>
+<use f='lua/src/lauxlib.c' l='499' u='r' c='luaL_prepbuffsize'/>
+<use f='lua/src/lauxlib.c' l='499' u='r' c='luaL_pushresult'/>
+<use f='lua/src/lauxlib.c' l='499' u='r' c='luaL_addvalue'/>
+<use f='lua/src/lauxlib.c' l='499' u='r' c='luaL_addvalue'/>
+<use f='lua/src/lauxlib.c' l='571' u='r' c='luaL_buffinit'/>
+<offset>256</offset>
+<doc f='lua/src/lauxlib.h' l='153'>/* initial buffer */</doc>

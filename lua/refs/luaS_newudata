@@ -1,0 +1,2 @@
+<dec f='lua/src/lstring.h' l='43' type='Udata * luaS_newudata(lua_State * L, size_t s)'/>
+<def f='lua/src/lstring.c' l='236' ll='247' type='Udata * luaS_newudata(lua_State * L, size_t s)'/>

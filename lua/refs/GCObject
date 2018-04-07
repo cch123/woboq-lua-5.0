@@ -1,0 +1,8 @@
+<def f='lua/src/lobject.h' l='85' ll='87'/>
+<size>16</size>
+<doc f='lua/src/lobject.h' l='82'>/*
+** Common type has only the common header
+*/</doc>
+<mbr r='GCObject::next' o='0' t='GCObject *'/>
+<mbr r='GCObject::tt' o='64' t='lu_byte'/>
+<mbr r='GCObject::marked' o='72' t='lu_byte'/>

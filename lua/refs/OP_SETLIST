@@ -1,0 +1,4 @@
+<dec f='lua/src/lopcodes.h' l='227' type='43'/>
+<use f='lua/src/luac.c' l='379' c='PrintCode'/>
+<doc f='lua/src/lopcodes.h' l='227'>/*	A B C	R(A)[(C-1)*FPF+i] := R(A+i), 1 &lt;= i &lt;= B	*/</doc>
+<use f='lua/src/lvm.c' l='1263' c='luaV_execute'/>

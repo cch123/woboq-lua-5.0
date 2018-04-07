@@ -1,0 +1,11 @@
+<dec f='lua/src/lfunc.h' l='36' type='TValue *'/>
+<offset>0</offset>
+<doc f='lua/src/lfunc.h' l='36'>/* points to stack or to its own value */</doc>
+<use f='lua/src/lvm.c' l='617' u='r' c='getcached'/>
+<use f='lua/src/lvm.c' l='618' u='r' c='getcached'/>
+<use f='lua/src/lvm.c' l='833' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='837' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='849' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='857' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='858' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='858' macro='1' u='r'/>

@@ -1,0 +1,2 @@
+<dec f='lua/src/lua.h' l='309'/>
+<use f='lua/src/lbaselib.c' l='178' u='c'/>

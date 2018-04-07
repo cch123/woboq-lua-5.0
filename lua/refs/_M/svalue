@@ -1,0 +1,5 @@
+<dec f='lua/src/lobject.h' l='333'/>
+<doc f='lua/src/lobject.h' l='332'>/* get the actual string (array of bytes) from a Lua value */</doc>
+<use f='lua/src/lvm.c' l='79' u='c'/>
+<use f='lua/src/lvm.c' l='112' u='c'/>
+<use f='lua/src/lvm.c' l='464' u='c'/>

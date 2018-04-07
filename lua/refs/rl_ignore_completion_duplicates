@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='824' type='int'/>
+<doc f='include/readline/readline.h' l='823'>/* If non-zero, then disallow duplicates in the matches. */</doc>

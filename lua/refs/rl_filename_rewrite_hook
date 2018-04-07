@@ -1,0 +1,10 @@
+<dec f='include/readline/readline.h' l='729' type='rl_dequote_func_t *'/>
+<doc f='include/readline/readline.h' l='720'>/* If non-zero, this is the address of a function to call when reading
+   directory entries from the filesystem for completion and comparing
+   them to the partial word to be completed.  The function should
+   either return its first argument (if no conversion takes place) or
+   newly-allocated memory.  This can, for instance, convert filenames
+   between character sets for comparison against what&apos;s typed at the
+   keyboard.  The returned value is what is added to the list of
+   matches.  The second argument is the length of the filename to be
+   converted. */</doc>

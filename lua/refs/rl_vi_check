@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='266' type='int rl_vi_check()'/>
+<doc f='include/readline/readline.h' l='265'>/* VI-mode utility functions. */</doc>

@@ -1,0 +1,4 @@
+<dec f='include/ctype.h' l='52' type='4096'/>
+<doc f='include/ctype.h' l='52'>/* Hexadecimal numeric.  */</doc>
+<use f='lua/src/liolib.c' l='424' macro='1' u='r'/>
+<use f='lua/src/lstrlib.c' l='294' macro='1' u='r'/>

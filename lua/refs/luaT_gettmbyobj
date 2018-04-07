@@ -1,0 +1,7 @@
+<dec f='lua/src/ltm.h' l='61' type='const TValue * luaT_gettmbyobj(lua_State * L, const TValue * o, TMS event)'/>
+<def f='lua/src/ltm.c' l='70' ll='83' type='const TValue * luaT_gettmbyobj(lua_State * L, const TValue * o, TMS event)'/>
+<use f='lua/src/ltm.c' l='126' u='c' c='luaT_callbinTM'/>
+<use f='lua/src/ltm.c' l='128' u='c' c='luaT_callbinTM'/>
+<use f='lua/src/lvm.c' l='167' u='c' c='luaV_finishget'/>
+<use f='lua/src/lvm.c' l='224' u='c' c='luaV_finishset'/>
+<use f='lua/src/lvm.c' l='536' u='c' c='luaV_objlen'/>

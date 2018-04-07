@@ -1,0 +1,1 @@
+<dec f='lua/src/ldo.h' l='41' type='void luaD_hook(lua_State * L, int event, int line)'/>

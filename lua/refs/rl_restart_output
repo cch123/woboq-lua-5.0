@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='199' type='int rl_restart_output(int , int )'/>
+<doc f='include/readline/readline.h' l='198'>/* Bindable terminal control commands. */</doc>

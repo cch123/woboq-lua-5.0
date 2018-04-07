@@ -1,0 +1,4 @@
+<dec f='lua/src/lua.h' l='258' type='void lua_setglobal(lua_State * L, const char * name)'/>
+<use f='lua/src/lauxlib.c' l='986' u='c' c='luaL_requiref'/>
+<use f='lua/src/lua.c' l='235' u='c' c='createargtable'/>
+<use f='lua/src/lua.c' l='265' u='c' c='dolibrary'/>

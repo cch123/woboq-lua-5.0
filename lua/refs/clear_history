@@ -1,0 +1,2 @@
+<dec f='include/readline/history.h' l='105' type='void clear_history()'/>
+<doc f='include/readline/history.h' l='104'>/* Clear the history list and start over. */</doc>

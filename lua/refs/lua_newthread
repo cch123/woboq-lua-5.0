@@ -1,0 +1,2 @@
+<dec f='lua/src/lua.h' l='147' type='lua_State * lua_newthread(lua_State * L)'/>
+<use f='lua/src/lcorolib.c' l='92' u='c' c='luaB_cocreate'/>

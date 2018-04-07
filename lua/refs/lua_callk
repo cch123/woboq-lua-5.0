@@ -1,0 +1,12 @@
+<dec f='lua/src/lua.h' l='272' type='void lua_callk(lua_State * L, int nargs, int nresults, lua_KContext ctx, lua_KFunction k)'/>
+<use f='lua/src/lauxlib.c' l='793' macro='1' u='c'/>
+<use f='lua/src/lauxlib.c' l='979' macro='1' u='c'/>
+<use f='lua/src/lbaselib.c' l='33' macro='1' u='c'/>
+<use f='lua/src/lbaselib.c' l='220' macro='1' u='c'/>
+<use f='lua/src/lbaselib.c' l='321' macro='1' u='c'/>
+<use f='lua/src/lbaselib.c' l='367' u='c' c='luaB_dofile'/>
+<use f='lua/src/ldblib.c' l='316' macro='1' u='c'/>
+<use f='lua/src/loadlib.c' l='584' macro='1' u='c'/>
+<use f='lua/src/loadlib.c' l='609' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='739' macro='1' u='c'/>
+<use f='lua/src/ltablib.c' l='295' macro='1' u='c'/>

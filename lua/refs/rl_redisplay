@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='375' type='void rl_redisplay()'/>
+<doc f='include/readline/readline.h' l='374'>/* Functions for redisplay. */</doc>

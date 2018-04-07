@@ -1,0 +1,3 @@
+<dec f='include/readline/readline.h' l='273' type='int rl_vi_fWord(int , int )'/>
+<doc f='include/readline/readline.h' l='272'>/* VI-mode pseudo-bindable commands, used as utility functions. */</doc>
+<dec f='include/readline/readline.h' l='276' type='int rl_vi_fword(int , int )'/>

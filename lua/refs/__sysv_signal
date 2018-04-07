@@ -1,0 +1,8 @@
+<dec f='include/signal.h' l='90' type='__sighandler_t __sysv_signal(int __sig, __sighandler_t __handler)'/>
+<dec f='include/signal.h' l='107' type='__sighandler_t signal(int __sig, __sighandler_t __handler)'/>
+<doc f='include/signal.h' l='87'>/* The X/Open definition of `signal&apos; specifies the SVID semantic.  Use
+   the additional function `sysv_signal&apos; when X/Open compatibility is
+   requested.  */</doc>
+<use f='lua/src/lua.c' l='125' u='c' c='laction'/>
+<use f='lua/src/lua.c' l='204' u='c' c='docall'/>
+<use f='lua/src/lua.c' l='206' u='c' c='docall'/>

@@ -1,0 +1,5 @@
+<dec f='lua/src/lvm.h' l='105' type='void luaV_finishOp(lua_State * L)'/>
+<def f='lua/src/lvm.c' l='656' ll='711' type='void luaV_finishOp(lua_State * L)'/>
+<doc f='lua/src/lvm.c' l='653'>/*
+** finish execution of an opcode interrupted by an yield
+*/</doc>

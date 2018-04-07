@@ -1,0 +1,13 @@
+<dec f='lua/src/lobject.h' l='456' type='UpVal *[1]'/>
+<offset>256</offset>
+<doc f='lua/src/lobject.h' l='456'>/* list of upvalues */</doc>
+<use f='lua/src/lvm.c' l='618' u='r' c='getcached'/>
+<use f='lua/src/lvm.c' l='642' u='w' c='pushclosure'/>
+<use f='lua/src/lvm.c' l='644' u='w' c='pushclosure'/>
+<use f='lua/src/lvm.c' l='645' u='r' c='pushclosure'/>
+<use f='lua/src/lvm.c' l='833' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='837' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='849' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='856' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1287' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1289' u='r' c='luaV_execute'/>

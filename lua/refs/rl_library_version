@@ -1,0 +1,3 @@
+<dec f='include/readline/readline.h' l='486' type='const char *'/>
+<doc f='include/readline/readline.h' l='485'>/* The version of this incarnation of the readline library. */</doc>
+<doc f='include/readline/readline.h' l='486'>/* e.g., &quot;4.2&quot; */</doc>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>lfunc.h source code [lua/src/lfunc.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="UpVal "/>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'lua/src/lfunc.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>lua</a>/<a href='./'>src</a>/<a href='lfunc.h.html'>lfunc.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*</i></td></tr>
+<tr><th id="2">2</th><td><i>** $Id: lfunc.h,v 2.15 2015/01/13 15:49:11 roberto Exp $</i></td></tr>
+<tr><th id="3">3</th><td><i>** Auxiliary functions to manipulate prototypes and closures</i></td></tr>
+<tr><th id="4">4</th><td><i>** See Copyright Notice in lua.h</i></td></tr>
+<tr><th id="5">5</th><td><i>*/</i></td></tr>
+<tr><th id="6">6</th><td></td></tr>
+<tr><th id="7">7</th><td><u>#<span data-ppcond="7">ifndef</span> <span class="macro" data-ref="_M/lfunc_h">lfunc_h</span></u></td></tr>
+<tr><th id="8">8</th><td><u>#define <dfn class="macro" id="_M/lfunc_h" data-ref="_M/lfunc_h">lfunc_h</dfn></u></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><u>#include <a href="lobject.h.html">"lobject.h"</a></u></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td><u>#define <dfn class="macro" id="_M/sizeCclosure" data-ref="_M/sizeCclosure">sizeCclosure</dfn>(n)	(cast(int, sizeof(CClosure)) + \</u></td></tr>
+<tr><th id="15">15</th><td><u>                         cast(int, sizeof(TValue)*((n)-1)))</u></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#define <dfn class="macro" id="_M/sizeLclosure" data-ref="_M/sizeLclosure">sizeLclosure</dfn>(n)	(cast(int, sizeof(LClosure)) + \</u></td></tr>
+<tr><th id="18">18</th><td><u>                         cast(int, sizeof(TValue *)*((n)-1)))</u></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><i>/* test whether thread is in 'twups' list */</i></td></tr>
+<tr><th id="22">22</th><td><u>#define <dfn class="macro" id="_M/isintwups" data-ref="_M/isintwups">isintwups</dfn>(L)	(L-&gt;twups != L)</u></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><i>/*</i></td></tr>
+<tr><th id="26">26</th><td><i>** maximum number of upvalues in a closure (both C and Lua). (Value</i></td></tr>
+<tr><th id="27">27</th><td><i>** must fit in a VM register.)</i></td></tr>
+<tr><th id="28">28</th><td><i>*/</i></td></tr>
+<tr><th id="29">29</th><td><u>#define <dfn class="macro" id="_M/MAXUPVAL" data-ref="_M/MAXUPVAL">MAXUPVAL</dfn>	255</u></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><i>/*</i></td></tr>
+<tr><th id="33">33</th><td><i>** Upvalues for Lua closures</i></td></tr>
+<tr><th id="34">34</th><td><i>*/</i></td></tr>
+<tr><th id="35">35</th><td><b>struct</b> <dfn class="type def" id="UpVal" title='UpVal' data-ref="UpVal">UpVal</dfn> {</td></tr>
+<tr><th id="36">36</th><td>  <a class="typedef" href="lobject.h.html#TValue" title='TValue' data-type='struct lua_TValue' data-ref="TValue">TValue</a> *<dfn class="decl field" id="UpVal::v" title='UpVal::v' data-ref="UpVal::v">v</dfn>;  <i>/* points to stack or to its own value */</i></td></tr>
+<tr><th id="37">37</th><td>  <a class="typedef" href="llimits.h.html#lu_mem" title='lu_mem' data-type='size_t' data-ref="lu_mem">lu_mem</a> <dfn class="decl field" id="UpVal::refcount" title='UpVal::refcount' data-ref="UpVal::refcount">refcount</dfn>;  <i>/* reference counter */</i></td></tr>
+<tr><th id="38">38</th><td>  <b>union</b> {</td></tr>
+<tr><th id="39">39</th><td>    <b>struct</b> {  <i>/* (when open) */</i></td></tr>
+<tr><th id="40">40</th><td>      <a class="typedef" href="lobject.h.html#UpVal" title='UpVal' data-type='struct UpVal' data-ref="UpVal">UpVal</a> *<dfn class="decl field" id="UpVal::(anonymousunion)::(anonymous)::next" title='UpVal::(anonymous union)::(anonymous struct)::next' data-ref="UpVal::(anonymousunion)::(anonymous)::next">next</dfn>;  <i>/* linked list */</i></td></tr>
+<tr><th id="41">41</th><td>      <em>int</em> <dfn class="decl field" id="UpVal::(anonymousunion)::(anonymous)::touched" title='UpVal::(anonymous union)::(anonymous struct)::touched' data-ref="UpVal::(anonymousunion)::(anonymous)::touched">touched</dfn>;  <i>/* mark to avoid cycles with dead threads */</i></td></tr>
+<tr><th id="42">42</th><td>    } <dfn class="decl field" id="UpVal::(anonymous)::open" title='UpVal::(anonymous union)::open' data-ref="UpVal::(anonymous)::open">open</dfn>;</td></tr>
+<tr><th id="43">43</th><td>    <a class="typedef" href="lobject.h.html#TValue" title='TValue' data-type='struct lua_TValue' data-ref="TValue">TValue</a> <dfn class="decl field" id="UpVal::(anonymous)::value" title='UpVal::(anonymous union)::value' data-ref="UpVal::(anonymous)::value">value</dfn>;  <i>/* the value (when closed) */</i></td></tr>
+<tr><th id="44">44</th><td>  } <dfn class="decl field" id="UpVal::u" title='UpVal::u' data-ref="UpVal::u">u</dfn>;</td></tr>
+<tr><th id="45">45</th><td>};</td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td><u>#define <dfn class="macro" id="_M/upisopen" data-ref="_M/upisopen">upisopen</dfn>(up)	((up)-&gt;v != &amp;(up)-&gt;u.value)</u></td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <a class="typedef" href="lobject.h.html#Proto" title='Proto' data-type='struct Proto' data-ref="Proto">Proto</a> *<dfn class="decl fn" id="luaF_newproto" title='luaF_newproto' data-ref="luaF_newproto">luaF_newproto</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col1 decl" id="1L" title='L' data-type='lua_State *' data-ref="1L">L</dfn>);</td></tr>
+<tr><th id="51">51</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <a class="typedef" href="lobject.h.html#CClosure" title='CClosure' data-type='struct CClosure' data-ref="CClosure">CClosure</a> *<dfn class="decl fn" id="luaF_newCclosure" title='luaF_newCclosure' data-ref="luaF_newCclosure">luaF_newCclosure</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col2 decl" id="2L" title='L' data-type='lua_State *' data-ref="2L">L</dfn>, <em>int</em> <dfn class="local col3 decl" id="3nelems" title='nelems' data-type='int' data-ref="3nelems">nelems</dfn>);</td></tr>
+<tr><th id="52">52</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <a class="typedef" href="lobject.h.html#LClosure" title='LClosure' data-type='struct LClosure' data-ref="LClosure">LClosure</a> *<dfn class="decl fn" id="luaF_newLclosure" title='luaF_newLclosure' data-ref="luaF_newLclosure">luaF_newLclosure</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col4 decl" id="4L" title='L' data-type='lua_State *' data-ref="4L">L</dfn>, <em>int</em> <dfn class="local col5 decl" id="5nelems" title='nelems' data-type='int' data-ref="5nelems">nelems</dfn>);</td></tr>
+<tr><th id="53">53</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <em>void</em> <dfn class="decl fn" id="luaF_initupvals" title='luaF_initupvals' data-ref="luaF_initupvals">luaF_initupvals</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col6 decl" id="6L" title='L' data-type='lua_State *' data-ref="6L">L</dfn>, <a class="typedef" href="lobject.h.html#LClosure" title='LClosure' data-type='struct LClosure' data-ref="LClosure">LClosure</a> *<dfn class="local col7 decl" id="7cl" title='cl' data-type='LClosure *' data-ref="7cl">cl</dfn>);</td></tr>
+<tr><th id="54">54</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <a class="typedef" href="lobject.h.html#UpVal" title='UpVal' data-type='struct UpVal' data-ref="UpVal">UpVal</a> *<dfn class="decl fn" id="luaF_findupval" title='luaF_findupval' data-ref="luaF_findupval">luaF_findupval</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col8 decl" id="8L" title='L' data-type='lua_State *' data-ref="8L">L</dfn>, <a class="typedef" href="lobject.h.html#StkId" title='StkId' data-type='TValue *' data-ref="StkId">StkId</a> <dfn class="local col9 decl" id="9level" title='level' data-type='StkId' data-ref="9level">level</dfn>);</td></tr>
+<tr><th id="55">55</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <em>void</em> <dfn class="decl fn" id="luaF_close" title='luaF_close' data-ref="luaF_close">luaF_close</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col0 decl" id="10L" title='L' data-type='lua_State *' data-ref="10L">L</dfn>, <a class="typedef" href="lobject.h.html#StkId" title='StkId' data-type='TValue *' data-ref="StkId">StkId</a> <dfn class="local col1 decl" id="11level" title='level' data-type='StkId' data-ref="11level">level</dfn>);</td></tr>
+<tr><th id="56">56</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <em>void</em> <dfn class="decl fn" id="luaF_freeproto" title='luaF_freeproto' data-ref="luaF_freeproto">luaF_freeproto</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col2 decl" id="12L" title='L' data-type='lua_State *' data-ref="12L">L</dfn>, <a class="typedef" href="lobject.h.html#Proto" title='Proto' data-type='struct Proto' data-ref="Proto">Proto</a> *<dfn class="local col3 decl" id="13f" title='f' data-type='Proto *' data-ref="13f">f</dfn>);</td></tr>
+<tr><th id="57">57</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <em>const</em> <em>char</em> *<dfn class="decl fn" id="luaF_getlocalname" title='luaF_getlocalname' data-ref="luaF_getlocalname">luaF_getlocalname</dfn> (<em>const</em> <a class="typedef" href="lobject.h.html#Proto" title='Proto' data-type='struct Proto' data-ref="Proto">Proto</a> *<dfn class="local col4 decl" id="14func" title='func' data-type='const Proto *' data-ref="14func">func</dfn>, <em>int</em> <dfn class="local col5 decl" id="15local_number" title='local_number' data-type='int' data-ref="15local_number">local_number</dfn>,</td></tr>
+<tr><th id="58">58</th><td>                                         <em>int</em> <dfn class="local col6 decl" id="16pc" title='pc' data-type='int' data-ref="16pc">pc</dfn>);</td></tr>
+<tr><th id="59">59</th><td></td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td><u>#<span data-ppcond="7">endif</span></u></td></tr>
+<tr><th id="62">62</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='lundump.c.html'>lua/src/lundump.c</a><br/>Generated on <em>2018-Apr-07</em> from project lua<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

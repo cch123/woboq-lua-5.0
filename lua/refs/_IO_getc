@@ -1,0 +1,7 @@
+<dec f='include/libio.h' l='429' type='int _IO_getc(_IO_FILE * __fp)'/>
+<use f='include/x86_64-linux-gnu/bits/stdio.h' l='46' u='c' c='getchar'/>
+<use f='lua/src/lauxlib.c' l='674' macro='1' u='c'/>
+<use f='lua/src/lauxlib.c' l='679' macro='1' u='c'/>
+<use f='lua/src/lauxlib.c' l='694' macro='1' u='c'/>
+<use f='lua/src/lauxlib.c' l='696' macro='1' u='c'/>
+<use f='lua/src/liolib.c' l='470' macro='1' u='c'/>

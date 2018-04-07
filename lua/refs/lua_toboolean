@@ -1,0 +1,16 @@
+<dec f='lua/src/lua.h' l='183' type='int lua_toboolean(lua_State * L, int idx)'/>
+<use f='lua/src/lauxlib.c' l='828' u='c' c='luaL_tolstring'/>
+<use f='lua/src/lauxlib.c' l='975' u='c' c='luaL_requiref'/>
+<use f='lua/src/lbaselib.c' l='373' u='c' c='luaB_assert'/>
+<use f='lua/src/liolib.c' l='596' u='c' c='io_readline'/>
+<use f='lua/src/liolib.c' l='603' u='c' c='io_readline'/>
+<use f='lua/src/loadlib.c' l='281' u='c' c='noenv'/>
+<use f='lua/src/loadlib.c' l='602' u='c' c='ll_require'/>
+<use f='lua/src/loslib.c' l='228' u='c' c='getboolfield'/>
+<use f='lua/src/loslib.c' l='374' u='c' c='os_exit'/>
+<use f='lua/src/loslib.c' l='377' u='c' c='os_exit'/>
+<use f='lua/src/lstrlib.c' l='191' u='c' c='str_dump'/>
+<use f='lua/src/lstrlib.c' l='618' u='c' c='str_find_aux'/>
+<use f='lua/src/lstrlib.c' l='752' u='c' c='add_value'/>
+<use f='lua/src/ltablib.c' l='296' u='c' c='sort_comp'/>
+<use f='lua/src/lua.c' l='607' u='c' c='main'/>

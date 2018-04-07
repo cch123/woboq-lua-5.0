@@ -1,0 +1,3 @@
+<dec f='include/x86_64-linux-gnu/bits/mathcalls.h' l='103' type='double frexp(double __x, int * __exponent)'/>
+<use f='lua/src/lmathlib.c' l='330' u='c' c='math_frexp'/>
+<use f='lua/src/ltable.c' l='100' u='c' c='l_hashfloat'/>

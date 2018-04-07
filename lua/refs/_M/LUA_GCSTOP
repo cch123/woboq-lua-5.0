@@ -1,0 +1,5 @@
+<dec f='lua/src/lua.h' l='302'/>
+<doc f='lua/src/lua.h' l='298'>/*
+** garbage-collection function and options
+*/</doc>
+<use f='lua/src/lbaselib.c' l='177' u='c'/>

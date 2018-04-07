@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='364' type='void rl_push_macro_input(char * )'/>
+<doc f='include/readline/readline.h' l='363'>/* Utility functions for managing keyboard macros. */</doc>

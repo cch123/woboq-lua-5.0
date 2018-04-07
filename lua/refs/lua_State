@@ -1,0 +1,30 @@
+<def f='lua/src/lstate.h' l='160' ll='184'/>
+<size>208</size>
+<doc f='lua/src/lstate.h' l='157'>/*
+** &apos;per thread&apos; state
+*/</doc>
+<mbr r='lua_State::next' o='0' t='GCObject *'/>
+<mbr r='lua_State::tt' o='64' t='lu_byte'/>
+<mbr r='lua_State::marked' o='72' t='lu_byte'/>
+<mbr r='lua_State::nci' o='80' t='unsigned short'/>
+<mbr r='lua_State::status' o='96' t='lu_byte'/>
+<mbr r='lua_State::top' o='128' t='StkId'/>
+<mbr r='lua_State::l_G' o='192' t='global_State *'/>
+<mbr r='lua_State::ci' o='256' t='CallInfo *'/>
+<mbr r='lua_State::oldpc' o='320' t='const Instruction *'/>
+<mbr r='lua_State::stack_last' o='384' t='StkId'/>
+<mbr r='lua_State::stack' o='448' t='StkId'/>
+<mbr r='lua_State::openupval' o='512' t='UpVal *'/>
+<mbr r='lua_State::gclist' o='576' t='GCObject *'/>
+<mbr r='lua_State::twups' o='640' t='struct lua_State *'/>
+<mbr r='lua_State::errorJmp' o='704' t='struct lua_longjmp *'/>
+<mbr r='lua_State::base_ci' o='768' t='CallInfo'/>
+<mbr r='lua_State::hook' o='1344' t='volatile lua_Hook'/>
+<mbr r='lua_State::errfunc' o='1408' t='ptrdiff_t'/>
+<mbr r='lua_State::stacksize' o='1472' t='int'/>
+<mbr r='lua_State::basehookcount' o='1504' t='int'/>
+<mbr r='lua_State::hookcount' o='1536' t='int'/>
+<mbr r='lua_State::nny' o='1568' t='unsigned short'/>
+<mbr r='lua_State::nCcalls' o='1584' t='unsigned short'/>
+<mbr r='lua_State::hookmask' o='1600' t='sig_atomic_t'/>
+<mbr r='lua_State::allowhook' o='1632' t='lu_byte'/>

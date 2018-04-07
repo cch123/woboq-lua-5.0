@@ -1,0 +1,4 @@
+<dec f='include/readline/readline.h' l='535' type='int'/>
+<doc f='include/readline/readline.h' l='532'>/* Non-zero if we called this function from _rl_dispatch().  It&apos;s present
+   so functions can find out whether they were called from a key binding
+   or directly from an application. */</doc>

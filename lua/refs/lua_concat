@@ -1,0 +1,8 @@
+<dec f='lua/src/lua.h' l='323' type='void lua_concat(lua_State * L, int n)'/>
+<use f='lua/src/lauxlib.c' l='60' u='c' c='findfield'/>
+<use f='lua/src/lauxlib.c' l='149' u='c' c='luaL_traceback'/>
+<use f='lua/src/lauxlib.c' l='152' u='c' c='luaL_traceback'/>
+<use f='lua/src/lauxlib.c' l='229' u='c' c='luaL_error'/>
+<use f='lua/src/lbaselib.c' l='108' u='c' c='luaB_error'/>
+<use f='lua/src/lcorolib.c' l='81' u='c' c='luaB_auxwrap'/>
+<use f='lua/src/lua.c' l='361' u='c' c='multiline'/>

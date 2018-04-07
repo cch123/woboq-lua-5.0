@@ -1,0 +1,15 @@
+<dec f='lua/src/luaconf.h' l='168'/>
+<doc f='lua/src/luaconf.h' l='161'>/*
+** LUA_PATH_SEP is the character that separates templates in a path.
+** LUA_PATH_MARK is the string that marks the substitution points in a
+** template.
+** LUA_EXEC_DIR in a Windows path is replaced by the executable&apos;s
+** directory.
+*/</doc>
+<use f='lua/src/loadlib.c' l='301' u='c'/>
+<use f='lua/src/loadlib.c' l='301' u='c'/>
+<use f='lua/src/loadlib.c' l='302' u='c'/>
+<use f='lua/src/loadlib.c' l='302' u='c'/>
+<use f='lua/src/loadlib.c' l='426' u='c'/>
+<use f='lua/src/loadlib.c' l='428' u='c'/>
+<use f='lua/src/loadlib.c' l='775' u='c'/>

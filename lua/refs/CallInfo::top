@@ -1,0 +1,15 @@
+<dec f='lua/src/lstate.h' l='76' type='StkId'/>
+<offset>64</offset>
+<doc f='lua/src/lstate.h' l='76'>/* top for this function */</doc>
+<use f='lua/src/lvm.c' l='694' u='r' c='luaV_finishOp'/>
+<use f='lua/src/lvm.c' l='699' u='r' c='luaV_finishOp'/>
+<use f='lua/src/lvm.c' l='704' u='r' c='luaV_finishOp'/>
+<use f='lua/src/lvm.c' l='751' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='751' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1077' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1136' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1167' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1184' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1249' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1282' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='751' u='r' c='luaV_execute'/>

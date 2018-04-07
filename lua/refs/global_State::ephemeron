@@ -1,0 +1,3 @@
+<dec f='lua/src/lstate.h' l='139' type='GCObject *'/>
+<offset>1088</offset>
+<doc f='lua/src/lstate.h' l='139'>/* list of ephemeron tables (weak keys) */</doc>

@@ -1,0 +1,5 @@
+<dec f='include/readline/keymaps.h' l='76' type='Keymap rl_make_keymap()'/>
+<dec f='include/readline/readline.h' l='344' type='Keymap rl_make_keymap()'/>
+<doc f='include/readline/keymaps.h' l='73'>/* Return a new keymap with the printing characters bound to rl_insert,
+   the lowercase Meta characters bound to run their equivalents, and
+   the Meta digits bound to produce numeric arguments. */</doc>

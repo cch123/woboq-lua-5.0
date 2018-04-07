@@ -1,0 +1,24 @@
+<dec f='include/string.h' l='394' type='unsigned long strlen(const char * __s)'/>
+<use f='lua/src/lauxlib.c' l='79' macro='1' u='c'/>
+<use f='lua/src/lauxlib.c' l='79' macro='1' u='c'/>
+<use f='lua/src/lauxlib.c' l='401' u='c' c='luaL_optlstring'/>
+<use f='lua/src/lauxlib.c' l='538' u='c' c='luaL_addstring'/>
+<use f='lua/src/lauxlib.c' l='765' u='c' c='luaL_loadstring'/>
+<use f='lua/src/lauxlib.c' l='994' u='c' c='luaL_gsub'/>
+<doc f='include/string.h' l='393'>/* Return the length of S.  */</doc>
+<use f='lua/src/ldblib.c' l='409' u='c' c='db_debug'/>
+<use f='lua/src/liolib.c' l='43' u='c' c='l_checkmode'/>
+<use f='lua/src/loadlib.c' l='429' u='c' c='pushnexttemplate'/>
+<use f='lua/src/lstring.c' l='231' u='c' c='luaS_new'/>
+<use f='lua/src/lstrlib.c' l='585' u='c' c='nospecials'/>
+<use f='lua/src/lstrlib.c' l='1007' u='c' c='addlenmod'/>
+<use f='lua/src/lstrlib.c' l='1008' u='c' c='addlenmod'/>
+<use f='lua/src/lstrlib.c' l='1070' u='c' c='str_format'/>
+<use f='lua/src/lstrlib.c' l='1400' u='c' c='str_pack'/>
+<use f='lua/src/lstrlib.c' l='1524' u='c' c='str_unpack'/>
+<use f='lua/src/lua.c' l='213' u='c' c='print_version'/>
+<use f='lua/src/lua.c' l='251' u='c' c='dostring'/>
+<use f='lua/src/lua.c' l='316' u='c' c='pushline'/>
+<use f='lua/src/lua.c' l='335' u='c' c='addreturn'/>
+<use f='lua/src/lundump.c' l='221' u='c' c='checkliteral'/>
+<use f='lua/src/lvm.c' l='258' u='c' c='l_strcmp'/>

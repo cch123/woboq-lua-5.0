@@ -1,0 +1,11 @@
+<dec f='include/stdio.h' l='386' type='int snprintf(char *restrict __s, size_t __maxlen, const char *restrict __format)'/>
+<doc f='include/stdio.h' l='385'>/* Maximum chars of output to write in MAXLEN.  */</doc>
+<use f='lua/src/lstrlib.c' l='918' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='920' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='956' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='964' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='1038' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='1045' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='1050' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='1057' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='1076' macro='1' u='c'/>

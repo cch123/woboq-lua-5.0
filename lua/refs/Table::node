@@ -1,0 +1,25 @@
+<dec f='lua/src/lobject.h' l='503' type='Node *'/>
+<offset>192</offset>
+<use f='lua/src/ltable.c' l='120' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='122' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='124' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='126' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='128' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='130' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='132' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='135' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='173' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='196' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='197' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='198' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='288' u='r' c='numusehash'/>
+<use f='lua/src/ltable.c' l='310' u='w' c='setnodevector'/>
+<use f='lua/src/ltable.c' l='320' u='w' c='setnodevector'/>
+<use f='lua/src/ltable.c' l='322' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='328' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='339' u='r' c='luaH_resize'/>
+<use f='lua/src/ltable.c' l='416' u='r' c='luaH_free'/>
+<use f='lua/src/ltable.c' l='416' u='r' c='luaH_free'/>
+<use f='lua/src/ltable.c' l='424' u='r' c='getfreepos'/>
+<use f='lua/src/ltable.c' l='502' macro='1' u='r'/>
+<use f='lua/src/ltable.c' l='521' macro='1' u='r'/>

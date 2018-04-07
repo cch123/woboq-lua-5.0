@@ -1,0 +1,5 @@
+<dec f='lua/src/lauxlib.h' l='101' type='int luaL_getsubtable(lua_State * L, int idx, const char * fname)'/>
+<def f='lua/src/lauxlib.c' l='951' ll='962' macro='1' type='int luaL_getsubtable(lua_State * L, int idx, const char * fname)'/>
+<use f='lua/src/lauxlib.c' l='973' u='c' c='luaL_requiref'/>
+<use f='lua/src/loadlib.c' l='779' u='c' c='luaopen_package'/>
+<use f='lua/src/loadlib.c' l='782' u='c' c='luaopen_package'/>

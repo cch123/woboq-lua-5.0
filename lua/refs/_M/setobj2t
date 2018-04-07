@@ -1,0 +1,4 @@
+<dec f='lua/src/lobject.h' l='282'/>
+<doc f='lua/src/lobject.h' l='281'>/* to table (define it as an expression to be used in macros) */</doc>
+<use f='lua/src/ltable.c' l='609' u='c'/>
+<use f='lua/src/lvm.c' l='216' u='c'/>

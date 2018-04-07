@@ -1,0 +1,7 @@
+<dec f='lua/src/lvm.h' l='110' type='lua_Integer luaV_shiftl(lua_Integer x, lua_Integer y)'/>
+<def f='lua/src/lvm.c' l='593' ll='602' type='lua_Integer luaV_shiftl(lua_Integer x, lua_Integer y)'/>
+<use f='lua/src/lvm.c' l='976' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='986' u='c' c='luaV_execute'/>
+<doc f='lua/src/lvm.c' l='590'>/*
+** Shift left operation. (Shift right just negates &apos;y&apos;.)
+*/</doc>

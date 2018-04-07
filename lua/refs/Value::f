@@ -1,0 +1,6 @@
+<dec f='lua/src/lobject.h' l='104' type='lua_CFunction'/>
+<offset>0</offset>
+<doc f='lua/src/lobject.h' l='104'>/* light C functions */</doc>
+<use f='lua/src/ltable.c' l='132' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='424' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='424' macro='1' u='r'/>

@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='207' type='int rl_history_search_forward(int , int )'/>
+<doc f='include/readline/readline.h' l='206'>/* Bindable commands for incremental and non-incremental history searching. */</doc>

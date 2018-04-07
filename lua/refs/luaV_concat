@@ -1,0 +1,8 @@
+<dec f='lua/src/lvm.h' l='107' type='void luaV_concat(lua_State * L, int total)'/>
+<def f='lua/src/lvm.c' l='474' ll='511' type='void luaV_concat(lua_State * L, int total)'/>
+<use f='lua/src/lvm.c' l='690' u='c' c='luaV_finishOp'/>
+<use f='lua/src/lvm.c' l='1072' u='c' c='luaV_execute'/>
+<doc f='lua/src/lvm.c' l='470'>/*
+** Main operation for concatenation: concat &apos;total&apos; values in the stack,
+** from &apos;L-&gt;top - total&apos; up to &apos;L-&gt;top - 1&apos;.
+*/</doc>

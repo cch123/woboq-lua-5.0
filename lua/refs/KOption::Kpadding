@@ -1,0 +1,5 @@
+<dec f='lua/src/lstrlib.c' l='1170' type='6'/>
+<use f='lua/src/lstrlib.c' l='1246' u='r' c='getoption'/>
+<use f='lua/src/lstrlib.c' l='1406' c='str_pack'/>
+<use f='lua/src/lstrlib.c' l='1529' c='str_unpack'/>
+<doc f='lua/src/lstrlib.c' l='1170'>/* padding */</doc>

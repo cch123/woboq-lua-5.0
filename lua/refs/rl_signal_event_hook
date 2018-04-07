@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='573' type='rl_hook_func_t *'/>
+<doc f='include/readline/readline.h' l='572'>/* The address of a function to call if a read is interrupted by a signal. */</doc>

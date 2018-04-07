@@ -1,0 +1,13 @@
+<def f='lua/src/lobject.h' l='346' ll='352'/>
+<size>40</size>
+<doc f='lua/src/lobject.h' l='342'>/*
+** Header for userdata; memory area follows the end of this structure
+** (aligned according to &apos;UUdata&apos;; see next).
+*/</doc>
+<mbr r='Udata::next' o='0' t='GCObject *'/>
+<mbr r='Udata::tt' o='64' t='lu_byte'/>
+<mbr r='Udata::marked' o='72' t='lu_byte'/>
+<mbr r='Udata::ttuv_' o='80' t='lu_byte'/>
+<mbr r='Udata::metatable' o='128' t='struct Table *'/>
+<mbr r='Udata::len' o='192' t='size_t'/>
+<mbr r='Udata::user_' o='256' t='union Value'/>

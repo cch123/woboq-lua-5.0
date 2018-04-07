@@ -1,0 +1,4 @@
+<dec f='include/readline/history.h' l='199' type='int write_history(const char * )'/>
+<doc f='include/readline/history.h' l='196'>/* Write the current history to FILENAME.  If FILENAME is NULL,
+   then write the history list to ~/.history.  Values returned
+   are as in read_history ().  */</doc>

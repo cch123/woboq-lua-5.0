@@ -1,0 +1,2 @@
+<dec f='lua/src/lgc.h' l='115'/>
+<doc f='lua/src/lgc.h' l='114'>/* more often than not, &apos;pre&apos;/&apos;pos&apos; are empty */</doc>

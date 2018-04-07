@@ -1,0 +1,5 @@
+<dec f='lua/src/ltm.h' l='71' type='int luaT_callorderTM(lua_State * L, const TValue * p1, const TValue * p2, TMS event)'/>
+<def f='lua/src/ltm.c' l='158' ll='164' type='int luaT_callorderTM(lua_State * L, const TValue * p1, const TValue * p2, TMS event)'/>
+<use f='lua/src/lvm.c' l='370' u='c' c='luaV_lessthan'/>
+<use f='lua/src/lvm.c' l='390' u='c' c='luaV_lessequal'/>
+<use f='lua/src/lvm.c' l='394' u='c' c='luaV_lessequal'/>

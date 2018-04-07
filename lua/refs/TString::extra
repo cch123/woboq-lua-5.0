@@ -1,0 +1,6 @@
+<dec f='lua/src/lobject.h' l='305' type='lu_byte'/>
+<use f='lua/src/lstring.c' l='60' u='r' c='luaS_hashlongstr'/>
+<use f='lua/src/lstring.c' l='62' u='w' c='luaS_hashlongstr'/>
+<use f='lua/src/lstring.c' l='141' u='w' c='createstrobj'/>
+<offset>80</offset>
+<doc f='lua/src/lobject.h' l='305'>/* reserved words for short strings; &quot;has hash&quot; for longs */</doc>

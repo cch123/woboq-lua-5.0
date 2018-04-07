@@ -1,0 +1,286 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>history.h source code [include/readline/history.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="_hist_entry,_hist_state "/>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/readline/history.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>include</a>/<a href='./'>readline</a>/<a href='history.h.html'>history.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* history.h -- the names of functions that you can call in history. */</i></td></tr>
+<tr><th id="2">2</th><td></td></tr>
+<tr><th id="3">3</th><td><i>/* Copyright (C) 1989-2009 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>   This file contains the GNU History Library (History), a set of</i></td></tr>
+<tr><th id="6">6</th><td><i>   routines for managing the text of previously typed lines.</i></td></tr>
+<tr><th id="7">7</th><td><i></i></td></tr>
+<tr><th id="8">8</th><td><i>   History is free software: you can redistribute it and/or modify</i></td></tr>
+<tr><th id="9">9</th><td><i>   it under the terms of the GNU General Public License as published by</i></td></tr>
+<tr><th id="10">10</th><td><i>   the Free Software Foundation, either version 3 of the License, or</i></td></tr>
+<tr><th id="11">11</th><td><i>   (at your option) any later version.</i></td></tr>
+<tr><th id="12">12</th><td><i></i></td></tr>
+<tr><th id="13">13</th><td><i>   History is distributed in the hope that it will be useful,</i></td></tr>
+<tr><th id="14">14</th><td><i>   but WITHOUT ANY WARRANTY; without even the implied warranty of</i></td></tr>
+<tr><th id="15">15</th><td><i>   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</i></td></tr>
+<tr><th id="16">16</th><td><i>   GNU General Public License for more details.</i></td></tr>
+<tr><th id="17">17</th><td><i></i></td></tr>
+<tr><th id="18">18</th><td><i>   You should have received a copy of the GNU General Public License</i></td></tr>
+<tr><th id="19">19</th><td><i>   along with History.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</i></td></tr>
+<tr><th id="20">20</th><td><i>*/</i></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><u>#<span data-ppcond="22">ifndef</span> <span class="macro" data-ref="_M/_HISTORY_H_">_HISTORY_H_</span></u></td></tr>
+<tr><th id="23">23</th><td><u>#define <dfn class="macro" id="_M/_HISTORY_H_" data-ref="_M/_HISTORY_H_">_HISTORY_H_</dfn></u></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><u>#<span data-ppcond="25">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="26">26</th><td><b>extern</b> <q>"C"</q> {</td></tr>
+<tr><th id="27">27</th><td><u>#<span data-ppcond="25">endif</span></u></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><u>#include <a href="../time.h.html">&lt;time.h&gt;</a>		/* XXX - for history timestamp code */</u></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><u>#<span data-ppcond="31">if</span> defined <span class="macro" data-ref="_M/READLINE_LIBRARY">READLINE_LIBRARY</span></u></td></tr>
+<tr><th id="32">32</th><td><u>#  include "rlstdc.h"</u></td></tr>
+<tr><th id="33">33</th><td><u>#  include "rltypedefs.h"</u></td></tr>
+<tr><th id="34">34</th><td><u>#<span data-ppcond="31">else</span></u></td></tr>
+<tr><th id="35">35</th><td><u>#  include <a href="../stdio.h.html">&lt;stdio.h&gt;</a></u></td></tr>
+<tr><th id="36">36</th><td><u>#  include <a href="rlstdc.h.html">&lt;readline/rlstdc.h&gt;</a></u></td></tr>
+<tr><th id="37">37</th><td><u>#  include <a href="rltypedefs.h.html">&lt;readline/rltypedefs.h&gt;</a></u></td></tr>
+<tr><th id="38">38</th><td><u>#<span data-ppcond="31">endif</span></u></td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><u>#<span data-ppcond="40">ifdef</span> <span class="macro" data-ref="_M/__STDC__">__STDC__</span></u></td></tr>
+<tr><th id="41">41</th><td><b>typedef</b> <em>void</em> *<dfn class="typedef" id="histdata_t" title='histdata_t' data-type='void *' data-ref="histdata_t">histdata_t</dfn>;</td></tr>
+<tr><th id="42">42</th><td><u>#<span data-ppcond="40">else</span></u></td></tr>
+<tr><th id="43">43</th><td><b>typedef</b> <em>char</em> *histdata_t;</td></tr>
+<tr><th id="44">44</th><td><u>#<span data-ppcond="40">endif</span></u></td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><i>/* The structure used to store a history entry. */</i></td></tr>
+<tr><th id="47">47</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="_hist_entry" title='_hist_entry' data-ref="_hist_entry"><a class="type" href="#_hist_entry" title='_hist_entry' data-ref="_hist_entry">_hist_entry</a></dfn> {</td></tr>
+<tr><th id="48">48</th><td>  <em>char</em> *<dfn class="decl field" id="_hist_entry::line" title='_hist_entry::line' data-ref="_hist_entry::line">line</dfn>;</td></tr>
+<tr><th id="49">49</th><td>  <em>char</em> *<dfn class="decl field" id="_hist_entry::timestamp" title='_hist_entry::timestamp' data-ref="_hist_entry::timestamp">timestamp</dfn>;		<i>/* char * rather than time_t for read/write */</i></td></tr>
+<tr><th id="50">50</th><td>  <a class="typedef" href="#histdata_t" title='histdata_t' data-type='void *' data-ref="histdata_t">histdata_t</a> <dfn class="decl field" id="_hist_entry::data" title='_hist_entry::data' data-ref="_hist_entry::data">data</dfn>;</td></tr>
+<tr><th id="51">51</th><td>} <dfn class="typedef" id="HIST_ENTRY" title='HIST_ENTRY' data-type='struct _hist_entry' data-ref="HIST_ENTRY">HIST_ENTRY</dfn>;</td></tr>
+<tr><th id="52">52</th><td></td></tr>
+<tr><th id="53">53</th><td><i>/* Size of the history-library-managed space in history entry HS. */</i></td></tr>
+<tr><th id="54">54</th><td><u>#define <dfn class="macro" id="_M/HISTENT_BYTES" data-ref="_M/HISTENT_BYTES">HISTENT_BYTES</dfn>(hs)	(strlen ((hs)-&gt;line) + strlen ((hs)-&gt;timestamp))</u></td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td><i>/* A structure used to pass the current state of the history stuff around. */</i></td></tr>
+<tr><th id="57">57</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="_hist_state" title='_hist_state' data-ref="_hist_state"><a class="type" href="#_hist_state" title='_hist_state' data-ref="_hist_state">_hist_state</a></dfn> {</td></tr>
+<tr><th id="58">58</th><td>  <a class="typedef" href="#HIST_ENTRY" title='HIST_ENTRY' data-type='struct _hist_entry' data-ref="HIST_ENTRY">HIST_ENTRY</a> **<dfn class="decl field" id="_hist_state::entries" title='_hist_state::entries' data-ref="_hist_state::entries">entries</dfn>;		<i>/* Pointer to the entries themselves. */</i></td></tr>
+<tr><th id="59">59</th><td>  <em>int</em> <dfn class="decl field" id="_hist_state::offset" title='_hist_state::offset' data-ref="_hist_state::offset">offset</dfn>;			<i>/* The location pointer within this array. */</i></td></tr>
+<tr><th id="60">60</th><td>  <em>int</em> <dfn class="decl field" id="_hist_state::length" title='_hist_state::length' data-ref="_hist_state::length">length</dfn>;			<i>/* Number of elements within this array. */</i></td></tr>
+<tr><th id="61">61</th><td>  <em>int</em> <dfn class="decl field" id="_hist_state::size" title='_hist_state::size' data-ref="_hist_state::size">size</dfn>;			<i>/* Number of slots allocated to this array. */</i></td></tr>
+<tr><th id="62">62</th><td>  <em>int</em> <dfn class="decl field" id="_hist_state::flags" title='_hist_state::flags' data-ref="_hist_state::flags">flags</dfn>;</td></tr>
+<tr><th id="63">63</th><td>} <dfn class="typedef" id="HISTORY_STATE" title='HISTORY_STATE' data-type='struct _hist_state' data-ref="HISTORY_STATE">HISTORY_STATE</dfn>;</td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td><i>/* Flag values for the `flags' member of HISTORY_STATE. */</i></td></tr>
+<tr><th id="66">66</th><td><u>#define <dfn class="macro" id="_M/HS_STIFLED" data-ref="_M/HS_STIFLED">HS_STIFLED</dfn>	0x01</u></td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td><i>/* Initialization and state management. */</i></td></tr>
+<tr><th id="69">69</th><td></td></tr>
+<tr><th id="70">70</th><td><i>/* Begin a session in which the history functions might be used.  This</i></td></tr>
+<tr><th id="71">71</th><td><i>   just initializes the interactive variables. */</i></td></tr>
+<tr><th id="72">72</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="using_history" title='using_history' data-ref="using_history">using_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="73">73</th><td></td></tr>
+<tr><th id="74">74</th><td><i>/* Return the current HISTORY_STATE of the history. */</i></td></tr>
+<tr><th id="75">75</th><td><b>extern</b> <a class="typedef" href="#HISTORY_STATE" title='HISTORY_STATE' data-type='struct _hist_state' data-ref="HISTORY_STATE">HISTORY_STATE</a> *<dfn class="decl fn" id="history_get_history_state" title='history_get_history_state' data-ref="history_get_history_state">history_get_history_state</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="76">76</th><td></td></tr>
+<tr><th id="77">77</th><td><i>/* Set the state of the current history array to STATE. */</i></td></tr>
+<tr><th id="78">78</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="history_set_history_state" title='history_set_history_state' data-ref="history_set_history_state">history_set_history_state</dfn> <a class="macro" href="rlstdc.h.html#33" title="(HISTORY_STATE *)" data-ref="_M/PARAMS">PARAMS</a>((<a class="typedef" href="#HISTORY_STATE" title='HISTORY_STATE' data-type='struct _hist_state' data-ref="HISTORY_STATE">HISTORY_STATE</a> *));</td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td><i>/* Manage the history list. */</i></td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td><i>/* Place STRING at the end of the history list.</i></td></tr>
+<tr><th id="83">83</th><td><i>   The associated data field (if any) is set to NULL. */</i></td></tr>
+<tr><th id="84">84</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="add_history" title='add_history' data-ref="add_history">add_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td><i>/* Change the timestamp associated with the most recent history entry to</i></td></tr>
+<tr><th id="87">87</th><td><i>   STRING. */</i></td></tr>
+<tr><th id="88">88</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="add_history_time" title='add_history_time' data-ref="add_history_time">add_history_time</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td><i>/* A reasonably useless function, only here for completeness.  WHICH</i></td></tr>
+<tr><th id="91">91</th><td><i>   is the magic number that tells us which element to delete.  The</i></td></tr>
+<tr><th id="92">92</th><td><i>   elements are numbered from 0. */</i></td></tr>
+<tr><th id="93">93</th><td><b>extern</b> <a class="typedef" href="#HIST_ENTRY" title='HIST_ENTRY' data-type='struct _hist_entry' data-ref="HIST_ENTRY">HIST_ENTRY</a> *<dfn class="decl fn" id="remove_history" title='remove_history' data-ref="remove_history">remove_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>));</td></tr>
+<tr><th id="94">94</th><td></td></tr>
+<tr><th id="95">95</th><td><i>/* Free the history entry H and return any application-specific data</i></td></tr>
+<tr><th id="96">96</th><td><i>   associated with it. */</i></td></tr>
+<tr><th id="97">97</th><td><b>extern</b> <a class="typedef" href="#histdata_t" title='histdata_t' data-type='void *' data-ref="histdata_t">histdata_t</a> <dfn class="decl fn" id="free_history_entry" title='free_history_entry' data-ref="free_history_entry">free_history_entry</dfn> <a class="macro" href="rlstdc.h.html#33" title="(HIST_ENTRY *)" data-ref="_M/PARAMS">PARAMS</a>((<a class="typedef" href="#HIST_ENTRY" title='HIST_ENTRY' data-type='struct _hist_entry' data-ref="HIST_ENTRY">HIST_ENTRY</a> *));</td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td><i>/* Make the history entry at WHICH have LINE and DATA.  This returns</i></td></tr>
+<tr><th id="100">100</th><td><i>   the old entry so you can dispose of the data.  In the case of an</i></td></tr>
+<tr><th id="101">101</th><td><i>   invalid WHICH, a NULL pointer is returned. */</i></td></tr>
+<tr><th id="102">102</th><td><b>extern</b> <a class="typedef" href="#HIST_ENTRY" title='HIST_ENTRY' data-type='struct _hist_entry' data-ref="HIST_ENTRY">HIST_ENTRY</a> *<dfn class="decl fn" id="replace_history_entry" title='replace_history_entry' data-ref="replace_history_entry">replace_history_entry</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, const char *, histdata_t)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>const</em> <em>char</em> *, <a class="typedef" href="#histdata_t" title='histdata_t' data-type='void *' data-ref="histdata_t">histdata_t</a>));</td></tr>
+<tr><th id="103">103</th><td></td></tr>
+<tr><th id="104">104</th><td><i>/* Clear the history list and start over. */</i></td></tr>
+<tr><th id="105">105</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="clear_history" title='clear_history' data-ref="clear_history">clear_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="106">106</th><td></td></tr>
+<tr><th id="107">107</th><td><i>/* Stifle the history list, remembering only MAX number of entries. */</i></td></tr>
+<tr><th id="108">108</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="stifle_history" title='stifle_history' data-ref="stifle_history">stifle_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>));</td></tr>
+<tr><th id="109">109</th><td></td></tr>
+<tr><th id="110">110</th><td><i>/* Stop stifling the history.  This returns the previous amount the</i></td></tr>
+<tr><th id="111">111</th><td><i>   history was stifled by.  The value is positive if the history was</i></td></tr>
+<tr><th id="112">112</th><td><i>   stifled, negative if it wasn't. */</i></td></tr>
+<tr><th id="113">113</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="unstifle_history" title='unstifle_history' data-ref="unstifle_history">unstifle_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td><i>/* Return 1 if the history is stifled, 0 if it is not. */</i></td></tr>
+<tr><th id="116">116</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="history_is_stifled" title='history_is_stifled' data-ref="history_is_stifled">history_is_stifled</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="117">117</th><td></td></tr>
+<tr><th id="118">118</th><td><i>/* Information about the history list. */</i></td></tr>
+<tr><th id="119">119</th><td></td></tr>
+<tr><th id="120">120</th><td><i>/* Return a NULL terminated array of HIST_ENTRY which is the current input</i></td></tr>
+<tr><th id="121">121</th><td><i>   history.  Element 0 of this list is the beginning of time.  If there</i></td></tr>
+<tr><th id="122">122</th><td><i>   is no history, return NULL. */</i></td></tr>
+<tr><th id="123">123</th><td><b>extern</b> <a class="typedef" href="#HIST_ENTRY" title='HIST_ENTRY' data-type='struct _hist_entry' data-ref="HIST_ENTRY">HIST_ENTRY</a> **<dfn class="decl fn" id="history_list" title='history_list' data-ref="history_list">history_list</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="124">124</th><td></td></tr>
+<tr><th id="125">125</th><td><i>/* Returns the number which says what history element we are now</i></td></tr>
+<tr><th id="126">126</th><td><i>   looking at.  */</i></td></tr>
+<tr><th id="127">127</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="where_history" title='where_history' data-ref="where_history">where_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="128">128</th><td>  </td></tr>
+<tr><th id="129">129</th><td><i>/* Return the history entry at the current position, as determined by</i></td></tr>
+<tr><th id="130">130</th><td><i>   history_offset.  If there is no entry there, return a NULL pointer. */</i></td></tr>
+<tr><th id="131">131</th><td><b>extern</b> <a class="typedef" href="#HIST_ENTRY" title='HIST_ENTRY' data-type='struct _hist_entry' data-ref="HIST_ENTRY">HIST_ENTRY</a> *<dfn class="decl fn" id="current_history" title='current_history' data-ref="current_history">current_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="132">132</th><td></td></tr>
+<tr><th id="133">133</th><td><i>/* Return the history entry which is logically at OFFSET in the history</i></td></tr>
+<tr><th id="134">134</th><td><i>   array.  OFFSET is relative to history_base. */</i></td></tr>
+<tr><th id="135">135</th><td><b>extern</b> <a class="typedef" href="#HIST_ENTRY" title='HIST_ENTRY' data-type='struct _hist_entry' data-ref="HIST_ENTRY">HIST_ENTRY</a> *<dfn class="decl fn" id="history_get" title='history_get' data-ref="history_get">history_get</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>));</td></tr>
+<tr><th id="136">136</th><td></td></tr>
+<tr><th id="137">137</th><td><i>/* Return the timestamp associated with the HIST_ENTRY * passed as an</i></td></tr>
+<tr><th id="138">138</th><td><i>   argument */</i></td></tr>
+<tr><th id="139">139</th><td><b>extern</b> <a class="typedef" href="../time.h.html#time_t" title='time_t' data-type='__time_t' data-ref="time_t">time_t</a> <dfn class="decl fn" id="history_get_time" title='history_get_time' data-ref="history_get_time">history_get_time</dfn> <a class="macro" href="rlstdc.h.html#33" title="(HIST_ENTRY *)" data-ref="_M/PARAMS">PARAMS</a>((<a class="typedef" href="#HIST_ENTRY" title='HIST_ENTRY' data-type='struct _hist_entry' data-ref="HIST_ENTRY">HIST_ENTRY</a> *));</td></tr>
+<tr><th id="140">140</th><td></td></tr>
+<tr><th id="141">141</th><td><i>/* Return the number of bytes that the primary history entries are using.</i></td></tr>
+<tr><th id="142">142</th><td><i>   This just adds up the lengths of the_history-&gt;lines. */</i></td></tr>
+<tr><th id="143">143</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="history_total_bytes" title='history_total_bytes' data-ref="history_total_bytes">history_total_bytes</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="144">144</th><td></td></tr>
+<tr><th id="145">145</th><td><i>/* Moving around the history list. */</i></td></tr>
+<tr><th id="146">146</th><td></td></tr>
+<tr><th id="147">147</th><td><i>/* Set the position in the history list to POS. */</i></td></tr>
+<tr><th id="148">148</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="history_set_pos" title='history_set_pos' data-ref="history_set_pos">history_set_pos</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>));</td></tr>
+<tr><th id="149">149</th><td></td></tr>
+<tr><th id="150">150</th><td><i>/* Back up history_offset to the previous history entry, and return</i></td></tr>
+<tr><th id="151">151</th><td><i>   a pointer to that entry.  If there is no previous entry, return</i></td></tr>
+<tr><th id="152">152</th><td><i>   a NULL pointer. */</i></td></tr>
+<tr><th id="153">153</th><td><b>extern</b> <a class="typedef" href="#HIST_ENTRY" title='HIST_ENTRY' data-type='struct _hist_entry' data-ref="HIST_ENTRY">HIST_ENTRY</a> *<dfn class="decl fn" id="previous_history" title='previous_history' data-ref="previous_history">previous_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="154">154</th><td></td></tr>
+<tr><th id="155">155</th><td><i>/* Move history_offset forward to the next item in the input_history,</i></td></tr>
+<tr><th id="156">156</th><td><i>   and return the a pointer to that entry.  If there is no next entry,</i></td></tr>
+<tr><th id="157">157</th><td><i>   return a NULL pointer. */</i></td></tr>
+<tr><th id="158">158</th><td><b>extern</b> <a class="typedef" href="#HIST_ENTRY" title='HIST_ENTRY' data-type='struct _hist_entry' data-ref="HIST_ENTRY">HIST_ENTRY</a> *<dfn class="decl fn" id="next_history" title='next_history' data-ref="next_history">next_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="159">159</th><td></td></tr>
+<tr><th id="160">160</th><td><i>/* Searching the history list. */</i></td></tr>
+<tr><th id="161">161</th><td></td></tr>
+<tr><th id="162">162</th><td><i>/* Search the history for STRING, starting at history_offset.</i></td></tr>
+<tr><th id="163">163</th><td><i>   If DIRECTION &lt; 0, then the search is through previous entries,</i></td></tr>
+<tr><th id="164">164</th><td><i>   else through subsequent.  If the string is found, then</i></td></tr>
+<tr><th id="165">165</th><td><i>   current_history () is the history entry, and the value of this function</i></td></tr>
+<tr><th id="166">166</th><td><i>   is the offset in the line of that history entry that the string was</i></td></tr>
+<tr><th id="167">167</th><td><i>   found in.  Otherwise, nothing is changed, and a -1 is returned. */</i></td></tr>
+<tr><th id="168">168</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="history_search" title='history_search' data-ref="history_search">history_search</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <em>int</em>));</td></tr>
+<tr><th id="169">169</th><td></td></tr>
+<tr><th id="170">170</th><td><i>/* Search the history for STRING, starting at history_offset.</i></td></tr>
+<tr><th id="171">171</th><td><i>   The search is anchored: matching lines must begin with string.</i></td></tr>
+<tr><th id="172">172</th><td><i>   DIRECTION is as in history_search(). */</i></td></tr>
+<tr><th id="173">173</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="history_search_prefix" title='history_search_prefix' data-ref="history_search_prefix">history_search_prefix</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <em>int</em>));</td></tr>
+<tr><th id="174">174</th><td></td></tr>
+<tr><th id="175">175</th><td><i>/* Search for STRING in the history list, starting at POS, an</i></td></tr>
+<tr><th id="176">176</th><td><i>   absolute index into the list.  DIR, if negative, says to search</i></td></tr>
+<tr><th id="177">177</th><td><i>   backwards from POS, else forwards.</i></td></tr>
+<tr><th id="178">178</th><td><i>   Returns the absolute index of the history element where STRING</i></td></tr>
+<tr><th id="179">179</th><td><i>   was found, or -1 otherwise. */</i></td></tr>
+<tr><th id="180">180</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="history_search_pos" title='history_search_pos' data-ref="history_search_pos">history_search_pos</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="181">181</th><td></td></tr>
+<tr><th id="182">182</th><td><i>/* Managing the history file. */</i></td></tr>
+<tr><th id="183">183</th><td></td></tr>
+<tr><th id="184">184</th><td><i>/* Add the contents of FILENAME to the history list, a line at a time.</i></td></tr>
+<tr><th id="185">185</th><td><i>   If FILENAME is NULL, then read from ~/.history.  Returns 0 if</i></td></tr>
+<tr><th id="186">186</th><td><i>   successful, or errno if not. */</i></td></tr>
+<tr><th id="187">187</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="read_history" title='read_history' data-ref="read_history">read_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="188">188</th><td></td></tr>
+<tr><th id="189">189</th><td><i>/* Read a range of lines from FILENAME, adding them to the history list.</i></td></tr>
+<tr><th id="190">190</th><td><i>   Start reading at the FROM'th line and end at the TO'th.  If FROM</i></td></tr>
+<tr><th id="191">191</th><td><i>   is zero, start at the beginning.  If TO is less than FROM, read</i></td></tr>
+<tr><th id="192">192</th><td><i>   until the end of the file.  If FILENAME is NULL, then read from</i></td></tr>
+<tr><th id="193">193</th><td><i>   ~/.history.  Returns 0 if successful, or errno if not. */</i></td></tr>
+<tr><th id="194">194</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="read_history_range" title='read_history_range' data-ref="read_history_range">read_history_range</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, int, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <em>int</em>, <em>int</em>));</td></tr>
+<tr><th id="195">195</th><td></td></tr>
+<tr><th id="196">196</th><td><i>/* Write the current history to FILENAME.  If FILENAME is NULL,</i></td></tr>
+<tr><th id="197">197</th><td><i>   then write the history list to ~/.history.  Values returned</i></td></tr>
+<tr><th id="198">198</th><td><i>   are as in read_history ().  */</i></td></tr>
+<tr><th id="199">199</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="write_history" title='write_history' data-ref="write_history">write_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="200">200</th><td></td></tr>
+<tr><th id="201">201</th><td><i>/* Append NELEMENT entries to FILENAME.  The entries appended are from</i></td></tr>
+<tr><th id="202">202</th><td><i>   the end of the list minus NELEMENTs up to the end of the list. */</i></td></tr>
+<tr><th id="203">203</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="append_history" title='append_history' data-ref="append_history">append_history</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="204">204</th><td></td></tr>
+<tr><th id="205">205</th><td><i>/* Truncate the history file, leaving only the last NLINES lines. */</i></td></tr>
+<tr><th id="206">206</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="history_truncate_file" title='history_truncate_file' data-ref="history_truncate_file">history_truncate_file</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <em>int</em>));</td></tr>
+<tr><th id="207">207</th><td></td></tr>
+<tr><th id="208">208</th><td><i>/* History expansion. */</i></td></tr>
+<tr><th id="209">209</th><td></td></tr>
+<tr><th id="210">210</th><td><i>/* Expand the string STRING, placing the result into OUTPUT, a pointer</i></td></tr>
+<tr><th id="211">211</th><td><i>   to a string.  Returns:</i></td></tr>
+<tr><th id="212">212</th><td><i></i></td></tr>
+<tr><th id="213">213</th><td><i>   0) If no expansions took place (or, if the only change in</i></td></tr>
+<tr><th id="214">214</th><td><i>      the text was the de-slashifying of the history expansion</i></td></tr>
+<tr><th id="215">215</th><td><i>      character)</i></td></tr>
+<tr><th id="216">216</th><td><i>   1) If expansions did take place</i></td></tr>
+<tr><th id="217">217</th><td><i>  -1) If there was an error in expansion.</i></td></tr>
+<tr><th id="218">218</th><td><i>   2) If the returned line should just be printed.</i></td></tr>
+<tr><th id="219">219</th><td><i></i></td></tr>
+<tr><th id="220">220</th><td><i>  If an error occurred in expansion, then OUTPUT contains a descriptive</i></td></tr>
+<tr><th id="221">221</th><td><i>  error message. */</i></td></tr>
+<tr><th id="222">222</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="history_expand" title='history_expand' data-ref="history_expand">history_expand</dfn> <a class="macro" href="rlstdc.h.html#33" title="(char *, char **)" data-ref="_M/PARAMS">PARAMS</a>((<em>char</em> *, <em>char</em> **));</td></tr>
+<tr><th id="223">223</th><td></td></tr>
+<tr><th id="224">224</th><td><i>/* Extract a string segment consisting of the FIRST through LAST</i></td></tr>
+<tr><th id="225">225</th><td><i>   arguments present in STRING.  Arguments are broken up as in</i></td></tr>
+<tr><th id="226">226</th><td><i>   the shell. */</i></td></tr>
+<tr><th id="227">227</th><td><b>extern</b> <em>char</em> *<dfn class="decl fn" id="history_arg_extract" title='history_arg_extract' data-ref="history_arg_extract">history_arg_extract</dfn> <a class="macro" href="rlstdc.h.html#33" title="(int, int, const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>int</em>, <em>int</em>, <em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="228">228</th><td></td></tr>
+<tr><th id="229">229</th><td><i>/* Return the text of the history event beginning at the current</i></td></tr>
+<tr><th id="230">230</th><td><i>   offset into STRING.  Pass STRING with *INDEX equal to the</i></td></tr>
+<tr><th id="231">231</th><td><i>   history_expansion_char that begins this specification.</i></td></tr>
+<tr><th id="232">232</th><td><i>   DELIMITING_QUOTE is a character that is allowed to end the string</i></td></tr>
+<tr><th id="233">233</th><td><i>   specification for what to search for in addition to the normal</i></td></tr>
+<tr><th id="234">234</th><td><i>   characters `:', ` ', `\t', `\n', and sometimes `?'. */</i></td></tr>
+<tr><th id="235">235</th><td><b>extern</b> <em>char</em> *<dfn class="decl fn" id="get_history_event" title='get_history_event' data-ref="get_history_event">get_history_event</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *, int *, int)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *, <em>int</em> *, <em>int</em>));</td></tr>
+<tr><th id="236">236</th><td></td></tr>
+<tr><th id="237">237</th><td><i>/* Return an array of tokens, much as the shell might.  The tokens are</i></td></tr>
+<tr><th id="238">238</th><td><i>   parsed out of STRING. */</i></td></tr>
+<tr><th id="239">239</th><td><b>extern</b> <em>char</em> **<dfn class="decl fn" id="history_tokenize" title='history_tokenize' data-ref="history_tokenize">history_tokenize</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="240">240</th><td></td></tr>
+<tr><th id="241">241</th><td><i>/* Exported history variables. */</i></td></tr>
+<tr><th id="242">242</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="history_base" title='history_base' data-ref="history_base">history_base</dfn>;</td></tr>
+<tr><th id="243">243</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="history_length" title='history_length' data-ref="history_length">history_length</dfn>;</td></tr>
+<tr><th id="244">244</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="history_max_entries" title='history_max_entries' data-ref="history_max_entries">history_max_entries</dfn>;</td></tr>
+<tr><th id="245">245</th><td><b>extern</b> <em>char</em> <dfn class="decl" id="history_expansion_char" title='history_expansion_char' data-ref="history_expansion_char">history_expansion_char</dfn>;</td></tr>
+<tr><th id="246">246</th><td><b>extern</b> <em>char</em> <dfn class="decl" id="history_subst_char" title='history_subst_char' data-ref="history_subst_char">history_subst_char</dfn>;</td></tr>
+<tr><th id="247">247</th><td><b>extern</b> <em>char</em> *<dfn class="decl" id="history_word_delimiters" title='history_word_delimiters' data-ref="history_word_delimiters">history_word_delimiters</dfn>;</td></tr>
+<tr><th id="248">248</th><td><b>extern</b> <em>char</em> <dfn class="decl" id="history_comment_char" title='history_comment_char' data-ref="history_comment_char">history_comment_char</dfn>;</td></tr>
+<tr><th id="249">249</th><td><b>extern</b> <em>char</em> *<dfn class="decl" id="history_no_expand_chars" title='history_no_expand_chars' data-ref="history_no_expand_chars">history_no_expand_chars</dfn>;</td></tr>
+<tr><th id="250">250</th><td><b>extern</b> <em>char</em> *<dfn class="decl" id="history_search_delimiter_chars" title='history_search_delimiter_chars' data-ref="history_search_delimiter_chars">history_search_delimiter_chars</dfn>;</td></tr>
+<tr><th id="251">251</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="history_quotes_inhibit_expansion" title='history_quotes_inhibit_expansion' data-ref="history_quotes_inhibit_expansion">history_quotes_inhibit_expansion</dfn>;</td></tr>
+<tr><th id="252">252</th><td></td></tr>
+<tr><th id="253">253</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="history_write_timestamps" title='history_write_timestamps' data-ref="history_write_timestamps">history_write_timestamps</dfn>;</td></tr>
+<tr><th id="254">254</th><td></td></tr>
+<tr><th id="255">255</th><td><i>/* Backwards compatibility */</i></td></tr>
+<tr><th id="256">256</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="max_input_history" title='max_input_history' data-ref="max_input_history">max_input_history</dfn>;</td></tr>
+<tr><th id="257">257</th><td></td></tr>
+<tr><th id="258">258</th><td><i>/* If set, this function is called to decide whether or not a particular</i></td></tr>
+<tr><th id="259">259</th><td><i>   history expansion should be treated as a special case for the calling</i></td></tr>
+<tr><th id="260">260</th><td><i>   application and not expanded. */</i></td></tr>
+<tr><th id="261">261</th><td><b>extern</b> <a class="typedef" href="rltypedefs.h.html#rl_linebuf_func_t" title='rl_linebuf_func_t' data-type='int (char *, int)' data-ref="rl_linebuf_func_t">rl_linebuf_func_t</a> *<dfn class="decl" id="history_inhibit_expansion_function" title='history_inhibit_expansion_function' data-ref="history_inhibit_expansion_function">history_inhibit_expansion_function</dfn>;</td></tr>
+<tr><th id="262">262</th><td></td></tr>
+<tr><th id="263">263</th><td><u>#<span data-ppcond="263">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="264">264</th><td>}</td></tr>
+<tr><th id="265">265</th><td><u>#<span data-ppcond="263">endif</span></u></td></tr>
+<tr><th id="266">266</th><td></td></tr>
+<tr><th id="267">267</th><td><u>#<span data-ppcond="22">endif</span> /* !_HISTORY_H_ */</u></td></tr>
+<tr><th id="268">268</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../lua/src/lua.c.html'>lua/src/lua.c</a><br/>Generated on <em>2018-Apr-07</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

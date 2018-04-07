@@ -1,0 +1,7 @@
+<dec f='include/readline/history.h' l='168' type='int history_search(const char * , int )'/>
+<doc f='include/readline/history.h' l='162'>/* Search the history for STRING, starting at history_offset.
+   If DIRECTION &lt; 0, then the search is through previous entries,
+   else through subsequent.  If the string is found, then
+   current_history () is the history entry, and the value of this function
+   is the offset in the line of that history entry that the string was
+   found in.  Otherwise, nothing is changed, and a -1 is returned. */</doc>

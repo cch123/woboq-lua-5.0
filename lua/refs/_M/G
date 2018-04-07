@@ -1,0 +1,11 @@
+<dec f='lua/src/lstate.h' l='187'/>
+<use f='lua/src/lstring.c' l='73' u='c'/>
+<use f='lua/src/lstring.c' l='117' u='c'/>
+<use f='lua/src/lstring.c' l='148' u='c'/>
+<use f='lua/src/lstring.c' l='155' u='c'/>
+<use f='lua/src/lstring.c' l='169' u='c'/>
+<use f='lua/src/lstring.c' l='222' u='c'/>
+<use f='lua/src/ltm.c' l='49' u='c'/>
+<use f='lua/src/ltm.c' l='50' u='c'/>
+<use f='lua/src/ltm.c' l='80' u='c'/>
+<use f='lua/src/ltm.c' l='82' u='c'/>

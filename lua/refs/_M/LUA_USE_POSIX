@@ -1,0 +1,9 @@
+<dec f='lua/src/luaconf.h' l='62'/>
+<use f='lua/src/lauxlib.c' l='254' u='a'/>
+<use f='lua/src/liolib.c' l='57' u='a'/>
+<use f='lua/src/liolib.c' l='85' u='a'/>
+<use f='lua/src/liolib.c' l='106' u='a'/>
+<use f='lua/src/lmathlib.c' l='27' u='a'/>
+<use f='lua/src/loslib.c' l='84' u='a'/>
+<use f='lua/src/loslib.c' l='111' u='a'/>
+<use f='lua/src/lua.c' l='50' u='a'/>

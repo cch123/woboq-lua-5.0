@@ -1,0 +1,3 @@
+<dec f='lua/src/lstate.h' l='135' type='GCObject *'/>
+<offset>832</offset>
+<doc f='lua/src/lstate.h' l='135'>/* list of collectable objects with finalizers */</doc>

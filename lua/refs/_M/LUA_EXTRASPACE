@@ -1,0 +1,6 @@
+<dec f='lua/src/luaconf.h' l='733'/>
+<doc f='lua/src/luaconf.h' l='728'>/*
+@@ LUA_EXTRASPACE defines the size of a raw memory area associated with
+** a Lua state with very fast access.
+** CHANGE it if you need a different size.
+*/</doc>

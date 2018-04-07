@@ -1,0 +1,10 @@
+<dec f='include/readline/readline.h' l='698' type='rl_icppfunc_t *'/>
+<doc f='include/readline/readline.h' l='689'>/* If non-zero, then this is the address of a function to call when
+   completing on a directory name.  The function is called with
+   the address of a string (the current directory name) as an arg.  It
+   changes what is displayed when the possible completions are printed
+   or inserted.  The directory completion hook should perform
+   any necessary dequoting.  This function should return 1 if it modifies
+   the directory name pointer passed as an argument.  If the directory
+   completion hook returns 0, it should not modify the directory name
+   pointer passed as an argument. */</doc>

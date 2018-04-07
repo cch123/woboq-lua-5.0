@@ -1,0 +1,2 @@
+<dec f='lua/src/ltable.h' l='39'/>
+<doc f='lua/src/ltable.h' l='38'>/* returns the key, given the value of a table entry */</doc>

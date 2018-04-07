@@ -1,0 +1,7 @@
+<dec f='lua/src/lstrlib.c' l='1166' type='2'/>
+<use f='lua/src/lstrlib.c' l='1234' u='r' c='getoption'/>
+<use f='lua/src/lstrlib.c' l='1235' u='r' c='getoption'/>
+<use f='lua/src/lstrlib.c' l='1236' u='r' c='getoption'/>
+<use f='lua/src/lstrlib.c' l='1364' c='str_pack'/>
+<use f='lua/src/lstrlib.c' l='1502' c='str_unpack'/>
+<doc f='lua/src/lstrlib.c' l='1166'>/* floating-point numbers */</doc>

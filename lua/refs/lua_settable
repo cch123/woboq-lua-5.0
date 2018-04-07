@@ -1,0 +1,1 @@
+<dec f='lua/src/lua.h' l='259' type='void lua_settable(lua_State * L, int idx)'/>

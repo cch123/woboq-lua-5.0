@@ -1,0 +1,8 @@
+<dec f='lua/src/lua.h' l='179' type='const char * lua_typename(lua_State * L, int tp)'/>
+<use f='lua/src/lauxlib.c' l='190' macro='1' u='c'/>
+<use f='lua/src/lauxlib.c' l='197' u='c' c='tag_error'/>
+<use f='lua/src/lauxlib.c' l='836' macro='1' u='c'/>
+<use f='lua/src/lbaselib.c' l='204' u='c' c='luaB_type'/>
+<use f='lua/src/lstrlib.c' l='757' macro='1' u='c'/>
+<use f='lua/src/ltablib.c' l='164' macro='1' u='c'/>
+<use f='lua/src/lua.c' l='187' macro='1' u='c'/>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>keymaps.h source code [include/readline/keymaps.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="_keymap_entry "/>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/readline/keymaps.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>include</a>/<a href='./'>readline</a>/<a href='keymaps.h.html'>keymaps.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* keymaps.h -- Manipulation of readline keymaps. */</i></td></tr>
+<tr><th id="2">2</th><td></td></tr>
+<tr><th id="3">3</th><td><i>/* Copyright (C) 1987, 1989, 1992 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>   This file is part of the GNU Readline Library (Readline), a library</i></td></tr>
+<tr><th id="6">6</th><td><i>   for reading lines of text with interactive input and history editing.      </i></td></tr>
+<tr><th id="7">7</th><td><i></i></td></tr>
+<tr><th id="8">8</th><td><i>   Readline is free software: you can redistribute it and/or modify</i></td></tr>
+<tr><th id="9">9</th><td><i>   it under the terms of the GNU General Public License as published by</i></td></tr>
+<tr><th id="10">10</th><td><i>   the Free Software Foundation, either version 3 of the License, or</i></td></tr>
+<tr><th id="11">11</th><td><i>   (at your option) any later version.</i></td></tr>
+<tr><th id="12">12</th><td><i></i></td></tr>
+<tr><th id="13">13</th><td><i>   Readline is distributed in the hope that it will be useful,</i></td></tr>
+<tr><th id="14">14</th><td><i>   but WITHOUT ANY WARRANTY; without even the implied warranty of</i></td></tr>
+<tr><th id="15">15</th><td><i>   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</i></td></tr>
+<tr><th id="16">16</th><td><i>   GNU General Public License for more details.</i></td></tr>
+<tr><th id="17">17</th><td><i></i></td></tr>
+<tr><th id="18">18</th><td><i>   You should have received a copy of the GNU General Public License</i></td></tr>
+<tr><th id="19">19</th><td><i>   along with Readline.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</i></td></tr>
+<tr><th id="20">20</th><td><i>*/</i></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><u>#<span data-ppcond="22">ifndef</span> <span class="macro" data-ref="_M/_KEYMAPS_H_">_KEYMAPS_H_</span></u></td></tr>
+<tr><th id="23">23</th><td><u>#define <dfn class="macro" id="_M/_KEYMAPS_H_" data-ref="_M/_KEYMAPS_H_">_KEYMAPS_H_</dfn></u></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><u>#<span data-ppcond="25">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="26">26</th><td><b>extern</b> <q>"C"</q> {</td></tr>
+<tr><th id="27">27</th><td><u>#<span data-ppcond="25">endif</span></u></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><u>#<span data-ppcond="29">if</span> defined (<span class="macro" data-ref="_M/READLINE_LIBRARY">READLINE_LIBRARY</span>)</u></td></tr>
+<tr><th id="30">30</th><td><u>#  include "rlstdc.h"</u></td></tr>
+<tr><th id="31">31</th><td><u>#  include "chardefs.h"</u></td></tr>
+<tr><th id="32">32</th><td><u>#  include "rltypedefs.h"</u></td></tr>
+<tr><th id="33">33</th><td><u>#<span data-ppcond="29">else</span></u></td></tr>
+<tr><th id="34">34</th><td><u>#  include <a href="rlstdc.h.html">&lt;readline/rlstdc.h&gt;</a></u></td></tr>
+<tr><th id="35">35</th><td><u>#  include <a href="chardefs.h.html">&lt;readline/chardefs.h&gt;</a></u></td></tr>
+<tr><th id="36">36</th><td><u>#  include <a href="rltypedefs.h.html">&lt;readline/rltypedefs.h&gt;</a></u></td></tr>
+<tr><th id="37">37</th><td><u>#<span data-ppcond="29">endif</span></u></td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><i>/* A keymap contains one entry for each key in the ASCII set.</i></td></tr>
+<tr><th id="40">40</th><td><i>   Each entry consists of a type and a pointer.</i></td></tr>
+<tr><th id="41">41</th><td><i>   FUNCTION is the address of a function to run, or the</i></td></tr>
+<tr><th id="42">42</th><td><i>   address of a keymap to indirect through.</i></td></tr>
+<tr><th id="43">43</th><td><i>   TYPE says which kind of thing FUNCTION is. */</i></td></tr>
+<tr><th id="44">44</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="_keymap_entry" title='_keymap_entry' data-ref="_keymap_entry"><a class="type" href="#_keymap_entry" title='_keymap_entry' data-ref="_keymap_entry">_keymap_entry</a></dfn> {</td></tr>
+<tr><th id="45">45</th><td>  <em>char</em> <dfn class="decl field" id="_keymap_entry::type" title='_keymap_entry::type' data-ref="_keymap_entry::type">type</dfn>;</td></tr>
+<tr><th id="46">46</th><td>  <a class="typedef" href="rltypedefs.h.html#rl_command_func_t" title='rl_command_func_t' data-type='int (int, int)' data-ref="rl_command_func_t">rl_command_func_t</a> *<dfn class="decl field" id="_keymap_entry::function" title='_keymap_entry::function' data-ref="_keymap_entry::function">function</dfn>;</td></tr>
+<tr><th id="47">47</th><td>} <dfn class="typedef" id="KEYMAP_ENTRY" title='KEYMAP_ENTRY' data-type='struct _keymap_entry' data-ref="KEYMAP_ENTRY">KEYMAP_ENTRY</dfn>;</td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td><i>/* This must be large enough to hold bindings for all of the characters</i></td></tr>
+<tr><th id="50">50</th><td><i>   in a desired character set (e.g, 128 for ASCII, 256 for ISO Latin-x,</i></td></tr>
+<tr><th id="51">51</th><td><i>   and so on) plus one for subsequence matching. */</i></td></tr>
+<tr><th id="52">52</th><td><u>#define <dfn class="macro" id="_M/KEYMAP_SIZE" data-ref="_M/KEYMAP_SIZE">KEYMAP_SIZE</dfn> 257</u></td></tr>
+<tr><th id="53">53</th><td><u>#define <dfn class="macro" id="_M/ANYOTHERKEY" data-ref="_M/ANYOTHERKEY">ANYOTHERKEY</dfn> KEYMAP_SIZE-1</u></td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td><b>typedef</b> <a class="typedef" href="#KEYMAP_ENTRY" title='KEYMAP_ENTRY' data-type='struct _keymap_entry' data-ref="KEYMAP_ENTRY">KEYMAP_ENTRY</a> <dfn class="typedef" id="KEYMAP_ENTRY_ARRAY" title='KEYMAP_ENTRY_ARRAY' data-type='KEYMAP_ENTRY [257]' data-ref="KEYMAP_ENTRY_ARRAY">KEYMAP_ENTRY_ARRAY</dfn>[<a class="macro" href="#52" title="257" data-ref="_M/KEYMAP_SIZE">KEYMAP_SIZE</a>];</td></tr>
+<tr><th id="56">56</th><td><b>typedef</b> <a class="typedef" href="#KEYMAP_ENTRY" title='KEYMAP_ENTRY' data-type='struct _keymap_entry' data-ref="KEYMAP_ENTRY">KEYMAP_ENTRY</a> *<dfn class="typedef" id="Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</dfn>;</td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td><i>/* The values that TYPE can have in a keymap entry. */</i></td></tr>
+<tr><th id="59">59</th><td><u>#define <dfn class="macro" id="_M/ISFUNC" data-ref="_M/ISFUNC">ISFUNC</dfn> 0</u></td></tr>
+<tr><th id="60">60</th><td><u>#define <dfn class="macro" id="_M/ISKMAP" data-ref="_M/ISKMAP">ISKMAP</dfn> 1</u></td></tr>
+<tr><th id="61">61</th><td><u>#define <dfn class="macro" id="_M/ISMACR" data-ref="_M/ISMACR">ISMACR</dfn> 2</u></td></tr>
+<tr><th id="62">62</th><td></td></tr>
+<tr><th id="63">63</th><td><b>extern</b> <a class="typedef" href="#KEYMAP_ENTRY_ARRAY" title='KEYMAP_ENTRY_ARRAY' data-type='KEYMAP_ENTRY [257]' data-ref="KEYMAP_ENTRY_ARRAY">KEYMAP_ENTRY_ARRAY</a> <dfn class="decl" id="emacs_standard_keymap" title='emacs_standard_keymap' data-ref="emacs_standard_keymap">emacs_standard_keymap</dfn>, <dfn class="decl" id="emacs_meta_keymap" title='emacs_meta_keymap' data-ref="emacs_meta_keymap">emacs_meta_keymap</dfn>, <dfn class="decl" id="emacs_ctlx_keymap" title='emacs_ctlx_keymap' data-ref="emacs_ctlx_keymap">emacs_ctlx_keymap</dfn>;</td></tr>
+<tr><th id="64">64</th><td><b>extern</b> <a class="typedef" href="#KEYMAP_ENTRY_ARRAY" title='KEYMAP_ENTRY_ARRAY' data-type='KEYMAP_ENTRY [257]' data-ref="KEYMAP_ENTRY_ARRAY">KEYMAP_ENTRY_ARRAY</a> <dfn class="decl" id="vi_insertion_keymap" title='vi_insertion_keymap' data-ref="vi_insertion_keymap">vi_insertion_keymap</dfn>, <dfn class="decl" id="vi_movement_keymap" title='vi_movement_keymap' data-ref="vi_movement_keymap">vi_movement_keymap</dfn>;</td></tr>
+<tr><th id="65">65</th><td></td></tr>
+<tr><th id="66">66</th><td><i>/* Return a new, empty keymap.</i></td></tr>
+<tr><th id="67">67</th><td><i>   Free it with free() when you are done. */</i></td></tr>
+<tr><th id="68">68</th><td><b>extern</b> <a class="typedef" href="#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a> <dfn class="decl fn" id="rl_make_bare_keymap" title='rl_make_bare_keymap' data-ref="rl_make_bare_keymap">rl_make_bare_keymap</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="69">69</th><td></td></tr>
+<tr><th id="70">70</th><td><i>/* Return a new keymap which is a copy of MAP. */</i></td></tr>
+<tr><th id="71">71</th><td><b>extern</b> <a class="typedef" href="#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a> <dfn class="decl fn" id="rl_copy_keymap" title='rl_copy_keymap' data-ref="rl_copy_keymap">rl_copy_keymap</dfn> <a class="macro" href="rlstdc.h.html#33" title="(Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<a class="typedef" href="#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td><i>/* Return a new keymap with the printing characters bound to rl_insert,</i></td></tr>
+<tr><th id="74">74</th><td><i>   the lowercase Meta characters bound to run their equivalents, and</i></td></tr>
+<tr><th id="75">75</th><td><i>   the Meta digits bound to produce numeric arguments. */</i></td></tr>
+<tr><th id="76">76</th><td><b>extern</b> <a class="typedef" href="#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a> <dfn class="decl fn" id="rl_make_keymap" title='rl_make_keymap' data-ref="rl_make_keymap">rl_make_keymap</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td><i>/* Free the storage associated with a keymap. */</i></td></tr>
+<tr><th id="79">79</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_discard_keymap" title='rl_discard_keymap' data-ref="rl_discard_keymap">rl_discard_keymap</dfn> <a class="macro" href="rlstdc.h.html#33" title="(Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<a class="typedef" href="#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td><i>/* These functions actually appear in bind.c */</i></td></tr>
+<tr><th id="82">82</th><td></td></tr>
+<tr><th id="83">83</th><td><i>/* Return the keymap corresponding to a given name.  Names look like</i></td></tr>
+<tr><th id="84">84</th><td><i>   `emacs' or `emacs-meta' or `vi-insert'.  */</i></td></tr>
+<tr><th id="85">85</th><td><b>extern</b> <a class="typedef" href="#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a> <dfn class="decl fn" id="rl_get_keymap_by_name" title='rl_get_keymap_by_name' data-ref="rl_get_keymap_by_name">rl_get_keymap_by_name</dfn> <a class="macro" href="rlstdc.h.html#33" title="(const char *)" data-ref="_M/PARAMS">PARAMS</a>((<em>const</em> <em>char</em> *));</td></tr>
+<tr><th id="86">86</th><td></td></tr>
+<tr><th id="87">87</th><td><i>/* Return the current keymap. */</i></td></tr>
+<tr><th id="88">88</th><td><b>extern</b> <a class="typedef" href="#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a> <dfn class="decl fn" id="rl_get_keymap" title='rl_get_keymap' data-ref="rl_get_keymap">rl_get_keymap</dfn> <a class="macro" href="rlstdc.h.html#33" title="(void)" data-ref="_M/PARAMS">PARAMS</a>((<em>void</em>));</td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td><i>/* Set the current keymap to MAP. */</i></td></tr>
+<tr><th id="91">91</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="rl_set_keymap" title='rl_set_keymap' data-ref="rl_set_keymap">rl_set_keymap</dfn> <a class="macro" href="rlstdc.h.html#33" title="(Keymap)" data-ref="_M/PARAMS">PARAMS</a>((<a class="typedef" href="#Keymap" title='Keymap' data-type='KEYMAP_ENTRY *' data-ref="Keymap">Keymap</a>));</td></tr>
+<tr><th id="92">92</th><td></td></tr>
+<tr><th id="93">93</th><td><u>#<span data-ppcond="93">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="94">94</th><td>}</td></tr>
+<tr><th id="95">95</th><td><u>#<span data-ppcond="93">endif</span></u></td></tr>
+<tr><th id="96">96</th><td></td></tr>
+<tr><th id="97">97</th><td><u>#<span data-ppcond="22">endif</span> /* _KEYMAPS_H_ */</u></td></tr>
+<tr><th id="98">98</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../lua/src/lua.c.html'>lua/src/lua.c</a><br/>Generated on <em>2018-Apr-07</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

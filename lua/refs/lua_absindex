@@ -1,0 +1,5 @@
+<dec f='lua/src/lua.h' l='158' type='int lua_absindex(lua_State * L, int idx)'/>
+<use f='lua/src/lauxlib.c' l='601' u='c' c='luaL_ref'/>
+<use f='lua/src/lauxlib.c' l='618' u='c' c='luaL_unref'/>
+<use f='lua/src/lauxlib.c' l='789' u='c' c='luaL_callmeta'/>
+<use f='lua/src/lauxlib.c' l='956' u='c' c='luaL_getsubtable'/>

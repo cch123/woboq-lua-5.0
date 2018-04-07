@@ -1,0 +1,14 @@
+<dec f='lua/src/lstate.h' l='59' type='TString **'/>
+<use f='lua/src/lstring.c' l='75' u='w' c='luaS_resize'/>
+<use f='lua/src/lstring.c' l='75' u='r' c='luaS_resize'/>
+<use f='lua/src/lstring.c' l='77' u='r' c='luaS_resize'/>
+<use f='lua/src/lstring.c' l='80' u='r' c='luaS_resize'/>
+<use f='lua/src/lstring.c' l='81' u='r' c='luaS_resize'/>
+<use f='lua/src/lstring.c' l='85' u='r' c='luaS_resize'/>
+<use f='lua/src/lstring.c' l='86' u='r' c='luaS_resize'/>
+<use f='lua/src/lstring.c' l='93' u='w' c='luaS_resize'/>
+<use f='lua/src/lstring.c' l='93' u='r' c='luaS_resize'/>
+<use f='lua/src/lstring.c' l='156' u='r' c='luaS_remove'/>
+<use f='lua/src/lstring.c' l='171' u='r' c='internshrstr'/>
+<use f='lua/src/lstring.c' l='184' u='r' c='internshrstr'/>
+<offset>0</offset>

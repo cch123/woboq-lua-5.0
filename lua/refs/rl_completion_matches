@@ -1,0 +1,1 @@
+<dec f='include/readline/readline.h' l='457' type='char ** rl_completion_matches(const char * , rl_compentry_func_t * )'/>

@@ -1,0 +1,2 @@
+<dec f='include/stdlib.h' l='622' type='int mkstemp(char * __template)'/>
+<use f='lua/src/loslib.c' l='123' u='c' c='os_tmpname'/>

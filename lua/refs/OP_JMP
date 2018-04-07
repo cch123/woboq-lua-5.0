@@ -1,0 +1,4 @@
+<dec f='lua/src/lopcodes.h' l='208' type='30'/>
+<use f='lua/src/luac.c' l='370' c='PrintCode'/>
+<doc f='lua/src/lopcodes.h' l='208'>/*	A sBx	pc+=sBx; if (A) close all upvalues &gt;= R(A - 1)	*/</doc>
+<use f='lua/src/lvm.c' l='1080' c='luaV_execute'/>

@@ -1,0 +1,4 @@
+<dec f='include/string.h' l='92' type='void * memchr(const void * __s, int __c, size_t __n)'/>
+<use f='lua/src/lstrlib.c' l='536' u='c' c='lmemfind'/>
+<use f='lua/src/lstrlib.c' l='935' u='c' c='checkdp'/>
+<use f='lua/src/lstrlib.c' l='937' u='c' c='checkdp'/>

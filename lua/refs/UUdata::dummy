@@ -1,0 +1,3 @@
+<dec f='lua/src/lobject.h' l='359' type='L_Umaxalign'/>
+<offset>0</offset>
+<doc f='lua/src/lobject.h' l='359'>/* ensures maximum alignment for &apos;local&apos; udata */</doc>

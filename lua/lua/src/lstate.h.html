@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>lstate.h source code [lua/src/lstate.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="CallInfo,GCUnion,global_State,lua_State,stringtable "/>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'lua/src/lstate.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>lua</a>/<a href='./'>src</a>/<a href='lstate.h.html'>lstate.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*</i></td></tr>
+<tr><th id="2">2</th><td><i>** $Id: lstate.h,v 2.133 2016/12/22 13:08:50 roberto Exp $</i></td></tr>
+<tr><th id="3">3</th><td><i>** Global State</i></td></tr>
+<tr><th id="4">4</th><td><i>** See Copyright Notice in lua.h</i></td></tr>
+<tr><th id="5">5</th><td><i>*/</i></td></tr>
+<tr><th id="6">6</th><td></td></tr>
+<tr><th id="7">7</th><td><u>#<span data-ppcond="7">ifndef</span> <span class="macro" data-ref="_M/lstate_h">lstate_h</span></u></td></tr>
+<tr><th id="8">8</th><td><u>#define <dfn class="macro" id="_M/lstate_h" data-ref="_M/lstate_h">lstate_h</dfn></u></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td><u>#include <a href="lua.h.html">"lua.h"</a></u></td></tr>
+<tr><th id="11">11</th><td></td></tr>
+<tr><th id="12">12</th><td><u>#include <a href="lobject.h.html">"lobject.h"</a></u></td></tr>
+<tr><th id="13">13</th><td><u>#include <a href="ltm.h.html">"ltm.h"</a></u></td></tr>
+<tr><th id="14">14</th><td><u>#include <a href="lzio.h.html">"lzio.h"</a></u></td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><i>/*</i></td></tr>
+<tr><th id="18">18</th><td><i></i></td></tr>
+<tr><th id="19">19</th><td><i>** Some notes about garbage-collected objects: All objects in Lua must</i></td></tr>
+<tr><th id="20">20</th><td><i>** be kept somehow accessible until being freed, so all objects always</i></td></tr>
+<tr><th id="21">21</th><td><i>** belong to one (and only one) of these lists, using field 'next' of</i></td></tr>
+<tr><th id="22">22</th><td><i>** the 'CommonHeader' for the link:</i></td></tr>
+<tr><th id="23">23</th><td><i>**</i></td></tr>
+<tr><th id="24">24</th><td><i>** 'allgc': all objects not marked for finalization;</i></td></tr>
+<tr><th id="25">25</th><td><i>** 'finobj': all objects marked for finalization;</i></td></tr>
+<tr><th id="26">26</th><td><i>** 'tobefnz': all objects ready to be finalized;</i></td></tr>
+<tr><th id="27">27</th><td><i>** 'fixedgc': all objects that are not to be collected (currently</i></td></tr>
+<tr><th id="28">28</th><td><i>** only small strings, such as reserved words).</i></td></tr>
+<tr><th id="29">29</th><td><i></i></td></tr>
+<tr><th id="30">30</th><td><i>*/</i></td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><b>struct</b> <dfn class="type" id="lua_longjmp" title='lua_longjmp' data-ref="lua_longjmp">lua_longjmp</dfn>;  <i>/* defined in ldo.c */</i></td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td></td></tr>
+<tr><th id="36">36</th><td><i>/*</i></td></tr>
+<tr><th id="37">37</th><td><i>** Atomic type (relative to signals) to better ensure that 'lua_sethook'</i></td></tr>
+<tr><th id="38">38</th><td><i>** is thread safe</i></td></tr>
+<tr><th id="39">39</th><td><i>*/</i></td></tr>
+<tr><th id="40">40</th><td><u>#<span data-ppcond="40">if</span> !defined(<span class="macro" data-ref="_M/l_signalT">l_signalT</span>)</u></td></tr>
+<tr><th id="41">41</th><td><u>#include <a href="../../include/signal.h.html">&lt;signal.h&gt;</a></u></td></tr>
+<tr><th id="42">42</th><td><u>#define <dfn class="macro" id="_M/l_signalT" data-ref="_M/l_signalT">l_signalT</dfn>	<a class="typedef" href="../../include/signal.h.html#sig_atomic_t" title='sig_atomic_t' data-type='__sig_atomic_t' data-ref="sig_atomic_t">sig_atomic_t</a></u></td></tr>
+<tr><th id="43">43</th><td><u>#<span data-ppcond="40">endif</span></u></td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><i>/* extra stack space to handle TM calls and some other extras */</i></td></tr>
+<tr><th id="47">47</th><td><u>#define <dfn class="macro" id="_M/EXTRA_STACK" data-ref="_M/EXTRA_STACK">EXTRA_STACK</dfn>   5</u></td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td><u>#define <dfn class="macro" id="_M/BASIC_STACK_SIZE" data-ref="_M/BASIC_STACK_SIZE">BASIC_STACK_SIZE</dfn>        (2*LUA_MINSTACK)</u></td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td></td></tr>
+<tr><th id="53">53</th><td><i>/* kinds of Garbage Collection */</i></td></tr>
+<tr><th id="54">54</th><td><u>#define <dfn class="macro" id="_M/KGC_NORMAL" data-ref="_M/KGC_NORMAL">KGC_NORMAL</dfn>	0</u></td></tr>
+<tr><th id="55">55</th><td><u>#define <dfn class="macro" id="_M/KGC_EMERGENCY" data-ref="_M/KGC_EMERGENCY">KGC_EMERGENCY</dfn>	1	/* gc was forced by an allocation failure */</u></td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="stringtable" title='stringtable' data-ref="stringtable"><a class="type" href="#stringtable" title='stringtable' data-ref="stringtable">stringtable</a></dfn> {</td></tr>
+<tr><th id="59">59</th><td>  <a class="typedef" href="lobject.h.html#TString" title='TString' data-type='struct TString' data-ref="TString">TString</a> **<dfn class="decl field" id="stringtable::hash" title='stringtable::hash' data-ref="stringtable::hash">hash</dfn>;</td></tr>
+<tr><th id="60">60</th><td>  <em>int</em> <dfn class="decl field" id="stringtable::nuse" title='stringtable::nuse' data-ref="stringtable::nuse">nuse</dfn>;  <i>/* number of elements */</i></td></tr>
+<tr><th id="61">61</th><td>  <em>int</em> <dfn class="decl field" id="stringtable::size" title='stringtable::size' data-ref="stringtable::size">size</dfn>;</td></tr>
+<tr><th id="62">62</th><td>} <dfn class="typedef" id="stringtable" title='stringtable' data-type='struct stringtable' data-ref="stringtable">stringtable</dfn>;</td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td><i>/*</i></td></tr>
+<tr><th id="66">66</th><td><i>** Information about a call.</i></td></tr>
+<tr><th id="67">67</th><td><i>** When a thread yields, 'func' is adjusted to pretend that the</i></td></tr>
+<tr><th id="68">68</th><td><i>** top function has only the yielded values in its stack; in that</i></td></tr>
+<tr><th id="69">69</th><td><i>** case, the actual 'func' value is saved in field 'extra'.</i></td></tr>
+<tr><th id="70">70</th><td><i>** When a function calls another with a continuation, 'extra' keeps</i></td></tr>
+<tr><th id="71">71</th><td><i>** the function index so that, in case of errors, the continuation</i></td></tr>
+<tr><th id="72">72</th><td><i>** function can be called with the correct top.</i></td></tr>
+<tr><th id="73">73</th><td><i>*/</i></td></tr>
+<tr><th id="74">74</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="CallInfo" title='CallInfo' data-ref="CallInfo"><a class="type" href="#CallInfo" title='CallInfo' data-ref="CallInfo">CallInfo</a></dfn> {</td></tr>
+<tr><th id="75">75</th><td>  <a class="typedef" href="lobject.h.html#StkId" title='StkId' data-type='TValue *' data-ref="StkId">StkId</a> <dfn class="decl field" id="CallInfo::func" title='CallInfo::func' data-ref="CallInfo::func">func</dfn>;  <i>/* function index in the stack */</i></td></tr>
+<tr><th id="76">76</th><td>  <a class="typedef" href="lobject.h.html#StkId" title='StkId' data-type='TValue *' data-ref="StkId">StkId</a>	<dfn class="decl field" id="CallInfo::top" title='CallInfo::top' data-ref="CallInfo::top">top</dfn>;  <i>/* top for this function */</i></td></tr>
+<tr><th id="77">77</th><td>  <b>struct</b> <a class="type" href="#CallInfo" title='CallInfo' data-ref="CallInfo">CallInfo</a> *<dfn class="decl field" id="CallInfo::previous" title='CallInfo::previous' data-ref="CallInfo::previous">previous</dfn>, *<dfn class="decl field" id="CallInfo::next" title='CallInfo::next' data-ref="CallInfo::next">next</dfn>;  <i>/* dynamic call link */</i></td></tr>
+<tr><th id="78">78</th><td>  <b>union</b> {</td></tr>
+<tr><th id="79">79</th><td>    <b>struct</b> {  <i>/* only for Lua functions */</i></td></tr>
+<tr><th id="80">80</th><td>      <a class="typedef" href="lobject.h.html#StkId" title='StkId' data-type='TValue *' data-ref="StkId">StkId</a> <dfn class="decl field" id="CallInfo::(anonymousunion)::(anonymous)::base" title='CallInfo::(anonymous union)::(anonymous struct)::base' data-ref="CallInfo::(anonymousunion)::(anonymous)::base">base</dfn>;  <i>/* base for this function */</i></td></tr>
+<tr><th id="81">81</th><td>      <em>const</em> <a class="typedef" href="llimits.h.html#Instruction" title='Instruction' data-type='unsigned int' data-ref="Instruction">Instruction</a> *<dfn class="decl field" id="CallInfo::(anonymousunion)::(anonymous)::savedpc" title='CallInfo::(anonymous union)::(anonymous struct)::savedpc' data-ref="CallInfo::(anonymousunion)::(anonymous)::savedpc">savedpc</dfn>;</td></tr>
+<tr><th id="82">82</th><td>    } <dfn class="decl field" id="CallInfo::(anonymous)::l" title='CallInfo::(anonymous union)::l' data-ref="CallInfo::(anonymous)::l">l</dfn>;</td></tr>
+<tr><th id="83">83</th><td>    <b>struct</b> {  <i>/* only for C functions */</i></td></tr>
+<tr><th id="84">84</th><td>      <a class="typedef" href="lua.h.html#lua_KFunction" title='lua_KFunction' data-type='int (*)(lua_State *, int, lua_KContext)' data-ref="lua_KFunction">lua_KFunction</a> <dfn class="decl field" id="CallInfo::(anonymousunion)::(anonymous)::k" title='CallInfo::(anonymous union)::(anonymous struct)::k' data-ref="CallInfo::(anonymousunion)::(anonymous)::k">k</dfn>;  <i>/* continuation in case of yields */</i></td></tr>
+<tr><th id="85">85</th><td>      <span class='typedef' title='ptrdiff_t' data-type='long' data-ref="ptrdiff_t">ptrdiff_t</span> <dfn class="decl field" id="CallInfo::(anonymousunion)::(anonymous)::old_errfunc" title='CallInfo::(anonymous union)::(anonymous struct)::old_errfunc' data-ref="CallInfo::(anonymousunion)::(anonymous)::old_errfunc">old_errfunc</dfn>;</td></tr>
+<tr><th id="86">86</th><td>      <a class="typedef" href="lua.h.html#lua_KContext" title='lua_KContext' data-type='intptr_t' data-ref="lua_KContext">lua_KContext</a> <dfn class="decl field" id="CallInfo::(anonymousunion)::(anonymous)::ctx" title='CallInfo::(anonymous union)::(anonymous struct)::ctx' data-ref="CallInfo::(anonymousunion)::(anonymous)::ctx">ctx</dfn>;  <i>/* context info. in case of yields */</i></td></tr>
+<tr><th id="87">87</th><td>    } <dfn class="decl field" id="CallInfo::(anonymous)::c" title='CallInfo::(anonymous union)::c' data-ref="CallInfo::(anonymous)::c">c</dfn>;</td></tr>
+<tr><th id="88">88</th><td>  } <dfn class="decl field" id="CallInfo::u" title='CallInfo::u' data-ref="CallInfo::u">u</dfn>;</td></tr>
+<tr><th id="89">89</th><td>  <span class='typedef' title='ptrdiff_t' data-type='long' data-ref="ptrdiff_t">ptrdiff_t</span> <dfn class="decl field" id="CallInfo::extra" title='CallInfo::extra' data-ref="CallInfo::extra">extra</dfn>;</td></tr>
+<tr><th id="90">90</th><td>  <em>short</em> <dfn class="decl field" id="CallInfo::nresults" title='CallInfo::nresults' data-ref="CallInfo::nresults">nresults</dfn>;  <i>/* expected number of results from this function */</i></td></tr>
+<tr><th id="91">91</th><td>  <em>unsigned</em> <em>short</em> <dfn class="decl field" id="CallInfo::callstatus" title='CallInfo::callstatus' data-ref="CallInfo::callstatus">callstatus</dfn>;</td></tr>
+<tr><th id="92">92</th><td>} <dfn class="typedef" id="CallInfo" title='CallInfo' data-type='struct CallInfo' data-ref="CallInfo">CallInfo</dfn>;</td></tr>
+<tr><th id="93">93</th><td></td></tr>
+<tr><th id="94">94</th><td></td></tr>
+<tr><th id="95">95</th><td><i>/*</i></td></tr>
+<tr><th id="96">96</th><td><i>** Bits in CallInfo status</i></td></tr>
+<tr><th id="97">97</th><td><i>*/</i></td></tr>
+<tr><th id="98">98</th><td><u>#define <dfn class="macro" id="_M/CIST_OAH" data-ref="_M/CIST_OAH">CIST_OAH</dfn>	(1&lt;&lt;0)	/* original value of 'allowhook' */</u></td></tr>
+<tr><th id="99">99</th><td><u>#define <dfn class="macro" id="_M/CIST_LUA" data-ref="_M/CIST_LUA">CIST_LUA</dfn>	(1&lt;&lt;1)	/* call is running a Lua function */</u></td></tr>
+<tr><th id="100">100</th><td><u>#define <dfn class="macro" id="_M/CIST_HOOKED" data-ref="_M/CIST_HOOKED">CIST_HOOKED</dfn>	(1&lt;&lt;2)	/* call is running a debug hook */</u></td></tr>
+<tr><th id="101">101</th><td><u>#define <dfn class="macro" id="_M/CIST_FRESH" data-ref="_M/CIST_FRESH">CIST_FRESH</dfn>	(1&lt;&lt;3)	/* call is running on a fresh invocation</u></td></tr>
+<tr><th id="102">102</th><td><u>                                   of luaV_execute */</u></td></tr>
+<tr><th id="103">103</th><td><u>#define <dfn class="macro" id="_M/CIST_YPCALL" data-ref="_M/CIST_YPCALL">CIST_YPCALL</dfn>	(1&lt;&lt;4)	/* call is a yieldable protected call */</u></td></tr>
+<tr><th id="104">104</th><td><u>#define <dfn class="macro" id="_M/CIST_TAIL" data-ref="_M/CIST_TAIL">CIST_TAIL</dfn>	(1&lt;&lt;5)	/* call was tail called */</u></td></tr>
+<tr><th id="105">105</th><td><u>#define <dfn class="macro" id="_M/CIST_HOOKYIELD" data-ref="_M/CIST_HOOKYIELD">CIST_HOOKYIELD</dfn>	(1&lt;&lt;6)	/* last hook called yielded */</u></td></tr>
+<tr><th id="106">106</th><td><u>#define <dfn class="macro" id="_M/CIST_LEQ" data-ref="_M/CIST_LEQ">CIST_LEQ</dfn>	(1&lt;&lt;7)  /* using __lt for __le */</u></td></tr>
+<tr><th id="107">107</th><td><u>#define <dfn class="macro" id="_M/CIST_FIN" data-ref="_M/CIST_FIN">CIST_FIN</dfn>	(1&lt;&lt;8)  /* call is running a finalizer */</u></td></tr>
+<tr><th id="108">108</th><td></td></tr>
+<tr><th id="109">109</th><td><u>#define <dfn class="macro" id="_M/isLua" data-ref="_M/isLua">isLua</dfn>(ci)	((ci)-&gt;callstatus &amp; CIST_LUA)</u></td></tr>
+<tr><th id="110">110</th><td></td></tr>
+<tr><th id="111">111</th><td><i>/* assume that CIST_OAH has offset 0 and that 'v' is strictly 0/1 */</i></td></tr>
+<tr><th id="112">112</th><td><u>#define <dfn class="macro" id="_M/setoah" data-ref="_M/setoah">setoah</dfn>(st,v)	((st) = ((st) &amp; ~CIST_OAH) | (v))</u></td></tr>
+<tr><th id="113">113</th><td><u>#define <dfn class="macro" id="_M/getoah" data-ref="_M/getoah">getoah</dfn>(st)	((st) &amp; CIST_OAH)</u></td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td></td></tr>
+<tr><th id="116">116</th><td><i>/*</i></td></tr>
+<tr><th id="117">117</th><td><i>** 'global state', shared by all threads of this state</i></td></tr>
+<tr><th id="118">118</th><td><i>*/</i></td></tr>
+<tr><th id="119">119</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="global_State" title='global_State' data-ref="global_State"><a class="type" href="#global_State" title='global_State' data-ref="global_State">global_State</a></dfn> {</td></tr>
+<tr><th id="120">120</th><td>  <a class="typedef" href="lua.h.html#lua_Alloc" title='lua_Alloc' data-type='void *(*)(void *, void *, size_t, size_t)' data-ref="lua_Alloc">lua_Alloc</a> <dfn class="decl field" id="global_State::frealloc" title='global_State::frealloc' data-ref="global_State::frealloc">frealloc</dfn>;  <i>/* function to reallocate memory */</i></td></tr>
+<tr><th id="121">121</th><td>  <em>void</em> *<dfn class="decl field" id="global_State::ud" title='global_State::ud' data-ref="global_State::ud">ud</dfn>;         <i>/* auxiliary data to 'frealloc' */</i></td></tr>
+<tr><th id="122">122</th><td>  <a class="typedef" href="llimits.h.html#l_mem" title='l_mem' data-type='ptrdiff_t' data-ref="l_mem">l_mem</a> <dfn class="decl field" id="global_State::totalbytes" title='global_State::totalbytes' data-ref="global_State::totalbytes">totalbytes</dfn>;  <i>/* number of bytes currently allocated - GCdebt */</i></td></tr>
+<tr><th id="123">123</th><td>  <a class="typedef" href="llimits.h.html#l_mem" title='l_mem' data-type='ptrdiff_t' data-ref="l_mem">l_mem</a> <dfn class="decl field" id="global_State::GCdebt" title='global_State::GCdebt' data-ref="global_State::GCdebt">GCdebt</dfn>;  <i>/* bytes allocated not yet compensated by the collector */</i></td></tr>
+<tr><th id="124">124</th><td>  <a class="typedef" href="llimits.h.html#lu_mem" title='lu_mem' data-type='size_t' data-ref="lu_mem">lu_mem</a> <dfn class="decl field" id="global_State::GCmemtrav" title='global_State::GCmemtrav' data-ref="global_State::GCmemtrav">GCmemtrav</dfn>;  <i>/* memory traversed by the GC */</i></td></tr>
+<tr><th id="125">125</th><td>  <a class="typedef" href="llimits.h.html#lu_mem" title='lu_mem' data-type='size_t' data-ref="lu_mem">lu_mem</a> <dfn class="decl field" id="global_State::GCestimate" title='global_State::GCestimate' data-ref="global_State::GCestimate">GCestimate</dfn>;  <i>/* an estimate of the non-garbage memory in use */</i></td></tr>
+<tr><th id="126">126</th><td>  <a class="typedef" href="#stringtable" title='stringtable' data-type='struct stringtable' data-ref="stringtable">stringtable</a> <dfn class="decl field" id="global_State::strt" title='global_State::strt' data-ref="global_State::strt">strt</dfn>;  <i>/* hash table for strings */</i></td></tr>
+<tr><th id="127">127</th><td>  <a class="typedef" href="lobject.h.html#TValue" title='TValue' data-type='struct lua_TValue' data-ref="TValue">TValue</a> <dfn class="decl field" id="global_State::l_registry" title='global_State::l_registry' data-ref="global_State::l_registry">l_registry</dfn>;</td></tr>
+<tr><th id="128">128</th><td>  <em>unsigned</em> <em>int</em> <dfn class="decl field" id="global_State::seed" title='global_State::seed' data-ref="global_State::seed">seed</dfn>;  <i>/* randomized seed for hashes */</i></td></tr>
+<tr><th id="129">129</th><td>  <a class="typedef" href="llimits.h.html#lu_byte" title='lu_byte' data-type='unsigned char' data-ref="lu_byte">lu_byte</a> <dfn class="decl field" id="global_State::currentwhite" title='global_State::currentwhite' data-ref="global_State::currentwhite">currentwhite</dfn>;</td></tr>
+<tr><th id="130">130</th><td>  <a class="typedef" href="llimits.h.html#lu_byte" title='lu_byte' data-type='unsigned char' data-ref="lu_byte">lu_byte</a> <dfn class="decl field" id="global_State::gcstate" title='global_State::gcstate' data-ref="global_State::gcstate">gcstate</dfn>;  <i>/* state of garbage collector */</i></td></tr>
+<tr><th id="131">131</th><td>  <a class="typedef" href="llimits.h.html#lu_byte" title='lu_byte' data-type='unsigned char' data-ref="lu_byte">lu_byte</a> <dfn class="decl field" id="global_State::gckind" title='global_State::gckind' data-ref="global_State::gckind">gckind</dfn>;  <i>/* kind of GC running */</i></td></tr>
+<tr><th id="132">132</th><td>  <a class="typedef" href="llimits.h.html#lu_byte" title='lu_byte' data-type='unsigned char' data-ref="lu_byte">lu_byte</a> <dfn class="decl field" id="global_State::gcrunning" title='global_State::gcrunning' data-ref="global_State::gcrunning">gcrunning</dfn>;  <i>/* true if GC is running */</i></td></tr>
+<tr><th id="133">133</th><td>  <a class="typedef" href="lobject.h.html#GCObject" title='GCObject' data-type='struct GCObject' data-ref="GCObject">GCObject</a> *<dfn class="decl field" id="global_State::allgc" title='global_State::allgc' data-ref="global_State::allgc">allgc</dfn>;  <i>/* list of all collectable objects */</i></td></tr>
+<tr><th id="134">134</th><td>  <a class="typedef" href="lobject.h.html#GCObject" title='GCObject' data-type='struct GCObject' data-ref="GCObject">GCObject</a> **<dfn class="decl field" id="global_State::sweepgc" title='global_State::sweepgc' data-ref="global_State::sweepgc">sweepgc</dfn>;  <i>/* current position of sweep in list */</i></td></tr>
+<tr><th id="135">135</th><td>  <a class="typedef" href="lobject.h.html#GCObject" title='GCObject' data-type='struct GCObject' data-ref="GCObject">GCObject</a> *<dfn class="decl field" id="global_State::finobj" title='global_State::finobj' data-ref="global_State::finobj">finobj</dfn>;  <i>/* list of collectable objects with finalizers */</i></td></tr>
+<tr><th id="136">136</th><td>  <a class="typedef" href="lobject.h.html#GCObject" title='GCObject' data-type='struct GCObject' data-ref="GCObject">GCObject</a> *<dfn class="decl field" id="global_State::gray" title='global_State::gray' data-ref="global_State::gray">gray</dfn>;  <i>/* list of gray objects */</i></td></tr>
+<tr><th id="137">137</th><td>  <a class="typedef" href="lobject.h.html#GCObject" title='GCObject' data-type='struct GCObject' data-ref="GCObject">GCObject</a> *<dfn class="decl field" id="global_State::grayagain" title='global_State::grayagain' data-ref="global_State::grayagain">grayagain</dfn>;  <i>/* list of objects to be traversed atomically */</i></td></tr>
+<tr><th id="138">138</th><td>  <a class="typedef" href="lobject.h.html#GCObject" title='GCObject' data-type='struct GCObject' data-ref="GCObject">GCObject</a> *<dfn class="decl field" id="global_State::weak" title='global_State::weak' data-ref="global_State::weak">weak</dfn>;  <i>/* list of tables with weak values */</i></td></tr>
+<tr><th id="139">139</th><td>  <a class="typedef" href="lobject.h.html#GCObject" title='GCObject' data-type='struct GCObject' data-ref="GCObject">GCObject</a> *<dfn class="decl field" id="global_State::ephemeron" title='global_State::ephemeron' data-ref="global_State::ephemeron">ephemeron</dfn>;  <i>/* list of ephemeron tables (weak keys) */</i></td></tr>
+<tr><th id="140">140</th><td>  <a class="typedef" href="lobject.h.html#GCObject" title='GCObject' data-type='struct GCObject' data-ref="GCObject">GCObject</a> *<dfn class="decl field" id="global_State::allweak" title='global_State::allweak' data-ref="global_State::allweak">allweak</dfn>;  <i>/* list of all-weak tables */</i></td></tr>
+<tr><th id="141">141</th><td>  <a class="typedef" href="lobject.h.html#GCObject" title='GCObject' data-type='struct GCObject' data-ref="GCObject">GCObject</a> *<dfn class="decl field" id="global_State::tobefnz" title='global_State::tobefnz' data-ref="global_State::tobefnz">tobefnz</dfn>;  <i>/* list of userdata to be GC */</i></td></tr>
+<tr><th id="142">142</th><td>  <a class="typedef" href="lobject.h.html#GCObject" title='GCObject' data-type='struct GCObject' data-ref="GCObject">GCObject</a> *<dfn class="decl field" id="global_State::fixedgc" title='global_State::fixedgc' data-ref="global_State::fixedgc">fixedgc</dfn>;  <i>/* list of objects not to be collected */</i></td></tr>
+<tr><th id="143">143</th><td>  <b>struct</b> <a class="type" href="#lua_State" title='lua_State' data-ref="lua_State">lua_State</a> *<dfn class="decl field" id="global_State::twups" title='global_State::twups' data-ref="global_State::twups">twups</dfn>;  <i>/* list of threads with open upvalues */</i></td></tr>
+<tr><th id="144">144</th><td>  <em>unsigned</em> <em>int</em> <dfn class="decl field" id="global_State::gcfinnum" title='global_State::gcfinnum' data-ref="global_State::gcfinnum">gcfinnum</dfn>;  <i>/* number of finalizers to call in each GC step */</i></td></tr>
+<tr><th id="145">145</th><td>  <em>int</em> <dfn class="decl field" id="global_State::gcpause" title='global_State::gcpause' data-ref="global_State::gcpause">gcpause</dfn>;  <i>/* size of pause between successive GCs */</i></td></tr>
+<tr><th id="146">146</th><td>  <em>int</em> <dfn class="decl field" id="global_State::gcstepmul" title='global_State::gcstepmul' data-ref="global_State::gcstepmul">gcstepmul</dfn>;  <i>/* GC 'granularity' */</i></td></tr>
+<tr><th id="147">147</th><td>  <a class="typedef" href="lua.h.html#lua_CFunction" title='lua_CFunction' data-type='int (*)(lua_State *)' data-ref="lua_CFunction">lua_CFunction</a> <dfn class="decl field" id="global_State::panic" title='global_State::panic' data-ref="global_State::panic">panic</dfn>;  <i>/* to be called in unprotected errors */</i></td></tr>
+<tr><th id="148">148</th><td>  <b>struct</b> <a class="type" href="#lua_State" title='lua_State' data-ref="lua_State">lua_State</a> *<dfn class="decl field" id="global_State::mainthread" title='global_State::mainthread' data-ref="global_State::mainthread">mainthread</dfn>;</td></tr>
+<tr><th id="149">149</th><td>  <em>const</em> <a class="typedef" href="lua.h.html#lua_Number" title='lua_Number' data-type='double' data-ref="lua_Number">lua_Number</a> *<dfn class="decl field" id="global_State::version" title='global_State::version' data-ref="global_State::version">version</dfn>;  <i>/* pointer to version number */</i></td></tr>
+<tr><th id="150">150</th><td>  <a class="typedef" href="lobject.h.html#TString" title='TString' data-type='struct TString' data-ref="TString">TString</a> *<dfn class="decl field" id="global_State::memerrmsg" title='global_State::memerrmsg' data-ref="global_State::memerrmsg">memerrmsg</dfn>;  <i>/* memory-error message */</i></td></tr>
+<tr><th id="151">151</th><td>  <a class="typedef" href="lobject.h.html#TString" title='TString' data-type='struct TString' data-ref="TString">TString</a> *<dfn class="decl field" id="global_State::tmname" title='global_State::tmname' data-ref="global_State::tmname">tmname</dfn>[<a class="enum" href="ltm.h.html#TM_N" title='TM_N' data-ref="TM_N">TM_N</a>];  <i>/* array with tag-method names */</i></td></tr>
+<tr><th id="152">152</th><td>  <b>struct</b> <a class="type" href="lobject.h.html#Table" title='Table' data-ref="Table">Table</a> *<dfn class="decl field" id="global_State::mt" title='global_State::mt' data-ref="global_State::mt">mt</dfn>[<a class="macro" href="lua.h.html#74" title="9" data-ref="_M/LUA_NUMTAGS">LUA_NUMTAGS</a>];  <i>/* metatables for basic types */</i></td></tr>
+<tr><th id="153">153</th><td>  <a class="typedef" href="lobject.h.html#TString" title='TString' data-type='struct TString' data-ref="TString">TString</a> *<dfn class="decl field" id="global_State::strcache" title='global_State::strcache' data-ref="global_State::strcache">strcache</dfn>[<a class="macro" href="llimits.h.html#198" title="53" data-ref="_M/STRCACHE_N">STRCACHE_N</a>][<a class="macro" href="llimits.h.html#199" title="2" data-ref="_M/STRCACHE_M">STRCACHE_M</a>];  <i>/* cache for strings in API */</i></td></tr>
+<tr><th id="154">154</th><td>} <dfn class="typedef" id="global_State" title='global_State' data-type='struct global_State' data-ref="global_State">global_State</dfn>;</td></tr>
+<tr><th id="155">155</th><td></td></tr>
+<tr><th id="156">156</th><td></td></tr>
+<tr><th id="157">157</th><td><i>/*</i></td></tr>
+<tr><th id="158">158</th><td><i>** 'per thread' state</i></td></tr>
+<tr><th id="159">159</th><td><i>*/</i></td></tr>
+<tr><th id="160">160</th><td><b>struct</b> <dfn class="type def" id="lua_State" title='lua_State' data-ref="lua_State">lua_State</dfn> {</td></tr>
+<tr><th id="161">161</th><td>  <a class="macro" href="lobject.h.html#79" title="GCObject *next; lu_byte tt; lu_byte marked" data-ref="_M/CommonHeader">CommonHeader</a>;</td></tr>
+<tr><th id="162">162</th><td>  <em>unsigned</em> <em>short</em> <dfn class="decl field" id="lua_State::nci" title='lua_State::nci' data-ref="lua_State::nci">nci</dfn>;  <i>/* number of items in 'ci' list */</i></td></tr>
+<tr><th id="163">163</th><td>  <a class="typedef" href="llimits.h.html#lu_byte" title='lu_byte' data-type='unsigned char' data-ref="lu_byte">lu_byte</a> <dfn class="decl field" id="lua_State::status" title='lua_State::status' data-ref="lua_State::status">status</dfn>;</td></tr>
+<tr><th id="164">164</th><td>  <a class="typedef" href="lobject.h.html#StkId" title='StkId' data-type='TValue *' data-ref="StkId">StkId</a> <dfn class="decl field" id="lua_State::top" title='lua_State::top' data-ref="lua_State::top">top</dfn>;  <i>/* first free slot in the stack */</i></td></tr>
+<tr><th id="165">165</th><td>  <a class="typedef" href="#global_State" title='global_State' data-type='struct global_State' data-ref="global_State">global_State</a> *<dfn class="decl field" id="lua_State::l_G" title='lua_State::l_G' data-ref="lua_State::l_G">l_G</dfn>;</td></tr>
+<tr><th id="166">166</th><td>  <a class="typedef" href="#CallInfo" title='CallInfo' data-type='struct CallInfo' data-ref="CallInfo">CallInfo</a> *<dfn class="decl field" id="lua_State::ci" title='lua_State::ci' data-ref="lua_State::ci">ci</dfn>;  <i>/* call info for current function */</i></td></tr>
+<tr><th id="167">167</th><td>  <em>const</em> <a class="typedef" href="llimits.h.html#Instruction" title='Instruction' data-type='unsigned int' data-ref="Instruction">Instruction</a> *<dfn class="decl field" id="lua_State::oldpc" title='lua_State::oldpc' data-ref="lua_State::oldpc">oldpc</dfn>;  <i>/* last pc traced */</i></td></tr>
+<tr><th id="168">168</th><td>  <a class="typedef" href="lobject.h.html#StkId" title='StkId' data-type='TValue *' data-ref="StkId">StkId</a> <dfn class="decl field" id="lua_State::stack_last" title='lua_State::stack_last' data-ref="lua_State::stack_last">stack_last</dfn>;  <i>/* last free slot in the stack */</i></td></tr>
+<tr><th id="169">169</th><td>  <a class="typedef" href="lobject.h.html#StkId" title='StkId' data-type='TValue *' data-ref="StkId">StkId</a> <dfn class="decl field" id="lua_State::stack" title='lua_State::stack' data-ref="lua_State::stack">stack</dfn>;  <i>/* stack base */</i></td></tr>
+<tr><th id="170">170</th><td>  <a class="typedef" href="lobject.h.html#UpVal" title='UpVal' data-type='struct UpVal' data-ref="UpVal">UpVal</a> *<dfn class="decl field" id="lua_State::openupval" title='lua_State::openupval' data-ref="lua_State::openupval">openupval</dfn>;  <i>/* list of open upvalues in this stack */</i></td></tr>
+<tr><th id="171">171</th><td>  <a class="typedef" href="lobject.h.html#GCObject" title='GCObject' data-type='struct GCObject' data-ref="GCObject">GCObject</a> *<dfn class="decl field" id="lua_State::gclist" title='lua_State::gclist' data-ref="lua_State::gclist">gclist</dfn>;</td></tr>
+<tr><th id="172">172</th><td>  <b>struct</b> <a class="type" href="#lua_State" title='lua_State' data-ref="lua_State">lua_State</a> *<dfn class="decl field" id="lua_State::twups" title='lua_State::twups' data-ref="lua_State::twups">twups</dfn>;  <i>/* list of threads with open upvalues */</i></td></tr>
+<tr><th id="173">173</th><td>  <b>struct</b> <a class="type" href="#lua_longjmp" title='lua_longjmp' data-ref="lua_longjmp">lua_longjmp</a> *<dfn class="decl field" id="lua_State::errorJmp" title='lua_State::errorJmp' data-ref="lua_State::errorJmp">errorJmp</dfn>;  <i>/* current error recover point */</i></td></tr>
+<tr><th id="174">174</th><td>  <a class="typedef" href="#CallInfo" title='CallInfo' data-type='struct CallInfo' data-ref="CallInfo">CallInfo</a> <dfn class="decl field" id="lua_State::base_ci" title='lua_State::base_ci' data-ref="lua_State::base_ci">base_ci</dfn>;  <i>/* CallInfo for first level (C calling Lua) */</i></td></tr>
+<tr><th id="175">175</th><td>  <em>volatile</em> <a class="typedef" href="lua.h.html#lua_Hook" title='lua_Hook' data-type='void (*)(lua_State *, lua_Debug *)' data-ref="lua_Hook">lua_Hook</a> <dfn class="decl field" id="lua_State::hook" title='lua_State::hook' data-ref="lua_State::hook">hook</dfn>;</td></tr>
+<tr><th id="176">176</th><td>  <span class='typedef' title='ptrdiff_t' data-type='long' data-ref="ptrdiff_t">ptrdiff_t</span> <dfn class="decl field" id="lua_State::errfunc" title='lua_State::errfunc' data-ref="lua_State::errfunc">errfunc</dfn>;  <i>/* current error handling function (stack index) */</i></td></tr>
+<tr><th id="177">177</th><td>  <em>int</em> <dfn class="decl field" id="lua_State::stacksize" title='lua_State::stacksize' data-ref="lua_State::stacksize">stacksize</dfn>;</td></tr>
+<tr><th id="178">178</th><td>  <em>int</em> <dfn class="decl field" id="lua_State::basehookcount" title='lua_State::basehookcount' data-ref="lua_State::basehookcount">basehookcount</dfn>;</td></tr>
+<tr><th id="179">179</th><td>  <em>int</em> <dfn class="decl field" id="lua_State::hookcount" title='lua_State::hookcount' data-ref="lua_State::hookcount">hookcount</dfn>;</td></tr>
+<tr><th id="180">180</th><td>  <em>unsigned</em> <em>short</em> <dfn class="decl field" id="lua_State::nny" title='lua_State::nny' data-ref="lua_State::nny">nny</dfn>;  <i>/* number of non-yieldable calls in stack */</i></td></tr>
+<tr><th id="181">181</th><td>  <em>unsigned</em> <em>short</em> <dfn class="decl field" id="lua_State::nCcalls" title='lua_State::nCcalls' data-ref="lua_State::nCcalls">nCcalls</dfn>;  <i>/* number of nested C calls */</i></td></tr>
+<tr><th id="182">182</th><td>  <a class="macro" href="#42" title="sig_atomic_t" data-ref="_M/l_signalT">l_signalT</a> <dfn class="decl field" id="lua_State::hookmask" title='lua_State::hookmask' data-ref="lua_State::hookmask">hookmask</dfn>;</td></tr>
+<tr><th id="183">183</th><td>  <a class="typedef" href="llimits.h.html#lu_byte" title='lu_byte' data-type='unsigned char' data-ref="lu_byte">lu_byte</a> <dfn class="decl field" id="lua_State::allowhook" title='lua_State::allowhook' data-ref="lua_State::allowhook">allowhook</dfn>;</td></tr>
+<tr><th id="184">184</th><td>};</td></tr>
+<tr><th id="185">185</th><td></td></tr>
+<tr><th id="186">186</th><td></td></tr>
+<tr><th id="187">187</th><td><u>#define <dfn class="macro" id="_M/G" data-ref="_M/G">G</dfn>(L)	(L-&gt;l_G)</u></td></tr>
+<tr><th id="188">188</th><td></td></tr>
+<tr><th id="189">189</th><td></td></tr>
+<tr><th id="190">190</th><td><i>/*</i></td></tr>
+<tr><th id="191">191</th><td><i>** Union of all collectable objects (only for conversions)</i></td></tr>
+<tr><th id="192">192</th><td><i>*/</i></td></tr>
+<tr><th id="193">193</th><td><b>union</b> <dfn class="type def" id="GCUnion" title='GCUnion' data-ref="GCUnion">GCUnion</dfn> {</td></tr>
+<tr><th id="194">194</th><td>  <a class="typedef" href="lobject.h.html#GCObject" title='GCObject' data-type='struct GCObject' data-ref="GCObject">GCObject</a> <dfn class="decl field" id="GCUnion::gc" title='GCUnion::gc' data-ref="GCUnion::gc">gc</dfn>;  <i>/* common header */</i></td></tr>
+<tr><th id="195">195</th><td>  <b>struct</b> <a class="type" href="lobject.h.html#TString" title='TString' data-ref="TString">TString</a> <dfn class="decl field" id="GCUnion::ts" title='GCUnion::ts' data-ref="GCUnion::ts">ts</dfn>;</td></tr>
+<tr><th id="196">196</th><td>  <b>struct</b> <a class="type" href="lobject.h.html#Udata" title='Udata' data-ref="Udata">Udata</a> <dfn class="decl field" id="GCUnion::u" title='GCUnion::u' data-ref="GCUnion::u">u</dfn>;</td></tr>
+<tr><th id="197">197</th><td>  <b>union</b> <a class="type" href="lobject.h.html#Closure" title='Closure' data-ref="Closure">Closure</a> <dfn class="decl field" id="GCUnion::cl" title='GCUnion::cl' data-ref="GCUnion::cl">cl</dfn>;</td></tr>
+<tr><th id="198">198</th><td>  <b>struct</b> <a class="type" href="lobject.h.html#Table" title='Table' data-ref="Table">Table</a> <dfn class="decl field" id="GCUnion::h" title='GCUnion::h' data-ref="GCUnion::h">h</dfn>;</td></tr>
+<tr><th id="199">199</th><td>  <b>struct</b> <a class="type" href="lobject.h.html#Proto" title='Proto' data-ref="Proto">Proto</a> <dfn class="decl field" id="GCUnion::p" title='GCUnion::p' data-ref="GCUnion::p">p</dfn>;</td></tr>
+<tr><th id="200">200</th><td>  <b>struct</b> <a class="type" href="#lua_State" title='lua_State' data-ref="lua_State">lua_State</a> <dfn class="decl field" id="GCUnion::th" title='GCUnion::th' data-ref="GCUnion::th">th</dfn>;  <i>/* thread */</i></td></tr>
+<tr><th id="201">201</th><td>};</td></tr>
+<tr><th id="202">202</th><td></td></tr>
+<tr><th id="203">203</th><td></td></tr>
+<tr><th id="204">204</th><td><u>#define <dfn class="macro" id="_M/cast_u" data-ref="_M/cast_u">cast_u</dfn>(o)	cast(union GCUnion *, (o))</u></td></tr>
+<tr><th id="205">205</th><td></td></tr>
+<tr><th id="206">206</th><td><i>/* macros to convert a GCObject into a specific value */</i></td></tr>
+<tr><th id="207">207</th><td><u>#define <dfn class="macro" id="_M/gco2ts" data-ref="_M/gco2ts">gco2ts</dfn>(o)  \</u></td></tr>
+<tr><th id="208">208</th><td><u>	check_exp(novariant((o)-&gt;tt) == LUA_TSTRING, &amp;((cast_u(o))-&gt;ts))</u></td></tr>
+<tr><th id="209">209</th><td><u>#define <dfn class="macro" id="_M/gco2u" data-ref="_M/gco2u">gco2u</dfn>(o)  check_exp((o)-&gt;tt == LUA_TUSERDATA, &amp;((cast_u(o))-&gt;u))</u></td></tr>
+<tr><th id="210">210</th><td><u>#define <dfn class="macro" id="_M/gco2lcl" data-ref="_M/gco2lcl">gco2lcl</dfn>(o)  check_exp((o)-&gt;tt == LUA_TLCL, &amp;((cast_u(o))-&gt;cl.l))</u></td></tr>
+<tr><th id="211">211</th><td><u>#define <dfn class="macro" id="_M/gco2ccl" data-ref="_M/gco2ccl">gco2ccl</dfn>(o)  check_exp((o)-&gt;tt == LUA_TCCL, &amp;((cast_u(o))-&gt;cl.c))</u></td></tr>
+<tr><th id="212">212</th><td><u>#define <dfn class="macro" id="_M/gco2cl" data-ref="_M/gco2cl">gco2cl</dfn>(o)  \</u></td></tr>
+<tr><th id="213">213</th><td><u>	check_exp(novariant((o)-&gt;tt) == LUA_TFUNCTION, &amp;((cast_u(o))-&gt;cl))</u></td></tr>
+<tr><th id="214">214</th><td><u>#define <dfn class="macro" id="_M/gco2t" data-ref="_M/gco2t">gco2t</dfn>(o)  check_exp((o)-&gt;tt == LUA_TTABLE, &amp;((cast_u(o))-&gt;h))</u></td></tr>
+<tr><th id="215">215</th><td><u>#define <dfn class="macro" id="_M/gco2p" data-ref="_M/gco2p">gco2p</dfn>(o)  check_exp((o)-&gt;tt == LUA_TPROTO, &amp;((cast_u(o))-&gt;p))</u></td></tr>
+<tr><th id="216">216</th><td><u>#define <dfn class="macro" id="_M/gco2th" data-ref="_M/gco2th">gco2th</dfn>(o)  check_exp((o)-&gt;tt == LUA_TTHREAD, &amp;((cast_u(o))-&gt;th))</u></td></tr>
+<tr><th id="217">217</th><td></td></tr>
+<tr><th id="218">218</th><td></td></tr>
+<tr><th id="219">219</th><td><i>/* macro to convert a Lua object into a GCObject */</i></td></tr>
+<tr><th id="220">220</th><td><u>#define <dfn class="macro" id="_M/obj2gco" data-ref="_M/obj2gco">obj2gco</dfn>(v) \</u></td></tr>
+<tr><th id="221">221</th><td><u>	check_exp(novariant((v)-&gt;tt) &lt; LUA_TDEADKEY, (&amp;(cast_u(v)-&gt;gc)))</u></td></tr>
+<tr><th id="222">222</th><td></td></tr>
+<tr><th id="223">223</th><td></td></tr>
+<tr><th id="224">224</th><td><i>/* actual number of total bytes allocated */</i></td></tr>
+<tr><th id="225">225</th><td><u>#define <dfn class="macro" id="_M/gettotalbytes" data-ref="_M/gettotalbytes">gettotalbytes</dfn>(g)	cast(lu_mem, (g)-&gt;totalbytes + (g)-&gt;GCdebt)</u></td></tr>
+<tr><th id="226">226</th><td></td></tr>
+<tr><th id="227">227</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <em>void</em> <dfn class="decl fn" id="luaE_setdebt" title='luaE_setdebt' data-ref="luaE_setdebt">luaE_setdebt</dfn> (<a class="typedef" href="#global_State" title='global_State' data-type='struct global_State' data-ref="global_State">global_State</a> *<dfn class="local col2 decl" id="72g" title='g' data-type='global_State *' data-ref="72g">g</dfn>, <a class="typedef" href="llimits.h.html#l_mem" title='l_mem' data-type='ptrdiff_t' data-ref="l_mem">l_mem</a> <dfn class="local col3 decl" id="73debt" title='debt' data-type='l_mem' data-ref="73debt">debt</dfn>);</td></tr>
+<tr><th id="228">228</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <em>void</em> <dfn class="decl fn" id="luaE_freethread" title='luaE_freethread' data-ref="luaE_freethread">luaE_freethread</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col4 decl" id="74L" title='L' data-type='lua_State *' data-ref="74L">L</dfn>, <a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col5 decl" id="75L1" title='L1' data-type='lua_State *' data-ref="75L1">L1</dfn>);</td></tr>
+<tr><th id="229">229</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <a class="typedef" href="#CallInfo" title='CallInfo' data-type='struct CallInfo' data-ref="CallInfo">CallInfo</a> *<dfn class="decl fn" id="luaE_extendCI" title='luaE_extendCI' data-ref="luaE_extendCI">luaE_extendCI</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col6 decl" id="76L" title='L' data-type='lua_State *' data-ref="76L">L</dfn>);</td></tr>
+<tr><th id="230">230</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <em>void</em> <dfn class="decl fn" id="luaE_freeCI" title='luaE_freeCI' data-ref="luaE_freeCI">luaE_freeCI</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col7 decl" id="77L" title='L' data-type='lua_State *' data-ref="77L">L</dfn>);</td></tr>
+<tr><th id="231">231</th><td><a class="macro" href="luaconf.h.html#280" title="__attribute__((visibility(&quot;hidden&quot;))) extern" data-ref="_M/LUAI_FUNC">LUAI_FUNC</a> <em>void</em> <dfn class="decl fn" id="luaE_shrinkCI" title='luaE_shrinkCI' data-ref="luaE_shrinkCI">luaE_shrinkCI</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col8 decl" id="78L" title='L' data-type='lua_State *' data-ref="78L">L</dfn>);</td></tr>
+<tr><th id="232">232</th><td></td></tr>
+<tr><th id="233">233</th><td></td></tr>
+<tr><th id="234">234</th><td><u>#<span data-ppcond="7">endif</span></u></td></tr>
+<tr><th id="235">235</th><td></td></tr>
+<tr><th id="236">236</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='lstring.c.html'>lua/src/lstring.c</a><br/>Generated on <em>2018-Apr-07</em> from project lua<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

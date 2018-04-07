@@ -1,0 +1,2 @@
+<dec f='include/stdio.h' l='127'/>
+<use f='lua/src/lauxlib.c' l='638' u='c'/>

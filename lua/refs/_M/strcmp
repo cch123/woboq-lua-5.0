@@ -1,0 +1,9 @@
+<dec f='include/x86_64-linux-gnu/bits/string2.h' l='799'/>
+<use f='lua/src/lauxlib.c' l='169' u='c'/>
+<use f='lua/src/lauxlib.c' l='354' u='c'/>
+<use f='lua/src/ldblib.c' l='407' u='c'/>
+<use f='lua/src/loslib.c' l='297' u='c'/>
+<use f='lua/src/lstring.c' l='224' u='c'/>
+<use f='lua/src/lua.c' l='295' u='c'/>
+<use f='lua/src/lua.c' l='440' u='c'/>
+<use f='lua/src/lua.c' l='440' u='c'/>

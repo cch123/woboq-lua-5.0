@@ -1,0 +1,2 @@
+<dec f='lua/src/ldo.h' l='54' type='void luaD_throw(lua_State * L, int errcode)'/>
+<use f='lua/src/lundump.c' l='41' u='c' c='error'/>

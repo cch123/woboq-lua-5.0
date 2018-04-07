@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='135' type='int rl_set_mark(int , int )'/>
+<doc f='include/readline/readline.h' l='134'>/* Bindable commands for managing the mark and region. */</doc>

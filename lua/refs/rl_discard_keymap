@@ -1,0 +1,3 @@
+<dec f='include/readline/keymaps.h' l='79' type='void rl_discard_keymap(Keymap )'/>
+<dec f='include/readline/readline.h' l='345' type='void rl_discard_keymap(Keymap )'/>
+<doc f='include/readline/keymaps.h' l='78'>/* Free the storage associated with a keymap. */</doc>

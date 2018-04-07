@@ -1,0 +1,23 @@
+<def f='include/readline/readline.h' l='878' ll='915'/>
+<size>192</size>
+<mbr r='readline_state::point' o='0' t='int'/>
+<mbr r='readline_state::end' o='32' t='int'/>
+<mbr r='readline_state::mark' o='64' t='int'/>
+<mbr r='readline_state::buffer' o='128' t='char *'/>
+<mbr r='readline_state::buflen' o='192' t='int'/>
+<mbr r='readline_state::ul' o='256' t='UNDO_LIST *'/>
+<mbr r='readline_state::prompt' o='320' t='char *'/>
+<mbr r='readline_state::rlstate' o='384' t='int'/>
+<mbr r='readline_state::done' o='416' t='int'/>
+<mbr r='readline_state::kmap' o='448' t='Keymap'/>
+<mbr r='readline_state::lastfunc' o='512' t='rl_command_func_t *'/>
+<mbr r='readline_state::insmode' o='576' t='int'/>
+<mbr r='readline_state::edmode' o='608' t='int'/>
+<mbr r='readline_state::kseqlen' o='640' t='int'/>
+<mbr r='readline_state::inf' o='704' t='FILE *'/>
+<mbr r='readline_state::outf' o='768' t='FILE *'/>
+<mbr r='readline_state::pendingin' o='832' t='int'/>
+<mbr r='readline_state::macro' o='896' t='char *'/>
+<mbr r='readline_state::catchsigs' o='960' t='int'/>
+<mbr r='readline_state::catchsigwinch' o='992' t='int'/>
+<mbr r='readline_state::reserved' o='1024' t='char [64]'/>

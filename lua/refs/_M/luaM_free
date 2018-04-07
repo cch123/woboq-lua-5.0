@@ -1,0 +1,2 @@
+<dec f='lua/src/lmem.h' l='42'/>
+<use f='lua/src/ltable.c' l='418' u='c'/>

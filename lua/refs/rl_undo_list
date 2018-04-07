@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='66' type='UNDO_LIST *'/>
+<doc f='include/readline/readline.h' l='65'>/* The current undo list for RL_LINE_BUFFER. */</doc>

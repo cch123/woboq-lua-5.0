@@ -1,0 +1,2 @@
+<dec f='lua/src/lua.h' l='431' type='void * lua_upvalueid(lua_State * L, int fidx, int n)'/>
+<use f='lua/src/ldblib.c' l='286' u='c' c='db_upvalueid'/>

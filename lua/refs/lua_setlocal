@@ -1,0 +1,2 @@
+<dec f='lua/src/lua.h' l='427' type='const char * lua_setlocal(lua_State * L, const lua_Debug * ar, int n)'/>
+<use f='lua/src/ldblib.c' l='237' u='c' c='db_setlocal'/>

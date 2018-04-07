@@ -1,0 +1,2 @@
+<dec f='include/readline/history.h' l='206' type='int history_truncate_file(const char * , int )'/>
+<doc f='include/readline/history.h' l='205'>/* Truncate the history file, leaving only the last NLINES lines. */</doc>

@@ -1,0 +1,5 @@
+<dec f='lua/src/lobject.h' l='398' type='TString *'/>
+<offset>0</offset>
+<use f='lua/src/luac.c' l='431' u='r' c='PrintDebug'/>
+<use f='lua/src/lundump.c' l='190' u='w' c='LoadDebug'/>
+<use f='lua/src/lundump.c' l='192' u='w' c='LoadDebug'/>

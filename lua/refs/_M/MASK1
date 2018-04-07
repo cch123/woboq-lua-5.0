@@ -1,0 +1,2 @@
+<dec f='lua/src/lopcodes.h' l='80'/>
+<doc f='lua/src/lopcodes.h' l='79'>/* creates a mask with &apos;n&apos; 1 bits at position &apos;p&apos; */</doc>

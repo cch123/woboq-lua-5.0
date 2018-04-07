@@ -1,0 +1,4 @@
+<dec f='include/readline/history.h' l='153' type='HIST_ENTRY * previous_history()'/>
+<doc f='include/readline/history.h' l='150'>/* Back up history_offset to the previous history entry, and return
+   a pointer to that entry.  If there is no previous entry, return
+   a NULL pointer. */</doc>

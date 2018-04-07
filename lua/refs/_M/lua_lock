@@ -1,0 +1,3 @@
+<dec f='lua/src/llimits.h' l='214'/>
+<use f='lua/src/luac.c' l='183' u='c'/>
+<use f='lua/src/lzio.c' l='29' u='c'/>

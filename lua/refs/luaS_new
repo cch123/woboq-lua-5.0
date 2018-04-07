@@ -1,0 +1,10 @@
+<dec f='lua/src/lstring.h' l='45' type='TString * luaS_new(lua_State * L, const char * str)'/>
+<def f='lua/src/lstring.c' l='219' ll='233' type='TString * luaS_new(lua_State * L, const char * str)'/>
+<doc f='lua/src/lstring.c' l='213'>/*
+** Create or reuse a zero-terminated string, first checking in the
+** cache (using the string address as a key). The cache can contain
+** only zero-terminated strings, so it is safe to use &apos;strcmp&apos; to
+** check hits.
+*/</doc>
+<use f='lua/src/ltm.c' l='49' u='c' c='luaT_init'/>
+<use f='lua/src/ltm.c' l='94' u='c' c='luaT_objtypename'/>

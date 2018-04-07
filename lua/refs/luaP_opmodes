@@ -1,0 +1,6 @@
+<dec f='lua/src/lopcodes.h' l='281' type='const lu_byte [47]'/>
+<use f='lua/src/luac.c' l='306' macro='1' u='r'/>
+<use f='lua/src/luac.c' l='310' macro='1' u='r'/>
+<use f='lua/src/luac.c' l='311' macro='1' u='r'/>
+<use f='lua/src/luac.c' l='315' macro='1' u='r'/>
+<use f='lua/src/luac.c' l='316' macro='1' u='r'/>

@@ -1,0 +1,2 @@
+<dec f='lua/src/lstring.h' l='20'/>
+<use f='lua/src/lstring.c' l='121' u='c'/>

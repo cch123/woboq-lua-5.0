@@ -1,0 +1,6 @@
+<dec f='lua/src/lauxlib.h' l='24'/>
+<use f='lua/src/lauxlib.c' l='76' u='c'/>
+<use f='lua/src/lauxlib.c' l='973' u='c'/>
+<doc f='lua/src/lauxlib.h' l='23'>/* key, in the registry, for table of loaded modules */</doc>
+<use f='lua/src/loadlib.c' l='600' u='c'/>
+<use f='lua/src/loadlib.c' l='779' u='c'/>

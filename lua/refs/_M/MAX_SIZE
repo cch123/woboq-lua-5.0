@@ -1,0 +1,5 @@
+<dec f='lua/src/llimits.h' l='42'/>
+<use f='lua/src/lstring.c' l='204' u='c'/>
+<use f='lua/src/lstring.c' l='239' u='c'/>
+<doc f='lua/src/llimits.h' l='41'>/* maximum size visible for Lua (must be representable in a lua_Integer */</doc>
+<use f='lua/src/lvm.c' l='493' u='c'/>

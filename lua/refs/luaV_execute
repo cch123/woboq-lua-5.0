@@ -1,0 +1,2 @@
+<dec f='lua/src/lvm.h' l='106' type='void luaV_execute(lua_State * L)'/>
+<def f='lua/src/lvm.c' l='786' ll='1319' type='void luaV_execute(lua_State * L)'/>

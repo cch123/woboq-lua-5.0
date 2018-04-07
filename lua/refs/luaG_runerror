@@ -1,0 +1,13 @@
+<dec f='lua/src/ldebug.h' l='32' type='void luaG_runerror(lua_State * L, const char * fmt)'/>
+<use f='lua/src/ltable.c' l='179' u='c' c='findindex'/>
+<use f='lua/src/ltable.c' l='318' u='c' c='setnodevector'/>
+<use f='lua/src/ltable.c' l='445' u='c' c='luaH_newkey'/>
+<use f='lua/src/ltable.c' l='453' u='c' c='luaH_newkey'/>
+<use f='lua/src/lvm.c' l='192' u='c' c='luaV_finishget'/>
+<use f='lua/src/lvm.c' l='237' u='c' c='luaV_finishset'/>
+<use f='lua/src/lvm.c' l='494' u='c' c='luaV_concat'/>
+<use f='lua/src/lvm.c' l='555' u='c' c='luaV_div'/>
+<use f='lua/src/lvm.c' l='575' u='c' c='luaV_mod'/>
+<use f='lua/src/lvm.c' l='1230' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1233' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1236' u='c' c='luaV_execute'/>

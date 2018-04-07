@@ -1,0 +1,6 @@
+<dec f='lua/src/lstate.h' l='60' type='int'/>
+<use f='lua/src/lstring.c' l='160' u='w' c='luaS_remove'/>
+<use f='lua/src/lstring.c' l='182' u='r' c='internshrstr'/>
+<use f='lua/src/lstring.c' l='191' u='w' c='internshrstr'/>
+<offset>64</offset>
+<doc f='lua/src/lstate.h' l='60'>/* number of elements */</doc>

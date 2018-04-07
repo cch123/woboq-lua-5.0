@@ -1,0 +1,4 @@
+<dec f='lua/src/lauxlib.h' l='64' type='void * luaL_testudata(lua_State * L, int ud, const char * tname)'/>
+<def f='lua/src/lauxlib.c' l='318' ll='330' macro='1' type='void * luaL_testudata(lua_State * L, int ud, const char * tname)'/>
+<use f='lua/src/lauxlib.c' l='334' u='c' c='luaL_checkudata'/>
+<use f='lua/src/liolib.c' l='153' u='c' c='io_type'/>

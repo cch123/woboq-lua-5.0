@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='399' type='void rl_replace_line(const char * , int )'/>
+<doc f='include/readline/readline.h' l='398'>/* Modifying text. */</doc>

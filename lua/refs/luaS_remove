@@ -1,0 +1,2 @@
+<dec f='lua/src/lstring.h' l='42' type='void luaS_remove(lua_State * L, TString * ts)'/>
+<def f='lua/src/lstring.c' l='154' ll='161' type='void luaS_remove(lua_State * L, TString * ts)'/>

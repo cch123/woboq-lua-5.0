@@ -1,0 +1,24 @@
+<dec f='lua/src/lvm.h' l='100' type='int luaV_tointeger(const TValue * obj, lua_Integer * p, int mode)'/>
+<use f='lua/src/ltable.c' l='448' u='c' c='luaH_newkey'/>
+<use f='lua/src/ltable.c' l='577' u='c' c='luaH_get'/>
+<def f='lua/src/lvm.c' l='94' ll='117' type='int luaV_tointeger(const TValue * obj, lua_Integer * p, int mode)'/>
+<use f='lua/src/lvm.c' l='138' u='c' c='forlimit'/>
+<use f='lua/src/lvm.c' l='414' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='414' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='945' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='945' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='955' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='955' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='965' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='965' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='975' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='975' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='985' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='985' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='1049' macro='1' u='c'/>
+<doc f='lua/src/lvm.c' l='88'>/*
+** try to convert a value to an integer, rounding according to &apos;mode&apos;:
+** mode == 0: accepts only integral values
+** mode == 1: takes the floor of the number
+** mode == 2: takes the ceil of the number
+*/</doc>

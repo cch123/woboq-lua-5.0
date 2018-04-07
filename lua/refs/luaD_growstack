@@ -1,0 +1,2 @@
+<dec f='lua/src/ldo.h' l='50' type='void luaD_growstack(lua_State * L, int n)'/>
+<use f='lua/src/lvm.c' l='1303' macro='1' u='c'/>

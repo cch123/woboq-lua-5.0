@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>chardefs.h source code [include/readline/chardefs.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'include/readline/chardefs.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>include</a>/<a href='./'>readline</a>/<a href='chardefs.h.html'>chardefs.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* chardefs.h -- Character definitions for readline. */</i></td></tr>
+<tr><th id="2">2</th><td></td></tr>
+<tr><th id="3">3</th><td><i>/* Copyright (C) 1994-2009 Free Software Foundation, Inc.</i></td></tr>
+<tr><th id="4">4</th><td><i></i></td></tr>
+<tr><th id="5">5</th><td><i>   This file is part of the GNU Readline Library (Readline), a library</i></td></tr>
+<tr><th id="6">6</th><td><i>   for reading lines of text with interactive input and history editing.</i></td></tr>
+<tr><th id="7">7</th><td><i></i></td></tr>
+<tr><th id="8">8</th><td><i>   Readline is free software: you can redistribute it and/or modify</i></td></tr>
+<tr><th id="9">9</th><td><i>   it under the terms of the GNU General Public License as published by</i></td></tr>
+<tr><th id="10">10</th><td><i>   the Free Software Foundation, either version 3 of the License, or</i></td></tr>
+<tr><th id="11">11</th><td><i>   (at your option) any later version.</i></td></tr>
+<tr><th id="12">12</th><td><i></i></td></tr>
+<tr><th id="13">13</th><td><i>   Readline is distributed in the hope that it will be useful,</i></td></tr>
+<tr><th id="14">14</th><td><i>   but WITHOUT ANY WARRANTY; without even the implied warranty of</i></td></tr>
+<tr><th id="15">15</th><td><i>   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</i></td></tr>
+<tr><th id="16">16</th><td><i>   GNU General Public License for more details.</i></td></tr>
+<tr><th id="17">17</th><td><i></i></td></tr>
+<tr><th id="18">18</th><td><i>   You should have received a copy of the GNU General Public License</i></td></tr>
+<tr><th id="19">19</th><td><i>   along with Readline.  If not, see &lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</i></td></tr>
+<tr><th id="20">20</th><td><i>*/</i></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><u>#<span data-ppcond="22">ifndef</span> <span class="macro" data-ref="_M/_CHARDEFS_H_">_CHARDEFS_H_</span></u></td></tr>
+<tr><th id="23">23</th><td><u>#define <dfn class="macro" id="_M/_CHARDEFS_H_" data-ref="_M/_CHARDEFS_H_">_CHARDEFS_H_</dfn></u></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><u>#include <a href="../ctype.h.html">&lt;ctype.h&gt;</a></u></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><u>#include <a href="../string.h.html">&lt;string.h&gt;</a></u></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><u>#<span data-ppcond="29">ifndef</span> <span class="macro" data-ref="_M/whitespace">whitespace</span></u></td></tr>
+<tr><th id="30">30</th><td><u>#define <dfn class="macro" id="_M/whitespace" data-ref="_M/whitespace">whitespace</dfn>(c) (((c) == ' ') || ((c) == '\t'))</u></td></tr>
+<tr><th id="31">31</th><td><u>#<span data-ppcond="29">endif</span></u></td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><u>#<span data-ppcond="33">ifdef</span> <span class="macro" data-ref="_M/CTRL">CTRL</span></u></td></tr>
+<tr><th id="34">34</th><td><u>#  undef CTRL</u></td></tr>
+<tr><th id="35">35</th><td><u>#<span data-ppcond="33">endif</span></u></td></tr>
+<tr><th id="36">36</th><td><u>#<span data-ppcond="36">ifdef</span> <span class="macro" data-ref="_M/UNCTRL">UNCTRL</span></u></td></tr>
+<tr><th id="37">37</th><td><u>#  undef UNCTRL</u></td></tr>
+<tr><th id="38">38</th><td><u>#<span data-ppcond="36">endif</span></u></td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><i>/* Some character stuff. */</i></td></tr>
+<tr><th id="41">41</th><td><u>#define <dfn class="macro" id="_M/control_character_threshold" data-ref="_M/control_character_threshold">control_character_threshold</dfn> 0x020   /* Smaller than this is control. */</u></td></tr>
+<tr><th id="42">42</th><td><u>#define <dfn class="macro" id="_M/control_character_mask" data-ref="_M/control_character_mask">control_character_mask</dfn> 0x1f	    /* 0x20 - 1 */</u></td></tr>
+<tr><th id="43">43</th><td><u>#define <dfn class="macro" id="_M/meta_character_threshold" data-ref="_M/meta_character_threshold">meta_character_threshold</dfn> 0x07f	    /* Larger than this is Meta. */</u></td></tr>
+<tr><th id="44">44</th><td><u>#define <dfn class="macro" id="_M/control_character_bit" data-ref="_M/control_character_bit">control_character_bit</dfn> 0x40	    /* 0x000000, must be off. */</u></td></tr>
+<tr><th id="45">45</th><td><u>#define <dfn class="macro" id="_M/meta_character_bit" data-ref="_M/meta_character_bit">meta_character_bit</dfn> 0x080	    /* x0000000, must be on. */</u></td></tr>
+<tr><th id="46">46</th><td><u>#define <dfn class="macro" id="_M/largest_char" data-ref="_M/largest_char">largest_char</dfn> 255		    /* Largest character value. */</u></td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td><u>#define <dfn class="macro" id="_M/CTRL_CHAR" data-ref="_M/CTRL_CHAR">CTRL_CHAR</dfn>(c) ((c) &lt; control_character_threshold &amp;&amp; (((c) &amp; 0x80) == 0))</u></td></tr>
+<tr><th id="49">49</th><td><u>#define <dfn class="macro" id="_M/META_CHAR" data-ref="_M/META_CHAR">META_CHAR</dfn>(c) ((c) &gt; meta_character_threshold &amp;&amp; (c) &lt;= largest_char)</u></td></tr>
+<tr><th id="50">50</th><td></td></tr>
+<tr><th id="51">51</th><td><u>#define <dfn class="macro" id="_M/CTRL" data-ref="_M/CTRL">CTRL</dfn>(c) ((c) &amp; control_character_mask)</u></td></tr>
+<tr><th id="52">52</th><td><u>#define <dfn class="macro" id="_M/META" data-ref="_M/META">META</dfn>(c) ((c) | meta_character_bit)</u></td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><u>#define <dfn class="macro" id="_M/UNMETA" data-ref="_M/UNMETA">UNMETA</dfn>(c) ((c) &amp; (~meta_character_bit))</u></td></tr>
+<tr><th id="55">55</th><td><u>#define <dfn class="macro" id="_M/UNCTRL" data-ref="_M/UNCTRL">UNCTRL</dfn>(c) _rl_to_upper(((c)|control_character_bit))</u></td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td><u>#<span data-ppcond="57">if</span> defined <span class="macro" data-ref="_M/STDC_HEADERS">STDC_HEADERS</span> || (!defined (<a class="macro" href="../ctype.h.html#233" data-ref="_M/isascii">isascii</a>) &amp;&amp; !defined (<span class="macro" data-ref="_M/HAVE_ISASCII">HAVE_ISASCII</span>))</u></td></tr>
+<tr><th id="58">58</th><td><u>#  define IN_CTYPE_DOMAIN(c) 1</u></td></tr>
+<tr><th id="59">59</th><td><u>#<span data-ppcond="57">else</span></u></td></tr>
+<tr><th id="60">60</th><td><u>#  define <dfn class="macro" id="_M/IN_CTYPE_DOMAIN" data-ref="_M/IN_CTYPE_DOMAIN">IN_CTYPE_DOMAIN</dfn>(c) isascii(c)</u></td></tr>
+<tr><th id="61">61</th><td><u>#<span data-ppcond="57">endif</span></u></td></tr>
+<tr><th id="62">62</th><td></td></tr>
+<tr><th id="63">63</th><td><u>#<span data-ppcond="63">if</span> !defined (<a class="macro" href="../ctype.h.html#207" data-ref="_M/isxdigit">isxdigit</a>) &amp;&amp; !defined (<span class="macro" data-ref="_M/HAVE_ISXDIGIT">HAVE_ISXDIGIT</span>) &amp;&amp; !defined (<span class="macro" data-ref="_M/__cplusplus">__cplusplus</span>)</u></td></tr>
+<tr><th id="64">64</th><td><u>#  define isxdigit(c)   (isdigit((c)) || ((c) &gt;= 'a' &amp;&amp; (c) &lt;= 'f') || ((c) &gt;= 'A' &amp;&amp; (c) &lt;= 'F'))</u></td></tr>
+<tr><th id="65">65</th><td><u>#<span data-ppcond="63">endif</span></u></td></tr>
+<tr><th id="66">66</th><td></td></tr>
+<tr><th id="67">67</th><td><u>#<span data-ppcond="67">if</span> defined (<span class="macro" data-ref="_M/CTYPE_NON_ASCII">CTYPE_NON_ASCII</span>)</u></td></tr>
+<tr><th id="68">68</th><td><u>#  define NON_NEGATIVE(c) 1</u></td></tr>
+<tr><th id="69">69</th><td><u>#<span data-ppcond="67">else</span></u></td></tr>
+<tr><th id="70">70</th><td><u>#  define <dfn class="macro" id="_M/NON_NEGATIVE" data-ref="_M/NON_NEGATIVE">NON_NEGATIVE</dfn>(c) ((unsigned char)(c) == (c))</u></td></tr>
+<tr><th id="71">71</th><td><u>#<span data-ppcond="67">endif</span></u></td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td><i>/* Some systems define these; we want our definitions. */</i></td></tr>
+<tr><th id="74">74</th><td><u>#undef <span class="macro" data-ref="_M/ISPRINT">ISPRINT</span></u></td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td><i>/* Beware:  these only work with single-byte ASCII characters. */</i></td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td><u>#define <dfn class="macro" id="_M/ISALNUM" data-ref="_M/ISALNUM">ISALNUM</dfn>(c)	(IN_CTYPE_DOMAIN (c) &amp;&amp; isalnum (c))</u></td></tr>
+<tr><th id="79">79</th><td><u>#define <dfn class="macro" id="_M/ISALPHA" data-ref="_M/ISALPHA">ISALPHA</dfn>(c)	(IN_CTYPE_DOMAIN (c) &amp;&amp; isalpha (c))</u></td></tr>
+<tr><th id="80">80</th><td><u>#define <dfn class="macro" id="_M/ISDIGIT" data-ref="_M/ISDIGIT">ISDIGIT</dfn>(c)	(IN_CTYPE_DOMAIN (c) &amp;&amp; isdigit (c))</u></td></tr>
+<tr><th id="81">81</th><td><u>#define <dfn class="macro" id="_M/ISLOWER" data-ref="_M/ISLOWER">ISLOWER</dfn>(c)	(IN_CTYPE_DOMAIN (c) &amp;&amp; islower (c))</u></td></tr>
+<tr><th id="82">82</th><td><u>#define <dfn class="macro" id="_M/ISPRINT" data-ref="_M/ISPRINT">ISPRINT</dfn>(c)	(IN_CTYPE_DOMAIN (c) &amp;&amp; isprint (c))</u></td></tr>
+<tr><th id="83">83</th><td><u>#define <dfn class="macro" id="_M/ISUPPER" data-ref="_M/ISUPPER">ISUPPER</dfn>(c)	(IN_CTYPE_DOMAIN (c) &amp;&amp; isupper (c))</u></td></tr>
+<tr><th id="84">84</th><td><u>#define <dfn class="macro" id="_M/ISXDIGIT" data-ref="_M/ISXDIGIT">ISXDIGIT</dfn>(c)	(IN_CTYPE_DOMAIN (c) &amp;&amp; isxdigit (c))</u></td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td><u>#define <dfn class="macro" id="_M/_rl_lowercase_p" data-ref="_M/_rl_lowercase_p">_rl_lowercase_p</dfn>(c)	(NON_NEGATIVE(c) &amp;&amp; ISLOWER(c))</u></td></tr>
+<tr><th id="87">87</th><td><u>#define <dfn class="macro" id="_M/_rl_uppercase_p" data-ref="_M/_rl_uppercase_p">_rl_uppercase_p</dfn>(c)	(NON_NEGATIVE(c) &amp;&amp; ISUPPER(c))</u></td></tr>
+<tr><th id="88">88</th><td><u>#define <dfn class="macro" id="_M/_rl_digit_p" data-ref="_M/_rl_digit_p">_rl_digit_p</dfn>(c)		((c) &gt;= '0' &amp;&amp; (c) &lt;= '9')</u></td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td><u>#define <dfn class="macro" id="_M/_rl_pure_alphabetic" data-ref="_M/_rl_pure_alphabetic">_rl_pure_alphabetic</dfn>(c)	(NON_NEGATIVE(c) &amp;&amp; ISALPHA(c))</u></td></tr>
+<tr><th id="91">91</th><td><u>#define <dfn class="macro" id="_M/ALPHABETIC" data-ref="_M/ALPHABETIC">ALPHABETIC</dfn>(c)		(NON_NEGATIVE(c) &amp;&amp; ISALNUM(c))</u></td></tr>
+<tr><th id="92">92</th><td></td></tr>
+<tr><th id="93">93</th><td><u>#<span data-ppcond="93">ifndef</span> <span class="macro" data-ref="_M/_rl_to_upper">_rl_to_upper</span></u></td></tr>
+<tr><th id="94">94</th><td><u>#  define <dfn class="macro" id="_M/_rl_to_upper" data-ref="_M/_rl_to_upper">_rl_to_upper</dfn>(c) (_rl_lowercase_p(c) ? toupper((unsigned char)c) : (c))</u></td></tr>
+<tr><th id="95">95</th><td><u>#  define <dfn class="macro" id="_M/_rl_to_lower" data-ref="_M/_rl_to_lower">_rl_to_lower</dfn>(c) (_rl_uppercase_p(c) ? tolower((unsigned char)c) : (c))</u></td></tr>
+<tr><th id="96">96</th><td><u>#<span data-ppcond="93">endif</span></u></td></tr>
+<tr><th id="97">97</th><td></td></tr>
+<tr><th id="98">98</th><td><u>#<span data-ppcond="98">ifndef</span> <span class="macro" data-ref="_M/_rl_digit_value">_rl_digit_value</span></u></td></tr>
+<tr><th id="99">99</th><td><u>#  define <dfn class="macro" id="_M/_rl_digit_value" data-ref="_M/_rl_digit_value">_rl_digit_value</dfn>(x) ((x) - '0')</u></td></tr>
+<tr><th id="100">100</th><td><u>#<span data-ppcond="98">endif</span></u></td></tr>
+<tr><th id="101">101</th><td></td></tr>
+<tr><th id="102">102</th><td><u>#<span data-ppcond="102">ifndef</span> <span class="macro" data-ref="_M/_rl_isident">_rl_isident</span></u></td></tr>
+<tr><th id="103">103</th><td><u>#  define <dfn class="macro" id="_M/_rl_isident" data-ref="_M/_rl_isident">_rl_isident</dfn>(c) (ISALNUM(c) || (c) == '_')</u></td></tr>
+<tr><th id="104">104</th><td><u>#<span data-ppcond="102">endif</span></u></td></tr>
+<tr><th id="105">105</th><td></td></tr>
+<tr><th id="106">106</th><td><u>#<span data-ppcond="106">ifndef</span> <span class="macro" data-ref="_M/ISOCTAL">ISOCTAL</span></u></td></tr>
+<tr><th id="107">107</th><td><u>#  define <dfn class="macro" id="_M/ISOCTAL" data-ref="_M/ISOCTAL">ISOCTAL</dfn>(c)	((c) &gt;= '0' &amp;&amp; (c) &lt;= '7')</u></td></tr>
+<tr><th id="108">108</th><td><u>#<span data-ppcond="106">endif</span></u></td></tr>
+<tr><th id="109">109</th><td><u>#define <dfn class="macro" id="_M/OCTVALUE" data-ref="_M/OCTVALUE">OCTVALUE</dfn>(c)	((c) - '0')</u></td></tr>
+<tr><th id="110">110</th><td></td></tr>
+<tr><th id="111">111</th><td><u>#define <dfn class="macro" id="_M/HEXVALUE" data-ref="_M/HEXVALUE">HEXVALUE</dfn>(c) \</u></td></tr>
+<tr><th id="112">112</th><td><u>  (((c) &gt;= 'a' &amp;&amp; (c) &lt;= 'f') \</u></td></tr>
+<tr><th id="113">113</th><td><u>  	? (c)-'a'+10 \</u></td></tr>
+<tr><th id="114">114</th><td><u>  	: (c) &gt;= 'A' &amp;&amp; (c) &lt;= 'F' ? (c)-'A'+10 : (c)-'0')</u></td></tr>
+<tr><th id="115">115</th><td></td></tr>
+<tr><th id="116">116</th><td><u>#<span data-ppcond="116">ifndef</span> <span class="macro" data-ref="_M/NEWLINE">NEWLINE</span></u></td></tr>
+<tr><th id="117">117</th><td><u>#define <dfn class="macro" id="_M/NEWLINE" data-ref="_M/NEWLINE">NEWLINE</dfn> '\n'</u></td></tr>
+<tr><th id="118">118</th><td><u>#<span data-ppcond="116">endif</span></u></td></tr>
+<tr><th id="119">119</th><td></td></tr>
+<tr><th id="120">120</th><td><u>#<span data-ppcond="120">ifndef</span> <span class="macro" data-ref="_M/RETURN">RETURN</span></u></td></tr>
+<tr><th id="121">121</th><td><u>#define <dfn class="macro" id="_M/RETURN" data-ref="_M/RETURN">RETURN</dfn> CTRL('M')</u></td></tr>
+<tr><th id="122">122</th><td><u>#<span data-ppcond="120">endif</span></u></td></tr>
+<tr><th id="123">123</th><td></td></tr>
+<tr><th id="124">124</th><td><u>#<span data-ppcond="124">ifndef</span> <span class="macro" data-ref="_M/RUBOUT">RUBOUT</span></u></td></tr>
+<tr><th id="125">125</th><td><u>#define <dfn class="macro" id="_M/RUBOUT" data-ref="_M/RUBOUT">RUBOUT</dfn> 0x7f</u></td></tr>
+<tr><th id="126">126</th><td><u>#<span data-ppcond="124">endif</span></u></td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td><u>#<span data-ppcond="128">ifndef</span> <span class="macro" data-ref="_M/TAB">TAB</span></u></td></tr>
+<tr><th id="129">129</th><td><u>#define <dfn class="macro" id="_M/TAB" data-ref="_M/TAB">TAB</dfn> '\t'</u></td></tr>
+<tr><th id="130">130</th><td><u>#<span data-ppcond="128">endif</span></u></td></tr>
+<tr><th id="131">131</th><td></td></tr>
+<tr><th id="132">132</th><td><u>#<span data-ppcond="132">ifdef</span> <span class="macro" data-ref="_M/ABORT_CHAR">ABORT_CHAR</span></u></td></tr>
+<tr><th id="133">133</th><td><u>#undef ABORT_CHAR</u></td></tr>
+<tr><th id="134">134</th><td><u>#<span data-ppcond="132">endif</span></u></td></tr>
+<tr><th id="135">135</th><td><u>#define <dfn class="macro" id="_M/ABORT_CHAR" data-ref="_M/ABORT_CHAR">ABORT_CHAR</dfn> CTRL('G')</u></td></tr>
+<tr><th id="136">136</th><td></td></tr>
+<tr><th id="137">137</th><td><u>#<span data-ppcond="137">ifdef</span> <span class="macro" data-ref="_M/PAGE">PAGE</span></u></td></tr>
+<tr><th id="138">138</th><td><u>#undef PAGE</u></td></tr>
+<tr><th id="139">139</th><td><u>#<span data-ppcond="137">endif</span></u></td></tr>
+<tr><th id="140">140</th><td><u>#define <dfn class="macro" id="_M/PAGE" data-ref="_M/PAGE">PAGE</dfn> CTRL('L')</u></td></tr>
+<tr><th id="141">141</th><td></td></tr>
+<tr><th id="142">142</th><td><u>#<span data-ppcond="142">ifdef</span> <span class="macro" data-ref="_M/SPACE">SPACE</span></u></td></tr>
+<tr><th id="143">143</th><td><u>#undef SPACE</u></td></tr>
+<tr><th id="144">144</th><td><u>#<span data-ppcond="142">endif</span></u></td></tr>
+<tr><th id="145">145</th><td><u>#define <dfn class="macro" id="_M/SPACE" data-ref="_M/SPACE">SPACE</dfn> ' '	/* XXX - was 0x20 */</u></td></tr>
+<tr><th id="146">146</th><td></td></tr>
+<tr><th id="147">147</th><td><u>#<span data-ppcond="147">ifdef</span> <span class="macro" data-ref="_M/ESC">ESC</span></u></td></tr>
+<tr><th id="148">148</th><td><u>#undef ESC</u></td></tr>
+<tr><th id="149">149</th><td><u>#<span data-ppcond="147">endif</span></u></td></tr>
+<tr><th id="150">150</th><td><u>#define <dfn class="macro" id="_M/ESC" data-ref="_M/ESC">ESC</dfn> CTRL('[')</u></td></tr>
+<tr><th id="151">151</th><td></td></tr>
+<tr><th id="152">152</th><td><u>#<span data-ppcond="22">endif</span>  /* _CHARDEFS_H_ */</u></td></tr>
+<tr><th id="153">153</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../../lua/src/lua.c.html'>lua/src/lua.c</a><br/>Generated on <em>2018-Apr-07</em> from project include<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

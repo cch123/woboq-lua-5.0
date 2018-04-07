@@ -1,0 +1,6 @@
+<dec f='lua/src/lualib.h' l='24' type='int luaopen_table(lua_State * L)'/>
+<use f='lua/src/linit.c' l='46' u='r'/>
+<use f='lua/src/linit.c' l='46' u='r'/>
+<use f='lua/src/linit.c' l='46' u='r'/>
+<use f='lua/src/linit.c' l='46' u='r'/>
+<def f='lua/src/ltablib.c' l='441' ll='449' macro='1' type='int luaopen_table(lua_State * L)'/>

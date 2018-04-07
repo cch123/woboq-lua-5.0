@@ -1,0 +1,2 @@
+<dec f='include/readline/history.h' l='78' type='void history_set_history_state(HISTORY_STATE * )'/>
+<doc f='include/readline/history.h' l='77'>/* Set the state of the current history array to STATE. */</doc>

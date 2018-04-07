@@ -1,0 +1,468 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ltablib.c source code [lua/src/ltablib.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'lua/src/ltablib.c'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>lua</a>/<a href='./'>src</a>/<a href='ltablib.c.html'>ltablib.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*</i></td></tr>
+<tr><th id="2">2</th><td><i>** $Id: ltablib.c,v 1.93 2016/02/25 19:41:54 roberto Exp $</i></td></tr>
+<tr><th id="3">3</th><td><i>** Library for Table Manipulation</i></td></tr>
+<tr><th id="4">4</th><td><i>** See Copyright Notice in lua.h</i></td></tr>
+<tr><th id="5">5</th><td><i>*/</i></td></tr>
+<tr><th id="6">6</th><td></td></tr>
+<tr><th id="7">7</th><td><u>#define <dfn class="macro" id="_M/ltablib_c" data-ref="_M/ltablib_c">ltablib_c</dfn></u></td></tr>
+<tr><th id="8">8</th><td><u>#define <dfn class="macro" id="_M/LUA_LIB" data-ref="_M/LUA_LIB">LUA_LIB</dfn></u></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td><u>#include <a href="lprefix.h.html">"lprefix.h"</a></u></td></tr>
+<tr><th id="11">11</th><td></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><u>#include &lt;limits.h&gt;</u></td></tr>
+<tr><th id="14">14</th><td><u>#include &lt;stddef.h&gt;</u></td></tr>
+<tr><th id="15">15</th><td><u>#include <a href="../../include/string.h.html">&lt;string.h&gt;</a></u></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#include <a href="lua.h.html">"lua.h"</a></u></td></tr>
+<tr><th id="18">18</th><td></td></tr>
+<tr><th id="19">19</th><td><u>#include <a href="lauxlib.h.html">"lauxlib.h"</a></u></td></tr>
+<tr><th id="20">20</th><td><u>#include <a href="lualib.h.html">"lualib.h"</a></u></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><i>/*</i></td></tr>
+<tr><th id="24">24</th><td><i>** Operations that an object must define to mimic a table</i></td></tr>
+<tr><th id="25">25</th><td><i>** (some functions only need some of them)</i></td></tr>
+<tr><th id="26">26</th><td><i>*/</i></td></tr>
+<tr><th id="27">27</th><td><u>#define <dfn class="macro" id="_M/TAB_R" data-ref="_M/TAB_R">TAB_R</dfn>	1			/* read */</u></td></tr>
+<tr><th id="28">28</th><td><u>#define <dfn class="macro" id="_M/TAB_W" data-ref="_M/TAB_W">TAB_W</dfn>	2			/* write */</u></td></tr>
+<tr><th id="29">29</th><td><u>#define <dfn class="macro" id="_M/TAB_L" data-ref="_M/TAB_L">TAB_L</dfn>	4			/* length */</u></td></tr>
+<tr><th id="30">30</th><td><u>#define <dfn class="macro" id="_M/TAB_RW" data-ref="_M/TAB_RW">TAB_RW</dfn>	(TAB_R | TAB_W)		/* read/write */</u></td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><u>#define <dfn class="macro" id="_M/aux_getn" data-ref="_M/aux_getn">aux_getn</dfn>(L,n,w)	(<a class="tu ref fn" href="#checktab" title='checktab' data-use='c' data-ref="checktab">checktab</a>(L, n, (w) | TAB_L), <a class="ref fn" href="lauxlib.h.html#luaL_len" title='luaL_len' data-ref="luaL_len">luaL_len</a>(L, n))</u></td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td></td></tr>
+<tr><th id="36">36</th><td><em>static</em> <em>int</em> <dfn class="tu decl def fn" id="checkfield" title='checkfield' data-type='int checkfield(lua_State * L, const char * key, int n)' data-ref="checkfield">checkfield</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col1 decl" id="1L" title='L' data-type='lua_State *' data-ref="1L">L</dfn>, <em>const</em> <em>char</em> *<dfn class="local col2 decl" id="2key" title='key' data-type='const char *' data-ref="2key">key</dfn>, <em>int</em> <dfn class="local col3 decl" id="3n" title='n' data-type='int' data-ref="3n">n</dfn>) {</td></tr>
+<tr><th id="37">37</th><td>  <a class="ref fn" href="lua.h.html#lua_pushstring" title='lua_pushstring' data-ref="lua_pushstring">lua_pushstring</a>(<a class="local col1 ref" href="#1L" title='L' data-ref="1L">L</a>, <a class="local col2 ref" href="#2key" title='key' data-ref="2key">key</a>);</td></tr>
+<tr><th id="38">38</th><td>  <b>return</b> (<a class="ref fn" href="lua.h.html#lua_rawget" title='lua_rawget' data-ref="lua_rawget">lua_rawget</a>(<a class="local col1 ref" href="#1L" title='L' data-ref="1L">L</a>, -<a class="local col3 ref" href="#3n" title='n' data-ref="3n">n</a>) != <a class="macro" href="lua.h.html#64" title="0" data-ref="_M/LUA_TNIL">LUA_TNIL</a>);</td></tr>
+<tr><th id="39">39</th><td>}</td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><i  data-doc="checktab">/*</i></td></tr>
+<tr><th id="43">43</th><td><i  data-doc="checktab">** Check that 'arg' either is a table or can behave like one (that is,</i></td></tr>
+<tr><th id="44">44</th><td><i  data-doc="checktab">** has a metatable with the required metamethods)</i></td></tr>
+<tr><th id="45">45</th><td><i  data-doc="checktab">*/</i></td></tr>
+<tr><th id="46">46</th><td><em>static</em> <em>void</em> <dfn class="tu decl def fn" id="checktab" title='checktab' data-type='void checktab(lua_State * L, int arg, int what)' data-ref="checktab">checktab</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col4 decl" id="4L" title='L' data-type='lua_State *' data-ref="4L">L</dfn>, <em>int</em> <dfn class="local col5 decl" id="5arg" title='arg' data-type='int' data-ref="5arg">arg</dfn>, <em>int</em> <dfn class="local col6 decl" id="6what" title='what' data-type='int' data-ref="6what">what</dfn>) {</td></tr>
+<tr><th id="47">47</th><td>  <b>if</b> (<a class="ref fn" href="lua.h.html#lua_type" title='lua_type' data-ref="lua_type">lua_type</a>(<a class="local col4 ref" href="#4L" title='L' data-ref="4L">L</a>, <a class="local col5 ref" href="#5arg" title='arg' data-ref="5arg">arg</a>) != <a class="macro" href="lua.h.html#69" title="5" data-ref="_M/LUA_TTABLE">LUA_TTABLE</a>) {  <i>/* is it not a table? */</i></td></tr>
+<tr><th id="48">48</th><td>    <em>int</em> <dfn class="local col7 decl" id="7n" title='n' data-type='int' data-ref="7n">n</dfn> = <var>1</var>;  <i>/* number of elements to pop */</i></td></tr>
+<tr><th id="49">49</th><td>    <b>if</b> (<a class="ref fn" href="lua.h.html#lua_getmetatable" title='lua_getmetatable' data-ref="lua_getmetatable">lua_getmetatable</a>(<a class="local col4 ref" href="#4L" title='L' data-ref="4L">L</a>, <a class="local col5 ref" href="#5arg" title='arg' data-ref="5arg">arg</a>) &amp;&amp;  <i>/* must have metatable */</i></td></tr>
+<tr><th id="50">50</th><td>        (!(<a class="local col6 ref" href="#6what" title='what' data-ref="6what">what</a> &amp; <a class="macro" href="#27" title="1" data-ref="_M/TAB_R">TAB_R</a>) || <a class="tu ref fn" href="#checkfield" title='checkfield' data-use='c' data-ref="checkfield">checkfield</a>(<a class="local col4 ref" href="#4L" title='L' data-ref="4L">L</a>, <q>"__index"</q>, ++<a class="local col7 ref" href="#7n" title='n' data-ref="7n">n</a>)) &amp;&amp;</td></tr>
+<tr><th id="51">51</th><td>        (!(<a class="local col6 ref" href="#6what" title='what' data-ref="6what">what</a> &amp; <a class="macro" href="#28" title="2" data-ref="_M/TAB_W">TAB_W</a>) || <a class="tu ref fn" href="#checkfield" title='checkfield' data-use='c' data-ref="checkfield">checkfield</a>(<a class="local col4 ref" href="#4L" title='L' data-ref="4L">L</a>, <q>"__newindex"</q>, ++<a class="local col7 ref" href="#7n" title='n' data-ref="7n">n</a>)) &amp;&amp;</td></tr>
+<tr><th id="52">52</th><td>        (!(<a class="local col6 ref" href="#6what" title='what' data-ref="6what">what</a> &amp; <a class="macro" href="#29" title="4" data-ref="_M/TAB_L">TAB_L</a>) || <a class="tu ref fn" href="#checkfield" title='checkfield' data-use='c' data-ref="checkfield">checkfield</a>(<a class="local col4 ref" href="#4L" title='L' data-ref="4L">L</a>, <q>"__len"</q>, ++<a class="local col7 ref" href="#7n" title='n' data-ref="7n">n</a>))) {</td></tr>
+<tr><th id="53">53</th><td>      <a class="macro" href="lua.h.html#344" title="lua_settop(L, -(n)-1)" data-ref="_M/lua_pop">lua_pop</a>(<a class="local col4 ref" href="#4L" title='L' data-ref="4L">L</a>, <a class="local col7 ref" href="#7n" title='n' data-ref="7n">n</a>);  <i>/* pop metatable and tested metamethods */</i></td></tr>
+<tr><th id="54">54</th><td>    }</td></tr>
+<tr><th id="55">55</th><td>    <b>else</b></td></tr>
+<tr><th id="56">56</th><td>      <a class="ref fn" href="lauxlib.h.html#luaL_checktype" title='luaL_checktype' data-ref="luaL_checktype">luaL_checktype</a>(<a class="local col4 ref" href="#4L" title='L' data-ref="4L">L</a>, <a class="local col5 ref" href="#5arg" title='arg' data-ref="5arg">arg</a>, <a class="macro" href="lua.h.html#69" title="5" data-ref="_M/LUA_TTABLE">LUA_TTABLE</a>);  <i>/* force an error */</i></td></tr>
+<tr><th id="57">57</th><td>  }</td></tr>
+<tr><th id="58">58</th><td>}</td></tr>
+<tr><th id="59">59</th><td></td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td><u>#<span data-ppcond="61">if</span> defined(<span class="macro" data-ref="_M/LUA_COMPAT_MAXN">LUA_COMPAT_MAXN</span>)</u></td></tr>
+<tr><th id="62">62</th><td><em>static</em> <em>int</em> maxn (lua_State *L) {</td></tr>
+<tr><th id="63">63</th><td>  lua_Number max = <var>0</var>;</td></tr>
+<tr><th id="64">64</th><td>  luaL_checktype(L, <var>1</var>, LUA_TTABLE);</td></tr>
+<tr><th id="65">65</th><td>  lua_pushnil(L);  <i>/* first key */</i></td></tr>
+<tr><th id="66">66</th><td>  <b>while</b> (lua_next(L, <var>1</var>)) {</td></tr>
+<tr><th id="67">67</th><td>    lua_pop(L, <var>1</var>);  <i>/* remove value */</i></td></tr>
+<tr><th id="68">68</th><td>    <b>if</b> (lua_type(L, -<var>1</var>) == LUA_TNUMBER) {</td></tr>
+<tr><th id="69">69</th><td>      lua_Number v = lua_tonumber(L, -<var>1</var>);</td></tr>
+<tr><th id="70">70</th><td>      <b>if</b> (v &gt; max) max = v;</td></tr>
+<tr><th id="71">71</th><td>    }</td></tr>
+<tr><th id="72">72</th><td>  }</td></tr>
+<tr><th id="73">73</th><td>  lua_pushnumber(L, max);</td></tr>
+<tr><th id="74">74</th><td>  <b>return</b> <var>1</var>;</td></tr>
+<tr><th id="75">75</th><td>}</td></tr>
+<tr><th id="76">76</th><td><u>#<span data-ppcond="61">endif</span></u></td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td></td></tr>
+<tr><th id="79">79</th><td><em>static</em> <em>int</em> <dfn class="tu decl def fn" id="tinsert" title='tinsert' data-type='int tinsert(lua_State * L)' data-ref="tinsert">tinsert</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col8 decl" id="8L" title='L' data-type='lua_State *' data-ref="8L">L</dfn>) {</td></tr>
+<tr><th id="80">80</th><td>  <a class="typedef" href="lua.h.html#lua_Integer" title='lua_Integer' data-type='long long' data-ref="lua_Integer">lua_Integer</a> <dfn class="local col9 decl" id="9e" title='e' data-type='lua_Integer' data-ref="9e">e</dfn> = <a class="macro" href="#33" title="(checktab(L, 1, ((1 | 2)) | 4), luaL_len(L, 1))" data-ref="_M/aux_getn">aux_getn</a>(<a class="local col8 ref" href="#8L" title='L' data-ref="8L">L</a>, <var>1</var>, <a class="macro" href="#30" title="(1 | 2)" data-ref="_M/TAB_RW">TAB_RW</a>) + <var>1</var>;  <i>/* first empty element */</i></td></tr>
+<tr><th id="81">81</th><td>  <a class="typedef" href="lua.h.html#lua_Integer" title='lua_Integer' data-type='long long' data-ref="lua_Integer">lua_Integer</a> <dfn class="local col0 decl" id="10pos" title='pos' data-type='lua_Integer' data-ref="10pos">pos</dfn>;  <i>/* where to insert new element */</i></td></tr>
+<tr><th id="82">82</th><td>  <b>switch</b> (<a class="ref fn" href="lua.h.html#lua_gettop" title='lua_gettop' data-ref="lua_gettop">lua_gettop</a>(<a class="local col8 ref" href="#8L" title='L' data-ref="8L">L</a>)) {</td></tr>
+<tr><th id="83">83</th><td>    <b>case</b> <var>2</var>: {  <i>/* called with only 2 arguments */</i></td></tr>
+<tr><th id="84">84</th><td>      <a class="local col0 ref" href="#10pos" title='pos' data-ref="10pos">pos</a> = <a class="local col9 ref" href="#9e" title='e' data-ref="9e">e</a>;  <i>/* insert new element at the end */</i></td></tr>
+<tr><th id="85">85</th><td>      <b>break</b>;</td></tr>
+<tr><th id="86">86</th><td>    }</td></tr>
+<tr><th id="87">87</th><td>    <b>case</b> <var>3</var>: {</td></tr>
+<tr><th id="88">88</th><td>      <a class="typedef" href="lua.h.html#lua_Integer" title='lua_Integer' data-type='long long' data-ref="lua_Integer">lua_Integer</a> <dfn class="local col1 decl" id="11i" title='i' data-type='lua_Integer' data-ref="11i">i</dfn>;</td></tr>
+<tr><th id="89">89</th><td>      <a class="local col0 ref" href="#10pos" title='pos' data-ref="10pos">pos</a> = <a class="ref fn" href="lauxlib.h.html#luaL_checkinteger" title='luaL_checkinteger' data-ref="luaL_checkinteger">luaL_checkinteger</a>(<a class="local col8 ref" href="#8L" title='L' data-ref="8L">L</a>, <var>2</var>);  <i>/* 2nd argument is the position */</i></td></tr>
+<tr><th id="90">90</th><td>      <a class="macro" href="lauxlib.h.html#122" title="((void)((1 &lt;= pos &amp;&amp; pos &lt;= e) || luaL_argerror(L, (2), (&quot;position out of bounds&quot;))))" data-ref="_M/luaL_argcheck">luaL_argcheck</a>(<a class="local col8 ref" href="#8L" title='L' data-ref="8L">L</a>, <var>1</var> &lt;= <a class="local col0 ref" href="#10pos" title='pos' data-ref="10pos">pos</a> &amp;&amp; <a class="local col0 ref" href="#10pos" title='pos' data-ref="10pos">pos</a> &lt;= <a class="local col9 ref" href="#9e" title='e' data-ref="9e">e</a>, <var>2</var>, <q>"position out of bounds"</q>);</td></tr>
+<tr><th id="91">91</th><td>      <b>for</b> (<a class="local col1 ref" href="#11i" title='i' data-ref="11i">i</a> = <a class="local col9 ref" href="#9e" title='e' data-ref="9e">e</a>; <a class="local col1 ref" href="#11i" title='i' data-ref="11i">i</a> &gt; <a class="local col0 ref" href="#10pos" title='pos' data-ref="10pos">pos</a>; <a class="local col1 ref" href="#11i" title='i' data-ref="11i">i</a>--) {  <i>/* move up elements */</i></td></tr>
+<tr><th id="92">92</th><td>        <a class="ref fn" href="lua.h.html#lua_geti" title='lua_geti' data-ref="lua_geti">lua_geti</a>(<a class="local col8 ref" href="#8L" title='L' data-ref="8L">L</a>, <var>1</var>, <a class="local col1 ref" href="#11i" title='i' data-ref="11i">i</a> - <var>1</var>);</td></tr>
+<tr><th id="93">93</th><td>        <a class="ref fn" href="lua.h.html#lua_seti" title='lua_seti' data-ref="lua_seti">lua_seti</a>(<a class="local col8 ref" href="#8L" title='L' data-ref="8L">L</a>, <var>1</var>, <a class="local col1 ref" href="#11i" title='i' data-ref="11i">i</a>);  <i>/* t[i] = t[i - 1] */</i></td></tr>
+<tr><th id="94">94</th><td>      }</td></tr>
+<tr><th id="95">95</th><td>      <b>break</b>;</td></tr>
+<tr><th id="96">96</th><td>    }</td></tr>
+<tr><th id="97">97</th><td>    <b>default</b>: {</td></tr>
+<tr><th id="98">98</th><td>      <b>return</b> <a class="ref fn" href="lauxlib.h.html#luaL_error" title='luaL_error' data-ref="luaL_error">luaL_error</a>(<a class="local col8 ref" href="#8L" title='L' data-ref="8L">L</a>, <q>"wrong number of arguments to 'insert'"</q>);</td></tr>
+<tr><th id="99">99</th><td>    }</td></tr>
+<tr><th id="100">100</th><td>  }</td></tr>
+<tr><th id="101">101</th><td>  <a class="ref fn" href="lua.h.html#lua_seti" title='lua_seti' data-ref="lua_seti">lua_seti</a>(<a class="local col8 ref" href="#8L" title='L' data-ref="8L">L</a>, <var>1</var>, <a class="local col0 ref" href="#10pos" title='pos' data-ref="10pos">pos</a>);  <i>/* t[pos] = v */</i></td></tr>
+<tr><th id="102">102</th><td>  <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="103">103</th><td>}</td></tr>
+<tr><th id="104">104</th><td></td></tr>
+<tr><th id="105">105</th><td></td></tr>
+<tr><th id="106">106</th><td><em>static</em> <em>int</em> <dfn class="tu decl def fn" id="tremove" title='tremove' data-type='int tremove(lua_State * L)' data-ref="tremove">tremove</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col2 decl" id="12L" title='L' data-type='lua_State *' data-ref="12L">L</dfn>) {</td></tr>
+<tr><th id="107">107</th><td>  <a class="typedef" href="lua.h.html#lua_Integer" title='lua_Integer' data-type='long long' data-ref="lua_Integer">lua_Integer</a> <dfn class="local col3 decl" id="13size" title='size' data-type='lua_Integer' data-ref="13size">size</dfn> = <a class="macro" href="#33" title="(checktab(L, 1, ((1 | 2)) | 4), luaL_len(L, 1))" data-ref="_M/aux_getn">aux_getn</a>(<a class="local col2 ref" href="#12L" title='L' data-ref="12L">L</a>, <var>1</var>, <a class="macro" href="#30" title="(1 | 2)" data-ref="_M/TAB_RW">TAB_RW</a>);</td></tr>
+<tr><th id="108">108</th><td>  <a class="typedef" href="lua.h.html#lua_Integer" title='lua_Integer' data-type='long long' data-ref="lua_Integer">lua_Integer</a> <dfn class="local col4 decl" id="14pos" title='pos' data-type='lua_Integer' data-ref="14pos">pos</dfn> = <a class="ref fn" href="lauxlib.h.html#luaL_optinteger" title='luaL_optinteger' data-ref="luaL_optinteger">luaL_optinteger</a>(<a class="local col2 ref" href="#12L" title='L' data-ref="12L">L</a>, <var>2</var>, <a class="local col3 ref" href="#13size" title='size' data-ref="13size">size</a>);</td></tr>
+<tr><th id="109">109</th><td>  <b>if</b> (<a class="local col4 ref" href="#14pos" title='pos' data-ref="14pos">pos</a> != <a class="local col3 ref" href="#13size" title='size' data-ref="13size">size</a>)  <i>/* validate 'pos' if given */</i></td></tr>
+<tr><th id="110">110</th><td>    <a class="macro" href="lauxlib.h.html#122" title="((void)((1 &lt;= pos &amp;&amp; pos &lt;= size + 1) || luaL_argerror(L, (1), (&quot;position out of bounds&quot;))))" data-ref="_M/luaL_argcheck">luaL_argcheck</a>(<a class="local col2 ref" href="#12L" title='L' data-ref="12L">L</a>, <var>1</var> &lt;= <a class="local col4 ref" href="#14pos" title='pos' data-ref="14pos">pos</a> &amp;&amp; <a class="local col4 ref" href="#14pos" title='pos' data-ref="14pos">pos</a> &lt;= <a class="local col3 ref" href="#13size" title='size' data-ref="13size">size</a> + <var>1</var>, <var>1</var>, <q>"position out of bounds"</q>);</td></tr>
+<tr><th id="111">111</th><td>  <a class="ref fn" href="lua.h.html#lua_geti" title='lua_geti' data-ref="lua_geti">lua_geti</a>(<a class="local col2 ref" href="#12L" title='L' data-ref="12L">L</a>, <var>1</var>, <a class="local col4 ref" href="#14pos" title='pos' data-ref="14pos">pos</a>);  <i>/* result = t[pos] */</i></td></tr>
+<tr><th id="112">112</th><td>  <b>for</b> ( ; <a class="local col4 ref" href="#14pos" title='pos' data-ref="14pos">pos</a> &lt; <a class="local col3 ref" href="#13size" title='size' data-ref="13size">size</a>; <a class="local col4 ref" href="#14pos" title='pos' data-ref="14pos">pos</a>++) {</td></tr>
+<tr><th id="113">113</th><td>    <a class="ref fn" href="lua.h.html#lua_geti" title='lua_geti' data-ref="lua_geti">lua_geti</a>(<a class="local col2 ref" href="#12L" title='L' data-ref="12L">L</a>, <var>1</var>, <a class="local col4 ref" href="#14pos" title='pos' data-ref="14pos">pos</a> + <var>1</var>);</td></tr>
+<tr><th id="114">114</th><td>    <a class="ref fn" href="lua.h.html#lua_seti" title='lua_seti' data-ref="lua_seti">lua_seti</a>(<a class="local col2 ref" href="#12L" title='L' data-ref="12L">L</a>, <var>1</var>, <a class="local col4 ref" href="#14pos" title='pos' data-ref="14pos">pos</a>);  <i>/* t[pos] = t[pos + 1] */</i></td></tr>
+<tr><th id="115">115</th><td>  }</td></tr>
+<tr><th id="116">116</th><td>  <a class="ref fn" href="lua.h.html#lua_pushnil" title='lua_pushnil' data-ref="lua_pushnil">lua_pushnil</a>(<a class="local col2 ref" href="#12L" title='L' data-ref="12L">L</a>);</td></tr>
+<tr><th id="117">117</th><td>  <a class="ref fn" href="lua.h.html#lua_seti" title='lua_seti' data-ref="lua_seti">lua_seti</a>(<a class="local col2 ref" href="#12L" title='L' data-ref="12L">L</a>, <var>1</var>, <a class="local col4 ref" href="#14pos" title='pos' data-ref="14pos">pos</a>);  <i>/* t[pos] = nil */</i></td></tr>
+<tr><th id="118">118</th><td>  <b>return</b> <var>1</var>;</td></tr>
+<tr><th id="119">119</th><td>}</td></tr>
+<tr><th id="120">120</th><td></td></tr>
+<tr><th id="121">121</th><td></td></tr>
+<tr><th id="122">122</th><td><i  data-doc="tmove">/*</i></td></tr>
+<tr><th id="123">123</th><td><i  data-doc="tmove">** Copy elements (1[f], ..., 1[e]) into (tt[t], tt[t+1], ...). Whenever</i></td></tr>
+<tr><th id="124">124</th><td><i  data-doc="tmove">** possible, copy in increasing order, which is better for rehashing.</i></td></tr>
+<tr><th id="125">125</th><td><i  data-doc="tmove">** "possible" means destination after original range, or smaller</i></td></tr>
+<tr><th id="126">126</th><td><i  data-doc="tmove">** than origin, or copying to another table.</i></td></tr>
+<tr><th id="127">127</th><td><i  data-doc="tmove">*/</i></td></tr>
+<tr><th id="128">128</th><td><em>static</em> <em>int</em> <dfn class="tu decl def fn" id="tmove" title='tmove' data-type='int tmove(lua_State * L)' data-ref="tmove">tmove</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col5 decl" id="15L" title='L' data-type='lua_State *' data-ref="15L">L</dfn>) {</td></tr>
+<tr><th id="129">129</th><td>  <a class="typedef" href="lua.h.html#lua_Integer" title='lua_Integer' data-type='long long' data-ref="lua_Integer">lua_Integer</a> <dfn class="local col6 decl" id="16f" title='f' data-type='lua_Integer' data-ref="16f">f</dfn> = <a class="ref fn" href="lauxlib.h.html#luaL_checkinteger" title='luaL_checkinteger' data-ref="luaL_checkinteger">luaL_checkinteger</a>(<a class="local col5 ref" href="#15L" title='L' data-ref="15L">L</a>, <var>2</var>);</td></tr>
+<tr><th id="130">130</th><td>  <a class="typedef" href="lua.h.html#lua_Integer" title='lua_Integer' data-type='long long' data-ref="lua_Integer">lua_Integer</a> <dfn class="local col7 decl" id="17e" title='e' data-type='lua_Integer' data-ref="17e">e</dfn> = <a class="ref fn" href="lauxlib.h.html#luaL_checkinteger" title='luaL_checkinteger' data-ref="luaL_checkinteger">luaL_checkinteger</a>(<a class="local col5 ref" href="#15L" title='L' data-ref="15L">L</a>, <var>3</var>);</td></tr>
+<tr><th id="131">131</th><td>  <a class="typedef" href="lua.h.html#lua_Integer" title='lua_Integer' data-type='long long' data-ref="lua_Integer">lua_Integer</a> <dfn class="local col8 decl" id="18t" title='t' data-type='lua_Integer' data-ref="18t">t</dfn> = <a class="ref fn" href="lauxlib.h.html#luaL_checkinteger" title='luaL_checkinteger' data-ref="luaL_checkinteger">luaL_checkinteger</a>(<a class="local col5 ref" href="#15L" title='L' data-ref="15L">L</a>, <var>4</var>);</td></tr>
+<tr><th id="132">132</th><td>  <em>int</em> <dfn class="local col9 decl" id="19tt" title='tt' data-type='int' data-ref="19tt">tt</dfn> = !<a class="macro" href="lua.h.html#359" title="(lua_type(L, (5)) &lt;= 0)" data-ref="_M/lua_isnoneornil">lua_isnoneornil</a>(<a class="local col5 ref" href="#15L" title='L' data-ref="15L">L</a>, <var>5</var>) ? <var>5</var> : <var>1</var>;  <i>/* destination table */</i></td></tr>
+<tr><th id="133">133</th><td>  <a class="tu ref fn" href="#checktab" title='checktab' data-use='c' data-ref="checktab">checktab</a>(<a class="local col5 ref" href="#15L" title='L' data-ref="15L">L</a>, <var>1</var>, <a class="macro" href="#27" title="1" data-ref="_M/TAB_R">TAB_R</a>);</td></tr>
+<tr><th id="134">134</th><td>  <a class="tu ref fn" href="#checktab" title='checktab' data-use='c' data-ref="checktab">checktab</a>(<a class="local col5 ref" href="#15L" title='L' data-ref="15L">L</a>, <a class="local col9 ref" href="#19tt" title='tt' data-ref="19tt">tt</a>, <a class="macro" href="#28" title="2" data-ref="_M/TAB_W">TAB_W</a>);</td></tr>
+<tr><th id="135">135</th><td>  <b>if</b> (<a class="local col7 ref" href="#17e" title='e' data-ref="17e">e</a> &gt;= <a class="local col6 ref" href="#16f" title='f' data-ref="16f">f</a>) {  <i>/* otherwise, nothing to move */</i></td></tr>
+<tr><th id="136">136</th><td>    <a class="typedef" href="lua.h.html#lua_Integer" title='lua_Integer' data-type='long long' data-ref="lua_Integer">lua_Integer</a> <dfn class="local col0 decl" id="20n" title='n' data-type='lua_Integer' data-ref="20n">n</dfn>, <dfn class="local col1 decl" id="21i" title='i' data-type='lua_Integer' data-ref="21i">i</dfn>;</td></tr>
+<tr><th id="137">137</th><td>    <a class="macro" href="lauxlib.h.html#122" title="((void)((f &gt; 0 || e &lt; 9223372036854775807LL + f) || luaL_argerror(L, (3), (&quot;too many elements to move&quot;))))" data-ref="_M/luaL_argcheck">luaL_argcheck</a>(<a class="local col5 ref" href="#15L" title='L' data-ref="15L">L</a>, <a class="local col6 ref" href="#16f" title='f' data-ref="16f">f</a> &gt; <var>0</var> || <a class="local col7 ref" href="#17e" title='e' data-ref="17e">e</a> &lt; <a class="macro" href="luaconf.h.html#567" title="9223372036854775807LL" data-ref="_M/LUA_MAXINTEGER">LUA_MAXINTEGER</a> + <a class="local col6 ref" href="#16f" title='f' data-ref="16f">f</a>, <var>3</var>,</td></tr>
+<tr><th id="138">138</th><td>                  <q>"too many elements to move"</q>);</td></tr>
+<tr><th id="139">139</th><td>    <a class="local col0 ref" href="#20n" title='n' data-ref="20n">n</a> = <a class="local col7 ref" href="#17e" title='e' data-ref="17e">e</a> - <a class="local col6 ref" href="#16f" title='f' data-ref="16f">f</a> + <var>1</var>;  <i>/* number of elements to move */</i></td></tr>
+<tr><th id="140">140</th><td>    <a class="macro" href="lauxlib.h.html#122" title="((void)((t &lt;= 9223372036854775807LL - n + 1) || luaL_argerror(L, (4), (&quot;destination wrap around&quot;))))" data-ref="_M/luaL_argcheck">luaL_argcheck</a>(<a class="local col5 ref" href="#15L" title='L' data-ref="15L">L</a>, <a class="local col8 ref" href="#18t" title='t' data-ref="18t">t</a> &lt;= <a class="macro" href="luaconf.h.html#567" title="9223372036854775807LL" data-ref="_M/LUA_MAXINTEGER">LUA_MAXINTEGER</a> - <a class="local col0 ref" href="#20n" title='n' data-ref="20n">n</a> + <var>1</var>, <var>4</var>,</td></tr>
+<tr><th id="141">141</th><td>                  <q>"destination wrap around"</q>);</td></tr>
+<tr><th id="142">142</th><td>    <b>if</b> (<a class="local col8 ref" href="#18t" title='t' data-ref="18t">t</a> &gt; <a class="local col7 ref" href="#17e" title='e' data-ref="17e">e</a> || <a class="local col8 ref" href="#18t" title='t' data-ref="18t">t</a> &lt;= <a class="local col6 ref" href="#16f" title='f' data-ref="16f">f</a> || (<a class="local col9 ref" href="#19tt" title='tt' data-ref="19tt">tt</a> != <var>1</var> &amp;&amp; !<a class="ref fn" href="lua.h.html#lua_compare" title='lua_compare' data-ref="lua_compare">lua_compare</a>(<a class="local col5 ref" href="#15L" title='L' data-ref="15L">L</a>, <var>1</var>, <a class="local col9 ref" href="#19tt" title='tt' data-ref="19tt">tt</a>, <a class="macro" href="lua.h.html#213" title="0" data-ref="_M/LUA_OPEQ">LUA_OPEQ</a>))) {</td></tr>
+<tr><th id="143">143</th><td>      <b>for</b> (<a class="local col1 ref" href="#21i" title='i' data-ref="21i">i</a> = <var>0</var>; <a class="local col1 ref" href="#21i" title='i' data-ref="21i">i</a> &lt; <a class="local col0 ref" href="#20n" title='n' data-ref="20n">n</a>; <a class="local col1 ref" href="#21i" title='i' data-ref="21i">i</a>++) {</td></tr>
+<tr><th id="144">144</th><td>        <a class="ref fn" href="lua.h.html#lua_geti" title='lua_geti' data-ref="lua_geti">lua_geti</a>(<a class="local col5 ref" href="#15L" title='L' data-ref="15L">L</a>, <var>1</var>, <a class="local col6 ref" href="#16f" title='f' data-ref="16f">f</a> + <a class="local col1 ref" href="#21i" title='i' data-ref="21i">i</a>);</td></tr>
+<tr><th id="145">145</th><td>        <a class="ref fn" href="lua.h.html#lua_seti" title='lua_seti' data-ref="lua_seti">lua_seti</a>(<a class="local col5 ref" href="#15L" title='L' data-ref="15L">L</a>, <a class="local col9 ref" href="#19tt" title='tt' data-ref="19tt">tt</a>, <a class="local col8 ref" href="#18t" title='t' data-ref="18t">t</a> + <a class="local col1 ref" href="#21i" title='i' data-ref="21i">i</a>);</td></tr>
+<tr><th id="146">146</th><td>      }</td></tr>
+<tr><th id="147">147</th><td>    }</td></tr>
+<tr><th id="148">148</th><td>    <b>else</b> {</td></tr>
+<tr><th id="149">149</th><td>      <b>for</b> (<a class="local col1 ref" href="#21i" title='i' data-ref="21i">i</a> = <a class="local col0 ref" href="#20n" title='n' data-ref="20n">n</a> - <var>1</var>; <a class="local col1 ref" href="#21i" title='i' data-ref="21i">i</a> &gt;= <var>0</var>; <a class="local col1 ref" href="#21i" title='i' data-ref="21i">i</a>--) {</td></tr>
+<tr><th id="150">150</th><td>        <a class="ref fn" href="lua.h.html#lua_geti" title='lua_geti' data-ref="lua_geti">lua_geti</a>(<a class="local col5 ref" href="#15L" title='L' data-ref="15L">L</a>, <var>1</var>, <a class="local col6 ref" href="#16f" title='f' data-ref="16f">f</a> + <a class="local col1 ref" href="#21i" title='i' data-ref="21i">i</a>);</td></tr>
+<tr><th id="151">151</th><td>        <a class="ref fn" href="lua.h.html#lua_seti" title='lua_seti' data-ref="lua_seti">lua_seti</a>(<a class="local col5 ref" href="#15L" title='L' data-ref="15L">L</a>, <a class="local col9 ref" href="#19tt" title='tt' data-ref="19tt">tt</a>, <a class="local col8 ref" href="#18t" title='t' data-ref="18t">t</a> + <a class="local col1 ref" href="#21i" title='i' data-ref="21i">i</a>);</td></tr>
+<tr><th id="152">152</th><td>      }</td></tr>
+<tr><th id="153">153</th><td>    }</td></tr>
+<tr><th id="154">154</th><td>  }</td></tr>
+<tr><th id="155">155</th><td>  <a class="ref fn" href="lua.h.html#lua_pushvalue" title='lua_pushvalue' data-ref="lua_pushvalue">lua_pushvalue</a>(<a class="local col5 ref" href="#15L" title='L' data-ref="15L">L</a>, <a class="local col9 ref" href="#19tt" title='tt' data-ref="19tt">tt</a>);  <i>/* return destination table */</i></td></tr>
+<tr><th id="156">156</th><td>  <b>return</b> <var>1</var>;</td></tr>
+<tr><th id="157">157</th><td>}</td></tr>
+<tr><th id="158">158</th><td></td></tr>
+<tr><th id="159">159</th><td></td></tr>
+<tr><th id="160">160</th><td><em>static</em> <em>void</em> <dfn class="tu decl def fn" id="addfield" title='addfield' data-type='void addfield(lua_State * L, luaL_Buffer * b, lua_Integer i)' data-ref="addfield">addfield</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col2 decl" id="22L" title='L' data-type='lua_State *' data-ref="22L">L</dfn>, <a class="typedef" href="lauxlib.h.html#luaL_Buffer" title='luaL_Buffer' data-type='struct luaL_Buffer' data-ref="luaL_Buffer">luaL_Buffer</a> *<dfn class="local col3 decl" id="23b" title='b' data-type='luaL_Buffer *' data-ref="23b">b</dfn>, <a class="typedef" href="lua.h.html#lua_Integer" title='lua_Integer' data-type='long long' data-ref="lua_Integer">lua_Integer</a> <dfn class="local col4 decl" id="24i" title='i' data-type='lua_Integer' data-ref="24i">i</dfn>) {</td></tr>
+<tr><th id="161">161</th><td>  <a class="ref fn" href="lua.h.html#lua_geti" title='lua_geti' data-ref="lua_geti">lua_geti</a>(<a class="local col2 ref" href="#22L" title='L' data-ref="22L">L</a>, <var>1</var>, <a class="local col4 ref" href="#24i" title='i' data-ref="24i">i</a>);</td></tr>
+<tr><th id="162">162</th><td>  <b>if</b> (!<a class="ref fn" href="lua.h.html#lua_isstring" title='lua_isstring' data-ref="lua_isstring">lua_isstring</a>(<a class="local col2 ref" href="#22L" title='L' data-ref="22L">L</a>, -<var>1</var>))</td></tr>
+<tr><th id="163">163</th><td>    <a class="ref fn" href="lauxlib.h.html#luaL_error" title='luaL_error' data-ref="luaL_error">luaL_error</a>(<a class="local col2 ref" href="#22L" title='L' data-ref="22L">L</a>, <q>"invalid value (%s) at index %d in table for 'concat'"</q>,</td></tr>
+<tr><th id="164">164</th><td>                  <a class="macro" href="lauxlib.h.html#127" title="lua_typename(L, lua_type(L,(-1)))" data-ref="_M/luaL_typename">luaL_typename</a>(<a class="local col2 ref" href="#22L" title='L' data-ref="22L">L</a>, -<var>1</var>), <a class="local col4 ref" href="#24i" title='i' data-ref="24i">i</a>);</td></tr>
+<tr><th id="165">165</th><td>  <a class="ref fn" href="lauxlib.h.html#luaL_addvalue" title='luaL_addvalue' data-ref="luaL_addvalue">luaL_addvalue</a>(<a class="local col3 ref" href="#23b" title='b' data-ref="23b">b</a>);</td></tr>
+<tr><th id="166">166</th><td>}</td></tr>
+<tr><th id="167">167</th><td></td></tr>
+<tr><th id="168">168</th><td></td></tr>
+<tr><th id="169">169</th><td><em>static</em> <em>int</em> <dfn class="tu decl def fn" id="tconcat" title='tconcat' data-type='int tconcat(lua_State * L)' data-ref="tconcat">tconcat</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col5 decl" id="25L" title='L' data-type='lua_State *' data-ref="25L">L</dfn>) {</td></tr>
+<tr><th id="170">170</th><td>  <a class="typedef" href="lauxlib.h.html#luaL_Buffer" title='luaL_Buffer' data-type='struct luaL_Buffer' data-ref="luaL_Buffer">luaL_Buffer</a> <dfn class="local col6 decl" id="26b" title='b' data-type='luaL_Buffer' data-ref="26b">b</dfn>;</td></tr>
+<tr><th id="171">171</th><td>  <a class="typedef" href="lua.h.html#lua_Integer" title='lua_Integer' data-type='long long' data-ref="lua_Integer">lua_Integer</a> <dfn class="local col7 decl" id="27last" title='last' data-type='lua_Integer' data-ref="27last">last</dfn> = <a class="macro" href="#33" title="(checktab(L, 1, (1) | 4), luaL_len(L, 1))" data-ref="_M/aux_getn">aux_getn</a>(<a class="local col5 ref" href="#25L" title='L' data-ref="25L">L</a>, <var>1</var>, <a class="macro" href="#27" title="1" data-ref="_M/TAB_R">TAB_R</a>);</td></tr>
+<tr><th id="172">172</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col8 decl" id="28lsep" title='lsep' data-type='size_t' data-ref="28lsep">lsep</dfn>;</td></tr>
+<tr><th id="173">173</th><td>  <em>const</em> <em>char</em> *<dfn class="local col9 decl" id="29sep" title='sep' data-type='const char *' data-ref="29sep">sep</dfn> = <a class="ref fn" href="lauxlib.h.html#luaL_optlstring" title='luaL_optlstring' data-ref="luaL_optlstring">luaL_optlstring</a>(<a class="local col5 ref" href="#25L" title='L' data-ref="25L">L</a>, <var>2</var>, <q>""</q>, &amp;<a class="local col8 ref" href="#28lsep" title='lsep' data-ref="28lsep">lsep</a>);</td></tr>
+<tr><th id="174">174</th><td>  <a class="typedef" href="lua.h.html#lua_Integer" title='lua_Integer' data-type='long long' data-ref="lua_Integer">lua_Integer</a> <dfn class="local col0 decl" id="30i" title='i' data-type='lua_Integer' data-ref="30i">i</dfn> = <a class="ref fn" href="lauxlib.h.html#luaL_optinteger" title='luaL_optinteger' data-ref="luaL_optinteger">luaL_optinteger</a>(<a class="local col5 ref" href="#25L" title='L' data-ref="25L">L</a>, <var>3</var>, <var>1</var>);</td></tr>
+<tr><th id="175">175</th><td>  <a class="local col7 ref" href="#27last" title='last' data-ref="27last">last</a> = <a class="ref fn" href="lauxlib.h.html#luaL_optinteger" title='luaL_optinteger' data-ref="luaL_optinteger">luaL_optinteger</a>(<a class="local col5 ref" href="#25L" title='L' data-ref="25L">L</a>, <var>4</var>, <a class="local col7 ref" href="#27last" title='last' data-ref="27last">last</a>);</td></tr>
+<tr><th id="176">176</th><td>  <a class="ref fn" href="lauxlib.h.html#luaL_buffinit" title='luaL_buffinit' data-ref="luaL_buffinit">luaL_buffinit</a>(<a class="local col5 ref" href="#25L" title='L' data-ref="25L">L</a>, &amp;<a class="local col6 ref" href="#26b" title='b' data-ref="26b">b</a>);</td></tr>
+<tr><th id="177">177</th><td>  <b>for</b> (; <a class="local col0 ref" href="#30i" title='i' data-ref="30i">i</a> &lt; <a class="local col7 ref" href="#27last" title='last' data-ref="27last">last</a>; <a class="local col0 ref" href="#30i" title='i' data-ref="30i">i</a>++) {</td></tr>
+<tr><th id="178">178</th><td>    <a class="tu ref fn" href="#addfield" title='addfield' data-use='c' data-ref="addfield">addfield</a>(<a class="local col5 ref" href="#25L" title='L' data-ref="25L">L</a>, &amp;<a class="local col6 ref" href="#26b" title='b' data-ref="26b">b</a>, <a class="local col0 ref" href="#30i" title='i' data-ref="30i">i</a>);</td></tr>
+<tr><th id="179">179</th><td>    <a class="ref fn" href="lauxlib.h.html#luaL_addlstring" title='luaL_addlstring' data-ref="luaL_addlstring">luaL_addlstring</a>(&amp;<a class="local col6 ref" href="#26b" title='b' data-ref="26b">b</a>, <a class="local col9 ref" href="#29sep" title='sep' data-ref="29sep">sep</a>, <a class="local col8 ref" href="#28lsep" title='lsep' data-ref="28lsep">lsep</a>);</td></tr>
+<tr><th id="180">180</th><td>  }</td></tr>
+<tr><th id="181">181</th><td>  <b>if</b> (<a class="local col0 ref" href="#30i" title='i' data-ref="30i">i</a> == <a class="local col7 ref" href="#27last" title='last' data-ref="27last">last</a>)  <i>/* add last value (if interval was not empty) */</i></td></tr>
+<tr><th id="182">182</th><td>    <a class="tu ref fn" href="#addfield" title='addfield' data-use='c' data-ref="addfield">addfield</a>(<a class="local col5 ref" href="#25L" title='L' data-ref="25L">L</a>, &amp;<a class="local col6 ref" href="#26b" title='b' data-ref="26b">b</a>, <a class="local col0 ref" href="#30i" title='i' data-ref="30i">i</a>);</td></tr>
+<tr><th id="183">183</th><td>  <a class="ref fn" href="lauxlib.h.html#luaL_pushresult" title='luaL_pushresult' data-ref="luaL_pushresult">luaL_pushresult</a>(&amp;<a class="local col6 ref" href="#26b" title='b' data-ref="26b">b</a>);</td></tr>
+<tr><th id="184">184</th><td>  <b>return</b> <var>1</var>;</td></tr>
+<tr><th id="185">185</th><td>}</td></tr>
+<tr><th id="186">186</th><td></td></tr>
+<tr><th id="187">187</th><td></td></tr>
+<tr><th id="188">188</th><td><i  data-doc="pack">/*</i></td></tr>
+<tr><th id="189">189</th><td><i  data-doc="pack">** {======================================================</i></td></tr>
+<tr><th id="190">190</th><td><i  data-doc="pack">** Pack/unpack</i></td></tr>
+<tr><th id="191">191</th><td><i  data-doc="pack">** =======================================================</i></td></tr>
+<tr><th id="192">192</th><td><i  data-doc="pack">*/</i></td></tr>
+<tr><th id="193">193</th><td></td></tr>
+<tr><th id="194">194</th><td><em>static</em> <em>int</em> <dfn class="tu decl def fn" id="pack" title='pack' data-type='int pack(lua_State * L)' data-ref="pack">pack</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col1 decl" id="31L" title='L' data-type='lua_State *' data-ref="31L">L</dfn>) {</td></tr>
+<tr><th id="195">195</th><td>  <em>int</em> <dfn class="local col2 decl" id="32i" title='i' data-type='int' data-ref="32i">i</dfn>;</td></tr>
+<tr><th id="196">196</th><td>  <em>int</em> <dfn class="local col3 decl" id="33n" title='n' data-type='int' data-ref="33n">n</dfn> = <a class="ref fn" href="lua.h.html#lua_gettop" title='lua_gettop' data-ref="lua_gettop">lua_gettop</a>(<a class="local col1 ref" href="#31L" title='L' data-ref="31L">L</a>);  <i>/* number of elements to pack */</i></td></tr>
+<tr><th id="197">197</th><td>  <a class="ref fn" href="lua.h.html#lua_createtable" title='lua_createtable' data-ref="lua_createtable">lua_createtable</a>(<a class="local col1 ref" href="#31L" title='L' data-ref="31L">L</a>, <a class="local col3 ref" href="#33n" title='n' data-ref="33n">n</a>, <var>1</var>);  <i>/* create result table */</i></td></tr>
+<tr><th id="198">198</th><td>  <a class="macro" href="lua.h.html#369" title="lua_rotate(L, (1), 1)" data-ref="_M/lua_insert">lua_insert</a>(<a class="local col1 ref" href="#31L" title='L' data-ref="31L">L</a>, <var>1</var>);  <i>/* put it at index 1 */</i></td></tr>
+<tr><th id="199">199</th><td>  <b>for</b> (<a class="local col2 ref" href="#32i" title='i' data-ref="32i">i</a> = <a class="local col3 ref" href="#33n" title='n' data-ref="33n">n</a>; <a class="local col2 ref" href="#32i" title='i' data-ref="32i">i</a> &gt;= <var>1</var>; <a class="local col2 ref" href="#32i" title='i' data-ref="32i">i</a>--)  <i>/* assign elements */</i></td></tr>
+<tr><th id="200">200</th><td>    <a class="ref fn" href="lua.h.html#lua_seti" title='lua_seti' data-ref="lua_seti">lua_seti</a>(<a class="local col1 ref" href="#31L" title='L' data-ref="31L">L</a>, <var>1</var>, <a class="local col2 ref" href="#32i" title='i' data-ref="32i">i</a>);</td></tr>
+<tr><th id="201">201</th><td>  <a class="ref fn" href="lua.h.html#lua_pushinteger" title='lua_pushinteger' data-ref="lua_pushinteger">lua_pushinteger</a>(<a class="local col1 ref" href="#31L" title='L' data-ref="31L">L</a>, <a class="local col3 ref" href="#33n" title='n' data-ref="33n">n</a>);</td></tr>
+<tr><th id="202">202</th><td>  <a class="ref fn" href="lua.h.html#lua_setfield" title='lua_setfield' data-ref="lua_setfield">lua_setfield</a>(<a class="local col1 ref" href="#31L" title='L' data-ref="31L">L</a>, <var>1</var>, <q>"n"</q>);  <i>/* t.n = number of elements */</i></td></tr>
+<tr><th id="203">203</th><td>  <b>return</b> <var>1</var>;  <i>/* return table */</i></td></tr>
+<tr><th id="204">204</th><td>}</td></tr>
+<tr><th id="205">205</th><td></td></tr>
+<tr><th id="206">206</th><td></td></tr>
+<tr><th id="207">207</th><td><em>static</em> <em>int</em> <dfn class="tu decl def fn" id="unpack" title='unpack' data-type='int unpack(lua_State * L)' data-ref="unpack">unpack</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col4 decl" id="34L" title='L' data-type='lua_State *' data-ref="34L">L</dfn>) {</td></tr>
+<tr><th id="208">208</th><td>  <a class="typedef" href="lua.h.html#lua_Unsigned" title='lua_Unsigned' data-type='unsigned long long' data-ref="lua_Unsigned">lua_Unsigned</a> <dfn class="local col5 decl" id="35n" title='n' data-type='lua_Unsigned' data-ref="35n">n</dfn>;</td></tr>
+<tr><th id="209">209</th><td>  <a class="typedef" href="lua.h.html#lua_Integer" title='lua_Integer' data-type='long long' data-ref="lua_Integer">lua_Integer</a> <dfn class="local col6 decl" id="36i" title='i' data-type='lua_Integer' data-ref="36i">i</dfn> = <a class="ref fn" href="lauxlib.h.html#luaL_optinteger" title='luaL_optinteger' data-ref="luaL_optinteger">luaL_optinteger</a>(<a class="local col4 ref" href="#34L" title='L' data-ref="34L">L</a>, <var>2</var>, <var>1</var>);</td></tr>
+<tr><th id="210">210</th><td>  <a class="typedef" href="lua.h.html#lua_Integer" title='lua_Integer' data-type='long long' data-ref="lua_Integer">lua_Integer</a> <dfn class="local col7 decl" id="37e" title='e' data-type='lua_Integer' data-ref="37e">e</dfn> = <a class="macro" href="lauxlib.h.html#137" title="((lua_type(L, ((3))) &lt;= 0) ? (luaL_len(L, 1)) : luaL_checkinteger(L,(3)))" data-ref="_M/luaL_opt">luaL_opt</a>(<a class="local col4 ref" href="#34L" title='L' data-ref="34L">L</a>, <a class="ref fn" href="lauxlib.h.html#luaL_checkinteger" title='luaL_checkinteger' data-ref="luaL_checkinteger">luaL_checkinteger</a>, <var>3</var>, <a class="ref fn" href="lauxlib.h.html#luaL_len" title='luaL_len' data-ref="luaL_len">luaL_len</a>(<a class="local col4 ref" href="#34L" title='L' data-ref="34L">L</a>, <var>1</var>));</td></tr>
+<tr><th id="211">211</th><td>  <b>if</b> (<a class="local col6 ref" href="#36i" title='i' data-ref="36i">i</a> &gt; <a class="local col7 ref" href="#37e" title='e' data-ref="37e">e</a>) <b>return</b> <var>0</var>;  <i>/* empty range */</i></td></tr>
+<tr><th id="212">212</th><td>  <a class="local col5 ref" href="#35n" title='n' data-ref="35n">n</a> = (<a class="typedef" href="lua.h.html#lua_Unsigned" title='lua_Unsigned' data-type='unsigned long long' data-ref="lua_Unsigned">lua_Unsigned</a>)<a class="local col7 ref" href="#37e" title='e' data-ref="37e">e</a> - <a class="local col6 ref" href="#36i" title='i' data-ref="36i">i</a>;  <i>/* number of elements minus 1 (avoid overflows) */</i></td></tr>
+<tr><th id="213">213</th><td>  <b>if</b> (<a class="local col5 ref" href="#35n" title='n' data-ref="35n">n</a> &gt;= (<em>unsigned</em> <em>int</em>)<span class="macro" title="2147483647" data-ref="_M/INT_MAX">INT_MAX</span>  || !<a class="ref fn" href="lua.h.html#lua_checkstack" title='lua_checkstack' data-ref="lua_checkstack">lua_checkstack</a>(<a class="local col4 ref" href="#34L" title='L' data-ref="34L">L</a>, (<em>int</em>)(++<a class="local col5 ref" href="#35n" title='n' data-ref="35n">n</a>)))</td></tr>
+<tr><th id="214">214</th><td>    <b>return</b> <a class="ref fn" href="lauxlib.h.html#luaL_error" title='luaL_error' data-ref="luaL_error">luaL_error</a>(<a class="local col4 ref" href="#34L" title='L' data-ref="34L">L</a>, <q>"too many results to unpack"</q>);</td></tr>
+<tr><th id="215">215</th><td>  <b>for</b> (; <a class="local col6 ref" href="#36i" title='i' data-ref="36i">i</a> &lt; <a class="local col7 ref" href="#37e" title='e' data-ref="37e">e</a>; <a class="local col6 ref" href="#36i" title='i' data-ref="36i">i</a>++) {  <i>/* push arg[i..e - 1] (to avoid overflows) */</i></td></tr>
+<tr><th id="216">216</th><td>    <a class="ref fn" href="lua.h.html#lua_geti" title='lua_geti' data-ref="lua_geti">lua_geti</a>(<a class="local col4 ref" href="#34L" title='L' data-ref="34L">L</a>, <var>1</var>, <a class="local col6 ref" href="#36i" title='i' data-ref="36i">i</a>);</td></tr>
+<tr><th id="217">217</th><td>  }</td></tr>
+<tr><th id="218">218</th><td>  <a class="ref fn" href="lua.h.html#lua_geti" title='lua_geti' data-ref="lua_geti">lua_geti</a>(<a class="local col4 ref" href="#34L" title='L' data-ref="34L">L</a>, <var>1</var>, <a class="local col7 ref" href="#37e" title='e' data-ref="37e">e</a>);  <i>/* push last element */</i></td></tr>
+<tr><th id="219">219</th><td>  <b>return</b> (<em>int</em>)<a class="local col5 ref" href="#35n" title='n' data-ref="35n">n</a>;</td></tr>
+<tr><th id="220">220</th><td>}</td></tr>
+<tr><th id="221">221</th><td></td></tr>
+<tr><th id="222">222</th><td><i>/* }====================================================== */</i></td></tr>
+<tr><th id="223">223</th><td></td></tr>
+<tr><th id="224">224</th><td></td></tr>
+<tr><th id="225">225</th><td></td></tr>
+<tr><th id="226">226</th><td><i>/*</i></td></tr>
+<tr><th id="227">227</th><td><i>** {======================================================</i></td></tr>
+<tr><th id="228">228</th><td><i>** Quicksort</i></td></tr>
+<tr><th id="229">229</th><td><i>** (based on 'Algorithms in MODULA-3', Robert Sedgewick;</i></td></tr>
+<tr><th id="230">230</th><td><i>**  Addison-Wesley, 1993.)</i></td></tr>
+<tr><th id="231">231</th><td><i>** =======================================================</i></td></tr>
+<tr><th id="232">232</th><td><i>*/</i></td></tr>
+<tr><th id="233">233</th><td></td></tr>
+<tr><th id="234">234</th><td></td></tr>
+<tr><th id="235">235</th><td><i>/* type for array indices */</i></td></tr>
+<tr><th id="236">236</th><td><b>typedef</b> <em>unsigned</em> <em>int</em> <dfn class="typedef" id="IdxT" title='IdxT' data-type='unsigned int' data-ref="IdxT">IdxT</dfn>;</td></tr>
+<tr><th id="237">237</th><td></td></tr>
+<tr><th id="238">238</th><td></td></tr>
+<tr><th id="239">239</th><td><i>/*</i></td></tr>
+<tr><th id="240">240</th><td><i>** Produce a "random" 'unsigned int' to randomize pivot choice. This</i></td></tr>
+<tr><th id="241">241</th><td><i>** macro is used only when 'sort' detects a big imbalance in the result</i></td></tr>
+<tr><th id="242">242</th><td><i>** of a partition. (If you don't want/need this "randomness", ~0 is a</i></td></tr>
+<tr><th id="243">243</th><td><i>** good choice.)</i></td></tr>
+<tr><th id="244">244</th><td><i>*/</i></td></tr>
+<tr><th id="245">245</th><td><u>#<span data-ppcond="245">if</span> !defined(<span class="macro" data-ref="_M/l_randomizePivot">l_randomizePivot</span>)		/* { */</u></td></tr>
+<tr><th id="246">246</th><td></td></tr>
+<tr><th id="247">247</th><td><u>#include <a href="../../include/time.h.html">&lt;time.h&gt;</a></u></td></tr>
+<tr><th id="248">248</th><td></td></tr>
+<tr><th id="249">249</th><td><i>/* size of 'e' measured in number of 'unsigned int's */</i></td></tr>
+<tr><th id="250">250</th><td><u>#define <dfn class="macro" id="_M/sof" data-ref="_M/sof">sof</dfn>(e)		(sizeof(e) / sizeof(unsigned int))</u></td></tr>
+<tr><th id="251">251</th><td></td></tr>
+<tr><th id="252">252</th><td><i  data-doc="l_randomizePivot">/*</i></td></tr>
+<tr><th id="253">253</th><td><i  data-doc="l_randomizePivot">** Use 'time' and 'clock' as sources of "randomness". Because we don't</i></td></tr>
+<tr><th id="254">254</th><td><i  data-doc="l_randomizePivot">** know the types 'clock_t' and 'time_t', we cannot cast them to</i></td></tr>
+<tr><th id="255">255</th><td><i  data-doc="l_randomizePivot">** anything without risking overflows. A safe way to use their values</i></td></tr>
+<tr><th id="256">256</th><td><i  data-doc="l_randomizePivot">** is to copy them to an array of a known type and use the array values.</i></td></tr>
+<tr><th id="257">257</th><td><i  data-doc="l_randomizePivot">*/</i></td></tr>
+<tr><th id="258">258</th><td><em>static</em> <em>unsigned</em> <em>int</em> <dfn class="tu decl def fn" id="l_randomizePivot" title='l_randomizePivot' data-type='unsigned int l_randomizePivot()' data-ref="l_randomizePivot">l_randomizePivot</dfn> (<em>void</em>) {</td></tr>
+<tr><th id="259">259</th><td>  <a class="typedef" href="../../include/time.h.html#clock_t" title='clock_t' data-type='__clock_t' data-ref="clock_t">clock_t</a> <dfn class="local col8 decl" id="38c" title='c' data-type='clock_t' data-ref="38c">c</dfn> = <a class="ref fn" href="../../include/time.h.html#clock" title='clock' data-ref="clock">clock</a>();</td></tr>
+<tr><th id="260">260</th><td>  <a class="typedef" href="../../include/time.h.html#time_t" title='time_t' data-type='__time_t' data-ref="time_t">time_t</a> <dfn class="local col9 decl" id="39t" title='t' data-type='time_t' data-ref="39t">t</dfn> = <a class="ref fn" href="../../include/time.h.html#time" title='time' data-ref="time">time</a>(<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="261">261</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col0 decl" id="40buff" title='buff' data-type='unsigned int [4]' data-ref="40buff">buff</dfn>[<a class="macro" href="#250" title="(sizeof(c) / sizeof(unsigned int))" data-ref="_M/sof">sof</a>(<a class="local col8 ref" href="#38c" title='c' data-ref="38c">c</a>) + <a class="macro" href="#250" title="(sizeof(t) / sizeof(unsigned int))" data-ref="_M/sof">sof</a>(<a class="local col9 ref" href="#39t" title='t' data-ref="39t">t</a>)];</td></tr>
+<tr><th id="262">262</th><td>  <em>unsigned</em> <em>int</em> <dfn class="local col1 decl" id="41i" title='i' data-type='unsigned int' data-ref="41i">i</dfn>, <dfn class="local col2 decl" id="42rnd" title='rnd' data-type='unsigned int' data-ref="42rnd">rnd</dfn> = <var>0</var>;</td></tr>
+<tr><th id="263">263</th><td>  <a class="ref fn" href="../../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a>(<a class="local col0 ref" href="#40buff" title='buff' data-ref="40buff">buff</a>, &amp;<a class="local col8 ref" href="#38c" title='c' data-ref="38c">c</a>, <a class="macro" href="#250" title="(sizeof(c) / sizeof(unsigned int))" data-ref="_M/sof">sof</a>(<a class="local col8 ref" href="#38c" title='c' data-ref="38c">c</a>) * <b>sizeof</b>(<em>unsigned</em> <em>int</em>));</td></tr>
+<tr><th id="264">264</th><td>  <a class="ref fn" href="../../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a>(<a class="local col0 ref" href="#40buff" title='buff' data-ref="40buff">buff</a> + <a class="macro" href="#250" title="(sizeof(c) / sizeof(unsigned int))" data-ref="_M/sof">sof</a>(<a class="local col8 ref" href="#38c" title='c' data-ref="38c">c</a>), &amp;<a class="local col9 ref" href="#39t" title='t' data-ref="39t">t</a>, <a class="macro" href="#250" title="(sizeof(t) / sizeof(unsigned int))" data-ref="_M/sof">sof</a>(<a class="local col9 ref" href="#39t" title='t' data-ref="39t">t</a>) * <b>sizeof</b>(<em>unsigned</em> <em>int</em>));</td></tr>
+<tr><th id="265">265</th><td>  <b>for</b> (<a class="local col1 ref" href="#41i" title='i' data-ref="41i">i</a> = <var>0</var>; <a class="local col1 ref" href="#41i" title='i' data-ref="41i">i</a> &lt; <a class="macro" href="#250" title="(sizeof(buff) / sizeof(unsigned int))" data-ref="_M/sof">sof</a>(<a class="local col0 ref" href="#40buff" title='buff' data-ref="40buff">buff</a>); <a class="local col1 ref" href="#41i" title='i' data-ref="41i">i</a>++)</td></tr>
+<tr><th id="266">266</th><td>    <a class="local col2 ref" href="#42rnd" title='rnd' data-ref="42rnd">rnd</a> += <a class="local col0 ref" href="#40buff" title='buff' data-ref="40buff">buff</a>[<a class="local col1 ref" href="#41i" title='i' data-ref="41i">i</a>];</td></tr>
+<tr><th id="267">267</th><td>  <b>return</b> <a class="local col2 ref" href="#42rnd" title='rnd' data-ref="42rnd">rnd</a>;</td></tr>
+<tr><th id="268">268</th><td>}</td></tr>
+<tr><th id="269">269</th><td></td></tr>
+<tr><th id="270">270</th><td><u>#<span data-ppcond="245">endif</span>					/* } */</u></td></tr>
+<tr><th id="271">271</th><td></td></tr>
+<tr><th id="272">272</th><td></td></tr>
+<tr><th id="273">273</th><td><i>/* arrays larger than 'RANLIMIT' may use randomized pivots */</i></td></tr>
+<tr><th id="274">274</th><td><u>#define <dfn class="macro" id="_M/RANLIMIT" data-ref="_M/RANLIMIT">RANLIMIT</dfn>	100u</u></td></tr>
+<tr><th id="275">275</th><td></td></tr>
+<tr><th id="276">276</th><td></td></tr>
+<tr><th id="277">277</th><td><em>static</em> <em>void</em> <dfn class="tu decl def fn" id="set2" title='set2' data-type='void set2(lua_State * L, IdxT i, IdxT j)' data-ref="set2">set2</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col3 decl" id="43L" title='L' data-type='lua_State *' data-ref="43L">L</dfn>, <a class="typedef" href="#IdxT" title='IdxT' data-type='unsigned int' data-ref="IdxT">IdxT</a> <dfn class="local col4 decl" id="44i" title='i' data-type='IdxT' data-ref="44i">i</dfn>, <a class="typedef" href="#IdxT" title='IdxT' data-type='unsigned int' data-ref="IdxT">IdxT</a> <dfn class="local col5 decl" id="45j" title='j' data-type='IdxT' data-ref="45j">j</dfn>) {</td></tr>
+<tr><th id="278">278</th><td>  <a class="ref fn" href="lua.h.html#lua_seti" title='lua_seti' data-ref="lua_seti">lua_seti</a>(<a class="local col3 ref" href="#43L" title='L' data-ref="43L">L</a>, <var>1</var>, <a class="local col4 ref" href="#44i" title='i' data-ref="44i">i</a>);</td></tr>
+<tr><th id="279">279</th><td>  <a class="ref fn" href="lua.h.html#lua_seti" title='lua_seti' data-ref="lua_seti">lua_seti</a>(<a class="local col3 ref" href="#43L" title='L' data-ref="43L">L</a>, <var>1</var>, <a class="local col5 ref" href="#45j" title='j' data-ref="45j">j</a>);</td></tr>
+<tr><th id="280">280</th><td>}</td></tr>
+<tr><th id="281">281</th><td></td></tr>
+<tr><th id="282">282</th><td></td></tr>
+<tr><th id="283">283</th><td><i  data-doc="sort_comp">/*</i></td></tr>
+<tr><th id="284">284</th><td><i  data-doc="sort_comp">** Return true iff value at stack index 'a' is less than the value at</i></td></tr>
+<tr><th id="285">285</th><td><i  data-doc="sort_comp">** index 'b' (according to the order of the sort).</i></td></tr>
+<tr><th id="286">286</th><td><i  data-doc="sort_comp">*/</i></td></tr>
+<tr><th id="287">287</th><td><em>static</em> <em>int</em> <dfn class="tu decl def fn" id="sort_comp" title='sort_comp' data-type='int sort_comp(lua_State * L, int a, int b)' data-ref="sort_comp">sort_comp</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col6 decl" id="46L" title='L' data-type='lua_State *' data-ref="46L">L</dfn>, <em>int</em> <dfn class="local col7 decl" id="47a" title='a' data-type='int' data-ref="47a">a</dfn>, <em>int</em> <dfn class="local col8 decl" id="48b" title='b' data-type='int' data-ref="48b">b</dfn>) {</td></tr>
+<tr><th id="288">288</th><td>  <b>if</b> (<a class="macro" href="lua.h.html#355" title="(lua_type(L, (2)) == 0)" data-ref="_M/lua_isnil">lua_isnil</a>(<a class="local col6 ref" href="#46L" title='L' data-ref="46L">L</a>, <var>2</var>))  <i>/* no function? */</i></td></tr>
+<tr><th id="289">289</th><td>    <b>return</b> <a class="ref fn" href="lua.h.html#lua_compare" title='lua_compare' data-ref="lua_compare">lua_compare</a>(<a class="local col6 ref" href="#46L" title='L' data-ref="46L">L</a>, <a class="local col7 ref" href="#47a" title='a' data-ref="47a">a</a>, <a class="local col8 ref" href="#48b" title='b' data-ref="48b">b</a>, <a class="macro" href="lua.h.html#214" title="1" data-ref="_M/LUA_OPLT">LUA_OPLT</a>);  <i>/* a &lt; b */</i></td></tr>
+<tr><th id="290">290</th><td>  <b>else</b> {  <i>/* function */</i></td></tr>
+<tr><th id="291">291</th><td>    <em>int</em> <dfn class="local col9 decl" id="49res" title='res' data-type='int' data-ref="49res">res</dfn>;</td></tr>
+<tr><th id="292">292</th><td>    <a class="ref fn" href="lua.h.html#lua_pushvalue" title='lua_pushvalue' data-ref="lua_pushvalue">lua_pushvalue</a>(<a class="local col6 ref" href="#46L" title='L' data-ref="46L">L</a>, <var>2</var>);    <i>/* push function */</i></td></tr>
+<tr><th id="293">293</th><td>    <a class="ref fn" href="lua.h.html#lua_pushvalue" title='lua_pushvalue' data-ref="lua_pushvalue">lua_pushvalue</a>(<a class="local col6 ref" href="#46L" title='L' data-ref="46L">L</a>, <a class="local col7 ref" href="#47a" title='a' data-ref="47a">a</a>-<var>1</var>);  <i>/* -1 to compensate function */</i></td></tr>
+<tr><th id="294">294</th><td>    <a class="ref fn" href="lua.h.html#lua_pushvalue" title='lua_pushvalue' data-ref="lua_pushvalue">lua_pushvalue</a>(<a class="local col6 ref" href="#46L" title='L' data-ref="46L">L</a>, <a class="local col8 ref" href="#48b" title='b' data-ref="48b">b</a>-<var>2</var>);  <i>/* -2 to compensate function and 'a' */</i></td></tr>
+<tr><th id="295">295</th><td>    <a class="macro" href="lua.h.html#274" title="lua_callk(L, (2), (1), 0, ((void*)0))" data-ref="_M/lua_call">lua_call</a>(<a class="local col6 ref" href="#46L" title='L' data-ref="46L">L</a>, <var>2</var>, <var>1</var>);      <i>/* call function */</i></td></tr>
+<tr><th id="296">296</th><td>    <a class="local col9 ref" href="#49res" title='res' data-ref="49res">res</a> = <a class="ref fn" href="lua.h.html#lua_toboolean" title='lua_toboolean' data-ref="lua_toboolean">lua_toboolean</a>(<a class="local col6 ref" href="#46L" title='L' data-ref="46L">L</a>, -<var>1</var>);  <i>/* get result */</i></td></tr>
+<tr><th id="297">297</th><td>    <a class="macro" href="lua.h.html#344" title="lua_settop(L, -(1)-1)" data-ref="_M/lua_pop">lua_pop</a>(<a class="local col6 ref" href="#46L" title='L' data-ref="46L">L</a>, <var>1</var>);          <i>/* pop result */</i></td></tr>
+<tr><th id="298">298</th><td>    <b>return</b> <a class="local col9 ref" href="#49res" title='res' data-ref="49res">res</a>;</td></tr>
+<tr><th id="299">299</th><td>  }</td></tr>
+<tr><th id="300">300</th><td>}</td></tr>
+<tr><th id="301">301</th><td></td></tr>
+<tr><th id="302">302</th><td></td></tr>
+<tr><th id="303">303</th><td><i  data-doc="partition">/*</i></td></tr>
+<tr><th id="304">304</th><td><i  data-doc="partition">** Does the partition: Pivot P is at the top of the stack.</i></td></tr>
+<tr><th id="305">305</th><td><i  data-doc="partition">** precondition: a[lo] &lt;= P == a[up-1] &lt;= a[up],</i></td></tr>
+<tr><th id="306">306</th><td><i  data-doc="partition">** so it only needs to do the partition from lo + 1 to up - 2.</i></td></tr>
+<tr><th id="307">307</th><td><i  data-doc="partition">** Pos-condition: a[lo .. i - 1] &lt;= a[i] == P &lt;= a[i + 1 .. up]</i></td></tr>
+<tr><th id="308">308</th><td><i  data-doc="partition">** returns 'i'.</i></td></tr>
+<tr><th id="309">309</th><td><i  data-doc="partition">*/</i></td></tr>
+<tr><th id="310">310</th><td><em>static</em> <a class="typedef" href="#IdxT" title='IdxT' data-type='unsigned int' data-ref="IdxT">IdxT</a> <dfn class="tu decl def fn" id="partition" title='partition' data-type='IdxT partition(lua_State * L, IdxT lo, IdxT up)' data-ref="partition">partition</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col0 decl" id="50L" title='L' data-type='lua_State *' data-ref="50L">L</dfn>, <a class="typedef" href="#IdxT" title='IdxT' data-type='unsigned int' data-ref="IdxT">IdxT</a> <dfn class="local col1 decl" id="51lo" title='lo' data-type='IdxT' data-ref="51lo">lo</dfn>, <a class="typedef" href="#IdxT" title='IdxT' data-type='unsigned int' data-ref="IdxT">IdxT</a> <dfn class="local col2 decl" id="52up" title='up' data-type='IdxT' data-ref="52up">up</dfn>) {</td></tr>
+<tr><th id="311">311</th><td>  <a class="typedef" href="#IdxT" title='IdxT' data-type='unsigned int' data-ref="IdxT">IdxT</a> <dfn class="local col3 decl" id="53i" title='i' data-type='IdxT' data-ref="53i">i</dfn> = <a class="local col1 ref" href="#51lo" title='lo' data-ref="51lo">lo</a>;  <i>/* will be incremented before first use */</i></td></tr>
+<tr><th id="312">312</th><td>  <a class="typedef" href="#IdxT" title='IdxT' data-type='unsigned int' data-ref="IdxT">IdxT</a> <dfn class="local col4 decl" id="54j" title='j' data-type='IdxT' data-ref="54j">j</dfn> = <a class="local col2 ref" href="#52up" title='up' data-ref="52up">up</a> - <var>1</var>;  <i>/* will be decremented before first use */</i></td></tr>
+<tr><th id="313">313</th><td>  <i>/* loop invariant: a[lo .. i] &lt;= P &lt;= a[j .. up] */</i></td></tr>
+<tr><th id="314">314</th><td>  <b>for</b> (;;) {</td></tr>
+<tr><th id="315">315</th><td>    <i>/* next loop: repeat ++i while a[i] &lt; P */</i></td></tr>
+<tr><th id="316">316</th><td>    <b>while</b> (<a class="ref fn" href="lua.h.html#lua_geti" title='lua_geti' data-ref="lua_geti">lua_geti</a>(<a class="local col0 ref" href="#50L" title='L' data-ref="50L">L</a>, <var>1</var>, ++<a class="local col3 ref" href="#53i" title='i' data-ref="53i">i</a>), <a class="tu ref fn" href="#sort_comp" title='sort_comp' data-use='c' data-ref="sort_comp">sort_comp</a>(<a class="local col0 ref" href="#50L" title='L' data-ref="50L">L</a>, -<var>1</var>, -<var>2</var>)) {</td></tr>
+<tr><th id="317">317</th><td>      <b>if</b> (<a class="local col3 ref" href="#53i" title='i' data-ref="53i">i</a> == <a class="local col2 ref" href="#52up" title='up' data-ref="52up">up</a> - <var>1</var>)  <i>/* a[i] &lt; P  but a[up - 1] == P  ?? */</i></td></tr>
+<tr><th id="318">318</th><td>        <a class="ref fn" href="lauxlib.h.html#luaL_error" title='luaL_error' data-ref="luaL_error">luaL_error</a>(<a class="local col0 ref" href="#50L" title='L' data-ref="50L">L</a>, <q>"invalid order function for sorting"</q>);</td></tr>
+<tr><th id="319">319</th><td>      <a class="macro" href="lua.h.html#344" title="lua_settop(L, -(1)-1)" data-ref="_M/lua_pop">lua_pop</a>(<a class="local col0 ref" href="#50L" title='L' data-ref="50L">L</a>, <var>1</var>);  <i>/* remove a[i] */</i></td></tr>
+<tr><th id="320">320</th><td>    }</td></tr>
+<tr><th id="321">321</th><td>    <i>/* after the loop, a[i] &gt;= P and a[lo .. i - 1] &lt; P */</i></td></tr>
+<tr><th id="322">322</th><td>    <i>/* next loop: repeat --j while P &lt; a[j] */</i></td></tr>
+<tr><th id="323">323</th><td>    <b>while</b> (<a class="ref fn" href="lua.h.html#lua_geti" title='lua_geti' data-ref="lua_geti">lua_geti</a>(<a class="local col0 ref" href="#50L" title='L' data-ref="50L">L</a>, <var>1</var>, --<a class="local col4 ref" href="#54j" title='j' data-ref="54j">j</a>), <a class="tu ref fn" href="#sort_comp" title='sort_comp' data-use='c' data-ref="sort_comp">sort_comp</a>(<a class="local col0 ref" href="#50L" title='L' data-ref="50L">L</a>, -<var>3</var>, -<var>1</var>)) {</td></tr>
+<tr><th id="324">324</th><td>      <b>if</b> (<a class="local col4 ref" href="#54j" title='j' data-ref="54j">j</a> &lt; <a class="local col3 ref" href="#53i" title='i' data-ref="53i">i</a>)  <i>/* j &lt; i  but  a[j] &gt; P ?? */</i></td></tr>
+<tr><th id="325">325</th><td>        <a class="ref fn" href="lauxlib.h.html#luaL_error" title='luaL_error' data-ref="luaL_error">luaL_error</a>(<a class="local col0 ref" href="#50L" title='L' data-ref="50L">L</a>, <q>"invalid order function for sorting"</q>);</td></tr>
+<tr><th id="326">326</th><td>      <a class="macro" href="lua.h.html#344" title="lua_settop(L, -(1)-1)" data-ref="_M/lua_pop">lua_pop</a>(<a class="local col0 ref" href="#50L" title='L' data-ref="50L">L</a>, <var>1</var>);  <i>/* remove a[j] */</i></td></tr>
+<tr><th id="327">327</th><td>    }</td></tr>
+<tr><th id="328">328</th><td>    <i>/* after the loop, a[j] &lt;= P and a[j + 1 .. up] &gt;= P */</i></td></tr>
+<tr><th id="329">329</th><td>    <b>if</b> (<a class="local col4 ref" href="#54j" title='j' data-ref="54j">j</a> &lt; <a class="local col3 ref" href="#53i" title='i' data-ref="53i">i</a>) {  <i>/* no elements out of place? */</i></td></tr>
+<tr><th id="330">330</th><td>      <i>/* a[lo .. i - 1] &lt;= P &lt;= a[j + 1 .. i .. up] */</i></td></tr>
+<tr><th id="331">331</th><td>      <a class="macro" href="lua.h.html#344" title="lua_settop(L, -(1)-1)" data-ref="_M/lua_pop">lua_pop</a>(<a class="local col0 ref" href="#50L" title='L' data-ref="50L">L</a>, <var>1</var>);  <i>/* pop a[j] */</i></td></tr>
+<tr><th id="332">332</th><td>      <i>/* swap pivot (a[up - 1]) with a[i] to satisfy pos-condition */</i></td></tr>
+<tr><th id="333">333</th><td>      <a class="tu ref fn" href="#set2" title='set2' data-use='c' data-ref="set2">set2</a>(<a class="local col0 ref" href="#50L" title='L' data-ref="50L">L</a>, <a class="local col2 ref" href="#52up" title='up' data-ref="52up">up</a> - <var>1</var>, <a class="local col3 ref" href="#53i" title='i' data-ref="53i">i</a>);</td></tr>
+<tr><th id="334">334</th><td>      <b>return</b> <a class="local col3 ref" href="#53i" title='i' data-ref="53i">i</a>;</td></tr>
+<tr><th id="335">335</th><td>    }</td></tr>
+<tr><th id="336">336</th><td>    <i>/* otherwise, swap a[i] - a[j] to restore invariant and repeat */</i></td></tr>
+<tr><th id="337">337</th><td>    <a class="tu ref fn" href="#set2" title='set2' data-use='c' data-ref="set2">set2</a>(<a class="local col0 ref" href="#50L" title='L' data-ref="50L">L</a>, <a class="local col3 ref" href="#53i" title='i' data-ref="53i">i</a>, <a class="local col4 ref" href="#54j" title='j' data-ref="54j">j</a>);</td></tr>
+<tr><th id="338">338</th><td>  }</td></tr>
+<tr><th id="339">339</th><td>}</td></tr>
+<tr><th id="340">340</th><td></td></tr>
+<tr><th id="341">341</th><td></td></tr>
+<tr><th id="342">342</th><td><i  data-doc="choosePivot">/*</i></td></tr>
+<tr><th id="343">343</th><td><i  data-doc="choosePivot">** Choose an element in the middle (2nd-3th quarters) of [lo,up]</i></td></tr>
+<tr><th id="344">344</th><td><i  data-doc="choosePivot">** "randomized" by 'rnd'</i></td></tr>
+<tr><th id="345">345</th><td><i  data-doc="choosePivot">*/</i></td></tr>
+<tr><th id="346">346</th><td><em>static</em> <a class="typedef" href="#IdxT" title='IdxT' data-type='unsigned int' data-ref="IdxT">IdxT</a> <dfn class="tu decl def fn" id="choosePivot" title='choosePivot' data-type='IdxT choosePivot(IdxT lo, IdxT up, unsigned int rnd)' data-ref="choosePivot">choosePivot</dfn> (<a class="typedef" href="#IdxT" title='IdxT' data-type='unsigned int' data-ref="IdxT">IdxT</a> <dfn class="local col5 decl" id="55lo" title='lo' data-type='IdxT' data-ref="55lo">lo</dfn>, <a class="typedef" href="#IdxT" title='IdxT' data-type='unsigned int' data-ref="IdxT">IdxT</a> <dfn class="local col6 decl" id="56up" title='up' data-type='IdxT' data-ref="56up">up</dfn>, <em>unsigned</em> <em>int</em> <dfn class="local col7 decl" id="57rnd" title='rnd' data-type='unsigned int' data-ref="57rnd">rnd</dfn>) {</td></tr>
+<tr><th id="347">347</th><td>  <a class="typedef" href="#IdxT" title='IdxT' data-type='unsigned int' data-ref="IdxT">IdxT</a> <dfn class="local col8 decl" id="58r4" title='r4' data-type='IdxT' data-ref="58r4">r4</dfn> = (<a class="local col6 ref" href="#56up" title='up' data-ref="56up">up</a> - <a class="local col5 ref" href="#55lo" title='lo' data-ref="55lo">lo</a>) / <var>4</var>;  <i>/* range/4 */</i></td></tr>
+<tr><th id="348">348</th><td>  <a class="typedef" href="#IdxT" title='IdxT' data-type='unsigned int' data-ref="IdxT">IdxT</a> <dfn class="local col9 decl" id="59p" title='p' data-type='IdxT' data-ref="59p">p</dfn> = <a class="local col7 ref" href="#57rnd" title='rnd' data-ref="57rnd">rnd</a> % (<a class="local col8 ref" href="#58r4" title='r4' data-ref="58r4">r4</a> * <var>2</var>) + (<a class="local col5 ref" href="#55lo" title='lo' data-ref="55lo">lo</a> + <a class="local col8 ref" href="#58r4" title='r4' data-ref="58r4">r4</a>);</td></tr>
+<tr><th id="349">349</th><td>  <a class="macro" href="lualib.h.html#57" title="((void)0)" data-ref="_M/lua_assert">lua_assert</a>(lo + r4 &lt;= p &amp;&amp; p &lt;= up - r4);</td></tr>
+<tr><th id="350">350</th><td>  <b>return</b> <a class="local col9 ref" href="#59p" title='p' data-ref="59p">p</a>;</td></tr>
+<tr><th id="351">351</th><td>}</td></tr>
+<tr><th id="352">352</th><td></td></tr>
+<tr><th id="353">353</th><td></td></tr>
+<tr><th id="354">354</th><td><i  data-doc="auxsort">/*</i></td></tr>
+<tr><th id="355">355</th><td><i  data-doc="auxsort">** QuickSort algorithm (recursive function)</i></td></tr>
+<tr><th id="356">356</th><td><i  data-doc="auxsort">*/</i></td></tr>
+<tr><th id="357">357</th><td><em>static</em> <em>void</em> <dfn class="tu decl def fn" id="auxsort" title='auxsort' data-type='void auxsort(lua_State * L, IdxT lo, IdxT up, unsigned int rnd)' data-ref="auxsort">auxsort</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col0 decl" id="60L" title='L' data-type='lua_State *' data-ref="60L">L</dfn>, <a class="typedef" href="#IdxT" title='IdxT' data-type='unsigned int' data-ref="IdxT">IdxT</a> <dfn class="local col1 decl" id="61lo" title='lo' data-type='IdxT' data-ref="61lo">lo</dfn>, <a class="typedef" href="#IdxT" title='IdxT' data-type='unsigned int' data-ref="IdxT">IdxT</a> <dfn class="local col2 decl" id="62up" title='up' data-type='IdxT' data-ref="62up">up</dfn>,</td></tr>
+<tr><th id="358">358</th><td>                                   <em>unsigned</em> <em>int</em> <dfn class="local col3 decl" id="63rnd" title='rnd' data-type='unsigned int' data-ref="63rnd">rnd</dfn>) {</td></tr>
+<tr><th id="359">359</th><td>  <b>while</b> (<a class="local col1 ref" href="#61lo" title='lo' data-ref="61lo">lo</a> &lt; <a class="local col2 ref" href="#62up" title='up' data-ref="62up">up</a>) {  <i>/* loop for tail recursion */</i></td></tr>
+<tr><th id="360">360</th><td>    <a class="typedef" href="#IdxT" title='IdxT' data-type='unsigned int' data-ref="IdxT">IdxT</a> <dfn class="local col4 decl" id="64p" title='p' data-type='IdxT' data-ref="64p">p</dfn>;  <i>/* Pivot index */</i></td></tr>
+<tr><th id="361">361</th><td>    <a class="typedef" href="#IdxT" title='IdxT' data-type='unsigned int' data-ref="IdxT">IdxT</a> <dfn class="local col5 decl" id="65n" title='n' data-type='IdxT' data-ref="65n">n</dfn>;  <i>/* to be used later */</i></td></tr>
+<tr><th id="362">362</th><td>    <i>/* sort elements 'lo', 'p', and 'up' */</i></td></tr>
+<tr><th id="363">363</th><td>    <a class="ref fn" href="lua.h.html#lua_geti" title='lua_geti' data-ref="lua_geti">lua_geti</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, <var>1</var>, <a class="local col1 ref" href="#61lo" title='lo' data-ref="61lo">lo</a>);</td></tr>
+<tr><th id="364">364</th><td>    <a class="ref fn" href="lua.h.html#lua_geti" title='lua_geti' data-ref="lua_geti">lua_geti</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, <var>1</var>, <a class="local col2 ref" href="#62up" title='up' data-ref="62up">up</a>);</td></tr>
+<tr><th id="365">365</th><td>    <b>if</b> (<a class="tu ref fn" href="#sort_comp" title='sort_comp' data-use='c' data-ref="sort_comp">sort_comp</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, -<var>1</var>, -<var>2</var>))  <i>/* a[up] &lt; a[lo]? */</i></td></tr>
+<tr><th id="366">366</th><td>      <a class="tu ref fn" href="#set2" title='set2' data-use='c' data-ref="set2">set2</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, <a class="local col1 ref" href="#61lo" title='lo' data-ref="61lo">lo</a>, <a class="local col2 ref" href="#62up" title='up' data-ref="62up">up</a>);  <i>/* swap a[lo] - a[up] */</i></td></tr>
+<tr><th id="367">367</th><td>    <b>else</b></td></tr>
+<tr><th id="368">368</th><td>      <a class="macro" href="lua.h.html#344" title="lua_settop(L, -(2)-1)" data-ref="_M/lua_pop">lua_pop</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, <var>2</var>);  <i>/* remove both values */</i></td></tr>
+<tr><th id="369">369</th><td>    <b>if</b> (<a class="local col2 ref" href="#62up" title='up' data-ref="62up">up</a> - <a class="local col1 ref" href="#61lo" title='lo' data-ref="61lo">lo</a> == <var>1</var>)  <i>/* only 2 elements? */</i></td></tr>
+<tr><th id="370">370</th><td>      <b>return</b>;  <i>/* already sorted */</i></td></tr>
+<tr><th id="371">371</th><td>    <b>if</b> (<a class="local col2 ref" href="#62up" title='up' data-ref="62up">up</a> - <a class="local col1 ref" href="#61lo" title='lo' data-ref="61lo">lo</a> &lt; <a class="macro" href="#274" title="100u" data-ref="_M/RANLIMIT">RANLIMIT</a> || <a class="local col3 ref" href="#63rnd" title='rnd' data-ref="63rnd">rnd</a> == <var>0</var>)  <i>/* small interval or no randomize? */</i></td></tr>
+<tr><th id="372">372</th><td>      <a class="local col4 ref" href="#64p" title='p' data-ref="64p">p</a> = (<a class="local col1 ref" href="#61lo" title='lo' data-ref="61lo">lo</a> + <a class="local col2 ref" href="#62up" title='up' data-ref="62up">up</a>)/<var>2</var>;  <i>/* middle element is a good pivot */</i></td></tr>
+<tr><th id="373">373</th><td>    <b>else</b>  <i>/* for larger intervals, it is worth a random pivot */</i></td></tr>
+<tr><th id="374">374</th><td>      <a class="local col4 ref" href="#64p" title='p' data-ref="64p">p</a> = <a class="tu ref fn" href="#choosePivot" title='choosePivot' data-use='c' data-ref="choosePivot">choosePivot</a>(<a class="local col1 ref" href="#61lo" title='lo' data-ref="61lo">lo</a>, <a class="local col2 ref" href="#62up" title='up' data-ref="62up">up</a>, <a class="local col3 ref" href="#63rnd" title='rnd' data-ref="63rnd">rnd</a>);</td></tr>
+<tr><th id="375">375</th><td>    <a class="ref fn" href="lua.h.html#lua_geti" title='lua_geti' data-ref="lua_geti">lua_geti</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, <var>1</var>, <a class="local col4 ref" href="#64p" title='p' data-ref="64p">p</a>);</td></tr>
+<tr><th id="376">376</th><td>    <a class="ref fn" href="lua.h.html#lua_geti" title='lua_geti' data-ref="lua_geti">lua_geti</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, <var>1</var>, <a class="local col1 ref" href="#61lo" title='lo' data-ref="61lo">lo</a>);</td></tr>
+<tr><th id="377">377</th><td>    <b>if</b> (<a class="tu ref fn" href="#sort_comp" title='sort_comp' data-use='c' data-ref="sort_comp">sort_comp</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, -<var>2</var>, -<var>1</var>))  <i>/* a[p] &lt; a[lo]? */</i></td></tr>
+<tr><th id="378">378</th><td>      <a class="tu ref fn" href="#set2" title='set2' data-use='c' data-ref="set2">set2</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, <a class="local col4 ref" href="#64p" title='p' data-ref="64p">p</a>, <a class="local col1 ref" href="#61lo" title='lo' data-ref="61lo">lo</a>);  <i>/* swap a[p] - a[lo] */</i></td></tr>
+<tr><th id="379">379</th><td>    <b>else</b> {</td></tr>
+<tr><th id="380">380</th><td>      <a class="macro" href="lua.h.html#344" title="lua_settop(L, -(1)-1)" data-ref="_M/lua_pop">lua_pop</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, <var>1</var>);  <i>/* remove a[lo] */</i></td></tr>
+<tr><th id="381">381</th><td>      <a class="ref fn" href="lua.h.html#lua_geti" title='lua_geti' data-ref="lua_geti">lua_geti</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, <var>1</var>, <a class="local col2 ref" href="#62up" title='up' data-ref="62up">up</a>);</td></tr>
+<tr><th id="382">382</th><td>      <b>if</b> (<a class="tu ref fn" href="#sort_comp" title='sort_comp' data-use='c' data-ref="sort_comp">sort_comp</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, -<var>1</var>, -<var>2</var>))  <i>/* a[up] &lt; a[p]? */</i></td></tr>
+<tr><th id="383">383</th><td>        <a class="tu ref fn" href="#set2" title='set2' data-use='c' data-ref="set2">set2</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, <a class="local col4 ref" href="#64p" title='p' data-ref="64p">p</a>, <a class="local col2 ref" href="#62up" title='up' data-ref="62up">up</a>);  <i>/* swap a[up] - a[p] */</i></td></tr>
+<tr><th id="384">384</th><td>      <b>else</b></td></tr>
+<tr><th id="385">385</th><td>        <a class="macro" href="lua.h.html#344" title="lua_settop(L, -(2)-1)" data-ref="_M/lua_pop">lua_pop</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, <var>2</var>);</td></tr>
+<tr><th id="386">386</th><td>    }</td></tr>
+<tr><th id="387">387</th><td>    <b>if</b> (<a class="local col2 ref" href="#62up" title='up' data-ref="62up">up</a> - <a class="local col1 ref" href="#61lo" title='lo' data-ref="61lo">lo</a> == <var>2</var>)  <i>/* only 3 elements? */</i></td></tr>
+<tr><th id="388">388</th><td>      <b>return</b>;  <i>/* already sorted */</i></td></tr>
+<tr><th id="389">389</th><td>    <a class="ref fn" href="lua.h.html#lua_geti" title='lua_geti' data-ref="lua_geti">lua_geti</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, <var>1</var>, <a class="local col4 ref" href="#64p" title='p' data-ref="64p">p</a>);  <i>/* get middle element (Pivot) */</i></td></tr>
+<tr><th id="390">390</th><td>    <a class="ref fn" href="lua.h.html#lua_pushvalue" title='lua_pushvalue' data-ref="lua_pushvalue">lua_pushvalue</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, -<var>1</var>);  <i>/* push Pivot */</i></td></tr>
+<tr><th id="391">391</th><td>    <a class="ref fn" href="lua.h.html#lua_geti" title='lua_geti' data-ref="lua_geti">lua_geti</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, <var>1</var>, <a class="local col2 ref" href="#62up" title='up' data-ref="62up">up</a> - <var>1</var>);  <i>/* push a[up - 1] */</i></td></tr>
+<tr><th id="392">392</th><td>    <a class="tu ref fn" href="#set2" title='set2' data-use='c' data-ref="set2">set2</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, <a class="local col4 ref" href="#64p" title='p' data-ref="64p">p</a>, <a class="local col2 ref" href="#62up" title='up' data-ref="62up">up</a> - <var>1</var>);  <i>/* swap Pivot (a[p]) with a[up - 1] */</i></td></tr>
+<tr><th id="393">393</th><td>    <a class="local col4 ref" href="#64p" title='p' data-ref="64p">p</a> = <a class="tu ref fn" href="#partition" title='partition' data-use='c' data-ref="partition">partition</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, <a class="local col1 ref" href="#61lo" title='lo' data-ref="61lo">lo</a>, <a class="local col2 ref" href="#62up" title='up' data-ref="62up">up</a>);</td></tr>
+<tr><th id="394">394</th><td>    <i>/* a[lo .. p - 1] &lt;= a[p] == P &lt;= a[p + 1 .. up] */</i></td></tr>
+<tr><th id="395">395</th><td>    <b>if</b> (<a class="local col4 ref" href="#64p" title='p' data-ref="64p">p</a> - <a class="local col1 ref" href="#61lo" title='lo' data-ref="61lo">lo</a> &lt; <a class="local col2 ref" href="#62up" title='up' data-ref="62up">up</a> - <a class="local col4 ref" href="#64p" title='p' data-ref="64p">p</a>) {  <i>/* lower interval is smaller? */</i></td></tr>
+<tr><th id="396">396</th><td>      <a class="tu ref fn" href="#auxsort" title='auxsort' data-use='c' data-ref="auxsort">auxsort</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, <a class="local col1 ref" href="#61lo" title='lo' data-ref="61lo">lo</a>, <a class="local col4 ref" href="#64p" title='p' data-ref="64p">p</a> - <var>1</var>, <a class="local col3 ref" href="#63rnd" title='rnd' data-ref="63rnd">rnd</a>);  <i>/* call recursively for lower interval */</i></td></tr>
+<tr><th id="397">397</th><td>      <a class="local col5 ref" href="#65n" title='n' data-ref="65n">n</a> = <a class="local col4 ref" href="#64p" title='p' data-ref="64p">p</a> - <a class="local col1 ref" href="#61lo" title='lo' data-ref="61lo">lo</a>;  <i>/* size of smaller interval */</i></td></tr>
+<tr><th id="398">398</th><td>      <a class="local col1 ref" href="#61lo" title='lo' data-ref="61lo">lo</a> = <a class="local col4 ref" href="#64p" title='p' data-ref="64p">p</a> + <var>1</var>;  <i>/* tail call for [p + 1 .. up] (upper interval) */</i></td></tr>
+<tr><th id="399">399</th><td>    }</td></tr>
+<tr><th id="400">400</th><td>    <b>else</b> {</td></tr>
+<tr><th id="401">401</th><td>      <a class="tu ref fn" href="#auxsort" title='auxsort' data-use='c' data-ref="auxsort">auxsort</a>(<a class="local col0 ref" href="#60L" title='L' data-ref="60L">L</a>, <a class="local col4 ref" href="#64p" title='p' data-ref="64p">p</a> + <var>1</var>, <a class="local col2 ref" href="#62up" title='up' data-ref="62up">up</a>, <a class="local col3 ref" href="#63rnd" title='rnd' data-ref="63rnd">rnd</a>);  <i>/* call recursively for upper interval */</i></td></tr>
+<tr><th id="402">402</th><td>      <a class="local col5 ref" href="#65n" title='n' data-ref="65n">n</a> = <a class="local col2 ref" href="#62up" title='up' data-ref="62up">up</a> - <a class="local col4 ref" href="#64p" title='p' data-ref="64p">p</a>;  <i>/* size of smaller interval */</i></td></tr>
+<tr><th id="403">403</th><td>      <a class="local col2 ref" href="#62up" title='up' data-ref="62up">up</a> = <a class="local col4 ref" href="#64p" title='p' data-ref="64p">p</a> - <var>1</var>;  <i>/* tail call for [lo .. p - 1]  (lower interval) */</i></td></tr>
+<tr><th id="404">404</th><td>    }</td></tr>
+<tr><th id="405">405</th><td>    <b>if</b> ((<a class="local col2 ref" href="#62up" title='up' data-ref="62up">up</a> - <a class="local col1 ref" href="#61lo" title='lo' data-ref="61lo">lo</a>) / <var>128</var> &gt; <a class="local col5 ref" href="#65n" title='n' data-ref="65n">n</a>) <i>/* partition too imbalanced? */</i></td></tr>
+<tr><th id="406">406</th><td>      <a class="local col3 ref" href="#63rnd" title='rnd' data-ref="63rnd">rnd</a> = <a class="tu ref fn" href="#l_randomizePivot" title='l_randomizePivot' data-use='c' data-ref="l_randomizePivot">l_randomizePivot</a>();  <i>/* try a new randomization */</i></td></tr>
+<tr><th id="407">407</th><td>  }  <i>/* tail call auxsort(L, lo, up, rnd) */</i></td></tr>
+<tr><th id="408">408</th><td>}</td></tr>
+<tr><th id="409">409</th><td></td></tr>
+<tr><th id="410">410</th><td></td></tr>
+<tr><th id="411">411</th><td><em>static</em> <em>int</em> <dfn class="tu decl def fn" id="sort" title='sort' data-type='int sort(lua_State * L)' data-ref="sort">sort</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col6 decl" id="66L" title='L' data-type='lua_State *' data-ref="66L">L</dfn>) {</td></tr>
+<tr><th id="412">412</th><td>  <a class="typedef" href="lua.h.html#lua_Integer" title='lua_Integer' data-type='long long' data-ref="lua_Integer">lua_Integer</a> <dfn class="local col7 decl" id="67n" title='n' data-type='lua_Integer' data-ref="67n">n</dfn> = <a class="macro" href="#33" title="(checktab(L, 1, ((1 | 2)) | 4), luaL_len(L, 1))" data-ref="_M/aux_getn">aux_getn</a>(<a class="local col6 ref" href="#66L" title='L' data-ref="66L">L</a>, <var>1</var>, <a class="macro" href="#30" title="(1 | 2)" data-ref="_M/TAB_RW">TAB_RW</a>);</td></tr>
+<tr><th id="413">413</th><td>  <b>if</b> (<a class="local col7 ref" href="#67n" title='n' data-ref="67n">n</a> &gt; <var>1</var>) {  <i>/* non-trivial interval? */</i></td></tr>
+<tr><th id="414">414</th><td>    <a class="macro" href="lauxlib.h.html#122" title="((void)((n &lt; 2147483647) || luaL_argerror(L, (1), (&quot;array too big&quot;))))" data-ref="_M/luaL_argcheck">luaL_argcheck</a>(<a class="local col6 ref" href="#66L" title='L' data-ref="66L">L</a>, <a class="local col7 ref" href="#67n" title='n' data-ref="67n">n</a> &lt; <span class="macro" title="2147483647" data-ref="_M/INT_MAX">INT_MAX</span>, <var>1</var>, <q>"array too big"</q>);</td></tr>
+<tr><th id="415">415</th><td>    <b>if</b> (!<a class="macro" href="lua.h.html#359" title="(lua_type(L, (2)) &lt;= 0)" data-ref="_M/lua_isnoneornil">lua_isnoneornil</a>(<a class="local col6 ref" href="#66L" title='L' data-ref="66L">L</a>, <var>2</var>))  <i>/* is there a 2nd argument? */</i></td></tr>
+<tr><th id="416">416</th><td>      <a class="ref fn" href="lauxlib.h.html#luaL_checktype" title='luaL_checktype' data-ref="luaL_checktype">luaL_checktype</a>(<a class="local col6 ref" href="#66L" title='L' data-ref="66L">L</a>, <var>2</var>, <a class="macro" href="lua.h.html#70" title="6" data-ref="_M/LUA_TFUNCTION">LUA_TFUNCTION</a>);  <i>/* must be a function */</i></td></tr>
+<tr><th id="417">417</th><td>    <a class="ref fn" href="lua.h.html#lua_settop" title='lua_settop' data-ref="lua_settop">lua_settop</a>(<a class="local col6 ref" href="#66L" title='L' data-ref="66L">L</a>, <var>2</var>);  <i>/* make sure there are two arguments */</i></td></tr>
+<tr><th id="418">418</th><td>    <a class="tu ref fn" href="#auxsort" title='auxsort' data-use='c' data-ref="auxsort">auxsort</a>(<a class="local col6 ref" href="#66L" title='L' data-ref="66L">L</a>, <var>1</var>, (<a class="typedef" href="#IdxT" title='IdxT' data-type='unsigned int' data-ref="IdxT">IdxT</a>)<a class="local col7 ref" href="#67n" title='n' data-ref="67n">n</a>, <var>0</var>);</td></tr>
+<tr><th id="419">419</th><td>  }</td></tr>
+<tr><th id="420">420</th><td>  <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="421">421</th><td>}</td></tr>
+<tr><th id="422">422</th><td></td></tr>
+<tr><th id="423">423</th><td><i  data-doc="tab_funcs">/* }====================================================== */</i></td></tr>
+<tr><th id="424">424</th><td></td></tr>
+<tr><th id="425">425</th><td></td></tr>
+<tr><th id="426">426</th><td><em>static</em> <em>const</em> <a class="typedef" href="lauxlib.h.html#luaL_Reg" title='luaL_Reg' data-type='struct luaL_Reg' data-ref="luaL_Reg">luaL_Reg</a> <dfn class="tu decl def" id="tab_funcs" title='tab_funcs' data-type='const luaL_Reg [8]' data-ref="tab_funcs">tab_funcs</dfn>[] = {</td></tr>
+<tr><th id="427">427</th><td>  {<q>"concat"</q>, <a class="tu ref fn" href="#tconcat" title='tconcat' data-use='r' data-ref="tconcat">tconcat</a>},</td></tr>
+<tr><th id="428">428</th><td><u>#<span data-ppcond="428">if</span> defined(<span class="macro" data-ref="_M/LUA_COMPAT_MAXN">LUA_COMPAT_MAXN</span>)</u></td></tr>
+<tr><th id="429">429</th><td>  {<q>"maxn"</q>, maxn},</td></tr>
+<tr><th id="430">430</th><td><u>#<span data-ppcond="428">endif</span></u></td></tr>
+<tr><th id="431">431</th><td>  {<q>"insert"</q>, <a class="tu ref fn" href="#tinsert" title='tinsert' data-use='r' data-ref="tinsert">tinsert</a>},</td></tr>
+<tr><th id="432">432</th><td>  {<q>"pack"</q>, <a class="tu ref fn" href="#pack" title='pack' data-use='r' data-ref="pack">pack</a>},</td></tr>
+<tr><th id="433">433</th><td>  {<q>"unpack"</q>, <a class="tu ref fn" href="#unpack" title='unpack' data-use='r' data-ref="unpack">unpack</a>},</td></tr>
+<tr><th id="434">434</th><td>  {<q>"remove"</q>, <a class="tu ref fn" href="#tremove" title='tremove' data-use='r' data-ref="tremove">tremove</a>},</td></tr>
+<tr><th id="435">435</th><td>  {<q>"move"</q>, <a class="tu ref fn" href="#tmove" title='tmove' data-use='r' data-ref="tmove">tmove</a>},</td></tr>
+<tr><th id="436">436</th><td>  {<q>"sort"</q>, <a class="tu ref fn" href="#sort" title='sort' data-use='r' data-ref="sort">sort</a>},</td></tr>
+<tr><th id="437">437</th><td>  {<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>}</td></tr>
+<tr><th id="438">438</th><td>};</td></tr>
+<tr><th id="439">439</th><td></td></tr>
+<tr><th id="440">440</th><td></td></tr>
+<tr><th id="441">441</th><td><a class="macro" href="luaconf.h.html#261" title="extern" data-ref="_M/LUAMOD_API">LUAMOD_API</a> <em>int</em> <dfn class="decl def fn" id="luaopen_table" title='luaopen_table' data-ref="luaopen_table">luaopen_table</dfn> (<a class="typedef" href="lua.h.html#lua_State" title='lua_State' data-type='struct lua_State' data-ref="lua_State">lua_State</a> *<dfn class="local col8 decl" id="68L" title='L' data-type='lua_State *' data-ref="68L">L</dfn>) {</td></tr>
+<tr><th id="442">442</th><td>  <a class="macro" href="lauxlib.h.html#119" title="(luaL_checkversion_(L, 503, (sizeof(lua_Integer)*16 + sizeof(lua_Number))), lua_createtable(L, 0, sizeof(tab_funcs)/sizeof((tab_funcs)[0]) - 1), luaL_setfuncs(L,tab_funcs,0))" data-ref="_M/luaL_newlib">luaL_newlib</a>(<a class="local col8 ref" href="#68L" title='L' data-ref="68L">L</a>, <a class="tu ref" href="#tab_funcs" title='tab_funcs' data-use='r' data-ref="tab_funcs">tab_funcs</a>);</td></tr>
+<tr><th id="443">443</th><td><u>#<span data-ppcond="443">if</span> defined(<span class="macro" data-ref="_M/LUA_COMPAT_UNPACK">LUA_COMPAT_UNPACK</span>)</u></td></tr>
+<tr><th id="444">444</th><td>  <i>/* _G.unpack = table.unpack */</i></td></tr>
+<tr><th id="445">445</th><td>  lua_getfield(L, -<var>1</var>, <q>"unpack"</q>);</td></tr>
+<tr><th id="446">446</th><td>  lua_setglobal(L, <q>"unpack"</q>);</td></tr>
+<tr><th id="447">447</th><td><u>#<span data-ppcond="443">endif</span></u></td></tr>
+<tr><th id="448">448</th><td>  <b>return</b> <var>1</var>;</td></tr>
+<tr><th id="449">449</th><td>}</td></tr>
+<tr><th id="450">450</th><td></td></tr>
+<tr><th id="451">451</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Apr-07</em> from project lua<br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,0 +1,12 @@
+<dec f='lua/src/ltable.h' l='48' type='const TValue * luaH_get(Table * t, const TValue * key)'/>
+<def f='lua/src/ltable.c' l='570' ll='584' type='const TValue * luaH_get(Table * t, const TValue * key)'/>
+<use f='lua/src/ltable.c' l='592' u='c' c='luaH_set'/>
+<doc f='lua/src/ltable.c' l='567'>/*
+** main search function
+*/</doc>
+<use f='lua/src/lvm.c' l='186' u='c' c='luaV_finishget'/>
+<use f='lua/src/lvm.c' l='233' u='c' c='luaV_finishset'/>
+<use f='lua/src/lvm.c' l='775' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='775' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='781' u='c' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='781' u='c' c='luaV_execute'/>

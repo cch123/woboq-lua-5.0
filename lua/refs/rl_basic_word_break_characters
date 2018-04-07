@@ -1,0 +1,4 @@
+<dec f='include/readline/readline.h' l='660' type='const char *'/>
+<doc f='include/readline/readline.h' l='657'>/* The basic list of characters that signal a break between words for the
+   completer routine.  The initial contents of this variable is what
+   breaks words in the shell, i.e. &quot;n\&quot;\\&apos;`@$&gt;&quot;. */</doc>

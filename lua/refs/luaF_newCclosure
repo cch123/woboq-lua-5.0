@@ -1,0 +1,1 @@
+<dec f='lua/src/lfunc.h' l='51' type='CClosure * luaF_newCclosure(lua_State * L, int nelems)'/>

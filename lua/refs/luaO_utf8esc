@@ -1,0 +1,1 @@
+<dec f='lua/src/lobject.h' l='535' type='int luaO_utf8esc(char * buff, unsigned long x)'/>

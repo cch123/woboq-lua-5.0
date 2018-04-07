@@ -1,0 +1,1 @@
+<dec f='lua/src/ldo.h' l='55' type='int luaD_rawrunprotected(lua_State * L, Pfunc f, void * ud)'/>

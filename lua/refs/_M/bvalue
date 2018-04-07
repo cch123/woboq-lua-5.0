@@ -1,0 +1,5 @@
+<dec f='lua/src/lobject.h' l='176'/>
+<use f='lua/src/ltable.c' l='128' u='c'/>
+<use f='lua/src/luac.c' l='263' u='c'/>
+<use f='lua/src/lvm.c' l='422' u='c'/>
+<use f='lua/src/lvm.c' l='422' u='c'/>

@@ -1,0 +1,10 @@
+<dec f='lua/src/ltable.h' l='46' type='const TValue * luaH_getshortstr(Table * t, TString * key)'/>
+<def f='lua/src/ltable.c' l='520' ll='534' type='const TValue * luaH_getshortstr(Table * t, TString * key)'/>
+<use f='lua/src/ltable.c' l='558' u='c' c='luaH_getstr'/>
+<use f='lua/src/ltable.c' l='572' u='c' c='luaH_get'/>
+<doc f='lua/src/ltable.c' l='517'>/*
+** search function for short strings
+*/</doc>
+<use f='lua/src/ltm.c' l='60' u='c' c='luaT_gettm'/>
+<use f='lua/src/ltm.c' l='82' u='c' c='luaT_gettmbyobj'/>
+<use f='lua/src/ltm.c' l='94' u='c' c='luaT_objtypename'/>

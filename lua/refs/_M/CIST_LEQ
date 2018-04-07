@@ -1,0 +1,5 @@
+<dec f='lua/src/lstate.h' l='106'/>
+<use f='lua/src/lvm.c' l='393' u='c'/>
+<use f='lua/src/lvm.c' l='395' u='c'/>
+<use f='lua/src/lvm.c' l='673' u='c'/>
+<use f='lua/src/lvm.c' l='675' u='c'/>

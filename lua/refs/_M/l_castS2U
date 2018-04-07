@@ -1,0 +1,5 @@
+<dec f='lua/src/llimits.h' l='122'/>
+<use f='lua/src/ltable.c' l='499' u='c'/>
+<use f='lua/src/lvm.c' l='553' u='c'/>
+<use f='lua/src/lvm.c' l='573' u='c'/>
+<use f='lua/src/lvm.c' l='1050' u='c'/>

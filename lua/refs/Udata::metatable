@@ -1,0 +1,11 @@
+<dec f='lua/src/lobject.h' l='349' type='struct Table *'/>
+<use f='lua/src/lstring.c' l='244' u='w' c='luaS_newudata'/>
+<offset>128</offset>
+<use f='lua/src/ltm.c' l='77' u='r' c='luaT_gettmbyobj'/>
+<use f='lua/src/ltm.c' l='93' u='r' c='luaT_objtypename'/>
+<use f='lua/src/lvm.c' l='430' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='430' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='430' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='432' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='432' u='r' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='432' u='r' c='luaV_equalobj'/>

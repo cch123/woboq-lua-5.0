@@ -1,0 +1,5 @@
+<dec f='lua/src/lobject.h' l='399' type='int'/>
+<offset>64</offset>
+<doc f='lua/src/lobject.h' l='399'>/* first point where variable is active */</doc>
+<use f='lua/src/luac.c' l='431' u='r' c='PrintDebug'/>
+<use f='lua/src/lundump.c' l='193' u='w' c='LoadDebug'/>

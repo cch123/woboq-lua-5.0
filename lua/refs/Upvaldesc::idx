@@ -1,0 +1,9 @@
+<dec f='lua/src/lobject.h' l='389' type='lu_byte'/>
+<offset>72</offset>
+<doc f='lua/src/lobject.h' l='389'>/* index of upvalue (in stack or in outer function&apos;s list) */</doc>
+<use f='lua/src/luac.c' l='438' u='r' c='PrintDebug'/>
+<use f='lua/src/lundump.c' l='175' u='w' c='LoadUpvalues'/>
+<use f='lua/src/lvm.c' l='617' u='r' c='getcached'/>
+<use f='lua/src/lvm.c' l='617' u='r' c='getcached'/>
+<use f='lua/src/lvm.c' l='642' u='r' c='pushclosure'/>
+<use f='lua/src/lvm.c' l='644' u='r' c='pushclosure'/>

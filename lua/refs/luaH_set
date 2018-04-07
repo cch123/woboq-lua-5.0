@@ -1,0 +1,8 @@
+<dec f='lua/src/ltable.h' l='50' type='TValue * luaH_set(lua_State * L, Table * t, const TValue * key)'/>
+<use f='lua/src/ltable.c' l='360' u='c' c='luaH_resize'/>
+<use f='lua/src/ltable.c' l='462' u='c' c='luaH_newkey'/>
+<def f='lua/src/ltable.c' l='591' ll='596' type='TValue * luaH_set(lua_State * L, Table * t, const TValue * key)'/>
+<doc f='lua/src/ltable.c' l='587'>/*
+** beware: when using this function you probably need to check a GC
+** barrier and invalidate the TM cache.
+*/</doc>

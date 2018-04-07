@@ -1,0 +1,19 @@
+<dec f='lua/src/lauxlib.h' l='49' type='const char * luaL_optlstring(lua_State * L, int arg, const char * def, size_t * l)'/>
+<use f='lua/src/lauxlib.c' l='350' macro='1' u='c'/>
+<def f='lua/src/lauxlib.c' l='397' ll='405' macro='1' type='const char * luaL_optlstring(lua_State * L, int arg, const char * def, size_t * len)'/>
+<use f='lua/src/lbaselib.c' l='288' macro='1' u='c'/>
+<use f='lua/src/lbaselib.c' l='289' macro='1' u='c'/>
+<use f='lua/src/lbaselib.c' l='338' macro='1' u='c'/>
+<use f='lua/src/lbaselib.c' l='341' macro='1' u='c'/>
+<use f='lua/src/lbaselib.c' l='345' macro='1' u='c'/>
+<use f='lua/src/lbaselib.c' l='363' macro='1' u='c'/>
+<use f='lua/src/ldblib.c' l='149' macro='1' u='c'/>
+<use f='lua/src/liolib.c' l='253' macro='1' u='c'/>
+<use f='lua/src/liolib.c' l='273' macro='1' u='c'/>
+<use f='lua/src/loadlib.c' l='461' macro='1' u='c'/>
+<use f='lua/src/loadlib.c' l='462' macro='1' u='c'/>
+<use f='lua/src/loslib.c' l='142' macro='1' u='c'/>
+<use f='lua/src/loslib.c' l='285' u='c' c='os_date'/>
+<use f='lua/src/loslib.c' l='364' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='126' u='c' c='str_rep'/>
+<use f='lua/src/ltablib.c' l='173' u='c' c='tconcat'/>

@@ -1,0 +1,6 @@
+<def f='include/readline/history.h' l='47' ll='51'/>
+<size>24</size>
+<doc f='include/readline/history.h' l='46'>/* The structure used to store a history entry. */</doc>
+<mbr r='_hist_entry::line' o='0' t='char *'/>
+<mbr r='_hist_entry::timestamp' o='64' t='char *'/>
+<mbr r='_hist_entry::data' o='128' t='histdata_t'/>

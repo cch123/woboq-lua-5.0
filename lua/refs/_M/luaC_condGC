@@ -1,0 +1,7 @@
+<dec f='lua/src/lgc.h' l='110'/>
+<doc f='lua/src/lgc.h' l='104'>/*
+** Does one step of collection when debt becomes positive. &apos;pre&apos;/&apos;pos&apos;
+** allows some adjustments to be done only when needed. macro
+** &apos;condchangemem&apos; is used only for heavy tests (forcing a full
+** GC cycle on every opportunity)
+*/</doc>

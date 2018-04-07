@@ -1,0 +1,2 @@
+<dec f='lua/src/ldo.h' l='47' type='int luaD_poscall(lua_State * L, CallInfo * ci, StkId firstResult, int nres)'/>
+<use f='lua/src/lvm.c' l='1179' u='c' c='luaV_execute'/>

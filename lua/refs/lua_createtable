@@ -1,0 +1,22 @@
+<dec f='lua/src/lua.h' l='249' type='void lua_createtable(lua_State * L, int narr, int nrec)'/>
+<use f='lua/src/lauxlib.c' l='303' u='c' c='luaL_newmetatable'/>
+<use f='lua/src/lauxlib.c' l='957' macro='1' u='c'/>
+<use f='lua/src/lbitlib.c' l='221' macro='1' u='c'/>
+<use f='lua/src/lcorolib.c' l='165' macro='1' u='c'/>
+<use f='lua/src/ldblib.c' l='164' macro='1' u='c'/>
+<use f='lua/src/ldblib.c' l='362' u='c' c='db_sethook'/>
+<use f='lua/src/ldblib.c' l='453' macro='1' u='c'/>
+<use f='lua/src/liolib.c' l='763' macro='1' u='c'/>
+<use f='lua/src/lmathlib.c' l='399' macro='1' u='c'/>
+<use f='lua/src/loadlib.c' l='738' u='c' c='createsearcherstable'/>
+<use f='lua/src/loadlib.c' l='758' macro='1' u='c'/>
+<use f='lua/src/loadlib.c' l='759' u='c' c='createclibstable'/>
+<use f='lua/src/loadlib.c' l='769' macro='1' u='c'/>
+<use f='lua/src/loslib.c' l='298' u='c' c='os_date'/>
+<use f='lua/src/loslib.c' l='404' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='1565' u='c' c='createmetatable'/>
+<use f='lua/src/lstrlib.c' l='1580' macro='1' u='c'/>
+<use f='lua/src/ltablib.c' l='197' u='c' c='pack'/>
+<use f='lua/src/ltablib.c' l='442' macro='1' u='c'/>
+<use f='lua/src/lua.c' l='230' u='c' c='createargtable'/>
+<use f='lua/src/lutf8lib.c' l='251' macro='1' u='c'/>

@@ -1,0 +1,4 @@
+<dec f='lua/src/ldebug.h' l='21' type='void luaG_typeerror(lua_State * L, const TValue * o, const char * opname)'/>
+<use f='lua/src/lvm.c' l='169' u='c' c='luaV_finishget'/>
+<use f='lua/src/lvm.c' l='225' u='c' c='luaV_finishset'/>
+<use f='lua/src/lvm.c' l='538' u='c' c='luaV_objlen'/>

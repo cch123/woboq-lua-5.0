@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='226' type='int rl_vi_redo(int , int )'/>
+<doc f='include/readline/readline.h' l='225'>/* VI-mode bindable commands. */</doc>

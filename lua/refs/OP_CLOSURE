@@ -1,0 +1,4 @@
+<dec f='lua/src/lopcodes.h' l='229' type='44'/>
+<use f='lua/src/luac.c' l='376' c='PrintCode'/>
+<doc f='lua/src/lopcodes.h' l='229'>/*	A Bx	R(A) := closure(KPROTO[Bx])			*/</doc>
+<use f='lua/src/lvm.c' l='1285' c='luaV_execute'/>

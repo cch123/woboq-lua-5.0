@@ -1,0 +1,5 @@
+<dec f='lua/src/lzio.h' l='58' type='lua_Reader'/>
+<offset>128</offset>
+<doc f='lua/src/lzio.h' l='58'>/* reader function */</doc>
+<use f='lua/src/lzio.c' l='28' u='r' c='luaZ_fill'/>
+<use f='lua/src/lzio.c' l='40' u='w' c='luaZ_init'/>

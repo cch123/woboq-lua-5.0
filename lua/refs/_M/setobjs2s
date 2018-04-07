@@ -1,0 +1,15 @@
+<dec f='lua/src/lobject.h' l='269'/>
+<doc f='lua/src/lobject.h' l='268'>/* from stack to (same) stack */</doc>
+<use f='lua/src/ltm.c' l='119' u='c'/>
+<use f='lua/src/lvm.c' l='484' u='c'/>
+<use f='lua/src/lvm.c' l='667' u='c'/>
+<use f='lua/src/lvm.c' l='804' u='c'/>
+<use f='lua/src/lvm.c' l='882' u='c'/>
+<use f='lua/src/lvm.c' l='1075' u='c'/>
+<use f='lua/src/lvm.c' l='1125' u='c'/>
+<use f='lua/src/lvm.c' l='1165' u='c'/>
+<use f='lua/src/lvm.c' l='1244' u='c'/>
+<use f='lua/src/lvm.c' l='1245' u='c'/>
+<use f='lua/src/lvm.c' l='1246' u='c'/>
+<use f='lua/src/lvm.c' l='1258' u='c'/>
+<use f='lua/src/lvm.c' l='1308' u='c'/>

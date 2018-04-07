@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='186' type='int rl_start_kbd_macro(int , int )'/>
+<doc f='include/readline/readline.h' l='185'>/* Bindable keyboard macro commands. */</doc>

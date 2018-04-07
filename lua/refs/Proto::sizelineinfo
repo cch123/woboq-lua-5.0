@@ -1,0 +1,4 @@
+<dec f='lua/src/lobject.h' l='415' type='int'/>
+<offset>224</offset>
+<use f='lua/src/luac.c' l='154' u='w' c='combine'/>
+<use f='lua/src/lundump.c' l='184' u='w' c='LoadDebug'/>

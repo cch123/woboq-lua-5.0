@@ -1,0 +1,3 @@
+<dec f='lua/src/lobject.h' l='110' type='Value'/>
+<offset>0</offset>
+<use f='lua/src/ltable.c' l='487' macro='1' u='w'/>

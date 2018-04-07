@@ -1,0 +1,5 @@
+<dec f='include/x86_64-linux-gnu/bits/mathcalls.h' l='184' type='double floor(double __x)'/>
+<use f='lua/src/lmathlib.c' l='109' u='c' c='math_floor'/>
+<use f='lua/src/lmathlib.c' l='157' u='c' c='math_modf'/>
+<use f='lua/src/lvm.c' l='99' macro='1' u='c'/>
+<use f='lua/src/lvm.c' l='1016' macro='1' u='c'/>

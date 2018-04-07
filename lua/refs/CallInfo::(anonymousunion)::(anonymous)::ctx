@@ -1,0 +1,3 @@
+<dec f='lua/src/lstate.h' l='86' type='lua_KContext'/>
+<offset>128</offset>
+<doc f='lua/src/lstate.h' l='86'>/* context info. in case of yields */</doc>

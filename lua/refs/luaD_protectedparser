@@ -1,0 +1,1 @@
+<dec f='lua/src/ldo.h' l='39' type='int luaD_protectedparser(lua_State * L, ZIO * z, const char * name, const char * mode)'/>

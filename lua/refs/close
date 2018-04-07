@@ -1,0 +1,6 @@
+<dec f='include/unistd.h' l='356' type='int close(int __fd)'/>
+<use f='lua/src/loslib.c' l='124' u='c' c='os_tmpname'/>
+<doc f='include/unistd.h' l='352'>/* Close the file descriptor FD.
+
+   This function is a cancellation point and therefore not marked with
+   __THROW.  */</doc>

@@ -1,0 +1,4 @@
+<def f='lua/src/lobject.h' l='491' ll='494'/>
+<size>32</size>
+<mbr r='Node::i_val' o='0' t='TValue'/>
+<mbr r='Node::i_key' o='128' t='TKey'/>

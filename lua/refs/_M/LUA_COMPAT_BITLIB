@@ -1,0 +1,6 @@
+<dec f='lua/src/luaconf.h' l='314'/>
+<doc f='lua/src/luaconf.h' l='311'>/*
+@@ LUA_COMPAT_BITLIB controls the presence of library &apos;bit32&apos;.
+*/</doc>
+<use f='lua/src/lbitlib.c' l='19' u='a'/>
+<use f='lua/src/linit.c' l='53' u='a'/>

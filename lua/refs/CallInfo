@@ -1,0 +1,19 @@
+<def f='lua/src/lstate.h' l='74' ll='92'/>
+<size>72</size>
+<doc f='lua/src/lstate.h' l='65'>/*
+** Information about a call.
+** When a thread yields, &apos;func&apos; is adjusted to pretend that the
+** top function has only the yielded values in its stack; in that
+** case, the actual &apos;func&apos; value is saved in field &apos;extra&apos;.
+** When a function calls another with a continuation, &apos;extra&apos; keeps
+** the function index so that, in case of errors, the continuation
+** function can be called with the correct top.
+*/</doc>
+<mbr r='CallInfo::func' o='0' t='StkId'/>
+<mbr r='CallInfo::top' o='64' t='StkId'/>
+<mbr r='CallInfo::previous' o='128' t='struct CallInfo *'/>
+<mbr r='CallInfo::next' o='192' t='struct CallInfo *'/>
+<mbr r='CallInfo::u' o='256' t='union (anonymous union at /vagrant/data/lua-5.3.4/src/lstate.h:78:3)'/>
+<mbr r='CallInfo::extra' o='448' t='ptrdiff_t'/>
+<mbr r='CallInfo::nresults' o='512' t='short'/>
+<mbr r='CallInfo::callstatus' o='528' t='unsigned short'/>

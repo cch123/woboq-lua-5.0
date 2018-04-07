@@ -1,0 +1,3 @@
+<dec f='include/readline/readline.h' l='501' type='int'/>
+<doc f='include/readline/readline.h' l='499'>/* Insert or overwrite mode for emacs mode.  1 means insert mode; 0 means
+   overwrite mode.  Reset to insert mode on each input line. */</doc>

@@ -1,0 +1,3 @@
+<dec f='lua/src/lstate.h' l='122' type='l_mem'/>
+<offset>128</offset>
+<doc f='lua/src/lstate.h' l='122'>/* number of bytes currently allocated - GCdebt */</doc>

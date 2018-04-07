@@ -1,0 +1,2 @@
+<dec f='lua/src/lopcodes.h' l='32' type='0'/>
+<use f='lua/src/luac.c' l='308' c='PrintCode'/>

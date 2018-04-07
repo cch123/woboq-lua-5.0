@@ -1,0 +1,7 @@
+<dec f='lua/src/ltm.h' l='65' type='void luaT_callTM(lua_State * L, const TValue * f, const TValue * p1, const TValue * p2, TValue * p3, int hasres)'/>
+<def f='lua/src/ltm.c' l='102' ll='121' type='void luaT_callTM(lua_State * L, const TValue * f, const TValue * p1, const TValue * p2, TValue * p3, int hasres)'/>
+<use f='lua/src/ltm.c' l='130' u='c' c='luaT_callbinTM'/>
+<use f='lua/src/lvm.c' l='182' u='c' c='luaV_finishget'/>
+<use f='lua/src/lvm.c' l='229' u='c' c='luaV_finishset'/>
+<use f='lua/src/lvm.c' l='448' u='c' c='luaV_equalobj'/>
+<use f='lua/src/lvm.c' l='542' u='c' c='luaV_objlen'/>

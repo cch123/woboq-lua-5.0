@@ -1,0 +1,2 @@
+<dec f='lua/src/ldebug.h' l='36' type='void luaG_traceexec(lua_State * L)'/>
+<use f='lua/src/lvm.c' l='759' u='c' c='luaV_execute'/>

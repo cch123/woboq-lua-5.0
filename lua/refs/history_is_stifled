@@ -1,0 +1,2 @@
+<dec f='include/readline/history.h' l='116' type='int history_is_stifled()'/>
+<doc f='include/readline/history.h' l='115'>/* Return 1 if the history is stifled, 0 if it is not. */</doc>

@@ -1,0 +1,3 @@
+<dec f='lua/src/lauxlib.h' l='106' type='void luaL_requiref(lua_State * L, const char * modname, lua_CFunction openf, int glb)'/>
+<def f='lua/src/lauxlib.c' l='971' ll='988' macro='1' type='void luaL_requiref(lua_State * L, const char * modname, lua_CFunction openf, int glb)'/>
+<use f='lua/src/linit.c' l='64' u='c' c='luaL_openlibs'/>

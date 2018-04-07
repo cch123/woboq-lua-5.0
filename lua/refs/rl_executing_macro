@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='612' type='char *'/>
+<doc f='include/readline/readline.h' l='611'>/* The text of a currently-executing keyboard macro. */</doc>

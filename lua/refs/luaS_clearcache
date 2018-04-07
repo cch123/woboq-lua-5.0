@@ -1,0 +1,6 @@
+<dec f='lua/src/lstring.h' l='40' type='void luaS_clearcache(global_State * g)'/>
+<def f='lua/src/lstring.c' l='103' ll='110' type='void luaS_clearcache(global_State * g)'/>
+<doc f='lua/src/lstring.c' l='99'>/*
+** Clear API string cache. (Entries cannot be empty, so fill them with
+** a non-collectable string.)
+*/</doc>

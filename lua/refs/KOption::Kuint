@@ -1,0 +1,10 @@
+<dec f='lua/src/lstrlib.c' l='1165' type='1'/>
+<use f='lua/src/lstrlib.c' l='1226' u='r' c='getoption'/>
+<use f='lua/src/lstrlib.c' l='1228' u='r' c='getoption'/>
+<use f='lua/src/lstrlib.c' l='1230' u='r' c='getoption'/>
+<use f='lua/src/lstrlib.c' l='1232' u='r' c='getoption'/>
+<use f='lua/src/lstrlib.c' l='1233' u='r' c='getoption'/>
+<use f='lua/src/lstrlib.c' l='1238' u='r' c='getoption'/>
+<use f='lua/src/lstrlib.c' l='1356' c='str_pack'/>
+<use f='lua/src/lstrlib.c' l='1496' c='str_unpack'/>
+<doc f='lua/src/lstrlib.c' l='1165'>/* unsigned integers */</doc>

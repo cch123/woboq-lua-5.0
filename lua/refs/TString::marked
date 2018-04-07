@@ -1,0 +1,5 @@
+<dec f='lua/src/lobject.h' l='79' type='lu_byte'/>
+<use f='lua/src/lstring.c' l='107' macro='1' u='r'/>
+<use f='lua/src/lstring.c' l='177' macro='1' u='r'/>
+<use f='lua/src/lstring.c' l='178' macro='1' u='w'/>
+<offset>72</offset>

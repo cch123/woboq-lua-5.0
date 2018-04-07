@@ -1,0 +1,13 @@
+<def f='lua/src/lobject.h' l='303' ll='312'/>
+<size>24</size>
+<doc f='lua/src/lobject.h' l='299'>/*
+** Header for string value; string bytes follow the end of this structure
+** (aligned according to &apos;UTString&apos;; see next).
+*/</doc>
+<mbr r='TString::next' o='0' t='GCObject *'/>
+<mbr r='TString::tt' o='64' t='lu_byte'/>
+<mbr r='TString::marked' o='72' t='lu_byte'/>
+<mbr r='TString::extra' o='80' t='lu_byte'/>
+<mbr r='TString::shrlen' o='88' t='lu_byte'/>
+<mbr r='TString::hash' o='96' t='unsigned int'/>
+<mbr r='TString::u' o='128' t='union (anonymous union at /vagrant/data/lua-5.3.4/src/lobject.h:308:3)'/>

@@ -1,0 +1,2 @@
+<dec f='lua/src/lobject.h' l='66'/>
+<doc f='lua/src/lobject.h' l='65'>/* mark a tag as collectable */</doc>

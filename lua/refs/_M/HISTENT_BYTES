@@ -1,0 +1,2 @@
+<dec f='include/readline/history.h' l='54'/>
+<doc f='include/readline/history.h' l='53'>/* Size of the history-library-managed space in history entry HS. */</doc>

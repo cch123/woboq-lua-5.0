@@ -1,0 +1,1 @@
+<dec f='include/readline/readline.h' l='328' type='rl_command_func_t * rl_function_of_keyseq(const char * , Keymap , int * )'/>

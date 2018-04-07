@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='129' type='int rl_beginning_of_history(int , int )'/>
+<doc f='include/readline/readline.h' l='128'>/* Bindable commands for readline&apos;s interface to the command history. */</doc>

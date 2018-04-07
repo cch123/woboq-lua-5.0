@@ -1,0 +1,3 @@
+<dec f='lua/src/lobject.h' l='449' type='TValue [1]'/>
+<offset>256</offset>
+<doc f='lua/src/lobject.h' l='449'>/* list of upvalues */</doc>

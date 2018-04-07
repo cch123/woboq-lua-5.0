@@ -1,0 +1,4 @@
+<dec f='lua/src/ltable.h' l='44' type='void luaH_setint(lua_State * L, Table * t, lua_Integer key, TValue * value)'/>
+<use f='lua/src/ltable.c' l='349' u='c' c='luaH_resize'/>
+<def f='lua/src/ltable.c' l='599' ll='610' type='void luaH_setint(lua_State * L, Table * t, lua_Integer key, TValue * value)'/>
+<use f='lua/src/lvm.c' l='1279' u='c' c='luaV_execute'/>

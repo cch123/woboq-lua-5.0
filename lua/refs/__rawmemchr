@@ -1,0 +1,18 @@
+<dec f='include/x86_64-linux-gnu/bits/string2.h' l='393' type='void * __rawmemchr(const void * __s, int __c)'/>
+<use f='include/x86_64-linux-gnu/bits/string2.h' l='398' u='c' c='__strsep_1c'/>
+<use f='lua/src/ldblib.c' l='165' macro='1' u='c'/>
+<use f='lua/src/ldblib.c' l='172' macro='1' u='c'/>
+<use f='lua/src/ldblib.c' l='174' macro='1' u='c'/>
+<use f='lua/src/ldblib.c' l='179' macro='1' u='c'/>
+<use f='lua/src/ldblib.c' l='183' macro='1' u='c'/>
+<use f='lua/src/ldblib.c' l='185' macro='1' u='c'/>
+<use f='lua/src/ldblib.c' l='187' macro='1' u='c'/>
+<use f='lua/src/ldblib.c' l='326' macro='1' u='c'/>
+<use f='lua/src/ldblib.c' l='327' macro='1' u='c'/>
+<use f='lua/src/ldblib.c' l='328' macro='1' u='c'/>
+<use f='lua/src/liolib.c' l='41' macro='1' u='c'/>
+<use f='lua/src/loadlib.c' l='428' macro='1' u='c'/>
+<use f='lua/src/loadlib.c' l='516' macro='1' u='c'/>
+<use f='lua/src/loadlib.c' l='541' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='983' macro='1' u='c'/>
+<use f='lua/src/lstrlib.c' l='1071' macro='1' u='c'/>

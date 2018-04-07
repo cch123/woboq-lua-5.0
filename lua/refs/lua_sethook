@@ -1,0 +1,4 @@
+<dec f='lua/src/lua.h' l='435' type='void lua_sethook(lua_State * L, lua_Hook func, int mask, int count)'/>
+<use f='lua/src/ldblib.c' l='374' u='c' c='db_sethook'/>
+<use f='lua/src/lua.c' l='113' u='c' c='lstop'/>
+<use f='lua/src/lua.c' l='126' u='c' c='laction'/>

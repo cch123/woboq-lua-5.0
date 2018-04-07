@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='545' type='rl_command_func_t *'/>
+<doc f='include/readline/readline.h' l='544'>/* The address of the last command function Readline executed. */</doc>

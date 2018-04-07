@@ -1,0 +1,31 @@
+<dec f='lua/src/lstate.h' l='81' type='const Instruction *'/>
+<offset>64</offset>
+<use f='lua/src/lvm.c' l='659' u='r' c='luaV_finishOp'/>
+<use f='lua/src/lvm.c' l='680' u='w' c='luaV_finishOp'/>
+<use f='lua/src/lvm.c' l='757' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='815' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='821' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='741' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1089' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='744' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='741' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1098' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='744' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='741' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1107' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='744' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='741' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1115' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='744' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='741' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1123' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='744' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='741' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1168' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1168' u='r' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1196' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1207' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1239' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1250' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1259' u='w' c='luaV_execute'/>
+<use f='lua/src/lvm.c' l='1271' u='w' c='luaV_execute'/>

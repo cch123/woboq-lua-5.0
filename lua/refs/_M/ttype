@@ -1,0 +1,10 @@
+<dec f='lua/src/lobject.h' l='133'/>
+<doc f='lua/src/lobject.h' l='132'>/* type tag of a TValue (bits 0-3 for tags + variant bits 4-5) */</doc>
+<use f='lua/src/ltable.c' l='118' u='c'/>
+<use f='lua/src/ltable.c' l='571' u='c'/>
+<use f='lua/src/luac.c' l='257' u='c'/>
+<use f='lua/src/luac.c' l='280' u='c'/>
+<use f='lua/src/lvm.c' l='409' u='c'/>
+<use f='lua/src/lvm.c' l='409' u='c'/>
+<use f='lua/src/lvm.c' l='418' u='c'/>
+<use f='lua/src/lvm.c' l='519' u='c'/>

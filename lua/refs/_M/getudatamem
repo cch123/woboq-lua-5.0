@@ -1,0 +1,5 @@
+<dec f='lua/src/lobject.h' l='368'/>
+<doc f='lua/src/lobject.h' l='364'>/*
+**  Get the address of memory block inside &apos;Udata&apos;.
+** (Access to &apos;ttuv_&apos; ensures that value is really a &apos;Udata&apos;.)
+*/</doc>

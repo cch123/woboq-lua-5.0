@@ -1,0 +1,2 @@
+<dec f='include/readline/readline.h' l='420' type='int rl_stuff_char(int )'/>
+<doc f='include/readline/readline.h' l='419'>/* Functions for character input. */</doc>

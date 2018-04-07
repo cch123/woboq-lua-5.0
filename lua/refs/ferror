@@ -1,0 +1,5 @@
+<dec f='include/stdio.h' l='830' type='int ferror(FILE * __stream)'/>
+<use f='lua/src/lauxlib.c' l='728' u='c' c='luaL_loadfilex'/>
+<doc f='include/stdio.h' l='829'>/* Return the error indicator for STREAM.  */</doc>
+<use f='lua/src/liolib.c' l='564' u='c' c='g_read'/>
+<use f='lua/src/luac.c' l='186' u='c' c='pmain'/>

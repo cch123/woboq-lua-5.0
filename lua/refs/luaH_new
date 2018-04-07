@@ -1,0 +1,6 @@
+<dec f='lua/src/ltable.h' l='51' type='Table * luaH_new(lua_State * L)'/>
+<def f='lua/src/ltable.c' l='402' ll='411' type='Table * luaH_new(lua_State * L)'/>
+<doc f='lua/src/ltable.c' l='397'>/*
+** }=============================================================
+*/</doc>
+<use f='lua/src/lvm.c' l='870' u='c' c='luaV_execute'/>

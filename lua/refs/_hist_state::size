@@ -1,0 +1,3 @@
+<dec f='include/readline/history.h' l='61' type='int'/>
+<offset>128</offset>
+<doc f='include/readline/history.h' l='61'>/* Number of slots allocated to this array. */</doc>

@@ -1,0 +1,21 @@
+<dec f='lua/src/lobject.h' l='328'/>
+<use f='lua/src/lstring.c' l='45' u='c'/>
+<use f='lua/src/lstring.c' l='45' u='c'/>
+<use f='lua/src/lstring.c' l='61' u='c'/>
+<use f='lua/src/lstring.c' l='142' u='c'/>
+<use f='lua/src/lstring.c' l='175' u='c'/>
+<use f='lua/src/lstring.c' l='187' u='c'/>
+<use f='lua/src/lstring.c' l='207' u='c'/>
+<use f='lua/src/lstring.c' l='224' u='c'/>
+<doc f='lua/src/lobject.h' l='324'>/*
+** Get the actual string (array of bytes) from a &apos;TString&apos;.
+** (Access to &apos;extra&apos; ensures that value is really a &apos;TString&apos;.)
+*/</doc>
+<use f='lua/src/ltm.c' l='96' u='c'/>
+<use f='lua/src/luac.c' l='228' u='c'/>
+<use f='lua/src/luac.c' l='397' u='c'/>
+<use f='lua/src/luac.c' l='431' u='c'/>
+<use f='lua/src/lundump.c' l='101' u='c'/>
+<use f='lua/src/lvm.c' l='249' u='c'/>
+<use f='lua/src/lvm.c' l='251' u='c'/>
+<use f='lua/src/lvm.c' l='504' u='c'/>

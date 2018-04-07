@@ -1,0 +1,16 @@
+<dec f='lua/src/lobject.h' l='306' type='lu_byte'/>
+<use f='lua/src/lstring.c' l='174' u='r' c='internshrstr'/>
+<use f='lua/src/lstring.c' l='188' u='w' c='internshrstr'/>
+<offset>88</offset>
+<doc f='lua/src/lobject.h' l='306'>/* length for short strings */</doc>
+<use f='lua/src/luac.c' l='229' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='79' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='112' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='250' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='252' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='463' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='457' u='r' c='luaV_concat'/>
+<use f='lua/src/lvm.c' l='457' u='r' c='luaV_concat'/>
+<use f='lua/src/lvm.c' l='488' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='492' macro='1' u='r'/>
+<use f='lua/src/lvm.c' l='528' u='r' c='luaV_objlen'/>

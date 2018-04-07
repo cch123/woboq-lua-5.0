@@ -1,0 +1,4 @@
+<dec f='include/stdio.h' l='919' type='void funlockfile(FILE * __stream)'/>
+<doc f='include/stdio.h' l='918'>/* Relinquish the ownership granted for STREAM.  */</doc>
+<use f='lua/src/liolib.c' l='88' u='c' c='read_number'/>
+<use f='lua/src/liolib.c' l='88' u='c' c='read_line'/>

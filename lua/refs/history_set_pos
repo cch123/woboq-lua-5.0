@@ -1,0 +1,2 @@
+<dec f='include/readline/history.h' l='148' type='int history_set_pos(int )'/>
+<doc f='include/readline/history.h' l='147'>/* Set the position in the history list to POS. */</doc>

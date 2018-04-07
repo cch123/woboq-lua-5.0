@@ -1,0 +1,4 @@
+<dec f='lua/src/lopcodes.h' l='172' type='1'/>
+<use f='lua/src/luac.c' l='327' c='PrintCode'/>
+<doc f='lua/src/lopcodes.h' l='172'>/*	A Bx	R(A) := Kst(Bx)					*/</doc>
+<use f='lua/src/lvm.c' l='807' c='luaV_execute'/>
